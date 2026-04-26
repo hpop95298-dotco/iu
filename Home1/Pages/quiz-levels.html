@@ -1,129 +1,100 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Levels | Innovation University</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Hub | Innovation University</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="../images/iu-logo.png" />
-  <link rel="stylesheet" href="../css/style.css">
-
-  <style>
-    /* Specific overrides */
-    .icon-circle {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
-      font-size: 35px;
-      color: var(--accent);
-      background: rgba(255, 215, 0, 0.1);
-      box-shadow: 0 0 15px var(--accent-glow);
-      transition: var(--transition);
-    }
-
-    .level-card {
-        text-align: center;
-        padding: 40px 20px;
-    }
-
-    .level-card:hover .icon-circle {
-      transform: scale(1.1);
-      box-shadow: 0 0 25px var(--accent-glow);
-      background: var(--accent);
-      color: var(--primary);
-    }
-
-    .level-card h3 {
-      font-size: 24px;
-      color: var(--text-light);
-      margin-bottom: 25px;
-    }
-  </style>
+    <style>
+        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .quiz-card { text-align: center; padding: 50px 30px; transition: var(--transition-smooth); }
+        .quiz-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); }
+        .level-icon { width: 100px; height: 100px; background: rgba(253, 185, 19, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 25px; font-size: 2.5rem; color: var(--iu-accent); border: 2px solid transparent; transition: var(--transition-smooth); }
+        .quiz-card:hover .level-icon { background: var(--iu-accent); color: var(--iu-primary); transform: rotate(360deg); }
+    </style>
 </head>
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-  <div id="preloader"><div class="spinner"></div></div>
-
-  <header>
-      <div class="nav-container">
-          <div class="logo">
-              <img src="../images/iu-logo.png" alt="IU Logo">
-              <span>Innovation University</span>
-          </div>
-          <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-          <nav id="navMenu">
-              <a href="iu.html">Home</a>
-              <a href="select-level.html">Courses</a>
-              <a href="schedule.html">Schedule</a>
-              <a href="dashboard-STU.html">Dashboard</a>
-              <a href="login.html" class="btn-premium btn-accent">Login <i class="fas fa-sign-in-alt"></i></a>
-          </nav>
-      </div>
-  </header>
-
-  <main class="main-content">
-      <h1 class="text-gold" style="text-align: center; margin-bottom: 40px;">Select Quiz Level</h1>
-
-      <div class="grid-2" style="max-width: 900px; margin: 0 auto;">
-
-        <!-- Level 1 -->
-        <div class="glass-card section-card level-card">
-          <div class="icon-circle"><i class="fa-solid fa-1"></i></div>
-          <h3>Level 1</h3>
-          <a href="./levels-term1/level1-quizzes.html" class="btn-premium btn-accent" style="display: block; width: 100%;">Open Quizzes</a>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Assessment Phase</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="select-level.html">Courses</a>
+                <a href="dashboard-STU.html">Dashboard</a>
+                <a href="login.html" class="btn-premium btn-accent">Portal <i class="fas fa-user"></i></a>
+            </nav>
         </div>
+    </header>
 
-        <!-- Level 2 -->
-        <div class="glass-card section-card level-card">
-          <div class="icon-circle"><i class="fa-solid fa-2"></i></div>
-          <h3>Level 2</h3>
-          <a href="./level2-term1.html/level2-quizzes.html" class="btn-premium btn-accent" style="display: block; width: 100%;">Open Quizzes</a>
+    <main class="main-content">
+        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Cognitive Assessments</h1>
+        
+        <div class="quiz-grid animate-up" style="animation-delay: 0.2s;">
+            <!-- Level 1 -->
+            <div class="glass-card quiz-card">
+                <div class="level-icon"><i class="fas fa-seedling"></i></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Foundation Alpha</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 30px;">Core introductory concepts and algorithmic thinking.</p>
+                <a href="./levels-term1/level1-quizzes.html" class="btn-premium btn-accent" style="display: block;">Enter Examination</a>
+            </div>
+
+            <!-- Level 2 -->
+            <div class="glass-card quiz-card">
+                <div class="level-icon"><i class="fas fa-microchip"></i></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Architecture Beta</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 30px;">Advanced data structures and computational logic.</p>
+                <a href="./level2-term1.html/level2-quizzes.html" class="btn-premium btn-accent" style="display: block;">Enter Examination</a>
+            </div>
+
+            <!-- Level 3 -->
+            <div class="glass-card quiz-card">
+                <div class="level-icon"><i class="fas fa-brain"></i></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Specialized Gamma</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 30px;">Artificial intelligence and deep system engineering.</p>
+                <a href="level3-term1/level3-quizzes.html" class="btn-premium btn-accent" style="display: block;">Enter Examination</a>
+            </div>
+
+            <!-- Level 4 -->
+            <div class="glass-card quiz-card">
+                <div class="level-icon"><i class="fas fa-rocket"></i></div>
+                <h3 style="font-size: 1.8rem; margin-bottom: 20px;">Innovation Delta</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 30px;">Research methodologies and expert specialisation.</p>
+                <a href="level4-term1/level4-quizzes.html" class="btn-premium btn-accent" style="display: block;">Enter Examination</a>
+            </div>
         </div>
+    </main>
 
-        <!-- Level 3 -->
-        <div class="glass-card section-card level-card">
-          <div class="icon-circle"><i class="fa-solid fa-3"></i></div>
-          <h3>Level 3</h3>
-          <a href="level3-term1/level3-quizzes.html" class="btn-premium btn-accent" style="display: block; width: 100%;">Open Quizzes</a>
+    <footer class="main-footer" style="margin-top: 100px;">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Verified Assessment Portal.</p>
         </div>
+    </footer>
 
-        <!-- Level 4 -->
-        <div class="glass-card section-card level-card">
-          <div class="icon-circle"><i class="fa-solid fa-4"></i></div>
-          <h3>Level 4</h3>
-          <a href="level4-term1/level4-quizzes.html" class="btn-premium btn-accent" style="display: block; width: 100%;">Open Quizzes</a>
-        </div>
-
-      </div>
-  </main>
-
-  <footer>© 2026 Innovation University — All Rights Reserved. Built for Excellence.</footer>
-
-  <script src="../js/style.js"></script>
-  <script>
-    // Navbar Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (menuToggle && navMenu) {
+    <script>
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
         menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
 
-    // Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => preloader.style.display = 'none', 500);
             }, 800);
-        }
-    });
-  </script>
+        });
+    </script>
 </body>
 </html>

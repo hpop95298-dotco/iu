@@ -4,161 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard | Innovation University</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
 </head>
-<body class="lms-theme">
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<div id="preloader"><div class="spinner"></div></div>
-
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Admin Portal</span>
-        </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="dashboard-admin.html" class="active">Dashboard</a>
-            <a href="admin-attendance.html">Attendance</a>
-            <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
-        </nav>
-    </div>
-</header>
-
-<main class="main-content">
-    <h1 class="text-gold" style="text-align: center; margin-bottom: 40px;">Academic Admin Control</h1>
-
-    <div class="grid-stats">
-        <div class="glass-card stat-card">
-            <div class="stat-info">
-                <h3>Total Students</h3>
-                <div class="value">1,240</div>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Admin Portal</span>
             </div>
-            <div class="icon-box"><i class="fas fa-users"></i></div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="dashboard-admin.html" class="active">Dashboard</a>
+                <a href="admin-attendance.html">Attendance</a>
+                <a href="admin-insights.html">Insights</a>
+                <a href="#" id="logoutBtn" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </nav>
         </div>
-        <div class="glass-card stat-card">
-            <div class="stat-info">
-                <h3>Course Modules</h3>
-                <div class="value">48</div>
+    </header>
+
+    <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding-top: 50px;">
+        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Executive Command Center</h1>
+
+        <div class="dashboard-grid-stats">
+            <div class="glass-card animate-up" style="text-align: center; padding: 30px;">
+                <i class="fas fa-users" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Enrolled Students</div>
+                <div style="font-size: 2.5rem; font-weight: 800;">1,240</div>
             </div>
-            <div class="icon-box"><i class="fas fa-book-open"></i></div>
-        </div>
-        <div class="glass-card stat-card">
-            <div class="stat-info">
-                <h3>Submissions</h3>
-                <div class="value">8,421</div>
+            <div class="glass-card animate-up" style="text-align: center; padding: 30px; animation-delay: 0.1s;">
+                <i class="fas fa-book-open" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Course Modules</div>
+                <div style="font-size: 2.5rem; font-weight: 800;">48</div>
             </div>
-            <div class="icon-box"><i class="fas fa-check-double"></i></div>
+            <div class="glass-card animate-up" style="text-align: center; padding: 30px; animation-delay: 0.2s;">
+                <i class="fas fa-check-double" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Active Submissions</div>
+                <div style="font-size: 2.5rem; font-weight: 800;">8,421</div>
+            </div>
         </div>
-    </div>
 
-    <div class="grid-2">
-        <div class="glass-card section-card">
-            <h4 class="text-gold"><i class="fas fa-chart-line"></i> Submission Trends</h4>
-            <canvas id="lineChart" height="200"></canvas>
+        <div class="dashboard-grid-2" style="margin-top: 30px;">
+            <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.3s;">
+                <h3 class="chart-card-title"><i class="fas fa-chart-line"></i> Strategic Growth</h3>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.4s;">
+                <h3 class="chart-card-title"><i class="fas fa-chart-pie"></i> Faculty Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
         </div>
-        <div class="glass-card section-card">
-            <h4 class="text-gold"><i class="fas fa-chart-pie"></i> Department Stats</h4>
-            <canvas id="doughnutChart" height="200"></canvas>
+
+        <div class="glass-card animate-up" style="margin-top: 30px; padding: 40px; animation-delay: 0.5s;">
+            <h3 class="chart-card-title"><i class="fas fa-tasks"></i> Recent Academic Activity</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student Representative</th>
+                            <th>Academic Module</th>
+                            <th>Timeline</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Ahmed Anter</td><td>Advanced Web Design</td><td>Oct 24, 2026</td><td><span class="status-pill status-completed">Validated</span></td></tr>
+                        <tr><td>Sarah Miller</td><td>Database Structures</td><td>Oct 23, 2026</td><td><span class="status-pill status-pending">In Review</span></td></tr>
+                        <tr><td>John Doe</td><td>AI Fundamentals</td><td>Oct 22, 2026</td><td><span class="status-pill status-completed">Validated</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
+    </main>
 
-    <div class="glass-card section-card" style="margin-top: 30px;">
-        <h4 class="text-gold"><i class="fas fa-tasks"></i> Recent Submissions</h4>
-        <div class="table-responsive">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Student Name</th>
-                        <th>Assignment Title</th>
-                        <th>Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr><td>Ahmed Anter</td><td>Advanced Web Design</td><td>Oct 24, 2023</td><td><span class="status-pill status-completed">Completed</span></td></tr>
-                    <tr><td>Sarah Miller</td><td>Database Structures</td><td>Oct 23, 2023</td><td><span class="status-pill status-pending">Pending</span></td></tr>
-                    <tr><td>John Doe</td><td>AI Fundamentals</td><td>Oct 22, 2023</td><td><span class="status-pill status-completed">Completed</span></td></tr>
-                </tbody>
-            </table>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Administrative Command. Excellence in Education.</p>
         </div>
-    </div>
-</main>
-
-<footer>© 2026 Innovation University — Academic Excellence Redefined.</footer>
-
-<div id="security-alert">⚠️ Security violation detected.</div>
-
-<script>
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
-menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-// Preloader
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.style.opacity = '0';
-        setTimeout(() => preloader.style.display = 'none', 500);
-    }, 800);
-});
-
-// Line Chart
-const ctxL = document.getElementById('lineChart').getContext('2d');
-new Chart(ctxL, {
-    type: 'line',
-    data: {
-        labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-        datasets: [{
-            label: 'Submissions',
-            data: [450, 600, 800, 500, 900, 1100, 700],
-            borderColor: '#FFD700',
-            backgroundColor: 'rgba(255, 215, 0, 0.1)',
-            fill: true,
-            tension: 0.4
-        }]
-    },
-    options: { plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#fff' }, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { ticks: { color: '#fff' }, grid: { display: false } } } }
-});
-
-// Doughnut Chart
-const ctxD = document.getElementById('doughnutChart').getContext('2d');
-new Chart(ctxD, {
-    type: 'doughnut',
-    data: {
-        labels: ['IT', 'Business', 'Engineering'],
-        datasets: [{
-            data: [45, 25, 30],
-            backgroundColor: ['#FFD700', '#004a9c', '#ffffff'],
-            borderWidth: 0
-        }]
-    },
-    options: { plugins: { legend: { position: 'bottom', labels: { color: '#fff', font: { family: 'Cairo' } } } }, cutout: '70%' }
-});
-
-// Security
-(function() {
-  const _s = {
-    _i: () => {
-      document.addEventListener('contextmenu', e => { e.preventDefault(); _s._v(); });
-      document.addEventListener('keydown', e => {
-        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && e.keyCode === 85)) {
-          e.preventDefault(); _s._v();
-        }
-      });
-    },
-    _v: () => {
-      const a = document.getElementById('security-alert');
-      a.style.display = 'block';
-      setTimeout(() => a.style.display = 'none', 2000);
-    }
-  };
-  _s._i();
-})();
-</script>
+    </footer>
+    <script type="module" src="../js/admin-dashboard.js"></script>
+    <script type="module" src="../js/auth.js"></script>
 </body>
-</html>
+</html>

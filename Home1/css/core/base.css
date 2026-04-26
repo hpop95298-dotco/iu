@@ -1,0 +1,110 @@
+/* 
+  BASE: CORE RESETS & GLOBAL STYLES
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Cairo', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--iu-bg);
+}
+
+body {
+    background-color: #0a0a1a; /* Slightly lighter navy base */
+    background-image: 
+        var(--glow-1), 
+        var(--glow-2), 
+        linear-gradient(rgba(10, 10, 26, 0.4), rgba(10, 10, 26, 0.4)), /* Subtle tint */
+        url('../../images/img.jpg');
+    background-size: auto, auto, cover, cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-blend-mode: screen, screen, normal, normal; /* Better blending for glows */
+    color: var(--iu-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: -0.01em;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(5, 2, 8, 0.2) 0%, rgba(5, 2, 8, 0.6) 100%);
+    backdrop-filter: brightness(0.85) saturate(1.1) contrast(1.1);
+    -webkit-backdrop-filter: brightness(0.85) saturate(1.1) contrast(1.1);
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, hsla(var(--iu-primary-h), 40%, 20%, 0.1), transparent 80%);
+    z-index: -1;
+    pointer-events: none;
+    animation: pulseGlow 15s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+    from { opacity: 0.4; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.2); }
+}
+
+h1, h2, h3, h4, .font-heading {
+    font-family: 'Outfit', 'Cairo', sans-serif;
+    font-weight: 700;
+}
+
+/* Premium Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--iu-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--iu-primary), var(--iu-accent));
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--iu-accent);
+}
+
+/* Standard Link Reset */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+/* Preloader Reset */
+#preloader {
+    display: none !important;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 3px solid rgba(var(--iu-accent-rgb), 0.1);
+    border-top: 3px solid var(--iu-accent);
+    border-radius: 50%;
+    animation: spin 0.8s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }

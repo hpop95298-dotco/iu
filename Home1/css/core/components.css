@@ -1,0 +1,149 @@
+/* 
+  COMPONENTS: PREMIUM UI ELEMENTS
+*/
+
+/* Premium Glass Card */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--border-thin);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-smooth);
+    padding: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent);
+    pointer-events: none;
+}
+
+.glass-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    opacity: 0.8;
+}
+
+.glass-card:hover {
+    transform: translateY(-10px) scale(1.01);
+    background: hsla(var(--iu-primary-h), 40%, 15%, 0.8);
+    border-color: hsla(var(--iu-accent-h), var(--iu-accent-s), var(--iu-accent-l), 0.4);
+    box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 20px hsla(var(--iu-accent-h), 80%, 50%, 0.1);
+}
+
+/* Premium Buttons */
+.btn-premium {
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    border: none;
+    transition: var(--transition-smooth);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'Outfit', sans-serif;
+}
+
+.btn-accent {
+    background: var(--iu-accent);
+    color: var(--iu-bg);
+    box-shadow: 0 0 20px rgba(var(--iu-accent-rgb), 0.2);
+}
+
+.btn-accent:hover {
+    background: #fff;
+    box-shadow: 0 0 30px var(--iu-accent-glow);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--iu-accent);
+    color: var(--iu-accent);
+}
+
+/* Stat Cards */
+.stat-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.stat-info h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--iu-accent);
+    margin-bottom: 8px;
+    opacity: 0.8;
+}
+
+.stat-info .value {
+    font-size: 2.2rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: #fff;
+    line-height: 1;
+}
+
+.icon-box {
+    width: 60px;
+    height: 60px;
+    background: rgba(var(--iu-accent-rgb), 0.1);
+    color: var(--iu-accent);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    border: 1px solid rgba(var(--iu-accent-rgb), 0.1);
+    box-shadow: inset 0 0 15px rgba(var(--iu-accent-rgb), 0.05);
+}
+
+/* Status Pills */
+.status-pill {
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: inline-block;
+}
+
+.status-completed { background: rgba(0, 255, 148, 0.15); color: #00ff94; border: 1px solid rgba(0, 255, 148, 0.3); }
+.status-pending { background: rgba(253, 185, 19, 0.15); color: var(--iu-accent); border: 1px solid rgba(253, 185, 19, 0.3); }
+
+/* Badges */
+.badge-new {
+    background: var(--iu-accent);
+    color: var(--iu-bg);
+    font-size: 0.7rem;
+    font-weight: 900;
+    padding: 3px 10px;
+    border-radius: 4px;
+}

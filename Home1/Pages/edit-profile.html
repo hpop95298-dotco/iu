@@ -1,192 +1,110 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
-    <title>Edit Profile</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="../images/iu-logo.png" />
+    <title>Edit Profile | Innovation University</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        * {
-            box-sizing: border-box;
-            font-family: 'Cairo', sans-serif;
-        }
-
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('../images/img.jpg') center/cover no-repeat;
-            filter: blur(3px);
-            transform: scale(1.1);
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            background: rgba(56, 189, 248, 0.04);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 25px;
-            color: #1e293b;
-        }
-
-        .form-group {
-            margin-bottom: 18px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 6px;
-            font-size: 14px;
-            color: #000000;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            outline: none;
-            background: rgba(0, 0, 0, 0.34);
-            color: #e5e7eb;
-            font-size: 14px;
-        }
-
-        textarea {
-            resize: none;
-            height: 90px;
-        }
-
-        input[type="file"] {
-            padding: 8px;
-        }
-
-        .skills {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .actions {
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        button {
-            padding: 12px 28px;
-            border: none;
-            border-radius: 30px;
-            cursor: pointer;
-            font-size: 14px;
-            margin: 5px;
-        }
-
-        .save {
-            background: #22c55e;
-            color: #020617;
-        }
-
-        .cancel {
-            background: #ef4444;
-            color: #fff;
-        }
-
-        @media(max-width:600px) {
-            .skills {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .profile-img-container {
-            text-align: center;
-        }
-
-        .profile-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: block;
-            margin: auto;
-        }
+        .edit-container { max-width: 800px; margin: 40px auto; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 30px; }
+        .form-full { grid-column: span 2; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: var(--iu-text-muted); font-size: 0.9rem; font-weight: 600; }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px 18px; border-radius: 12px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: #fff; outline: none; transition: var(--transition-smooth); }
+        .input-group input:focus, .input-group textarea:focus { border-color: var(--iu-accent); box-shadow: 0 0 15px var(--iu-accent-glow); }
+        .profile-upload { text-align: center; margin-bottom: 40px; }
+        .profile-preview { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--iu-accent); object-fit: cover; margin-bottom: 20px; box-shadow: 0 0 20px var(--iu-accent-glow); }
+        .skill-inputs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
+        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .form-full { grid-column: span 1; } .skill-inputs { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
-
-    <div class="container">
-        <h2>Edit-Profile</h2>
-
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" id="name">
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Identity Hub</span>
+            </div>
+            <nav id="navMenu">
+                <a href="profile.html">Back to Profile</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="form-group">
-            <label>status</label>
-            <input type="text" id="role">
-        </div>
+    <main class="main-content">
+        <div class="edit-container">
+            <h1 class="animate-up" style="text-align: center; margin-bottom: 40px; color: var(--iu-accent);">Identity Customization</h1>
+            
+            <div class="glass-card animate-up" style="padding: 40px;">
+                <div class="profile-upload">
+                    <img id="preview-img" src="../images/Hema.jpeg" alt="Profile" class="profile-preview">
+                    <div style="margin-top: 10px;">
+                        <input type="file" id="image" accept="image/*" style="display: none;">
+                        <button class="btn-premium btn-glass" onclick="document.getElementById('image').click()">
+                            <i class="fas fa-camera"></i> Change Photo
+                        </button>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label>BIO</label>
-            <textarea id="bio"></textarea>
-        </div>
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label>Full Legal Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name">
+                    </div>
+                    <div class="input-group">
+                        <label>Current Status</label>
+                        <input type="text" id="role" placeholder="e.g. Level 3 CS Student">
+                    </div>
+                    <div class="input-group form-full">
+                        <label>Professional Bio</label>
+                        <textarea id="bio" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label>Academic Email</label>
+                        <input type="email" id="email" placeholder="student@iu.edu">
+                    </div>
+                    <div class="input-group">
+                        <label>Emergency Contact</label>
+                        <input type="text" id="phone" placeholder="+20 123 456 7890">
+                    </div>
+                    <div class="input-group">
+                        <label>Home City</label>
+                        <input type="text" id="city" placeholder="City, Country">
+                    </div>
+                    <div class="input-group">
+                        <label>University ID</label>
+                        <input type="text" id="ID" placeholder="2503xxxx" readonly style="opacity: 0.6; cursor: not-allowed;">
+                    </div>
+                    
+                    <div class="input-group form-full">
+                        <label>Skill Proficiency (%)</label>
+                        <div class="skill-inputs" id="skills-inputs">
+                            <div><label style="font-size: 0.75rem;">HTML</label><input type="number" placeholder="HTML"></div>
+                            <div><label style="font-size: 0.75rem;">CSS</label><input type="number" placeholder="CSS"></div>
+                            <div><label style="font-size: 0.75rem;">JavaScript</label><input type="number" placeholder="JS"></div>
+                            <div><label style="font-size: 0.75rem;">C#</label><input type="number" placeholder="C#"></div>
+                        </div>
+                    </div>
+                </div>
 
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="email">
-        </div>
-
-        <div class="form-group">
-            <label>Phone</label>
-            <input type="text" id="phone">
-        </div>
-
-        <div class="form-group">
-            <label>City</label>
-            <input type="text" id="city">
-        </div>
-
-        <div class="form-group">
-            <label>ID</label>
-            <input type="text" id="ID">
-        </div>
-
-        <div class="form-group">
-            <label>الصورة الشخصية</label>
-            <div class="profile-img-container">
-                <img id="preview-img" src="../images/Hema.jpeg" alt="Profile Image" class="profile-img">
-                <input type="file" id="image" accept="image/*" style="margin-top:10px;">
+                <div style="display: flex; gap: 15px; margin-top: 40px;">
+                    <button class="btn-premium btn-accent" style="flex: 2; padding: 15px;" onclick="saveProfile()">
+                        <i class="fas fa-save"></i> Synchronize Changes
+                    </button>
+                    <button class="btn-premium btn-glass" style="flex: 1; padding: 15px;" onclick="cancelEdit()">
+                        Discard
+                    </button>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            <label>SKILLS (%)</label>
-            <div class="skills">
-                <input type="number" placeholder="HTML">
-                <input type="number" placeholder="CSS">
-                <input type="number" placeholder="JavaScript">
-                <input type="number" placeholder="C#">
-            </div>
-        </div>
-
-        <div class="actions">
-            <button class="save" onclick="saveProfile()">حفظ التعديلات</button>
-            <button class="cancel" onclick="cancelEdit()">إلغاء</button>
-        </div>
-    </div>
+    </main>
 
     <script>
         const uploadInput = document.getElementById("image");
@@ -204,7 +122,7 @@
                 document.getElementById("city").value = data.city || "";
                 document.getElementById("ID").value = data.ID || "";
 
-                const skills = document.querySelectorAll('.skills input');
+                const skills = document.querySelectorAll('#skills-inputs input');
                 skills[0].value = data.skills.html || 0;
                 skills[1].value = data.skills.css || 0;
                 skills[2].value = data.skills.js || 0;
@@ -214,6 +132,12 @@
                     previewImg.src = data.imageUrl;
                 }
             }
+            // Preloader finish
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
         });
 
         // عرض الصورة فور رفعها
@@ -230,6 +154,7 @@
 
         function saveProfile() {
             const oldData = JSON.parse(localStorage.getItem("profileData")) || {};
+            const skillsInputs = document.querySelectorAll('#skills-inputs input');
             const profileData = {
                 name: document.getElementById("name").value,
                 role: document.getElementById("role").value,
@@ -239,22 +164,22 @@
                 city: document.getElementById("city").value,
                 ID: document.getElementById("ID").value,
                 imageUrl: previewImg.src,
-        interests: oldData.interests || [],
+                interests: oldData.interests || [],
                 skills: {
-                    html: document.querySelectorAll('.skills input')[0].value,
-                    css: document.querySelectorAll('.skills input')[1].value,
-                    js: document.querySelectorAll('.skills input')[2].value,
-                    csharp: document.querySelectorAll('.skills input')[3].value
+                    html: skillsInputs[0].value,
+                    css: skillsInputs[1].value,
+                    js: skillsInputs[2].value,
+                    csharp: skillsInputs[3].value
                 }
             };
 
             localStorage.setItem("profileData", JSON.stringify(profileData));
-            alert("تم حفظ التعديلات بنجاح");
+            alert("Digital Identity Synchronized Successfully!");
             window.location.href = "profile.html";
         }
 
         function cancelEdit() {
-            window.history.back();
+            window.location.href = "profile.html";
         }
     </script>
 

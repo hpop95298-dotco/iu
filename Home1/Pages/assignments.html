@@ -1,293 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignments Dashboard | Innovation University</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .calendar-day { padding: 10px; border: 1px solid var(--glass-border); min-height: 80px; border-radius: 8px; font-size: 0.8rem; }
-        .calendar-assignment { background: var(--accent); color: var(--primary); font-size: 10px; padding: 2px 5px; border-radius: 4px; margin-top: 5px; font-weight: 700; }
-        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; margin-top: 20px; }
-        .upload-zone { border: 2px dashed var(--glass-border); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; transition: 0.3s; margin: 10px 0; display: block; }
-        .upload-zone:hover { border-color: var(--accent); background: rgba(255,255,255,0.05); }
-        .upload-zone i { font-size: 24px; color: var(--accent); margin-bottom: 10px; }
-        .toast { position: fixed; top: 100px; right: -300px; background: var(--accent); color: var(--primary); padding: 15px 30px; border-radius: 12px; font-weight: 700; z-index: 4000; transition: 0.5s; }
-        .toast.show { right: 30px; }
-        .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.8); display: none; align-items: center; justify-content: center; z-index: 3000; backdrop-filter: blur(5px); }
-        .modal { background: var(--primary); border: 1px solid var(--glass-border); padding: 40px; border-radius: 20px; max-width: 400px; text-align: center; }
-        @media print { body { display: none !important; } }
-    </style>
+  <meta charset="UTF-8">
+  <title>Assignments | IU Student Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../css/core/tokens.css">
+  <link rel="stylesheet" href="../css/core/base.css">
+  <link rel="stylesheet" href="../css/core/layout.css">
+  <link rel="stylesheet" href="../css/core/components.css">
+  <link rel="stylesheet" href="../css/core/animations.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin-top: 20px; }
+    .calendar-day { padding: 10px; border: 1px solid var(--glass-border); min-height: 70px; border-radius: 10px; font-size: 0.75rem; background: rgba(255,255,255,0.02); transition: var(--transition-smooth); }
+    .calendar-day.has-task { border-color: var(--iu-accent); background: rgba(253, 185, 19, 0.05); }
+    .day-num { font-weight: 700; margin-bottom: 5px; display: block; }
+    .task-dot { width: 6px; height: 6px; background: var(--iu-accent); border-radius: 50%; display: inline-block; box-shadow: 0 0 5px var(--iu-accent-glow); }
+    
+    .assignment-card { transition: var(--transition-smooth); border: 1px solid var(--glass-border); }
+    .assignment-card:hover { transform: translateY(-5px); border-color: var(--iu-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    
+    .upload-zone { border: 2px dashed var(--glass-border); border-radius: 12px; padding: 20px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.02); transition: var(--transition-smooth); margin: 15px 0; display: block; }
+    .upload-zone:hover { border-color: var(--iu-accent); background: rgba(253, 185, 19, 0.05); }
+  </style>
 </head>
-<body class="lms-theme">
+<body class="faculty-theme">
+
 <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Student Portal</span>
-        </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="dashboard-STU.html">Dashboard</a>
-            <a href="assignments.html" class="active">Assignments</a>
-            <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
-        </nav>
+<div class="dashboard-layout">
+  <aside class="glass-card dashboard-sidebar" id="sidebar">
+    <div class="logo-container">
+        <img src="../images/iu-logo.png" alt="IU Logo">
+        <h2>STUDENT PORTAL</h2>
     </div>
-</header>
-
-<div class="layout">
-  <aside class="sidebar" id="sidebar">
-    <h2>IU | Student Portal</h2>
-    <nav>
-        <a href="dashboard-STU.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a>
-        <a href="#" class="nav-item active"><i class="fa-solid fa-file-lines"></i><span>Assignments</span></a>
-        <a href="schedule.html" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>Schedule</span></a>
+    <nav class="sidebar-nav">
+        <a class="nav-item" href="dashboard-STU.html"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+        <a class="nav-item" href="levels-term1/level1-term1-pdf.html"><i class="fas fa-book"></i><span>PDF Courses</span></a>
+        <a class="nav-item" href="levels-term1/level1-term1-video.html"><i class="fas fa-video"></i><span>Video Courses</span></a>
+        <a class="nav-item" href="levels-term1/level1-quizzes.html"><i class="fas fa-question-circle"></i><span>Quizzes</span></a>
+        <a class="nav-item active" href="assignments.html"><i class="fas fa-file-signature"></i><span>Assignments</span></a>
+        <a class="nav-item" href="schedule.html"><i class="fas fa-calendar"></i><span>Schedule</span></a>
+        <a class="nav-item" href="profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
         <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
-        <a href="dashboard-STU.html" class="nav-item"><i class="fa-solid fa-arrow-left"></i><span>Back</span></a>
+        <a class="nav-item" href="iu.html"><i class="fas fa-house"></i><span>Home Page</span></a>
+        <a class="nav-item" id="logoutBtn" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
     </nav>
   </aside>
 
-  <main class="main-content">
-    <div class="topbar">
-      <div class="menu-icon" id="sidebarToggle"><i class="fas fa-bars"></i></div>
-      <div class="search-container" style="position: relative; width: 100%; max-width: 400px;">
-        <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--accent);"></i>
-        <input type="text" placeholder="Search for assignments..." style="width: 100%; padding: 10px 15px 10px 45px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; outline: none;">
+  <main class="main-content dashboard-main">
+    <div class="dashboard-topbar">
+      <div class="menu-icon" id="sidebarToggle" style="display: none;"><i class="fas fa-bars"></i></div>
+      <div class="welcome-text">
+          <h2>Academic <span style="color: var(--iu-accent);">Assignments</span></h2>
+          <p>Manage and submit your technical tasks.</p>
       </div>
-      <div class="user" style="display: flex; align-items: center; gap: 10px; background: var(--glass-bg); padding: 8px 15px; border-radius: 50px; border: 1px solid var(--glass-border);">
-        <i class="fa-solid fa-circle-user" style="color: var(--accent); font-size: 1.2rem;"></i>
-        <span>Student Account</span>
+      <div class="user-profile">
+          <div class="user-info">
+              <div class="user-name" id="userDisplay">Student Name</div>
+              <div style="font-size: 0.75rem; color: var(--iu-accent);">Level 1 Student</div>
+          </div>
+          <img src="../images/Hema.jpeg" alt="Student">
       </div>
     </div>
 
-    <div class="grid-stats">
-      <div class="glass-card stat-card">
+    <section class="dashboard-grid-stats" style="margin-bottom: 30px;">
+      <div class="glass-card stat-card animate-up">
         <div class="stat-info">
             <h3>Total Tasks</h3>
-            <div class="value" id="totalAssignments">0</div>
+            <div class="value" id="totalTasks">--</div>
         </div>
-        <div class="icon-box"><i class="fa-solid fa-book"></i></div>
+        <div class="icon-box"><i class="fas fa-tasks"></i></div>
       </div>
-      <div class="glass-card stat-card">
+      <div class="glass-card stat-card animate-up" style="animation-delay: 0.1s;">
         <div class="stat-info">
-            <h3>Completed</h3>
-            <div class="value" id="submittedCount">0</div>
+            <h3>Submitted</h3>
+            <div class="value" id="submittedCount" style="color: #22c55e;">--</div>
         </div>
-        <div class="icon-box"><i class="fa-solid fa-check-double"></i></div>
+        <div class="icon-box"><i class="fas fa-check-circle"></i></div>
       </div>
-      <div class="glass-card stat-card" style="grid-column: span 1; justify-content: center;">
-        <canvas id="chart" width="80" height="80"></canvas>
+      <div class="glass-card stat-card animate-up" style="animation-delay: 0.2s;">
+        <div class="stat-info">
+            <h3>Pending</h3>
+            <div class="value" id="pendingCount" style="color: var(--iu-accent);">--</div>
+        </div>
+        <div class="icon-box"><i class="fas fa-clock"></i></div>
       </div>
-    </div>
+    </section>
 
-    <div class="category-block">
-      <h3 class="section-title-icon"><i class="fa-solid fa-microscope"></i> Scientific & Technical</h3>
-      <div class="grid-2" id="scientific-grid"></div>
-    </div>
-
-    <div class="category-block" style="margin-top: 40px;">
-      <h3 class="section-title-icon"><i class="fa-solid fa-globe"></i> General Studies</h3>
-      <div class="grid-2" id="general-grid"></div>
-    </div>
-
-    <div class="glass-card section-card" style="margin-top: 40px;">
-      <h3 class="section-title-icon"><i class="fa-solid fa-calendar"></i> Academic Calendar</h3>
-      <div class="calendar-grid" id="calendar"></div>
+    <div class="dashboard-grid-2">
+        <div class="col-left">
+            <h3 class="chart-card-title"><i class="fas fa-layer-group"></i> Active Workload</h3>
+            <div id="assignmentsGrid" style="display: grid; gap: 20px;">
+                <!-- Dynamically loaded -->
+            </div>
+        </div>
+        
+        <div class="col-right">
+            <div class="glass-card animate-up" style="animation-delay: 0.4s;">
+                <h3 class="chart-card-title"><i class="fas fa-calendar-alt"></i> Deadline Calendar</h3>
+                <div class="calendar-grid" id="calendar">
+                    <!-- JS Calendar -->
+                </div>
+            </div>
+            
+            <div class="glass-card animate-up" style="margin-top: 25px; animation-delay: 0.5s;">
+                <h3 class="chart-card-title"><i class="fas fa-info-circle"></i> Submission Guidelines</h3>
+                <ul style="color: var(--iu-text-muted); font-size: 0.85rem; line-height: 1.8; padding-left: 20px;">
+                    <li>Files must be in PDF or ZIP format.</li>
+                    <li>Maximum file size: 10MB.</li>
+                    <li>Ensure clear naming: ID_Name_Task.</li>
+                    <li>Late submissions may face grade penalties.</li>
+                </ul>
+            </div>
+        </div>
     </div>
   </main>
 </div>
 
-<!-- Custom Elements -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <h3>Confirm Submission</h3>
-    <p>Are you sure you want to submit this assignment? You cannot undo this action.</p>
-    <div style="display: flex; gap: 15px;">
-      <button class="btn-premium btn-primary" style="flex: 1;" onclick="closeModal()">Cancel</button>
-      <button class="btn-premium btn-accent" style="flex: 1;" id="confirmBtn">Yes, Submit</button>
-    </div>
-  </div>
-</div>
+<script type="module">
+  import { api } from '../js/api.js';
 
-<div class="toast" id="successToast"><i class="fa-solid fa-circle-check"></i> Assignment Submitted Successfully!</div>
-
-<footer>© 2026 Innovation University — All Rights Reserved. Built for Excellence.</footer>
-
-<div id="security-alert">⚠️ Security restriction: Action disabled.</div>
-
-<script>
-// Navbar Toggle
-const menuToggle = document.getElementById('menuToggle');
-const navMenu = document.getElementById('navMenu');
-menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-// Sidebar Toggle
-const sidebarToggle = document.getElementById('sidebarToggle');
-const sidebar = document.getElementById('sidebar');
-if(sidebarToggle) {
-    sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
-}
-
-// Preloader
-window.addEventListener('load', () => {
+  async function initAssignments() {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-        preloader.style.opacity = '0';
-        setTimeout(() => preloader.style.display = 'none', 500);
-    }, 800);
-});
+    const userId = "25030410";
 
-// Security System
-(function() {
-  const _sc = {
-    _i: () => {
-      document.addEventListener('contextmenu', e => { e.preventDefault(); _sc._s(); });
-      document.addEventListener('keydown', e => {
-        if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && e.keyCode === 85)) {
-          e.preventDefault(); _sc._s();
+    try {
+        const [profile, dashboard] = await Promise.all([
+            api.auth.getProfile(userId),
+            api.academic.getStudentDashboard(userId)
+        ]);
+
+        document.getElementById('userDisplay').innerText = profile.full_name;
+        document.getElementById('totalTasks').innerText = dashboard.tasksCount + 5; // Simulating more
+        document.getElementById('submittedCount').innerText = dashboard.tasksCount;
+        document.getElementById('pendingCount').innerText = 5;
+
+        renderAssignments(dashboard.assignments);
+        renderCalendar();
+
+    } catch (err) {
+        console.error(err);
+    } finally {
+        if (preloader) {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.style.display = 'none', 500);
         }
-      });
-      document.addEventListener('dragstart', e => e.preventDefault());
-    },
-    _s: () => {
-      const s = document.getElementById('security-alert');
-      s.style.display = 'block';
-      setTimeout(() => s.style.display = 'none', 2000);
     }
-  };
-  _sc._i();
-})();
-
-const assignments = [
- {id:1,title:"English - Assignment 3",deadline:"Feb 20, 2026",icon:"fa-language",cat:"gen"},
- {id:2,title:"C# Programming - Task 2",deadline:"Feb 22, 2026",icon:"fa-code",cat:"sci"},
- {id:3,title:"Math 1 - Calculus",deadline:"Feb 25, 2026",icon:"fa-calculator",cat:"sci"},
- {id:4,title:"Math 0 - Fundamentals",deadline:"Feb 28, 2026",icon:"fa-square-root-variable",cat:"sci"},
- {id:5,title:"CS - Intro to IT",deadline:"Mar 2, 2026",icon:"fa-desktop",cat:"sci"},
- {id:6,title:"Physics - Dynamics",deadline:"Mar 5, 2026",icon:"fa-atom",cat:"sci"},
- {id:7,title:"Entrepreneurship",deadline:"Mar 10, 2026",icon:"fa-lightbulb",cat:"gen"},
- {id:8,title:"Human Rights",deadline:"Mar 15, 2026",icon:"fa-scale-balanced",cat:"gen"}
-];
-
-const sciGrid = document.getElementById("scientific-grid");
-const genGrid = document.getElementById("general-grid");
-
-assignments.forEach(a => {
- const saved = localStorage.getItem("a_"+a.id) || "Pending";
- const card = document.createElement("div");
- card.className = "glass-card section-card";
- card.innerHTML = `
-   <h3><i class="fa-solid ${a.icon} text-gold"></i> ${a.title}</h3>
-   <p style="font-size:12px; color:var(--text-muted);">Due: ${a.deadline}</p>
-   <div class="progress-container">
-      <div class="progress-bar"><div class="progress-fill" id="bar_${a.id}"></div></div>
-   </div>
-   <input type="file" id="file_${a.id}" style="display:none" onchange="updateFileName(${a.id})">
-   <label for="file_${a.id}" class="upload-zone" id="label_${a.id}">
-     <i class="fa-solid fa-cloud-arrow-up"></i>
-     <div style="font-size:11px;" id="name_${a.id}">Drag & Drop or Click to Upload</div>
-   </label>
-   <button class="btn-premium btn-accent" style="width:100%" onclick="requestSubmit(${a.id})">${saved === "Submitted" ? "Resubmit" : "Submit Task"}</button>
- `;
- if(a.cat === "sci") sciGrid.appendChild(card);
- else genGrid.appendChild(card);
-});
-
-function updateFileName(id) {
-  const f = document.getElementById("file_"+id).files[0];
-  if(f) document.getElementById("name_"+id).innerText = f.name;
-}
-
-let pendingId = null;
-function requestSubmit(id) {
-  const f = document.getElementById("file_"+id).files[0];
-  if(!f) { alert("Please attach a file first."); return; }
-  pendingId = id;
-  document.getElementById("modalOverlay").style.display = "flex";
-}
-
-function closeModal() { document.getElementById("modalOverlay").style.display = "none"; }
-
-document.getElementById("confirmBtn").addEventListener("click", () => {
-  localStorage.setItem("a_"+pendingId, "Submitted");
-  closeModal();
-  showToast();
-  setTimeout(() => location.reload(), 2000);
-});
-
-function showToast() {
-  const t = document.getElementById("successToast");
-  t.classList.add("show");
-  setTimeout(() => t.classList.remove("show"), 3000);
-}
-
-const ctx = document.getElementById('chart');
-const chart = new Chart(ctx, {
- type: 'doughnut',
- data: {
-   labels: ['Submitted', 'Pending'],
-   datasets: [{
-     data: [0, assignments.length],
-     backgroundColor: ['#FFD700', 'rgba(255,255,255,0.05)'],
-     borderColor: ['#FFD700', 'rgba(255,255,255,0.1)'],
-     borderWidth: 1
-   }]
- },
- options: { plugins: { legend: { display: false } }, cutout: '80%' }
-});
-
-function updateDashboard() {
- let sub = 0;
- assignments.forEach(a => { if(localStorage.getItem("a_"+a.id) === "Submitted") sub++; });
- document.getElementById("totalAssignments").innerText = assignments.length;
- document.getElementById("submittedCount").innerText = sub;
- chart.data.datasets[0].data = [sub, assignments.length - sub];
- chart.update();
-}
-updateDashboard();
-
-setInterval(() => {
- assignments.forEach(a => {
-   const now = Date.now();
-   const start = new Date("Feb 1, 2026").getTime();
-   const end = new Date(a.deadline).getTime();
-   const p = Math.min(((now - start) / (end - start)) * 100, 100);
-   const bar = document.getElementById("bar_"+a.id);
-   if(bar) bar.style.width = p + "%";
- });
-}, 3000);
-
-function generateCalendar() {
-  const cal = document.getElementById("calendar");
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = today.getMonth(); 
-  const first = new Date(year, month, 1).getDay();
-  const days = new Date(year, month + 1, 0).getDate();
-  for(let i=0; i<first; i++) cal.appendChild(document.createElement("div"));
-  for(let d=1; d<=days; d++) {
-    const div = document.createElement("div");
-    div.className = "calendar-day";
-    div.innerHTML = `<div style="font-weight:700;">${d}</div>`;
-    assignments.forEach(a => {
-      const dl = new Date(a.deadline);
-      if(dl.getDate() === d && dl.getMonth() === month) {
-        const ad = document.createElement("div");
-        ad.className = "calendar-assignment";
-        ad.innerText = a.title;
-        div.appendChild(ad);
-      }
-    });
-    cal.appendChild(div);
   }
-}
-generateCalendar();
+
+  function renderAssignments(tasks) {
+    const container = document.getElementById('assignmentsGrid');
+    container.innerHTML = "";
+
+    // Adding some sample tasks if none exist
+    const displayTasks = tasks.length > 0 ? tasks : [
+        { id: 101, title: "Database Lab 4", desc: "Complex SQL Joins & Optimization", due: "Tomorrow" },
+        { id: 102, title: "Networks Project", desc: "Socket Programming in C#", due: "3 Days Left" }
+    ];
+
+    displayTasks.forEach(task => {
+        const card = document.createElement('div');
+        card.className = "glass-card assignment-card animate-up";
+        card.style.padding = "20px";
+        card.innerHTML = `
+            <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                <div>
+                    <h4 style="margin: 0; color: var(--iu-accent);">${task.title}</h4>
+                    <p style="margin: 5px 0 15px; font-size: 0.85rem; color: var(--iu-text-muted);">${task.desc}</p>
+                </div>
+                <span class="status-pill status-pending">${task.due}</span>
+            </div>
+            <label class="upload-zone">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <div style="font-size: 0.75rem;">Click to upload solution</div>
+                <input type="file" style="display: none;">
+            </label>
+            <button class="btn-premium btn-accent" style="width: 100%; margin-top: 10px;">Submit Task</button>
+        `;
+        container.appendChild(card);
+    });
+  }
+
+  function renderCalendar() {
+    const cal = document.getElementById('calendar');
+    const today = new Date();
+    const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
+    
+    for (let d = 1; d <= daysInMonth; d++) {
+        const day = document.createElement('div');
+        day.className = "calendar-day";
+        if (d === 25 || d === 28) day.classList.add('has-task');
+        day.innerHTML = `
+            <span class="day-num">${d}</span>
+            ${(d === 25 || d === 28) ? '<span class="task-dot"></span>' : ''}
+        `;
+        cal.appendChild(day);
+    }
+  }
+
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebar = document.getElementById('sidebar');
+  if (sidebarToggle && sidebar) {
+    sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+  }
+
+  window.addEventListener('DOMContentLoaded', initAssignments);
 </script>
+<script type="module" src="../js/auth.js"></script>
 </body>
 </html>

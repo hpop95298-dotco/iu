@@ -1,0 +1,207 @@
+/* 
+  LAYOUT: UNIFIED STRUCTURE & NAVIGATION
+*/
+
+/* Global Background Logic - Force Consistency */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 50% 0%, rgba(var(--iu-primary-rgb), 0.3), transparent 70%),
+                url('../../images/img.jpg') center/cover no-repeat;
+    filter: brightness(0.35) saturate(1.2);
+    z-index: -1;
+    transform: scale(1.05); /* Avoid white edges */
+}
+
+/* Master Header */
+header {
+    background: rgba(var(--iu-primary-rgb), 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 5000;
+    border-bottom: 2px solid var(--iu-accent);
+    padding: 12px 0;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img { 
+    height: 45px; 
+    filter: drop-shadow(0 0 10px rgba(var(--iu-accent-rgb), 0.3));
+}
+
+.logo span {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--iu-accent);
+    font-family: 'Outfit', 'Cairo', sans-serif;
+    letter-spacing: -0.02em;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+header nav a {
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    transition: var(--transition-smooth);
+}
+
+header nav a:hover, header nav a.active {
+    color: var(--iu-accent);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Main Content Area */
+main, .main-content {
+    padding-top: 130px; /* Unified offset for fixed header */
+    padding-bottom: 100px;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 90%;
+}
+
+/* Footer Excellence */
+.main-footer {
+    background: #050308;
+    padding: 100px 5% 40px;
+    border-top: 3px solid var(--iu-accent);
+    position: relative;
+    z-index: 10;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+    gap: 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.footer-col h4 {
+    color: var(--iu-accent);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 3px;
+    background: var(--iu-accent);
+    border-radius: 2px;
+}
+
+/* Mobile Layout Helpers */
+.menu-icon {
+    display: none;
+    font-size: 1.8rem;
+    color: var(--iu-accent);
+    cursor: pointer;
+}
+
+@media (max-width: 1100px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+}
+
+@media (max-width: 992px) {
+    .menu-icon { display: block; }
+    header nav {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--iu-primary);
+        flex-direction: column;
+        padding: 40px;
+        gap: 20px;
+        clip-path: circle(0% at 100% 0%);
+        transition: transform 0.5s ease;
+        z-index: 4000;
+    }
+    header nav.active {
+        clip-path: circle(150% at 100% 0%);
+    }
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb-container {
+    margin-bottom: 25px;
+    margin-top: -10px;
+    animation: fadeInDown 0.6s ease forwards;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 50px;
+    width: fit-content;
+    font-size: 0.85rem;
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--iu-text-muted);
+    font-weight: 600;
+}
+
+.breadcrumb-item a {
+    color: var(--iu-text-muted);
+    transition: var(--transition-smooth);
+}
+
+.breadcrumb-item a:hover {
+    color: var(--iu-accent);
+}
+
+.breadcrumb-item:not(:last-child)::after {
+    content: '\f105';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
+
+.breadcrumb-item.active {
+    color: var(--iu-accent);
+    pointer-events: none;
+}
+

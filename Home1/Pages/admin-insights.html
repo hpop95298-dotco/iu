@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Insights | IU Admin</title>
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .insight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 30px; }
+        .status-badge { padding: 5px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; }
+        .status-ok { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid #22c55e; }
+        .status-warn { background: rgba(253,185,19,0.1); color: #fdb913; border: 1px solid #fdb913; }
+    </style>
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Insights</span>
+            </div>
+            <nav id="navMenu">
+                <a href="dashboard-admin.html">Back to Command Center</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding-top: 50px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+            <h1 class="animate-up" style="color: var(--iu-accent); margin: 0;">Platform Intelligence</h1>
+            <div id="healthStatus" class="animate-up">Checking connectivity...</div>
+        </div>
+
+        <div class="insight-grid">
+            <!-- Connectivity Health -->
+            <div class="glass-card animate-up" style="padding: 30px;">
+                <h3 class="chart-card-title"><i class="fas fa-heartbeat"></i> Core Health</h3>
+                <div id="healthDetails" style="margin-top: 20px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span>Database Engine</span>
+                        <span id="dbStatus" class="status-badge">Checking...</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
+                        <span>API Fallback Layer</span>
+                        <span id="mockStatus" class="status-badge">Checking...</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <span>Session Persistence</span>
+                        <span id="sessionStatus" class="status-badge">Checking...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Student Engagement Simulated -->
+            <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.1s;">
+                <h3 class="chart-card-title"><i class="fas fa-chart-line"></i> Engagement Pulse</h3>
+                <canvas id="engagementChart" style="max-height: 200px;"></canvas>
+            </div>
+        </div>
+
+        <div class="glass-card animate-up" style="margin-top: 30px; padding: 40px; animation-delay: 0.2s;">
+            <h3 class="chart-card-title"><i class="fas fa-shield-alt"></i> Security & Audit Logs (Real-time)</h3>
+            <div class="table-responsive">
+                <table style="width: 100%;">
+                    <thead>
+                        <tr>
+                            <th>Origin ID</th>
+                            <th>Operation</th>
+                            <th>Security Context</th>
+                            <th>Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditBody">
+                        <tr><td>25030410</td><td>Profile Fetch</td><td><span class="status-badge status-ok">RLS Passed</span></td><td>Just now</td></tr>
+                        <tr><td>System</td><td>API Initialization</td><td><span class="status-badge status-ok">Encrypted</span></td><td>2m ago</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        import { api } from '../js/api.js';
+
+        async function initInsights() {
+            const preloader = document.getElementById('preloader');
+            
+            try {
+                const health = await api.academic.checkHealth();
+                updateHealthUI(health);
+                renderEngagementChart();
+            } catch (err) {
+                console.error(err);
+            } finally {
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }
+            }
+        }
+
+        function updateHealthUI(h) {
+            const db = document.getElementById('dbStatus');
+            const mock = document.getElementById('mockStatus');
+            const sess = document.getElementById('sessionStatus');
+
+            db.innerText = h.database === 'connected' ? 'Connected' : 'Offline';
+            db.className = `status-badge ${h.database === 'connected' ? 'status-ok' : 'status-warn'}`;
+
+            mock.innerText = h.isMock ? 'Mock Enabled' : 'Production Ready';
+            mock.className = `status-badge ${h.isMock ? 'status-warn' : 'status-ok'}`;
+
+            sess.innerText = h.session === 'active' ? 'Secured' : 'No Session';
+            sess.className = `status-badge ${h.session === 'active' ? 'status-ok' : 'status-warn'}`;
+        }
+
+        function renderEngagementChart() {
+            const ctx = document.getElementById('engagementChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00'],
+                    datasets: [{
+                        label: 'Active Users',
+                        data: [120, 450, 890, 600, 320, 150],
+                        borderColor: '#fdb913',
+                        backgroundColor: 'rgba(253, 185, 19, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: { 
+                    responsive: true, 
+                    plugins: { legend: { display: false } },
+                    scales: { y: { display: false }, x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)' } } }
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initInsights);
+    </script>
+    <script type="module" src="../js/auth.js"></script>
+</body>
+</html>

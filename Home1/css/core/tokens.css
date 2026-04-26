@@ -1,0 +1,50 @@
+/* 
+  TOKENS: IU ROYAL GLASS DESIGN SYSTEM
+  The core visual DNA: Royal Purple & Precision Gold
+*/
+
+:root {
+    /* Primary Palette - Royal Heritage (HSL based) */
+    --iu-primary-h: 267;
+    --iu-primary-s: 48%;
+    --iu-primary-l: 34%;
+    --iu-primary: hsl(var(--iu-primary-h), var(--iu-primary-s), var(--iu-primary-l));
+    --iu-primary-rgb: 82, 45, 128;
+    --iu-primary-dark: hsl(var(--iu-primary-h), var(--iu-primary-s), 15%);
+    --iu-primary-light: hsl(var(--iu-primary-h), var(--iu-primary-s), 50%);
+    
+    /* Accent Palette - Golden Precision */
+    --iu-accent-h: 42;
+    --iu-accent-s: 98%;
+    --iu-accent-l: 53%;
+    --iu-accent: hsl(var(--iu-accent-h), var(--iu-accent-s), var(--iu-accent-l));
+    --iu-accent-rgb: 253, 185, 19;
+    --iu-accent-glow: hsla(var(--iu-accent-h), var(--iu-accent-s), var(--iu-accent-l), 0.4);
+    --iu-accent-deep: hsl(var(--iu-accent-h), var(--iu-accent-s), 40%);
+    
+    /* Neutral / Surface */
+    --iu-bg: #050208;
+    --iu-surface: #0f0817;
+    --iu-text: #f8fafc;
+    --iu-text-muted: #94a3b8;
+    
+    /* Glassmorphism Specs */
+    --glass-bg: hsla(var(--iu-primary-h), 40%, 10%, 0.7);
+    --glass-border: hsla(0, 0%, 100%, 0.1);
+    --glass-blur: blur(20px);
+    --glass-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7);
+    
+    /* Global Mesh Glows */
+    --glow-1: radial-gradient(circle at 20% 30%, hsla(var(--iu-primary-h), 50%, 40%, 0.15), transparent 40%);
+    --glow-2: radial-gradient(circle at 80% 70%, hsla(var(--iu-accent-h), 80%, 50%, 0.08), transparent 40%);
+    
+    /* Borders & Radials */
+    --border-radius-lg: 24px;
+    --border-radius-md: 16px;
+    --border-thin: 1px solid var(--glass-border);
+    --border-accent: 1px solid hsla(var(--iu-accent-h), var(--iu-accent-s), var(--iu-accent-l), 0.2);
+    
+    /* Dynamics */
+    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}

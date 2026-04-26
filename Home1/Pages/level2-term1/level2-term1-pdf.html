@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Library | Level 02</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .course-card { padding: 35px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; transition: var(--transition-smooth); }
+        .course-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+        .course-icon { font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--iu-accent-glow)); }
+        .course-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 12px; }
+        .course-card p { color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5; }
+    </style>
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Specialized Library</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level2-term1-video.html">Videos</a>
+                <a href="level2-quizzes.html">Quizzes</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
+        </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="background: var(--iu-accent); color: var(--iu-primary); padding: 5px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px;">LEVEL 02</span>
+                <h1 class="animate-up" style="margin-top: 15px; margin-bottom: 10px; color: var(--iu-accent); font-size: 3rem; text-shadow: 0 5px 25px rgba(0,0,0,0.6);">Specialized Modules</h1>
+                <p class="animate-up" style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Access your Level 02 course materials and digital resources.</p>
+            </div>
+            
+            <div class="library-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- OOP -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-cubes"></i></div>
+                        <h3>OOP</h3>
+                        <p>Object-Oriented Programming principles, inheritance, and polymorphism.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="alert('Module loading...')">Access PDF</button>
+                </div>
+
+                <!-- Data Structures -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-sitemap"></i></div>
+                        <h3>Data Structures</h3>
+                        <p>Advanced data organization, trees, graphs, and algorithmic efficiency.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="alert('Module loading...')">Access PDF</button>
+                </div>
+
+                <!-- Logic Design -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Logic Design</h3>
+                        <p>Digital circuits, boolean algebra, and hardware architecture.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="alert('Module loading...')">Access PDF</button>
+                </div>
+
+                <!-- Discrete Math -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Discrete Math</h3>
+                        <p>Mathematical foundations for computer science, sets, and graph theory.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="alert('Module loading...')">Access PDF</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer" style="padding: 30px 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border);">
+        <div style="text-align: center; color: var(--iu-text-muted); font-size: 0.85rem;">
+            <p>© 2026 Innovation University — Academic Excellence Hub.</p>
+        </div>
+    </footer>
+
+<script>
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+</script>
+</body>
+</html>

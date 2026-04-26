@@ -4,109 +4,41 @@
 <meta charset="UTF-8">
 <title>Theoretical Computer Science</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-/* ===== SAME STYLE ===== */
 
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:rgba(143,143,143,.33)
-}
 
-body::before{
-content:"";
-position:fixed;
-inset:0;
-background:url('../../../images/img.jpg') center/cover no-repeat;
-filter:blur(3px);
-transform:scale(1.1);
-z-index:-1
-}
-
-header{
-padding:18px 60px;
-background:rgba(0,26,85,.9);
-display:flex;
-justify-content:space-between;
-align-items:center
-}
-
-header h2{
-color:white;
-margin:0
-}
-
-nav a{
-margin-left:20px;
-text-decoration:none;
-color:#fff;
-font-weight:600
-}
-
-.container{
-max-width:1200px;
-margin:40px auto;
-display:grid;
-grid-template-columns:300px 1fr;
-gap:30px
-}
-
-.sidebar{
-background:rgba(206,206,206,.23);
-border-radius:15px;
-padding:12px;
-box-shadow:0 4px 15px rgb(0,26,85)
-}
-
-.sidebar h3{
-text-align:center;
-color:rgba(13,42,107,.85)
-}
-
-.lecture-item{
-padding:10px;
-margin-bottom:8px;
-background:rgba(7,36,102,.9);
-color:white;
-border-radius:8px;
-cursor:pointer;
-transition:.3s;
-font-size:14px
-}
-
-.lecture-item:hover{
-background:#002e94;
-transform:scale(1.03)
-}
-.content{
-background:rgba(215,215,215,.48);
-border-radius:15px;
-padding:30px;
-min-height:350px;
-box-shadow:0 0 16px rgba(0,33,107,.85)
-}
-.placeholder{
-text-align:center;
-color:#555;
-font-size:18px;
-margin-top:120px
-}
-</style>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/subject.css">
+    
 </head>
 
-<body>
-<header>
-<h2>Innovation University</h2>
-<nav>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Knowledge Base</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+
   <a href="./quizzes3/theoretical-cs-quiz.html">Quiz</a>
      <a href="../level3-term1-pdf.html">Courses</a>
         <a href="../level3-term1-video.html">Videos</a>
         <a href="../../iu.html">Home</a>
-</nav>
-</header>
 
-<div class="container">
-<div class="sidebar">
+            </nav>
+        </div>
+    </header>
+
+<div class="container-subject">
+<div class="subject-sidebar">
 <h3>Theoretical CS</h3>
 <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Introduction</div>
 <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Automata</div>
@@ -115,7 +47,7 @@ margin-top:120px
 <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Computability</div>
 </div>
 
-<div class="content" id="content">
+<div class="subject-content" id="content">
 <div class="placeholder">📘 Select a lecture</div>
 </div>
 </div>
@@ -132,5 +64,22 @@ function showLecture(i){
 content.innerHTML=`<h1>${lectures[i].title}</h1><p>${lectures[i].content}</p>`;
 }
 </script>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>

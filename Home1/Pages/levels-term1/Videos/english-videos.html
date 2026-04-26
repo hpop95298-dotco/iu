@@ -1,174 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>English Course</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="../../../css/bootstrap.min.css" rel="stylesheet">
-
-<style>
- body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: url('../../../images/img.jpg') center / cover no-repeat;
-        filter: blur(3px);
-        transform: scale(1.1);
-        z-index: -1;
-    }
-
-/* Header */
-header {
-    padding: 18px 60px;
-    background: rgba(0, 26, 85, 0.9);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-header h2 { color: white; margin: 0; }
-    
-nav a {
-    margin-left: 20px;
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-}
-
-/* Layout */
-.main-layout {
-    max-width: 1300px;
-    margin: 120px auto 50px;
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 25px;
-}
-
-/* Sidebar */
-.sidebar {
-    background: rgba(194,194,194,0.49);
-    border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 4px 15px rgb(0, 20, 66);
-}
-.lesson {
-    padding: 12px;
-    margin-bottom: 8px;
-    background: #002b5b;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 14px;
-}
-.lesson:hover { background: rgba(0,43,91,0.82); }
-
-/* Content */
-.content {
-    background: rgba(183,183,183,0.52);
-    border-radius: 15px;
-    padding: 25px;
-    box-shadow: 0 4px 15px rgb(0, 20, 66);
-}
-iframe {
-    width: 100%;
-    height: 420px;
-    border-radius: 12px;
-}
-.placeholder {
-    text-align: center;
-    margin-top: 150px;
-    font-size: 18px;
-    color: #555;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Theater | English Language</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .theater-layout { display: flex; gap: 30px; margin: 40px 0; align-items: flex-start; }
+        .theater-sidebar { width: 320px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 25px; }
+        .video-list { list-style: none; padding: 0; }
+        .video-btn { width: 100%; text-align: left; padding: 15px 20px; border-radius: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: #fff; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 12px; }
+        .video-btn:hover { border-color: var(--iu-accent); background: rgba(var(--iu-accent-rgb), 0.1); }
+        .video-btn.active { background: var(--iu-accent); color: var(--iu-primary); font-weight: 700; box-shadow: 0 0 15px var(--iu-accent-glow); border-color: var(--iu-accent); }
+        .video-btn i { font-size: 1rem; color: var(--iu-accent); }
+        .video-btn.active i { color: var(--iu-primary); }
+        
+        .theater-main { flex: 1; padding: 0; overflow: hidden; background: #000; border: 1px solid var(--glass-border); border-radius: 20px; position: relative; }
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        .video-info { padding: 30px; background: rgba(0,0,0,0.6); backdrop-filter: blur(10px); border-top: 1px solid var(--glass-border); }
+        
+        .placeholder-theater { text-align: center; padding: 100px 40px; color: var(--iu-text-muted); }
+        .placeholder-theater i { font-size: 5rem; color: var(--iu-accent); opacity: 0.3; margin-bottom: 25px; display: block; }
+        
+        @media (max-width: 992px) {
+            .theater-layout { flex-direction: column; }
+            .theater-sidebar { width: 100%; position: relative; top: 0; max-height: none; }
+        }
+    </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
-
-<header>
-    <h2>Innovation University</h2>
-    <nav>
-        <a href="../quizzes/english-quiz.html">quiz</a>
-        <a href="../level1-term1-video.html">Courses</a>
-        <a href="../level1-term1-pdf.html">PDF</a>
-        <a href="../../iu.html">Home</a>
-    </nav>
-</header>
-
-<div class="main-layout">
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h5 class="mb-3">English Lectures</h5>
-
-        <div class="lesson" data-video="https://www.youtube.com/embed/3i1lNJPY-4Q" data-desc="Lecture 1: Introduction to English language.">
-            Lecture 1 – Introduction to English
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Video Theater</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="../quizzes/english-quiz.html">Take Quiz</a>
+                <a href="../level1-term1-video.html">Video Hub</a>
+                <a href="../level1-term1-pdf.html">Course Console</a>
+                <a href="../../iu.html" class="btn-premium btn-accent" style="padding: 8px 18px; margin-left: 15px;">Home</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/mY9lG0E8P6o" data-desc="Lecture 2: Parts of Speech.">
-            Lecture 2 – Parts of Speech
+    <main class="main-content">
+        <div class="container">
+            <div class="animate-up" style="margin-bottom: 30px;">
+                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">English Language | Streams</h1>
+                <p style="color: var(--iu-text-muted);">Foundation Alpha | Experimental Tier recordings</p>
+            </div>
+
+            <div class="theater-layout animate-up" style="animation-delay: 0.1s;">
+                <!-- Sidebar -->
+                <aside class="glass-card theater-sidebar">
+                    <h3 style="font-size: 1.1rem; color: var(--iu-accent); margin-bottom: 25px; letter-spacing: 1px;">VIDEO PLAYLIST</h3>
+                    <div class="video-list" id="videoList"></div>
+                </aside>
+
+                <!-- Core Player -->
+                <div class="theater-main animate-up" id="playerArea" style="animation-delay: 0.2s;">
+                    <div class="placeholder-theater">
+                        <i class="fas fa-play-circle"></i>
+                        <h2>Ready for Linguistic Synchronization</h2>
+                        <p>Select a recording from the archive to begin the session.</p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/8J2q6P7nWn0" data-desc="Lecture 3: English Verb Tenses.">
-            Lecture 3 – Verb Tenses
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Academic Hub.</p>
         </div>
+    </footer>
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/1Pz2d8ZCj7A" data-desc="Lecture 4: Vocabulary Building.">
-            Lecture 4 – Vocabulary Building
-        </div>
+    <script>
+        const lectures = [
+            { title: "Lec 1: Intro to English", video: "https://www.youtube.com/embed/3i1lNJPY-4Q", desc: "Foundational concepts of English language and its academic applications." },
+            { title: "Lec 2: Parts of Speech", video: "https://www.youtube.com/embed/mY9lG0E8P6o", desc: "Analyzing the building blocks of grammatical structures." },
+            { title: "Lec 3: Verb Tenses", video: "https://www.youtube.com/embed/8J2q6P7nWn0", desc: "Temporal systems and their correct implementation in formal speech." },
+            { title: "Lec 4: Vocabulary Building", video: "https://www.youtube.com/embed/1Pz2d8ZCj7A", desc: "Strategies for expanding linguistic range and professional lexicon." },
+            { title: "Lec 5: Reading Skills", video: "https://www.youtube.com/embed/KM1kZqFv5xY", desc: "Techniques for high-speed comprehension and experimental text analysis." },
+            { title: "Lec 6: Writing Skills", video: "https://www.youtube.com/embed/YG8v4C1kq5E", desc: "The mechanics of academic writing and structured argumentation." },
+            { title: "Lec 7: Listening Skills", video: "https://www.youtube.com/embed/7w4J9H5zQnE", desc: "Improving auditory synchronization and semantic extraction." },
+            { title: "Lec 8: Speaking Skills", video: "https://www.youtube.com/embed/0ZkP6K9b8Hg", desc: "Foundations of oral communication and professional presentation." },
+            { title: "Lec 9: Grammar Real-time", video: "https://www.youtube.com/embed/UQ6hJq3vZ8E", desc: "Identifying and correcting syntax errors in dynamic communication." },
+            { title: "Lec 10: Final Synthesis", video: "https://www.youtube.com/embed/tgbNymZ7vqY", desc: "Comprehensive review of Level 1 linguistic methodologies." }
+        ];
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/KM1kZqFv5xY" data-desc="Lecture 5: Reading Skills.">
-            Lecture 5 – Reading Skills
-        </div>
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/YG8v4C1kq5E" data-desc="Lecture 6: Writing Skills.">
-            Lecture 6 – Writing Skills
-        </div>
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/7w4J9H5zQnE" data-desc="Lecture 7: Listening Skills.">
-            Lecture 7 – Listening Skills
-        </div>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
 
-        <div class="lesson" data-video="https://www.youtube.com/embed/0ZkP6K9b8Hg" data-desc="Lecture 8: Speaking Skills.">
-            Lecture 8 – Speaking Skills
-        </div>
-
-        <div class="lesson" data-video="https://www.youtube.com/embed/UQ6hJq3vZ8E" data-desc="Lecture 9: Common Grammar Mistakes.">
-            Lecture 9 – Common Grammar Mistakes
-        </div>
-
-        <div class="lesson" data-video="https://www.youtube.com/embed/tgbNymZ7vqY" data-desc="Lecture 10: Final Revision.">
-            Lecture 10 – Final Revision
-        </div>
-    </div>
-
-    <!-- Content -->
-    <div class="content" id="content">
-        <div class="placeholder">
-            ▶ Select a lecture to watch
-        </div>
-    </div>
-
-</div>
-
-<script>
-const lessons = document.querySelectorAll('.lesson');
-const content = document.getElementById('content');
-
-lessons.forEach(lesson => {
-    lesson.addEventListener('click', () => {
-        const video = lesson.dataset.video;
-        const desc = lesson.dataset.desc;
-        const title = lesson.textContent;
-
-        content.innerHTML = `
-            <h3>${title}</h3>
-            <iframe src="${video}" allowfullscreen></iframe>
-            <p class="mt-3">${desc}</p>
-        `;
-    });
-});
-</script>
-
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
 </body>
 </html>
-\

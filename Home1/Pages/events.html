@@ -4,182 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Faculty Events | IU Faculty of Computers</title>
-    <link rel="icon" type="image/png" href="../images/iu-logo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <style>
-        .event-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-        .event-card {
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: var(--transition);
-        }
-        .event-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent);
-        }
-        .event-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--glass-border);
-        }
-        .event-body {
-            padding: 25px;
-            flex-grow: 1;
-        }
-        .event-date {
-            color: var(--accent);
-            font-weight: 700;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            display: block;
-        }
-        .event-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        .event-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .hero-events {
-            text-align: center;
-            padding: 100px 5%;
-            background: linear-gradient(rgba(82, 45, 128, 0.8), rgba(15, 23, 42, 0.9)), url('../images/event.jpeg') center/cover;
-            border-radius: 20px;
-            margin-bottom: 50px;
-        }
-    </style>
 </head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Faculty of Computers</span>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Faculty of Computers</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html" class="active">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+            </nav>
         </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="iu-details.html">About FCIT</a>
-            <a href="courses.html">Programs</a>
-            <a href="regulations.html">Regulations</a>
-            <a href="events.html">Events</a>
-            <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <main class="main-content">
-        <div class="hero-events">
-            <h1 class="text-gold" style="font-size: 3.5rem;">Events & Workshops</h1>
-            <p style="max-width: 700px; margin: 20px auto; color: #fff;">Stay updated with the latest activities, seminars, and competitions happening at the Faculty of Computers.</p>
+        <div class="hero-events" style="text-align: center; padding: 100px 5%; background: linear-gradient(rgba(var(--iu-primary-rgb), 0.7), rgba(var(--iu-primary-rgb), 0.9)), url('../images/event.jpeg') center/cover; border-radius: 30px; margin-bottom: 60px; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+            <h1 class="animate-up" style="font-size: 4rem; color: var(--iu-accent); margin-bottom: 20px;">Events & Workshops</h1>
+            <p class="animate-up" style="max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.9); font-size: 1.2rem; animation-delay: 0.2s;">Stay updated with the latest activities, seminars, and competitions happening at the Faculty of Computers.</p>
         </div>
 
-        <div class="event-grid">
+        <div class="event-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; margin-bottom: 80px;">
             <!-- Event 1 -->
-            <div class="glass-card event-card">
-                <img src="../images/event-image1.png" alt="ICPC" class="event-img">
-                <div class="event-body">
-                    <span class="event-date"><i class="far fa-calendar-alt"></i> March 15, 2026</span>
-                    <h3 class="event-title">ICPC Community Launch</h3>
-                    <p class="event-desc">Official launch of the ICPC Community at IU with top-ranking speakers from Africa and the Middle East sharing their competitive programming journey.</p>
-                    <a href="#" class="btn-premium btn-primary" style="width: 100%;">View Details</a>
+            <div class="glass-card animate-up" style="padding: 0; overflow: hidden; display: flex; flex-direction: column;">
+                <img src="../images/event-image1.png" alt="ICPC" style="width: 100%; height: 220px; object-fit: cover;">
+                <div style="padding: 30px;">
+                    <span style="color: var(--iu-accent); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 15px;"><i class="far fa-calendar-alt"></i> March 15, 2026</span>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: #fff;">ICPC Community Launch</h3>
+                    <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Official launch of the ICPC Community at IU with top-ranking speakers from Africa and the Middle East sharing their competitive programming journey.</p>
+                    <a href="#" class="btn-premium btn-accent" style="width: 100%;">View Details</a>
                 </div>
             </div>
 
             <!-- Event 2 -->
-            <div class="glass-card event-card">
-                <img src="../images/cs-image.png" alt="AI Workshop" class="event-img">
-                <div class="event-body">
-                    <span class="event-date"><i class="far fa-calendar-alt"></i> April 02, 2026</span>
-                    <h3 class="event-title">Generative AI Workshop</h3>
-                    <p class="event-desc">A deep dive into Large Language Models (LLMs) and how to build applications using GPT-4 and open-source alternatives.</p>
-                    <a href="#" class="btn-premium btn-primary" style="width: 100%;">Register Now</a>
+            <div class="glass-card animate-up" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; animation-delay: 0.1s;">
+                <img src="../images/cs-image.png" alt="AI Workshop" style="width: 100%; height: 220px; object-fit: cover;">
+                <div style="padding: 30px;">
+                    <span style="color: var(--iu-accent); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 15px;"><i class="far fa-calendar-alt"></i> April 02, 2026</span>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: #fff;">Generative AI Workshop</h3>
+                    <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">A deep dive into Large Language Models (LLMs) and how to build applications using GPT-4 and open-source alternatives.</p>
+                    <a href="#" class="btn-premium btn-accent" style="width: 100%;">Register Now</a>
                 </div>
             </div>
 
             <!-- Event 3 -->
-            <div class="glass-card event-card">
-                <img src="../images/computer-science-4.jpg" alt="CTF" class="event-img">
-                <div class="event-body">
-                    <span class="event-date"><i class="far fa-calendar-alt"></i> May 10, 2026</span>
-                    <h3 class="event-title">Cybersecurity CTF 2026</h3>
-                    <p class="event-desc">Join the annual Capture The Flag competition. Test your skills in web exploitation, cryptography, and digital forensics.</p>
-                    <a href="#" class="btn-premium btn-primary" style="width: 100%;">Join Team</a>
+            <div class="glass-card animate-up" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; animation-delay: 0.2s;">
+                <img src="../images/computer-science-4.jpg" alt="CTF" style="width: 100%; height: 220px; object-fit: cover;">
+                <div style="padding: 30px;">
+                    <span style="color: var(--iu-accent); font-weight: 700; font-size: 0.9rem; display: block; margin-bottom: 15px;"><i class="far fa-calendar-alt"></i> May 10, 2026</span>
+                    <h3 style="font-size: 1.6rem; margin-bottom: 15px; color: #fff;">Cybersecurity CTF 2026</h3>
+                    <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Join the annual Capture The Flag competition. Test your skills in web exploitation, cryptography, and digital forensics.</p>
+                    <a href="#" class="btn-premium btn-accent" style="width: 100%;">Join Team</a>
                 </div>
             </div>
         </div>
     </main>
 
     <footer class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <img src="../images/iu-logo.png" alt="IU Logo" style="width: 120px; margin-bottom: 20px;">
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Innovation University is a forward-thinking institution dedicated to shaping the future through cutting-edge research and transformative education.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="iu.html">Home</a></li>
-                    <li><a href="iu-details.html">About Us</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="login.html">Admission</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Academics</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Computer Science</a></li>
-                    <li><a href="#">Information Systems</a></li>
-                    <li><a href="#">Artificial Intelligence</a></li>
-                    <li><a href="#">Digital Informatics</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Get In Touch</h4>
-                <ul class="footer-links">
-                    <li><i class="fas fa-phone" style="color: var(--accent); margin-right: 10px;"></i> Hotline: 16856</li>
-                    <li><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> info@iu.edu.eg</li>
-                    <li><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px;"></i> 10th of Ramadan City, Egypt</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
             <p>© 2026 Innovation University — Faculty of Computers & IT. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="../js/style.js"></script>
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 800);
-            }
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
         });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     </script>
 </body>
 </html>

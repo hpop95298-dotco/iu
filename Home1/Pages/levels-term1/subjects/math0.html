@@ -1,171 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Math 0 Course</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: rgba(143, 143, 143, 0.33);
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: url('../../../images/img.jpg') center / cover no-repeat;
-        filter: blur(3px);
-        transform: scale(1.1);
-        z-index: -1;
-    }
-
-    header {
-        padding: 18px 60px;
-        background: rgba(0, 26, 85, 0.9);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h2 {
-        color: white;
-        margin: 0;
-    }
-
-    nav a {
-        margin-left: 20px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: 600;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 40px auto;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 30px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        background: rgba(206, 206, 206, 0.23);
-        border-radius: 15px;
-        padding: 12px;
-        box-shadow: 0 4px 15px rgb(0, 26, 85);
-    }
-
-    .sidebar h3 {
-        text-align: center;
-        color: rgba(13, 42, 107, 0.85);
-        margin-top: 0;
-    }
-
-    .lecture-item {
-        padding: 10px;
-        margin-bottom: 8px;
-        background: rgba(7, 36, 102, 0.9);
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 14px;
-    }
-
-    .lecture-item:hover {
-        background: #002e94;
-        transform: scale(1.03);
-    }
-
-    /* Content */
-    .content {
-        background: rgba(215, 215, 215, 0.48);
-        border-radius: 15px;
-        padding: 30px;
-        min-height: 350px;
-        box-shadow: 0 0px 16px rgba(0, 33, 107, 0.85);
-    }
-
-    .placeholder {
-        text-align: center;
-        color: #555;
-        font-size: 18px;
-        margin-top: 120px;
-    }
-
-    @media (max-width: 900px) {
-        .container {
-            grid-template-columns: 1fr;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Console | Mathematics Foundation (0)</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .console-layout { display: flex; gap: 30px; margin: 40px 0; align-items: flex-start; }
+        .console-sidebar { width: 320px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 30px; }
+        .lecture-list { list-style: none; padding: 0; }
+        .lecture-btn { width: 100%; text-align: left; padding: 15px 20px; border-radius: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: #fff; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 12px; }
+        .lecture-btn:hover { border-color: var(--iu-accent); background: rgba(var(--iu-accent-rgb), 0.1); }
+        .lecture-btn.active { background: var(--iu-accent); color: var(--iu-primary); font-weight: 700; box-shadow: 0 0 15px var(--iu-accent-glow); border-color: var(--iu-accent); }
+        .lecture-btn i { font-size: 1rem; opacity: 0.7; }
+        .console-main { flex: 1; min-height: 500px; padding: 50px; position: relative; overflow: hidden; }
+        .content-placeholder { text-align: center; color: var(--iu-text-muted); margin-top: 100px; }
+        .content-placeholder i { font-size: 4rem; opacity: 0.3; margin-bottom: 20px; display: block; }
+        
+        @media (max-width: 992px) {
+            .console-layout { flex-direction: column; }
+            .console-sidebar { width: 100%; position: relative; top: 0; max-height: none; }
         }
-    }
-</style>
+    </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
-
-<header>
-    <h2>Innovation University</h2>
-    <nav>
-        <a href="../quizzes/math0-quiz.html">quiz</a>
-        <a href="../level1-term1-pdf.html">courses</a>
-        <a href="../level1-term1-video.html">Videos</a>
-        <a href="../../iu.html">Home</a>
-    </nav>
-</header>
-
-<div class="container">
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h3>Math 0 (10 Lectures)</h3>
-
-        <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Real Numbers</div>
-        <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Algebra Basics</div>
-        <div class="lecture-item" onclick="showLecture(2)">Lecture 3 – Exponents</div>
-        <div class="lecture-item" onclick="showLecture(3)">Lecture 4 – Roots</div>
-        <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Linear Equations</div>
-        <div class="lecture-item" onclick="showLecture(5)">Lecture 6 – Inequalities</div>
-        <div class="lecture-item" onclick="showLecture(6)">Lecture 7 – Polynomials</div>
-        <div class="lecture-item" onclick="showLecture(7)">Lecture 8 – Factoring</div>
-        <div class="lecture-item" onclick="showLecture(8)">Lecture 9 – Functions</div>
-        <div class="lecture-item" onclick="showLecture(9)">Lecture 10 – Revision</div>
-    </div>
-
-    <!-- Content -->
-    <div class="content" id="content">
-        <div class="placeholder">
-            📐 Select a lecture from the left to view its content
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Course Console</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="../quizzes/math0-quiz.html">Take Quiz</a>
+                <a href="../level1-term1-pdf.html">All Courses</a>
+                <a href="../level1-term1-video.html">Video Hub</a>
+                <a href="../../iu.html" class="btn-premium btn-accent" style="padding: 8px 18px; margin-left: 15px;">Home</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-</div>
+    <main class="main-content">
+        <div class="container">
+            <div class="animate-up" style="margin-bottom: 30px;">
+                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">Mathematics Foundation (0)</h1>
+                <p style="color: var(--iu-text-muted);">Foundation Alpha | Preparatory Tier</p>
+            </div>
 
-<script>
-    const lectures = [
-        { title: "Lecture 1 – Real Numbers", content: "Real numbers include integers, rational and irrational numbers." },
-        { title: "Lecture 2 – Algebra Basics", content: "Algebra deals with symbols and rules for manipulating expressions." },
-        { title: "Lecture 3 – Exponents", content: "Exponents represent repeated multiplication of a number." },
-        { title: "Lecture 4 – Roots", content: "Roots are the inverse operation of exponents." },
-        { title: "Lecture 5 – Linear Equations", content: "Linear equations are equations of the first degree." },
-        { title: "Lecture 6 – Inequalities", content: "Inequalities compare values using greater or less symbols." },
-        { title: "Lecture 7 – Polynomials", content: "Polynomials are expressions with variables and coefficients." },
-        { title: "Lecture 8 – Factoring", content: "Factoring breaks expressions into simpler parts." },
-        { title: "Lecture 9 – Functions", content: "A function relates inputs to exactly one output." },
-        { title: "Lecture 10 – Revision", content: "Revision of all Math 0 topics." }
-    ];
+            <div class="console-layout animate-up" style="animation-delay: 0.1s;">
+                <!-- Sidebar -->
+                <aside class="glass-card console-sidebar">
+                    <h3 style="font-size: 1.1rem; color: var(--iu-accent); margin-bottom: 25px; letter-spacing: 1px;">CURRICULUM</h3>
+                    <div class="lecture-list" id="lectureList"></div>
+                </aside>
 
-    function showLecture(index) {
-        const content = document.getElementById("content");
-        content.innerHTML = `
-            <h1>${lectures[index].title}</h1>
-            <p>${lectures[index].content}</p>
-        `;
-    }
-</script>
+                <!-- Core Content -->
+                <div class="glass-card console-main" id="lectureContent">
+                    <div class="content-placeholder">
+                        <i class="fas fa-calculator"></i>
+                        <h2>Analytical Foundations</h2>
+                        <p>Select a mathematical module from the curriculum sidebar to access proof-sheets and numerical guides.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Engineering Math Tier.</p>
+        </div>
+    </footer>
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Real Numbers", icon: "fa-hashtag", content: "Comprehensive categorization of numerical systems including integers, rational, irrational, and the continuum of real numbers." },
+            { title: "Lecture 2: Algebra Basics", icon: "fa-square-root-variable", content: "Understanding symbolic notation, the laws of operations, and the fundamental rules of algebraic manipulation." },
+            { title: "Lecture 3: Exponents", icon: "fa-superscript", content: "Mathematical operations involving repeated multiplication and the properties of powers in complex expressions." },
+            { title: "Lecture 4: Roots", icon: "fa-square-root-alt", content: "Analyzing radical expressions, fractional exponents, and the inverse operations of exponential systems." },
+            { title: "Lecture 5: Linear Equations", icon: "fa-equals", content: "Solving first-degree equations and visualizing their graphical representations on a cartesian coordinate system." },
+            { title: "Lecture 6: Inequalities", icon: "fa-greater-than-equal", content: "Mapping numerical constraints, interval notations, and the logical comparison of mathematical magnitudes." },
+            { title: "Lecture 7: Polynomials", icon: "fa-plus-minus", content: "Classification of expressions with multiple terms, coefficients, and degree-based structural analysis." },
+            { title: "Lecture 8: Factoring", icon: "fa-cut", content: "Techniques for decomposing complex algebraic expressions into simpler, irreducible components for solving purposes." },
+            { title: "Lecture 9: Functions", icon: "fa-f", content: "Defining the relationship between input sets (domain) and output sets (range) through systematic mapping." },
+            { title: "Lecture 10: Final Revision", icon: "fa-rotate-right", content: "A high-level synthesis of all foundational mathematical concepts covered throughout the Math 0 preparatory tier." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Numerical Asset</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official mathematical proof-sheets and implementation problems for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
 </body>
 </html>

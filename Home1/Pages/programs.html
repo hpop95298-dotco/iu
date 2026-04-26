@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Departments & Careers | IU Faculty of Computers</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body class="faculty-theme">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Faculty of Computers</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html" class="active">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i
+                        class="fas fa-sign-in-alt"></i></a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <h1 class="animate-up"
+            style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Scientific
+            Departments</h1>
+
+        <div class="grid-2"
+            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+            <!-- Computer Science -->
+            <div class="glass-card dept-card animate-up">
+                <i class="fas fa-code"
+                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Computer Science (CS)</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Focuses on computational
+                    theory, programming, algorithms, computer structure, and software engineering foundations.</p>
+                <div class="careers" style="margin-bottom: 20px;">
+                    <span class="career-badge">Software Developer</span>
+                    <span class="career-badge">Algorithm Engineer</span>
+                    <span class="career-badge">Systems Researcher</span>
+                </div>
+                <button class="btn-premium btn-glass" onclick="openPlan('cs')" style="width: 100%;">View Study Plan <i
+                        class="fas fa-list-ul"></i></button>
+            </div>
+
+            <!-- Information Systems -->
+            <div class="glass-card dept-card animate-up" style="animation-delay: 0.1s;">
+                <i class="fas fa-database"
+                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Information Systems (IS)
+                </h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Integrating information
+                    technology and business processes to meet the information needs of organizations.</p>
+                <div class="careers" style="margin-bottom: 20px;">
+                    <span class="career-badge">Database Administrator</span>
+                    <span class="career-badge">Systems Analyst</span>
+                    <span class="career-badge">IT Project Manager</span>
+                </div>
+                <button class="btn-premium btn-glass" onclick="openPlan('is')" style="width: 100%;">View Study Plan <i
+                        class="fas fa-list-ul"></i></button>
+            </div>
+
+            <!-- Artificial Intelligence -->
+            <div class="glass-card dept-card animate-up" style="animation-delay: 0.2s;">
+                <i class="fas fa-brain"
+                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Artificial Intelligence
+                    (AI)</h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Building intelligent
+                    systems, machine learning, robotics, and cognitive computing to automate society.</p>
+                <div class="careers" style="margin-bottom: 20px;">
+                    <span class="career-badge">AI/ML Engineer</span>
+                    <span class="career-badge">Robotics Expert</span>
+                    <span class="career-badge">Data Scientist</span>
+                </div>
+                <button class="btn-premium btn-glass" onclick="openPlan('ai')" style="width: 100%;">View Study Plan <i
+                        class="fas fa-list-ul"></i></button>
+            </div>
+
+            <!-- Digital Informatics -->
+            <div class="glass-card dept-card animate-up" style="animation-delay: 0.3s;">
+                <i class="fas fa-network-wired"
+                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Digital Informatics (DI)
+                </h3>
+                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Specializing in
+                    cybersecurity, IoT, cloud computing, and advanced network communication technologies.</p>
+                <div class="careers" style="margin-bottom: 20px;">
+                    <span class="career-badge">Cybersecurity Analyst</span>
+                    <span class="career-badge">IoT Solutions Architect</span>
+                    <span class="career-badge">Network Engineer</span>
+                </div>
+                <button class="btn-premium btn-glass" onclick="openPlan('di')" style="width: 100%;">View Study Plan <i
+                        class="fas fa-list-ul"></i></button>
+            </div>
+        </div>
+
+        <!-- STUDY PLAN MODAL -->
+        <div id="planModal" class="modal-overlay">
+            <div class="modal-content glass-card">
+                <div class="modal-header">
+                    <h2 id="planTitle" style="color: var(--iu-accent);">Study Plan</h2>
+                    <button class="close-btn" onclick="closePlan()">&times;</button>
+                </div>
+                <div id="planBody" class="modal-body">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+
+        <style>
+            .career-badge {
+                display: inline-block;
+                background: rgba(var(--iu-accent-rgb), 0.1);
+                color: var(--iu-accent);
+                padding: 5px 12px;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                margin: 5px;
+                border: 1px solid rgba(var(--iu-accent-rgb), 0.2);
+                font-weight: 600;
+            }
+
+            /* Modal Styling */
+            .modal-overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0, 0, 0, 0.8);
+                backdrop-filter: blur(10px);
+                display: none;
+                justify-content: center;
+                align-items: center;
+                z-index: 1000;
+                padding: 20px;
+            }
+
+            .modal-content {
+                width: 100%;
+                max-width: 1000px;
+                max-height: 90vh;
+                overflow-y: auto;
+                padding: 40px;
+                position: relative;
+            }
+
+            .modal-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 30px;
+                border-bottom: 1px solid var(--glass-border);
+                padding-bottom: 15px;
+            }
+
+            .close-btn {
+                background: none;
+                border: none;
+                color: #fff;
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+            }
+
+            .plan-table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-bottom: 30px;
+            }
+
+            .plan-table th,
+            .plan-table td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .plan-table th {
+                color: var(--iu-accent);
+                font-weight: 600;
+            }
+
+            .level-header {
+                background: rgba(var(--iu-accent-rgb), 0.1);
+                color: var(--iu-accent);
+                padding: 10px 20px;
+                border-radius: 8px;
+                margin: 20px 0 10px 0;
+                font-weight: 700;
+            }
+        </style>
+    </main>
+
+    <footer class="main-footer">
+        <div
+            style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../js/navigation.js"></script>
+    <script>
+        const plans = {
+            cs: {
+                title: "Computer Science (CS) Study Plan",
+                levels: [
+                    { name: "Level 1 - Term 1 (Fall)", courses: ["Human Rights", "Intro to Computers", "English (1)", "Physics & Electronics", "Entrepreneurship", "Math (1)", "Intro to Programming"] },
+                    { name: "Level 1 - Term 2 (Spring)", courses: ["Marketing", "Discrete Math", "English (2)", "Digital Electronics", "Math (2)", "Object Oriented Programming (OOP)"] },
+                    { name: "Level 2 - Term 1 (Fall)", courses: ["Math (3)", "Computer Architecture", "Project Management", "Probability & Statistics", "Communication Skills", "Data Structures"] },
+                    { name: "Level 2 - Term 2 (Spring)", courses: ["Creative Thinking", "Natural Resources", "Computer Networks", "Research Methods", "Computer Graphics", "Operating Systems", "DBMS"] },
+                    { name: "Level 3 - Term 1 (Fall)", courses: ["Intro to Theoretical CS", "Web App Development", "Data Visualization", "Software Engineering", "AI Fundamentals", "Specialized Elective (1)"] },
+                    { name: "Level 3 - Term 2 (Spring)", courses: ["Theory of Algorithms", "Compilers", "Distributed Systems", "Image Processing", "Mobile App Development", "Specialized Elective (2)"] },
+                    { name: "Level 4 - Term 1 (Fall)", courses: ["Cybersecurity", "Parallel Computing", "Advanced Software Engineering", "Specialized Elective (3)", "Graduation Project (1)"] },
+                    { name: "Level 4 - Term 2 (Spring)", courses: ["Embedded Systems", "Cloud Computing", "Human Computer Interaction (HCI)", "Specialized Elective (4)", "Graduation Project (2)"] }
+                ]
+            },
+            is: {
+                title: "Information Systems (IS) Study Plan",
+                levels: [
+                    { name: "Level 1 (General)", courses: ["Human Rights", "Intro to Computers", "English (1)", "Physics & Electronics", "Entrepreneurship", "Math (1)", "Intro to Programming"] },
+                    { name: "Level 1 (General)", courses: ["Marketing", "Discrete Math", "English (2)", "Digital Electronics", "Math (2)", "OOP"] },
+                    { name: "Level 2", courses: ["Math (3)", "Computer Architecture", "Project Management", "Probability & Stats", "Communication Skills", "Data Structures"] },
+                    { name: "Level 2", courses: ["Creative Thinking", "Natural Resources", "Computer Networks", "Research Methods", "Computer Graphics", "Operating Systems", "DBMS"] },
+                    { name: "Level 3 - Term 1", courses: ["Systems Analysis & Design (1)", "Decision Support Systems", "IS Strategy & Governance", "Web App Development", "Data Visualization", "Specialized Elective (1)"] },
+                    { name: "Level 3 - Term 2", courses: ["Systems Analysis & Design (2)", "E-Business", "Big Data Analytics", "Mobile App Development", "Information Security", "Specialized Elective (2)"] },
+                    { name: "Level 4 - Term 1", courses: ["Enterprise Resource Planning (ERP)", "Data Mining", "IS Quality Assurance", "Specialized Elective (3)", "Graduation Project (1)"] },
+                    { name: "Level 4 - Term 2", courses: ["IT Audit & Control", "Digital Transformation", "Knowledge Management", "Specialized Elective (4)", "Graduation Project (2)"] }
+                ]
+            },
+            ai: {
+                title: "Artificial Intelligence (AI) Study Plan",
+                levels: [
+                    { name: "Level 1 - Foundation", courses: ["Human Rights", "Intro to Computers", "English (1)", "Physics & Electronics", "Entrepreneurship", "Math (1)", "Intro to Programming"] },
+                    { name: "Level 1 - Foundation", courses: ["Marketing", "Discrete Math", "English (2)", "Digital Electronics", "Math (2)", "OOP"] },
+                    { name: "Level 2 - Core", courses: ["Math (3)", "AI Logic & Reasoning", "Python for AI", "Probability & Statistics", "Communication Skills", "Data Structures"] },
+                    { name: "Level 2 - Core", courses: ["Machine Learning Basics", "Neural Networks", "Computer Networks", "Research Methods", "Natural Language Processing (NLP)", "Operating Systems", "DBMS"] },
+                    { name: "Level 3 - Specialized", courses: ["Deep Learning", "Computer Vision", "Reinforcement Learning", "Software Engineering", "Data Visualization", "Elective (1)"] },
+                    { name: "Level 3 - Specialized", courses: ["Optimization Techniques", "Big Data Analytics", "Robotics", "Knowledge Representation", "Mobile App Dev", "Elective (2)"] },
+                    { name: "Level 4 - Professional", courses: ["AI Policy & Safety", "Generative AI", "Edge AI", "Elective (3)", "Graduation Project (1)"] },
+                    { name: "Level 4 - Professional", courses: ["Autonomous Systems", "Cognitive Computing", "Advanced ML", "Elective (4)", "Graduation Project (2)"] }
+                ]
+            },
+            di: {
+                title: "Digital Informatics (DI) Study Plan",
+                levels: [
+                    { name: "Level 1 - Foundation", courses: ["Human Rights", "Intro to Computers", "English (1)", "Physics & Electronics", "Entrepreneurship", "Math (1)", "Intro to Programming"] },
+                    { name: "Level 1 - Foundation", courses: ["Marketing", "Discrete Math", "English (2)", "Digital Electronics", "Math (2)", "OOP"] },
+                    { name: "Level 2 - Core", courses: ["Math (3)", "Digital Logic", "Networking Basics", "Probability & Statistics", "Communication Skills", "Data Structures"] },
+                    { name: "Level 2 - Core", courses: ["Cloud Computing Basics", "Cybersecurity Fundamentals", "Embedded Systems", "Research Methods", "IoT Protocols", "Operating Systems", "DBMS"] },
+                    { name: "Level 3 - Specialized", courses: ["Cryptography", "Digital Forensics", "Network Security", "Software Engineering", "Virtualization", "Elective (1)"] },
+                    { name: "Level 3 - Specialized", courses: ["Ethical Hacking", "Wireless Networks", "Secure Software Dev", "Mobile App Dev", "Infrastructure Security", "Elective (2)"] },
+                    { name: "Level 4 - Professional", courses: ["Blockchain Technology", "Security Governance", "Intrusion Detection", "Elective (3)", "Graduation Project (1)"] },
+                    { name: "Level 4 - Professional", courses: ["Digital Transformation", "Security Audit", "Advanced Networking", "Elective (4)", "Graduation Project (2)"] }
+                ]
+            }
+        };
+
+        function openPlan(type) {
+            const plan = plans[type];
+            if (!plan) return;
+            document.getElementById('planTitle').innerText = plan.title;
+            let html = "";
+            plan.levels.forEach(lvl => {
+                html += `<div class="level-header">${lvl.name}</div>`;
+                html += `<table class="plan-table"><tr><th style="width: 70%;">Course Name</th><th>Type</th></tr>`;
+                lvl.courses.forEach(c => {
+                    html += `<tr><td>${c}</td><td><span style="color: var(--iu-accent); font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.3); padding: 2px 8px; border-radius: 4px;">CORE</span></td></tr>`;
+                });
+                html += `</table>`;
+            });
+            document.getElementById('planBody').innerHTML = html;
+            document.getElementById('planModal').style.display = 'flex';
+        }
+
+        function closePlan() {
+            document.getElementById('planModal').style.display = 'none';
+        }
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('planModal')) {
+                closePlan();
+            }
+        }
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+    </script>
+</body>
+
+</html>

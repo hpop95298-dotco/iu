@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Structure Videos</title>
+<link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../../css/subject.css">
+    
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Knowledge Base</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+
+         <a href="../quizzes2/data-structure-quiz.html">Quiz</a>
+     <a href="../../level2-term1-video.html">Courses</a>
+        <a href="../../level2-term1-pdf.html">PDF</a>
+        <a href="../../../iu.html">Home</a>
+    
+            </nav>
+        </div>
+    </header>
+
+<div class="main-layout">
+<div class="subject-sidebar" id="lessonList">
+<h5 class="mb-3">Data Structure Lectures</h5>
+</div>
+
+<div class="subject-content" id="content">
+<div class="placeholder">▶️ Select a lecture to watch</div>
+</div>
+</div>
+
+<script>
+const lectures = [
+{title:"Lecture 1 – Arrays", video:"https://www.youtube.com/embed/video1", desc:"Introduction to arrays and memory layout."},
+{title:"Lecture 2 – Linked Lists", video:"https://www.youtube.com/embed/video2", desc:"Singly and doubly linked lists."},
+{title:"Lecture 3 – Stacks & Queues", video:"https://www.youtube.com/embed/video3", desc:"LIFO and FIFO data structures."},
+{title:"Lecture 4 – Trees", video:"https://www.youtube.com/embed/video4", desc:"Binary trees and traversal methods."},
+{title:"Lecture 5 – Graphs", video:"https://www.youtube.com/embed/video5", desc:"Introduction to graph algorithms."}
+];
+
+const lessonList=document.getElementById("lessonList");
+lectures.forEach((lec,index)=>{
+const div=document.createElement("div"); div.className="lesson"; div.textContent=lec.title; div.onclick=()=>loadLecture(index); lessonList.appendChild(div);
+});
+function loadLecture(i){ const lec=lectures[i]; document.getElementById("content").innerHTML=`<h3>${lec.title}</h3>
+<iframe src="${lec.video}" allowfullscreen></iframe><p class="mt-3">${lec.desc}</p>`;}
+</script>
+
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
+</body>
+</html>

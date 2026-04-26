@@ -1,0 +1,61 @@
+/* Modern Glass Overrides for Attendance */
+.search-area {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+.search-area input {
+    flex: 1;
+    min-width: 250px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    color: #fff;
+    outline: none;
+    transition: var(--transition-smooth);
+}
+.search-area input:focus {
+    border-color: var(--iu-accent);
+    box-shadow: 0 0 15px var(--iu-accent-glow);
+}
+.attendance-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    transition: var(--transition-smooth);
+}
+.attendance-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--iu-accent);
+}
+.attendance-card i {
+    font-size: 2rem;
+    color: var(--iu-accent);
+    margin-bottom: 15px;
+}
+.attendance-card b {
+    font-size: 2rem;
+    color: #fff;
+    display: block;
+    margin-top: 5px;
+}
+.alert-low {
+    background: rgba(239, 68, 68, 0.1);
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-weight: 600;
+    margin-bottom: 30px;
+    animation: pulse-red 2s infinite;
+}
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+}

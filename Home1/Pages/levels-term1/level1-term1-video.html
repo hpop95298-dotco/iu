@@ -1,269 +1,146 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Courses Page</title>
-<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
- body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: rgba(143, 143, 143, 0.33);
-        }
-
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('../../images/img.jpg') center / cover no-repeat;
-            filter: blur(3px);
-            transform: scale(1.1);
-            z-index: -1;
-        }
-
-header {
-    padding: 15px 40px;
-    background: rgba(0, 26, 85, 0.9);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-header a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: 836;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 50px auto;
-}
-
- h1 {
-      font-size: 40px;
-      color: #0a3d62;
-      margin-bottom: 25px;
-      text-shadow: 0 0 9px #ffffff;
-      font-weight: 836;
-     text-align: center;
-    }
-
-h2 {
-    font-size: 27px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-h4 {
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-.courses {
-    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 37px;
-    justify-items: center;
-}
-
-/* ===== CARD ===== */
-.card {
-    background: rgba(205, 205, 205, 0.21);
-    backdrop-filter: blur(4px); /
-    border-radius: 11px;
-    box-shadow: 0 4px 15px #0a4d9b;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 350px;
-    color: rgb(0, 22, 71);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px #1c5390;
-}
-
-/* Card header gradient */
-.card-header {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px 15px 0 0;
-    font-size: 32px;
-    color: rgb(255, 255, 255);
-}
-
-/* Card body transparent */
-.card-body {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
-}
-
-/* Card text */
-.card h3 {
-    margin: 10px 0 5px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.card p {
-    flex-grow: 1;
-    font-size: 14px;
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-/* View button */
-.card .btn {
-    margin-top: 15px;
-    background: #0a3c74;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.card .btn:hover {
-    background: #002b5b;
-    transform: scale(1.05);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .courses {
-        grid-template-columns: 1fr; /* على الموبايل كارت واحد لكل سطر */
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Hub | Level 01</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../css/video-hub.css">
 </head>
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div>
-<h2>
-Innovation University
-</h2>
-</div>
-    <div>
-<h4>
-      
-        <a href="level1-term1-pdf.html">PDF</a>
-      <a href="./level1-quizzes.html">Quizzes</a>
-        <a href="../select-level.html">Levels</a>
-          <a href="../iu.html">Home</a>
-</h4>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Visual Learning</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level1-term1-pdf.html">Course PDFs</a>
+                <a href="level1-quizzes.html">Quizzes</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
+        </div>
+    </header>
 
-    </div>
-</header>
+    <main class="main-content">
+        <div class="container">
+            <h1 class="animate-up" style="text-align: center; margin-bottom: 40px; color: var(--iu-accent); font-size: 3rem;">Digital Video Hub</h1>
+            <p class="animate-up" style="text-align: center; color: var(--iu-text-muted); margin-bottom: 50px;">Stream Level 01 lecture recordings and supplementary visual materials.</p>
+            
+            <div class="video-hub-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- Programming -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-play-circle"></i></div>
+                        <h3>Programming</h3>
+                        <p>Visual walkthroughs of logic construction and C# development paradigms.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/Introduction-programming-vid.html'">Stream Session</button>
+                </div>
 
-<div class="container">
-    <h1>Welcome to the Academic Video Library!</h1>
-    <h3 class="text">Start your learning journey now. You can return to the courses list anytime. </h3>
-    <div class="courses">
+                <!-- Math1 -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-square-root-alt"></i></div>
+                        <h3>Mathematics I</h3>
+                        <p>Detailed explanations of calculus theories and algebraic problem solving.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/math1-videos.html'">Stream Session</button>
+                </div>
 
-        <!-- Programming -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">💻</div>
-            <div class="card-body">
-                <h3>Programming</h3>
-                <p>Learn the basics of programming and problem solving with C#.</p>
-                <button class="btn" onclick="window.location.href='Videos/Introduction-programming-vid.html'">View</button>
+                <!-- Physics -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-atom"></i></div>
+                        <h3>Physics</h3>
+                        <p>Laboratory demonstrations and theoretical analysis of physical laws.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/physics-ved.html'">Stream Session</button>
+                </div>
+
+                <!-- Computer -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-desktop"></i></div>
+                        <h3>Computing</h3>
+                        <p>Overview of system architecture and essential hardware functionality.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/computer-videos.html'">Stream Session</button>
+                </div>
+
+                <!-- English -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-microphone"></i></div>
+                        <h3>English</h3>
+                        <p>Linguistic exercises focused on professional communication and grammar.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/english-videos.html'">Stream Session</button>
+                </div>
+
+                <!-- Math0 -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-superscript"></i></div>
+                        <h3>Mathematics 0</h3>
+                        <p>Foundational mathematical concepts for scientific computing.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/Math0-ved.html'">Stream Session</button>
+                </div>
+
+                <!-- Entrepreneurship -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-rocket"></i></div>
+                        <h3>Innovation</h3>
+                        <p>Strategic lecture series on startup development and market dynamics.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/intreprenurship-ved.html'">Stream Session</button>
+                </div>
+
+                <!-- Human Rights -->
+                <div class="glass-card video-card">
+                    <div>
+                        <div class="video-thumbnail-placeholder"><i class="fas fa-balance-scale-right"></i></div>
+                        <h3>Ethics Hub</h3>
+                        <p>Global perspective on human rights, equality, and social justice.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="window.location.href='Videos/human-ved.html'">Stream Session</button>
+                </div>
             </div>
         </div>
+    </main>
 
-        <!-- Math -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">📐</div>
-            <div class="card-body">
-                <h3>Math 1</h3>
-                <p>Understand equations, algebra, and calculus easily.</p>
-                <button class="btn" onclick="window.location.href='Videos/math1-videos.html'">View</button>
-            </div>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Faculty of Information Technology.</p>
         </div>
+    </footer>
 
-        <!-- Physics -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">⚛️</div>
-            <div class="card-body">
-                <h3>Physics</h3>
-                <p>Explore motion, energy, and the laws of physics.</p>
-                <button class="btn" onclick="window.location.href='Videos/physics-ved.html'">View</button>
-            </div>
-        </div>
-
-        <!-- Computer -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">🖥️</div>
-            <div class="card-body">
-                <h3>Computer</h3>
-                <p>Introduction to computers and basic concepts of computing.</p>
-                <button class="btn" onclick="window.location.href='Videos/computer-videos.html'">View</button>
-            </div>
-        </div>
-
-        <!-- English -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">📖</div>
-            <div class="card-body">
-                <h3>English</h3>
-                <p>Improve your grammar, reading, and writing skills.</p>
-                <button class="btn" onclick="window.location.href='Videos/english-videos.html'">View</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">📐</div>
-            <div class="card-body">
-                <h3>Math0</h3>
-                <p>Learn basic of algebra and calculus..</p>
-                <button class="btn" onclick="window.location.href='Videos/Math0-ved.html'">View</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">📈</div>
-            <div class="card-body">
-                <h3>Intreprenureship &amp; Innovation</h3>
-                <p>Turning creative solutions into profitable businesses.</p>
-                <button class="btn" onclick="window.location.href='Videos/intreprenurship-ved.html'">View</button>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">⚖️</div>
-            <div class="card-body">
-                <h3>Human Rights</h3>
-                <p>Universal rules that protect the dignity and freedom of every individual.</p>
-                <button class="btn" onclick="window.location.href='Videos/human-ved.html'">View</button>
-            </div>
-        </div>
-
-        <!-- Add more courses similarly -->
-
-    </div>
-</div>
-
-<script src="../../js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Navigation & Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+    </script>
 </body>
 </html>

@@ -1,206 +1,137 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Courses</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Library | Level 01</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
-        body {
-            margin: 0; 
-            font-family: 'Inter', sans-serif;
-            background: rgba(143, 143, 143, 0.33);
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('../../images/img.jpg') center / cover no-repeat;
-            filter: blur(3px);
-            transform: scale(1.1);
-            z-index: -1;
-        }
-        header {
-            padding: 18px 60px;
-            background: rgb(0, 43, 91);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(255, 255, 255, 0.5);
-        }
-        header h2 {
-            color: white;
-            margin: 0;
-        }
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-        }
-  h1 {
-      font-size: 40px;
-      color: #0a3d62;
-      margin-bottom: 25px;
-      text-shadow: 0 0 9px #ffffff;
-      font-weight: 836;
-     text-align: center;
-    }
-h2 {
-    font-size: 27px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-h4 {
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-        .courses {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-        /* ======= FLOATING CARDS STYLE ======= */
-        .card {
-            background: rgba(215, 215, 215, 0.15); /* شفاف */
-            backdrop-filter: blur(10px); /* لتأثير الزجاج */
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 2px 21px #002e94;
-            text-align: center;
-            height: 158px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(0, 46, 148, 0.9);
-            background: rgba(183, 183, 183, 0.2);
-        }
-        .card h3 {
-            color: rgb(0, 43, 91);
-            margin-bottom: 6px;
-            font-size: 24px;
-        }
-        .card p {
-            color: #000;
-            font-size: 14px;
-            margin-bottom: 15px;
-            flex-grow: 1;
-        }
-
-        .card button {
-            background: rgb(0, 43, 91);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 12px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 2px 30px #00346f;
-        }
-        .card button:hover {
-            background: #001f5b;
-            transform: scale(1.05);
-        }
-
-        @media (max-width: 900px) {
-            .courses {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        @media (max-width: 600px) {
-            .courses {
-                grid-template-columns: 1fr;
-            }
-        }
+        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
+        .course-card { padding: 35px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; transition: var(--transition-smooth); }
+        .course-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); }
+        .course-icon { font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 20px; opacity: 0.8; }
+        .course-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 12px; }
+        .course-card p { color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5; }
     </style>
 </head>
-<body>
-<header>
-    <h2>Innovation University</h2>
-    <nav>
-<h4>
-       
-        <a href="level1-term1-video.html">Videos</a>
-        <a href="./level1-quizzes.html">Quizzes</a>
-        <a href="../select-level.html">Levels</a>
-         <a href="../iu.html">Home</a>
-</h4>
-    </nav>
-</header>
-<div class="container">
-   <h1>Welcome to the Academic PDF Library!</h1>
- <h3 class="text">Start your learning journey now. You can return to the courses list anytime. </h3>
-    <div class="courses">
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-        <div class="card">
-            <h3>Programming</h3>
-            <p>Learn basics of programming using C#.</p>
-            <button onclick="openProgramming()">View Course</button>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Digital Library</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level1-term1-video.html">Videos</a>
+                <a href="level1-quizzes.html">Quizzes</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
         </div>
+    </header>
+    <main class="main-content">
+        <div class="container">
+            <h1 class="animate-up" style="text-align: center; margin-bottom: 40px; color: var(--iu-accent); font-size: 3rem;">Academic Library</h1>
+            <p class="animate-up" style="text-align: center; color: var(--iu-text-muted); margin-bottom: 50px;">Access your Level 01 course materials and digital resources.</p>
+            
+            <div class="library-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- Programming -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-code"></i></div>
+                        <h3>Programming</h3>
+                        <p>Fundamental logic and algorithm construction using the C# ecosystem.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openProgramming()">Access Module</button>
+                </div>
 
-        <div class="card">
-            <h3>Math1</h3>
-            <p>Equations, algebra and calculus.</p>
-            <button onclick="openMath1()">View Course</button>
+                <!-- Math1 -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-calculator"></i></div>
+                        <h3>Mathematics I</h3>
+                        <p>Comprehensive study of calculus, algebraic structures, and equations.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openMath1()">Access Module</button>
+                </div>
+
+                <!-- Physics -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-atom"></i></div>
+                        <h3>Physics</h3>
+                        <p>Analysis of mechanical motion, energy dynamics, and physical laws.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openPhysics()">Access Module</button>
+                </div>
+
+                <!-- English -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-language"></i></div>
+                        <h3>English Hub</h3>
+                        <p>Enhancing professional communication and linguistic proficiency.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openEnglish()">Access Module</button>
+                </div>
+
+                <!-- Computer -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-desktop"></i></div>
+                        <h3>Computing</h3>
+                        <p>Foundation of digital systems and essential hardware components.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openComputer()">Access Module</button>
+                </div>
+
+                <!-- Math0 -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-square-root-alt"></i></div>
+                        <h3>Mathematics 0</h3>
+                        <p>Essential preparatory foundations for advanced calculus.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openMath0()">Access Module</button>
+                </div>
+
+                <!-- Entrepreneurship -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Innovation</h3>
+                        <p>Transitioning theoretical concepts into scalable business models.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openEntrepreneurship()">Access Module</button>
+                </div>
+
+                <!-- Human Rights -->
+                <div class="glass-card course-card">
+                    <div>
+                        <div class="course-icon"><i class="fas fa-balance-scale"></i></div>
+                        <h3>Ethics Hub</h3>
+                        <p>Examination of global human rights and social equality frameworks.</p>
+                    </div>
+                    <button class="btn-premium btn-accent" onclick="openHumanRights()">Access Module</button>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <div class="card">
-            <h3>Physics</h3>
-            <p>Motion, energy and physical laws.</p>
-            <button onclick="openPhysics()">View Course</button>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Faculty of Digital Arts & Technology.</p>
         </div>
+    </footer>
 
-        <div class="card">
-            <h3>English</h3>
-            <p>Listening, reading and communication skills.</p>
-            <button onclick="openEnglish()">View Course</button>
-        </div>
-
-        <div class="card">
-            <h3>Computer</h3>
-            <p>Computer basics and digital skills.</p>
-            <button onclick="openComputer()">View Course</button>
-        </div>
-
-        <div class="card">
-            <h3>Math0</h3>
-            <p>Basic algebra and calculus foundations.</p>
-            <button onclick="openMath0()">View Course</button>
-        </div>
-
-        <div class="card">
-            <h3>Entrepreneurship &amp; Innovation</h3>
-            <p>Turning ideas into real businesses.</p>
-            <button onclick="openEntrepreneurship()">View Course</button>
-        </div>
-
-        <div class="card">
-            <h3>Human Rights</h3>
-            <p>Protecting dignity, freedom and equality.</p>
-            <button onclick="openHumanRights()">View Course</button>
-        </div>
-
-    </div>
-</div>
-
+<script src="../../js/navigation.js"></script>
 <script>
     function openProgramming() { window.location.href = "subjects/Introduction-to-programing-pdf.html"; }
     function openMath1() { window.location.href = "subjects/math1-pdf.html"; }
@@ -210,6 +141,22 @@ h4 {
     function openMath0() { window.location.href = "subjects/math0.html"; }
     function openEntrepreneurship() { window.location.href = "subjects/entrepreneurship.html"; }
     function openHumanRights() { window.location.href = "subjects/human-rights-pdf.html"; }
+
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
 </script>
 
 </body>

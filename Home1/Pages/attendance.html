@@ -1,419 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Attendance Dashboard | Innovation University</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link rel="icon" type="image/png" href="../images/iu-logo.png" />
-<link rel="stylesheet" href="../css/style.css">
-
-<style>
-/* Local specific overrides for attendance */
-.search-box {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
-
-.search-box input {
-  flex: 1;
-  min-width: 200px;
-  padding: 12px 20px;
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.05);
-  color: #fff;
-  outline: none;
-  font-size: 1rem;
-}
-
-.search-box input:focus {
-  border-color: var(--accent);
-}
-
-.message {
-  color: #ef4444;
-  background: rgba(239, 68, 68, 0.1);
-  padding: 15px;
-  border-radius: 12px;
-  margin-bottom: 20px;
-  display: none;
-  border: 1px solid #ef4444;
-}
-
-.student-card {
-  display: none;
-  animation: fadeUp 0.4s ease;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(15px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.student-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
-  border-bottom: 1px solid var(--glass-border);
-  padding-bottom: 15px;
-}
-
-.student-name {
-  font-size: 1.8rem;
-  color: var(--accent);
-  font-weight: 700;
-}
-
-.student-level {
-  color: var(--text-muted);
-}
-
-.attendance-stats {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-.attendance-stat {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.attendance-stat i {
-  font-size: 1.5rem;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.attendance-stat b {
-  font-size: 1.5rem;
-  display: block;
-  margin-top: 5px;
-  color: #fff;
-}
-
-.warning {
-  display: none;
-  padding: 15px;
-  border-radius: 12px;
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  margin-bottom: 25px;
-  border: 1px solid #ef4444;
-  font-weight: 600;
-  text-align: center;
-  animation: shake 0.5s infinite alternate;
-}
-
-@keyframes shake {
-  from { transform: translateX(-3px); }
-  to { transform: translateX(3px); }
-}
-
-.filters-row {
-  display: flex;
-  gap: 15px;
-  margin-bottom: 20px;
-}
-
-.filters-row select {
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: 1px solid var(--glass-border);
-  background: rgba(0,0,0,0.3);
-  color: #fff;
-  outline: none;
-}
-
-.timeline {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 15px;
-  padding: 20px;
-  margin-top: 30px;
-}
-
-.timeline h4 {
-  margin-bottom: 15px;
-  color: var(--accent);
-}
-
-.timeline ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.timeline li {
-  padding: 12px 0;
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.timeline li:last-child {
-  border-bottom: none;
-}
-
-tr.present-row { background: rgba(34, 197, 94, 0.05); }
-tr.absent-row { background: rgba(239, 68, 68, 0.05); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Intelligence | Innovation University</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../css/attendance.css">
 </head>
 
 <body class="lms-theme">
 
 <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Student Portal</span>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Student Portal</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="dashboard-STU.html">Dashboard</a>
+                <a href="attendance.html" class="active">Attendance</a>
+                <a href="schedule.html">Schedule</a>
+                <a href="#" id="logoutBtn" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </nav>
         </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="dashboard-STU.html">Dashboard</a>
-            <a href="attendance.html" class="active">Attendance</a>
-            <a href="schedule.html">Schedule</a>
-            <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
-        </nav>
-    </div>
-</header>
+    </header>
 
-<main class="main-content" style="max-width: 1000px; margin: 0 auto;">
+    <main class="main-content" style="max-width: 1100px; margin: 0 auto;">
+        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Attendance Intelligence</h1>
 
-  <h1 class="text-gold" style="text-align: center; margin-bottom: 30px;">Student Attendance</h1>
+        <div class="glass-card animate-up" style="padding: 40px;">
+            <div class="search-area">
+                <input id="searchId" placeholder="Enter University ID (e.g. 25030410)">
+                <button class="btn-premium btn-accent" onclick="runSearch()"><i class="fas fa-search"></i> Find Record</button>
+                <button class="btn-premium btn-glass" onclick="resetPage()"><i class="fas fa-sync-alt"></i> Reset</button>
+            </div>
 
-  <div class="glass-card section-card">
-      <div class="search-box">
-        <input id="id" placeholder="Enter University ID (e.g. 25030410)">
-        <button class="btn-premium btn-accent" onclick="loadStudent()"><i class="fas fa-search"></i> Search</button>
-        <button class="btn-premium btn-primary" onclick="resetCard()"><i class="fas fa-sync-alt"></i> Reset</button>
-        <button class="btn-premium btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Print</button>
-      </div>
+            <div id="errorMsg" style="display: none;" class="alert-low">
+                <i class="fas fa-exclamation-circle"></i> Student record not found! Please verify the ID.
+            </div>
 
-      <div class="message" id="msg"><i class="fas fa-exclamation-circle"></i> Student not found! Please check the ID.</div>
+            <!-- Student Profile Information -->
+            <div id="studentContainer" style="display: none;" class="animate-up">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid var(--glass-border); padding-bottom: 20px; margin-bottom: 30px;">
+                    <div>
+                        <h2 id="studentName" style="color: var(--iu-accent); font-size: 2.2rem; margin-bottom: 5px;">—</h2>
+                        <p id="studentLevel" style="color: var(--iu-text-muted); font-size: 1.1rem; font-weight: 600;">—</p>
+                    </div>
+                </div>
 
-      <!-- Student Card Details -->
-      <div class="student-card" id="card">
+                <!-- Live Metrics -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+                    <div class="attendance-card"><i class="fas fa-book-open"></i><span>Lectures</span><b id="lecCount">0</b></div>
+                    <div class="attendance-card"><i class="fas fa-chalkboard-teacher"></i><span>Sections</span><b id="secCount">0</b></div>
+                    <div class="attendance-card"><i class="fas fa-user-times" style="color: #ef4444;"></i><span>Absences</span><b id="absCount">0</b></div>
+                    <div class="attendance-card"><i class="fas fa-percentage" style="color: #22c55e;"></i><span>Rate</span><b id="rateVal">0%</b></div>
+                </div>
 
-        <div class="student-header">
-          <div>
-            <div class="student-name" id="name">—</div>
-            <div class="student-level" id="level">—</div>
-          </div>
-          <div class="text-gold" style="font-size: 2rem;"><i class="fas fa-user-graduate"></i></div>
+                <div id="lowRateWarning" class="alert-low" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i> CRITICAL: Attendance below 75% — Student at risk of failing!
+                </div>
+
+                <!-- Search & Filters -->
+                <div style="display: flex; gap: 15px; margin-bottom: 25px;">
+                    <select id="typeSelector" onchange="filterRecords()" style="flex: 1; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: #fff; outline: none;">
+                        <option value="all">All Types</option>
+                        <option value="Lecture">Lectures</option>
+                        <option value="Section">Sections</option>
+                    </select>
+                    <select id="statusSelector" onchange="filterRecords()" style="flex: 1; padding: 12px; border-radius: 10px; background: rgba(0,0,0,0.3); border: 1px solid var(--glass-border); color: #fff; outline: none;">
+                        <option value="all">All Outcomes</option>
+                        <option value="Present">Present</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                </div>
+
+                <div class="table-responsive">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead>
+                            <tr style="border-bottom: 1px solid var(--glass-border);">
+                                <th style="padding: 15px; text-align: left;">Session Date</th>
+                                <th style="padding: 15px; text-align: left;">Category</th>
+                                <th style="padding: 15px; text-align: left;">Outcome</th>
+                            </tr>
+                        </thead>
+                        <tbody id="attendanceDataBody"></tbody>
+                    </table>
+                </div>
+            </div>
         </div>
+    </main>
 
-        <!-- Stats -->
-        <div class="attendance-stats">
-          <div class="attendance-stat"><i class="fas fa-book-reader"></i> <span>Lectures</span><b id="lec">0</b></div>
-          <div class="attendance-stat"><i class="fas fa-chalkboard-teacher"></i> <span>Sections</span><b id="sec">0</b></div>
-          <div class="attendance-stat"><i class="fas fa-times-circle" style="color: #ef4444;"></i> <span>Absent</span><b id="abs">0</b></div>
-          <div class="attendance-stat"><i class="fas fa-chart-pie" style="color: #22c55e;"></i> <span>Attendance</span><b id="per">0%</b></div>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Academic Integrity & Excellence.</p>
         </div>
+    </footer>
 
-        <div class="warning" id="warn">
-          <i class="fas fa-exclamation-triangle"></i> Warning: Attendance below 75% — You may be at risk of failing the course!
-        </div>
+<script type="module">
+        import { api } from '../js/api.js';
 
-        <!-- Filters -->
-        <div class="filters-row">
-          <select id="filterType" onchange="applyFilter()">
-            <option value="all">All Types (Lecture & Section)</option>
-            <option value="Lecture">Lectures Only</option>
-            <option value="Section">Sections Only</option>
-          </select>
-          <select id="filterStatus" onchange="applyFilter()">
-            <option value="all">All Status (Present & Absent)</option>
-            <option value="Present">Present Only</option>
-            <option value="Absent">Absent Only</option>
-          </select>
-        </div>
+        async function runSearch() {
+            const id = document.getElementById("searchId").value.trim();
+            const err = document.getElementById("errorMsg");
+            const container = document.getElementById("studentContainer");
+            const preloader = document.getElementById('preloader');
 
-        <!-- Table -->
-        <div class="table-responsive">
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Type</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody id="tbody"></tbody>
-          </table>
-        </div>
+            if (!id) return;
 
-        <!-- Timeline -->
-        <div class="timeline" id="timeline">
-          <h4><i class="fas fa-history"></i> Recent Activities</h4>
-          <ul id="recentList"></ul>
-        </div>
+            try {
+                // Show loading
+                if (preloader) {
+                    preloader.style.display = 'flex';
+                    preloader.style.opacity = '1';
+                }
 
-      </div>
-  </div>
+                // 1. Get Profile & Attendance
+                const profile = await api.auth.getProfile(id);
+                if (!profile) {
+                    err.style.display = "block";
+                    container.style.display = "none";
+                    return;
+                }
 
-</main>
+                const records = await api.academic.getAttendance(id);
+                
+                // 2. Update UI
+                err.style.display = "none";
+                container.style.display = "block";
+                
+                document.getElementById("studentName").innerText = profile.full_name;
+                document.getElementById("studentLevel").innerText = `Level ${profile.level} - ${profile.department}`;
+                
+                // Calculate Stats (simplified for mock)
+                const presentCount = records.filter(r => r.status === 'Present').length;
+                const absentCount = records.filter(r => r.status === 'Absent').length;
+                const total = records.length;
+                const rate = total > 0 ? Math.round((presentCount / total) * 100) : 0;
 
-<footer>© 2026 Innovation University — All Rights Reserved. Built for Excellence.</footer>
+                document.getElementById("lecCount").innerText = records.filter(r => r.type === 'Lecture').length;
+                document.getElementById("secCount").innerText = records.filter(r => r.type === 'Section').length;
+                document.getElementById("absCount").innerText = absentCount;
+                document.getElementById("rateVal").innerText = rate + "%";
+                document.getElementById("rateVal").style.color = rate < 75 ? "#ef4444" : "#22c55e";
+                document.getElementById("lowRateWarning").style.display = rate < 75 ? "block" : "none";
+                
+                // Store records globally for filtering
+                window.currentRecords = records;
+                renderRecords(records);
 
-<script src="../js/style.js"></script>
-<script>
-    // Navbar Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
-
-    // Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
+            } catch (error) {
+                console.error("Attendance Search Error:", error);
+                alert("Critical error connecting to academic registry.");
+            } finally {
+                if (preloader) {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }
+            }
         }
-    });
 
-/* Demo Students Data */
-const students={
-  "25030087": {
-    name:"Shahd Alaa",
-    level:"Level 2 - Information Systems",
-    lectures:20,
-    sections:18,
-    absent:5,
-    percent:82,
-    records:[
-      {d:"1 May",t:"Lecture",s:1},
-      {d:"3 May",t:"Section",s:1},
-      {d:"5 May",t:"Lecture",s:0},
-      {d:"7 May",t:"Section",s:1},
-      {d:"9 May",t:"Lecture",s:1},
-      {d:"11 May",t:"Section",s:1},
-    ]
-  },
-  "25030410": {
-    name:"Ibrahim Lotfi",
-    level:"Level 3 - Computer Science",
-    lectures:15,
-    sections:12,
-    absent:7,
-    percent:90,
-    records:[
-      {d:"1 May",t:"Lecture",s:0},
-      {d:"2 May",t:"Lecture",s:1},
-      {d:"4 May",t:"Section",s:0},
-      {d:"6 May",t:"Lecture",s:1},
-      {d:"8 May",t:"Section",s:1},
-      {d:"9 May",t:"Lecture",s:1},
-      {d:"11 May",t:"Section",s:1},
-    ]
- },
-  "25030418": {
-    name:"Adham Mohamed",
-    level:"Level 1 - Computer Science",
-    lectures:15,
-    sections:12,
-    absent:2,
-    percent:72,
-    records:[
-      {d:"2 May",t:"Lecture",s:1},
-      {d:"4 May",t:"Section",s:0},
-      {d:"6 May",t:"Lecture",s:0},
-      {d:"8 May",t:"Section",s:1},
-      {d:"9 May",t:"Lecture",s:1},
-      {d:"11 May",t:"Section",s:1},
-    ]
-  }
-}
+        function renderRecords(records) {
+            const tbody = document.getElementById("attendanceDataBody");
+            const typeF = document.getElementById("typeSelector").value;
+            const statusF = document.getElementById("statusSelector").value;
+            tbody.innerHTML = "";
+            
+            records.forEach(r => {
+                if((typeF !== "all" && r.type !== typeF) || (statusF !== "all" && r.status !== statusF)) return;
+                
+                const tr = document.createElement("tr");
+                const color = r.status === "Present" ? "#22c55e" : "#ef4444";
+                const bg = r.status === "Present" ? "rgba(34,197,94,0.1)" : "rgba(239,68,68,0.1)";
+                
+                tr.innerHTML = `
+                    <td style="padding: 15px;">${r.date}</td>
+                    <td style="padding: 15px;">${r.type}</td>
+                    <td style="padding: 15px;"><span style="background:${bg}; color:${color}; padding:5px 15px; border-radius:20px; font-weight:700; font-size:0.85rem;">${r.status}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
 
-function loadStudent(){
-  const id=document.getElementById("id").value.trim();
-  const msg=document.getElementById("msg");
-  if(!id) return;
-  
-  if(!students[id]){
-    msg.style.display="block";
-    document.getElementById("card").style.display="none";
-    return;
-  } else msg.style.display="none";
+        function filterRecords() {
+            if(window.currentRecords) renderRecords(window.currentRecords);
+        }
 
-  const data=students[id];
-  const card=document.getElementById("card");
-  card.style.display="block";
+        function resetPage() {
+            document.getElementById("searchId").value = "";
+            document.getElementById("studentContainer").style.display = "none";
+            document.getElementById("errorMsg").style.display = "none";
+            window.currentRecords = null;
+        }
 
-  document.getElementById("name").innerText=data.name;
-  document.getElementById("level").innerText=data.level;
-  document.getElementById("lec").innerText=data.lectures;
-  document.getElementById("sec").innerText=data.sections;
-  document.getElementById("abs").innerText=data.absent;
-  document.getElementById("per").innerText=data.percent+"%";
+        // Global assignments for HTML onclick
+        window.runSearch = runSearch;
+        window.resetPage = resetPage;
+        window.filterRecords = filterRecords;
 
-  // Warning
-  document.getElementById("warn").style.display=data.percent<75?"block":"none";
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
 
-  // Table
-  populateTable(data.records);
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+    </script>
 
-  // Timeline
-  populateTimeline(data.records);
-}
-
-// Populate table with optional filters
-function populateTable(records){
-  const tbody=document.getElementById("tbody");
-  tbody.innerHTML="";
-  const typeFilter=document.getElementById("filterType").value;
-  const statusFilter=document.getElementById("filterStatus").value;
-
-  records.forEach(r=>{
-    const status=r.s?"Present":"Absent";
-    if((typeFilter!=="all" && r.t!==typeFilter) || (statusFilter!=="all" && status!==statusFilter)) return;
-
-    const tr=document.createElement("tr");
-    tr.className=r.s?"present-row":"absent-row";
-    tr.innerHTML=`<td>${r.d}</td><td>${r.t}</td><td><span class="status-pill status-${r.s?'completed':'pending'}" style="background: ${r.s?'rgba(34,197,94,0.1)':'rgba(239,68,68,0.1)'}; color: ${r.s?'#22c55e':'#ef4444'};">${status}</span></td>`;
-    tbody.appendChild(tr);
-  });
-}
-
-// Populate Timeline (last 5 records)
-function populateTimeline(records){
-  const recentList=document.getElementById("recentList");
-  recentList.innerHTML="";
-  records.slice(-5).reverse().forEach(r=>{
-    const li=document.createElement("li");
-    li.innerHTML=`<span><i class="far fa-calendar-alt"></i> ${r.d} - <strong>${r.t}</strong></span><span class="status-pill" style="background: ${r.s?'rgba(34,197,94,0.1)':'rgba(239,68,68,0.1)'}; color: ${r.s?'#22c55e':'#ef4444'};">${r.s?'Present':'Absent'}</span>`;
-    recentList.appendChild(li);
-  });
-}
-
-function applyFilter(){
-  const id=document.getElementById("id").value.trim();
-  if(!id || !students[id]) return;
-  populateTable(students[id].records);
-}
-
-function resetCard(){
-  document.getElementById("id").value="";
-  document.getElementById("card").style.display="none";
-  document.getElementById("msg").style.display="none";
-}
-</script>
+    <!-- Load Auth logic -->
+    <script type="module" src="../js/auth.js"></script>
 </body>
 </html>

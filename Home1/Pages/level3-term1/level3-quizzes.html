@@ -1,222 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Level 3 Quizzes</title>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  min-height:100vh;
-  padding:50px 20px;
-  text-align:center;
-  overflow-x:hidden;
-  background:#071a2f;
-}
-
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('../../images/img.jpg') center/cover no-repeat;
-  filter:blur(6px) brightness(0.7);
-  transform:scale(1.1);
-  z-index:-1;
-}
-
-h1{
-  font-size:42px;
-  color:#dce6ea;
-  text-shadow:0 0 15px #00c3ff,0 0 30px #008cff;
-  margin-bottom:40px;
-  animation:fadeDown 1s ease;
-}
-
-.back-btn{
-  position:absolute;
-  top:20px;
-  left:20px;
-  padding:8px 18px;
-  border-radius:50px;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(6px);
-  color:#7fdcff;
-  border:1px solid rgba(255,255,255,0.2);
-  cursor:pointer;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2, 300px);
-  justify-content:center;
-  gap:40px;
-  max-width:900px;
-  margin:auto;
-}
-
-.card{
-  background:rgba(227, 206, 206, 0.08);
-  backdrop-filter:blur(14px);
-  border-radius:22px;
-  padding:28px;
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 0 15px #7fdcff;
-  transition:0.35s;
-  opacity:0;
-  transform:translateY(40px);
-  animation:fadeUp 0.8s ease forwards;
-}
-
-.card:nth-child(2){animation-delay:.1s}
-.card:nth-child(3){animation-delay:.2s}
-.card:nth-child(4){animation-delay:.3s}
-.card:nth-child(5){animation-delay:.4s}
-
-.card:hover{
-  transform:translateY(-8px) scale(1.02);
-  box-shadow:0 0 25px rgba(0,200,255,0.5);
-}
-
-.icon-circle{
-  width:68px;
-  height:68px;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 15px;
-  font-size:30px;
-  color:#7fdcff;
-  background:rgba(0,0,0,0.35);
-  box-shadow:
-    0 0 10px #00c3ff,
-    0 0 20px #00c3ff,
-    inset 0 0 10px rgba(0,195,255,0.5);
-  transition:0.3s;
-}
-
-.card:hover .icon-circle{
-  box-shadow:
-    0 0 20px #00e1ff,
-    0 0 40px #00e1ff,
-    inset 0 0 12px rgba(0,225,255,0.7);
-  transform:scale(1.1);
-}
-
-.card h3{
-  font-size:20px;
-  color:#dff5ff;
-  margin-bottom:12px;
-}
-
-.btn{
-  display:block;
-  width:100%;
-  padding:10px;
-  border-radius:12px;
-  background:rgba(0, 208, 236, 0.84);
-  color:#004964;
-  border:1px solid rgba(0, 58, 74, 0.4);
-  font-weight:600;
-  text-decoration:none;
-  transition:0.3s;
-}
-
-.btn:hover{
-  background:#00c3ff;
-  color:#00111a;
-  box-shadow:0 0 15px #00c3ff,0 0 30px #00c3ff;
-}
-
-@keyframes fadeUp{
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@keyframes fadeDown{
-  from{
-    opacity:0;
-    transform:translateY(-20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-@media(max-width:700px){
-  .grid{grid-template-columns:1fr;}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Center | Level 03</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
+        .quiz-card { padding: 30px 20px; text-align: center; position: relative; border-radius: 20px; border: 1px solid var(--glass-border); background: var(--glass-bg); transition: var(--transition-smooth); display: flex; flex-direction: column; }
+        .quiz-card:hover { border-color: var(--iu-accent); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+        .quiz-icon { font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--iu-accent-glow)); }
+        .quiz-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .quiz-card p { color: var(--iu-text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 25px; flex: 1; }
+        .quiz-meta { display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 20px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; }
+    </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Assessment</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level3-term1-pdf.html">Library</a>
+                <a href="level3-term1-video.html">Videos</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="back-btn" onclick="goBack()">← Back</div>
+    <main class="main-content">
+        <div class="container" style="max-width: 1200px;">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="background: var(--iu-accent); color: var(--iu-primary); padding: 5px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px;">LEVEL 03</span>
+                <h1 class="animate-up" style="margin-top: 15px; margin-bottom: 10px; color: var(--iu-accent); font-size: 3rem; text-shadow: 0 5px 25px rgba(0,0,0,0.6);">Assessment Center</h1>
+                <p class="animate-up" style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Test your knowledge in Professional Modules.</p>
+            </div>
 
-<h1>Level 3 Quizzes</h1>
+            <div class="quiz-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- AI Quiz -->
+                <div class="glass-card quiz-card">
+                    <div class="quiz-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI Exam</h3>
+                    <p>Test your understanding of intelligent systems.</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-clock"></i> 60 Mins</span>
+                        <span><i class="fas fa-question-circle"></i> 30 Qs</span>
+                    </div>
+                    <button class="btn-premium btn-accent" style="width: 100%;" onclick="alert('Quiz starting soon...')">Start Quiz</button>
+                </div>
 
-<div class="grid">
+                <!-- Software Eng Quiz -->
+                <div class="glass-card quiz-card">
+                    <div class="quiz-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Software Engineering</h3>
+                    <p>Evaluate your skills in software architecture.</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-clock"></i> 45 Mins</span>
+                        <span><i class="fas fa-question-circle"></i> 25 Qs</span>
+                    </div>
+                    <button class="btn-premium btn-accent" style="width: 100%;" onclick="alert('Quiz starting soon...')">Start Quiz</button>
+                </div>
 
-  <!-- Theoretical CS -->
-  <div class="card">
-    <div class="icon-circle">
-      <i class="fa-solid fa-brain"></i>
-    </div>
-    <h3>Introduction to Theoretical Computer Science</h3>
-    <a href="./subjects3/quizzes3/theoretical-cs-quiz.html" class="btn">Open Quiz</a>
-  </div>
+                <!-- Networks Quiz -->
+                <div class="glass-card quiz-card">
+                    <div class="quiz-icon"><i class="fas fa-network-wired"></i></div>
+                    <h3>Computer Networks</h3>
+                    <p>Network topologies and packet routing concepts.</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-clock"></i> 50 Mins</span>
+                        <span><i class="fas fa-question-circle"></i> 20 Qs</span>
+                    </div>
+                    <button class="btn-premium btn-accent" style="width: 100%;" onclick="alert('Quiz starting soon...')">Start Quiz</button>
+                </div>
 
-  <!-- Web Development -->
-  <div class="card">
-    <div class="icon-circle">
-      <i class="fa-solid fa-globe"></i>
-    </div>
-    <h3>Web Application Development</h3>
-    <a href="./subjects3/quizzes3/web-app-development-quiz.html" class="btn">Open Quiz</a>
-  </div>
+                <!-- DB Quiz -->
+                <div class="glass-card quiz-card">
+                    <div class="quiz-icon"><i class="fas fa-database"></i></div>
+                    <h3>Database Systems</h3>
+                    <p>SQL syntax and relational algebra evaluation.</p>
+                    <div class="quiz-meta">
+                        <span><i class="fas fa-clock"></i> 45 Mins</span>
+                        <span><i class="fas fa-question-circle"></i> 20 Qs</span>
+                    </div>
+                    <button class="btn-premium btn-accent" style="width: 100%;" onclick="alert('Quiz starting soon...')">Start Quiz</button>
+                </div>
+            </div>
+        </div>
+    </main>
 
-  <!-- Data Visualization -->
-  <div class="card">
-    <div class="icon-circle">
-      <i class="fa-solid fa-chart-bar"></i>
-    </div>
-    <h3>Data Visualization &amp; Analytics</h3>
-    <a href="./subjects3/quizzes3/data-visualization-analytics-quiz.html" class="btn">Open Quiz</a>
-  </div>
-
-  <!-- AI -->
-  <div class="card">
-    <div class="icon-circle">
-      <i class="fa-solid fa-robot"></i>
-    </div>
-    <h3>Fundamentals of Artificial Intelligence</h3>
-    <a href="./subjects3/quizzes3/ai-fundamentals-quiz.html" class="btn">Open Quiz</a>
-  </div>
-
-  <!-- Software Engineering -->
-  <div class="card">
-    <div class="icon-circle">
-      <i class="fa-solid fa-gears"></i>
-    </div>
-    <h3>Software Engineering</h3>
-    <a href="./subjects3/quizzes3/software-engineering-quiz.html" class="btn">Open Quiz</a>
-  </div>
-
-</div>
+    <footer class="main-footer" style="padding: 30px 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border); margin-top: 50px;">
+        <div style="text-align: center; color: var(--iu-text-muted); font-size: 0.85rem;">
+            <p>© 2026 Innovation University — Academic Excellence Hub.</p>
+        </div>
+    </footer>
 
 <script>
-function goBack(){
-  window.location.href="../dashboard-STU.html";
-}
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
 </script>
-
 </body>
 </html>

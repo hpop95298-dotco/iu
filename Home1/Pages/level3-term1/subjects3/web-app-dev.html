@@ -4,91 +4,41 @@
 <meta charset="UTF-8">
 <title>Web Application Development</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-/* نفس الستايل */
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:rgba(143,143,143,.33)
-}
 
-body::before {
-content:"";
-position:fixed;
-inset:0;
-background:url('../../../images/img.jpg') center/cover no-repeat;
-filter:blur(3px);
-transform:scale(1.1);z-index:-1
-}
 
-header{
-padding:18px 60px;
-background:rgba(0,26,85,.9);
-display:flex;
-justify-content:space-between
-}
-
-header h2{
-color:white;
-margin:0
-}
-
-nav a{
-margin-left:20px;
-color:white;
-text-decoration:none;
-font-weight:600
-}
-
-.container{
-max-width:1200px;
-margin:40px auto;
-display:grid;
-grid-template-columns:300px 1fr;
-gap:30px
-}
-
-.sidebar{
-background:rgba(206,206,206,.23);
-border-radius:15px;
-padding:12px
-}
-
-.lecture{
-padding:10px;
-margin-bottom:8px;
-background:#002e94;
-color:white;
-border-radius:8px;
-cursor:pointer
-}
-
-.lecture:hover{
-background:#001f6f
-}
-
-.content{
-background:rgba(215,215,215,.48);
-border-radius:15px;
-padding:30px
-}
-
-</style>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/subject.css">
+    
 </head>
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-<h2>Innovation University</h2>
-<nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Knowledge Base</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+
     <a href="./quizzes3/web-app-development-quiz.html">Quiz</a>
      <a href="../level3-term1-pdf.html">Courses</a>
         <a href="../level3-term1-video.html">Videos</a>
         <a href="../../iu.html">Home</a>
-</nav>
-</header>
 
-<div class="container">
-<div class="sidebar">
+            </nav>
+        </div>
+    </header>
+
+<div class="container-subject">
+<div class="subject-sidebar">
 <h3>Web Development</h3>
 <div class="lecture" onclick="show(0)">HTML &amp; CSS</div>
 <div class="lecture" onclick="show(1)">JavaScript</div>
@@ -97,7 +47,7 @@ padding:30px
 <div class="lecture" onclick="show(4)">Deployment</div>
 </div>
 
-<div class="content" id="content"></div>
+<div class="subject-content" id="content"></div>
 </div>
 
 <script>
@@ -112,5 +62,22 @@ function show(i){
 content.innerHTML=`<h2>${data[i].split('.')[0]}</h2><p>${data[i]}</p>`;
 }
 </script>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>

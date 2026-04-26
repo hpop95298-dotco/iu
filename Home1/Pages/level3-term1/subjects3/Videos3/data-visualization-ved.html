@@ -4,100 +4,47 @@
 <meta charset="UTF-8">
 <title>Data Visualization &amp; Analytics</title>
 
-<style>
-body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: rgba(143,143,143,0.33);
-}
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('../../../../images/img.jpg') center/cover no-repeat;
-    filter: blur(3px);
-    transform: scale(1.1);
-    z-index: -1;
-}
 
-header {
-    padding: 18px 60px;
-    background: rgba(0,26,85,0.9);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header h2 { color: white; margin: 0; }
-nav a { color: white; margin-left: 20px; text-decoration: none; }
-
-.container {
-    max-width: 1200px;
-    margin: 40px auto;
-    display: grid;
-    grid-template-columns: 300px 1fr;
-    gap: 30px;
-}
-
-.sidebar {
-    background: rgba(206,206,206,0.3);
-    border-radius: 15px;
-    padding: 15px;
-}
-
-.lesson {
-    padding: 10px;
-    margin-bottom: 8px;
-    background: #002b5b;
-    color: white;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.lesson:hover {
-    background: #0040a6;
-}
-
-.content {
-    background: rgba(215,215,215,0.5);
-    border-radius: 15px;
-    padding: 25px;
-}
-
-iframe {
-    width: 100%;
-    height: 420px;
-    border-radius: 12px;
-}
-
-.placeholder {
-    text-align: center;
-    margin-top: 150px;
-    font-size: 18px;
-}
-</style>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../../css/subject.css">
+    
 </head>
 
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <h2>Innovation University</h2>
-    <nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Knowledge Base</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+
              <a href="../quizzes3/data-visualization-analytics-quiz.html">Quiz</a>
                <a href="../../level3-term1-video.html">Courses</a>
                <a href="../../level3-term1-pdf.html">PDF</a>
                <a href="../../../iu.html">Home</a>
-    </nav>
-</header>
+    
+            </nav>
+        </div>
+    </header>
 
-<div class="container">
+<div class="container-subject">
 
-    <div class="sidebar" id="lessonList">
+    <div class="subject-sidebar" id="lessonList">
         <h3>Data Visualization &amp; Analytics</h3>
     </div>
 
-    <div class="content" id="content">
+    <div class="subject-content" id="content">
         <div class="placeholder">▶️ Select a lecture</div>
     </div>
 
@@ -142,5 +89,22 @@ function loadLecture(i) {
 }
 </script>
 
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>

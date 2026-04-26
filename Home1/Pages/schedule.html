@@ -4,72 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study Schedule | Innovation University</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         .filter-section { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; align-items: center; }
-        .filter-section select { padding: 8px 12px; border-radius: 8px; border: 1px solid var(--glass-border); background: rgba(255,255,255,0.05); color: white; outline: none; }
-        input[type="time"], input[placeholder="Subject"], input[placeholder="e.g. 2h"] { background: transparent; border: none; color: white; text-align: center; width: 100%; outline: none; }
-        select { background: transparent; border: none; color: white; text-align-last: center; width: 100%; outline: none; cursor: pointer; }
-        option { background: var(--primary); color: white; }
+        .filter-section select { padding: 10px 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white; outline: none; transition: var(--transition-smooth); }
+        .filter-section select:focus { border-color: var(--iu-accent); box-shadow: 0 0 15px var(--iu-accent-glow); }
+        
+        input[type="time"], input.grid-input { background: transparent; border: none; color: #fff; text-align: center; width: 100%; outline: none; font-family: inherit; }
+        select.grid-select { background: transparent; border: none; color: #fff; text-align-last: center; width: 100%; outline: none; cursor: pointer; }
+        option { background: var(--iu-primary); color: #fff; }
+        
+        .prog-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin-top: 5px; }
+        .prog-fill { height: 100%; background: linear-gradient(90deg, var(--iu-primary), var(--iu-accent)); transition: width 0.5s ease; box-shadow: 0 0 10px var(--iu-accent-glow); }
     </style>
 </head>
-<body class="lms-theme">
+<body class="faculty-theme">
 
 <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Student Portal</span>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Student Portal</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="dashboard-STU.html">Dashboard</a>
+                <a href="schedule.html" class="active">Schedule</a>
+                <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </nav>
         </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="dashboard-STU.html">Dashboard</a>
-            <a href="schedule.html" class="active">Schedule</a>
-            <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
-        </nav>
-    </div>
-</header>
+    </header>
 
-<main class="main-content">
-    <h1 class="text-gold" style="text-align: center; margin-bottom: 30px;">Study Schedule</h1>
+    <main class="main-content" style="max-width: 1200px; margin: 0 auto;">
+        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Study Planner</h1>
 
-    <div class="grid-stats">
-        <div class="glass-card stat-card">
-            <div class="stat-info"><h3>Subjects</h3><div class="value" id="subCount">0</div></div>
-            <div class="icon-box"><i class="fas fa-book"></i></div>
+        <div class="grid-stats" style="margin-bottom: 30px;">
+            <div class="glass-card animate-up" style="text-align: center; padding: 25px;">
+                <i class="fas fa-book" style="color: var(--iu-accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <div style="color: var(--iu-text-muted);">Subjects</div>
+                <div style="font-size: 2rem; font-weight: 700;" id="subCount">0</div>
+            </div>
+            <div class="glass-card animate-up" style="text-align: center; padding: 25px; animation-delay: 0.1s;">
+                <i class="fas fa-clock" style="color: var(--iu-accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <div style="color: var(--iu-text-muted);">Total Duration</div>
+                <div style="font-size: 2rem; font-weight: 700;" id="totalDuration">0h</div>
+            </div>
+            <div class="glass-card animate-up" style="text-align: center; padding: 25px; animation-delay: 0.2s;">
+                <i class="fas fa-check-circle" style="color: var(--iu-accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <div style="color: var(--iu-text-muted);">Completed</div>
+                <div style="font-size: 2rem; font-weight: 700;" id="statusCount">0</div>
+            </div>
         </div>
-        <div class="glass-card stat-card">
-            <div class="stat-info"><h3>Total Duration</h3><div class="value" id="totalDuration">0h</div></div>
-            <div class="icon-box"><i class="fas fa-clock"></i></div>
-        </div>
-        <div class="glass-card stat-card">
-            <div class="stat-info"><h3>Completed</h3><div class="value" id="statusCount">0</div></div>
-            <div class="icon-box"><i class="fas fa-check-circle"></i></div>
-        </div>
-    </div>
 
-    <div class="glass-card section-card">
-        <div class="filter-section">
-            <select id="filter-day">
-                <option value="">All Days</option>
-                <option>Sunday</option><option>Monday</option><option>Tuesday</option>
-                <option>Wednesday</option><option>Thursday</option><option>Friday</option>
-                <option>Saturday</option>
-            </select>
-            <select id="filter-status">
-                <option value="">All Status</option>
-                <option>Completed</option><option>In Progress</option><option>Not Started</option>
-            </select>
-            <button class="btn-premium btn-accent" style="padding: 8px 15px;" onclick="addRow()">+ Add Subject</button>
-            <button class="btn-premium btn-primary" style="padding: 8px 15px;" onclick="autoFill()">Auto-Fill</button>
-            <button class="btn-premium btn-primary" style="padding: 8px 15px;" onclick="window.print()">🖨 Print</button>
-        </div>
+        <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.3s;">
+            <div class="filter-section">
+                <select id="filter-day">
+                    <option value="">By Day</option>
+                    <option>Sunday</option><option>Monday</option><option>Tuesday</option>
+                    <option>Wednesday</option><option>Thursday</option><option>Friday</option>
+                    <option>Saturday</option>
+                </select>
+                <select id="filter-status">
+                    <option value="">By Status</option>
+                    <option>Completed</option><option>In Progress</option><option>Not Started</option>
+                </select>
+                <div style="display: flex; gap: 10px; margin-left: auto;">
+                    <button class="btn-premium btn-accent" onclick="addRow()">+ New Entry</button>
+                    <button class="btn-premium btn-glass" onclick="autoFill()">Auto-Sync</button>
+                    <button class="btn-premium btn-glass" onclick="window.print()"><i class="fas fa-print"></i></button>
+                </div>
+            </div>
 
         <div class="table-responsive">
             <table id="scheduleTable">
@@ -90,13 +104,19 @@
         </div>
     </div>
 
-    <div class="glass-card section-card" style="margin-top: 30px;">
-        <h3 class="section-title-icon"><i class="fas fa-chart-line"></i> Weekly Study Hours</h3>
-        <canvas id="studyChart" style="max-height: 250px;"></canvas>
-    </div>
-</main>
+        <div class="glass-card animate-up" style="margin-top: 30px; padding: 40px; animation-delay: 0.4s;">
+            <h3 style="color: var(--iu-accent); margin-bottom: 25px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-chart-area"></i> Efficiency Metrics</h3>
+            <div style="height: 300px;">
+                <canvas id="studyChart"></canvas>
+            </div>
+        </div>
+    </main>
 
-<footer>© 2026 Innovation University — All Rights Reserved. Built for Excellence.</footer>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Academic Excellence.</p>
+        </div>
+    </footer>
 
 <script>
     // Preloader
@@ -112,13 +132,14 @@
     const ctx = document.getElementById('studyChart').getContext('2d');
     let studyChart = new Chart(ctx, {
         type: 'line',
-        data: { labels: [], datasets: [{ label: 'Hours', data: [], borderColor: '#FFD700', backgroundColor: 'rgba(255, 215, 0, 0.1)', fill: true, tension: 0.4 }] },
+        data: { labels: [], datasets: [{ label: 'Study Hours', data: [], borderColor: '#fdb913', backgroundColor: 'rgba(253, 185, 19, 0.1)', fill: true, tension: 0.4, borderWidth: 3 }] },
         options: { 
             responsive: true,
+            maintainAspectRatio: false,
             plugins: { legend: { display: false } },
             scales: { 
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#fff' } },
-                x: { grid: { display: false }, ticks: { color: '#fff' } }
+                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } },
+                x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)' } }
             }
         }
     });
@@ -130,21 +151,17 @@
         const tbody = document.querySelector("#scheduleTable tbody");
         const tr = document.createElement("tr");
         tr.innerHTML = `
-            <td><input value="${subject}" placeholder="Subject"></td>
-            <td><select>
+            <td><input class="grid-input" value="${subject}" placeholder="e.g. AI Ethics"></td>
+            <td><select class="grid-select">
                 <option>Select Day</option>
                 ${["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"].map(d => `<option ${d === day ? "selected" : ""}>${d}</option>`).join("")}
             </select></td>
             <td><input type="time" value="${time}"></td>
-            <td><input placeholder="e.g. 2h" value="${duration}"></td>
-            <td><select>${["High", "Medium", "Low"].map(p => `<option ${p === priority ? "selected" : ""}>${p}</option>`).join("")}</select></td>
-            <td><select>${["Not Started", "In Progress", "Completed"].map(s => `<option ${s === status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
-            <td>
-                <div class="progress-bar"><div class="progress-fill" style="width:${getProgressValue(status)}%"></div></div>
-            </td>
-            <td>
-                <button class="btn-premium btn-primary" style="padding: 5px 10px;" onclick="deleteRow(this)">🗑</button>
-            </td>
+            <td><input class="grid-input" placeholder="2h" value="${duration}"></td>
+            <td><select class="grid-select">${["High", "Medium", "Low"].map(p => `<option ${p === priority ? "selected" : ""}>${p}</option>`).join("")}</select></td>
+            <td><select class="grid-select">${["Not Started", "In Progress", "Completed"].map(s => `<option ${s === status ? "selected" : ""}>${s}</option>`).join("")}</select></td>
+            <td><div class="prog-track"><div class="prog-fill" style="width:${getProgressValue(status)}%"></div></div></td>
+            <td><button style="background:none; border:none; color:#ef4444; cursor:pointer;" onclick="deleteRow(this)"><i class="fas fa-trash-alt"></i></button></td>
         `;
         tbody.appendChild(tr);
         tr.querySelectorAll("input, select").forEach(el => el.addEventListener("change", saveSchedule));
@@ -169,7 +186,7 @@
             if (dur.match(/\d+/)) totalH += parseInt(dur.match(/\d+/)[0]);
             const status = tr.querySelector("td:nth-child(6) select").value;
             if (status === "Completed") completed++;
-            tr.querySelector(".progress-fill").style.width = getProgressValue(status) + "%";
+            tr.querySelector(".prog-fill").style.width = getProgressValue(status) + "%";
             chartLabels.push(tr.querySelector("td:nth-child(1) input").value || "...");
             chartData.push(dur.match(/\d+/) ? parseInt(dur.match(/\d+/)[0]) : 0);
         });
@@ -225,6 +242,10 @@
             tr.style.display = ((!day || tDay === day) && (!status || tStatus === status)) ? "" : "none";
         });
     }
-</script>
+    // Navbar Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    </script>
 </body>
 </html>

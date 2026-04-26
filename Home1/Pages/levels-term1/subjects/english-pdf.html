@@ -1,171 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>English Course</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: rgba(143, 143, 143, 0.33);
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: url('../../../images/img.jpg') center / cover no-repeat;
-        filter: blur(3px);
-        transform: scale(1.1);
-        z-index: -1;
-    }
-
-    header {
-        padding: 18px 60px;
-        background: rgba(0, 26, 85, 0.9);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h2 {
-        color: white;
-        margin: 0;
-    }
-
-    nav a {
-        margin-left: 20px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: 600;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 40px auto;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 30px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        background: rgba(206, 206, 206, 0.23);
-        border-radius: 15px;
-        padding: 12px;
-        box-shadow: 0 4px 15px rgb(0, 26, 85);
-    }
-
-    .sidebar h3 {
-        text-align: center;
-        color: rgba(13, 42, 107, 0.85);
-        margin-top: 0;
-    }
-
-    .lecture-item {
-        padding: 10px;
-        margin-bottom: 8px;
-        background: rgba(7, 36, 102, 0.9);
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 14px;
-    }
-
-    .lecture-item:hover {
-        background: #002e94;
-        transform: scale(1.03);
-    }
-
-    /* Content */
-    .content {
-        background: rgba(215, 215, 215, 0.48);
-        border-radius: 15px;
-        padding: 30px;
-        min-height: 350px;
-        box-shadow: 0 0px 16px rgba(0, 33, 107, 0.85);
-    }
-
-    .placeholder {
-        text-align: center;
-        color: #555;
-        font-size: 18px;
-        margin-top: 120px;
-    }
-
-    @media (max-width: 900px) {
-        .container {
-            grid-template-columns: 1fr;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Console | English Language</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .console-layout { display: flex; gap: 30px; margin: 40px 0; align-items: flex-start; }
+        .console-sidebar { width: 320px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 30px; }
+        .lecture-list { list-style: none; padding: 0; }
+        .lecture-btn { width: 100%; text-align: left; padding: 15px 20px; border-radius: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: #fff; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 12px; }
+        .lecture-btn:hover { border-color: var(--iu-accent); background: rgba(var(--iu-accent-rgb), 0.1); }
+        .lecture-btn.active { background: var(--iu-accent); color: var(--iu-primary); font-weight: 700; box-shadow: 0 0 15px var(--iu-accent-glow); border-color: var(--iu-accent); }
+        .lecture-btn i { font-size: 1rem; opacity: 0.7; }
+        .console-main { flex: 1; min-height: 500px; padding: 50px; position: relative; overflow: hidden; }
+        .content-placeholder { text-align: center; color: var(--iu-text-muted); margin-top: 100px; }
+        .content-placeholder i { font-size: 4rem; opacity: 0.3; margin-bottom: 20px; display: block; }
+        
+        @media (max-width: 992px) {
+            .console-layout { flex-direction: column; }
+            .console-sidebar { width: 100%; position: relative; top: 0; max-height: none; }
         }
-    }
-</style>
+    </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
-
-<header>
-    <h2>Innovation University</h2>
-    <nav>
-       <a href="../quizzes/english-quiz.html">quiz</a>
-       <a href="../level1-term1-pdf.html">courses</a>
-        <a href="../level1-term1-video.html">Videos</a>
-        <a href="../../iu.html">Home</a>
-    </nav>
-</header>
-
-<div class="container">
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h3>English (10 Lectures)</h3>
-
-        <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Parts of Speech</div>
-        <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Tenses</div>
-        <div class="lecture-item" onclick="showLecture(2)">Lecture 3 – Sentence Structure</div>
-        <div class="lecture-item" onclick="showLecture(3)">Lecture 4 – Active &amp; Passive Voice</div>
-        <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Question Forms</div>
-        <div class="lecture-item" onclick="showLecture(5)">Lecture 6 – Articles</div>
-        <div class="lecture-item" onclick="showLecture(6)">Lecture 7 – Prepositions</div>
-        <div class="lecture-item" onclick="showLecture(7)">Lecture 8 – Writing Skills</div>
-        <div class="lecture-item" onclick="showLecture(8)">Lecture 9 – Reading Comprehension</div>
-        <div class="lecture-item" onclick="showLecture(9)">Lecture 10 – Speaking Skills</div>
-    </div>
-
-    <!-- Content -->
-    <div class="content" id="content">
-        <div class="placeholder">
-            📘 Select a lecture from the left to view its content
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Course Console</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="../quizzes/english-quiz.html">Take Quiz</a>
+                <a href="../level1-term1-pdf.html">All Courses</a>
+                <a href="../level1-term1-video.html">Video Hub</a>
+                <a href="../../iu.html" class="btn-premium btn-accent" style="padding: 8px 18px; margin-left: 15px;">Home</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-</div>
+    <main class="main-content">
+        <div class="container">
+            <div class="animate-up" style="margin-bottom: 30px;">
+                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">English Language</h1>
+                <p style="color: var(--iu-text-muted);">Foundation Alpha | Academic Year 2026</p>
+            </div>
 
-<script>
-    const lectures = [
-        { title: "Lecture 1 – Parts of Speech", content: "Introduction to nouns, verbs, adjectives, and adverbs." },
-        { title: "Lecture 2 – Tenses", content: "Understanding present, past, and future tenses." },
-        { title: "Lecture 3 – Sentence Structure", content: "How to form correct English sentences." },
-        { title: "Lecture 4 – Active & Passive Voice", content: "Difference between active and passive voice." },
-        { title: "Lecture 5 – Question Forms", content: "How to ask questions correctly in English." },
-        { title: "Lecture 6 – Articles", content: "Using a, an, and the properly." },
-        { title: "Lecture 7 – Prepositions", content: "Common English prepositions and their usage." },
-        { title: "Lecture 8 – Writing Skills", content: "Basics of paragraph and essay writing." },
-        { title: "Lecture 9 – Reading Comprehension", content: "Improving understanding of written texts." },
-        { title: "Lecture 10 – Speaking Skills", content: "Developing confidence in spoken English." }
-    ];
+            <div class="console-layout animate-up" style="animation-delay: 0.1s;">
+                <!-- Sidebar -->
+                <aside class="glass-card console-sidebar">
+                    <h3 style="font-size: 1.1rem; color: var(--iu-accent); margin-bottom: 25px; letter-spacing: 1px;">CURRICULUM</h3>
+                    <div class="lecture-list" id="lectureList"></div>
+                </aside>
 
-    function showLecture(index) {
-        const content = document.getElementById("content");
-        content.innerHTML = `
-            <h1>${lectures[index].title}</h1>
-            <p>${lectures[index].content}</p>
-        `;
-    }
-</script>
+                <!-- Core Content -->
+                <div class="glass-card console-main" id="lectureContent">
+                    <div class="content-placeholder">
+                        <i class="fas fa-language"></i>
+                        <h2>Begin your linguistics journey</h2>
+                        <p>Select a module from the curriculum sidebar to access course materials.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Academic Excellence.</p>
+        </div>
+    </footer>
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Parts of Speech", icon: "fa-font", content: "Introduction to the structural building blocks of English: nouns, verbs, adjectives, and adverbs." },
+            { title: "Lecture 2: Tenses", icon: "fa-clock", content: "Comprehensive overview of present, past, and future temporal structures in English grammar." },
+            { title: "Lecture 3: Sentence Structure", icon: "fa-align-left", content: "Understanding syntax, sentence types, and the mechanics of formal English construction." },
+            { title: "Lecture 4: Voice & Style", icon: "fa-bullhorn", content: "Strategic usage of active and passive voice to enhance communicative clarity and professional impact." },
+            { title: "Lecture 5: Question Forms", icon: "fa-question-circle", content: "Analyzing interrogative structures and correctly formulating inquiries in complex scenarios." },
+            { title: "Lecture 6: Articles", icon: "fa-quote-left", content: "Precision in using definite and indefinite articles (a, an, the) within formal writing." },
+            { title: "Lecture 7: Prepositions", icon: "fa-map-pin", content: "Mastering directional and positional markers to ensure clear spatial and temporal communication." },
+            { title: "Lecture 8: Writing Skills", icon: "fa-pen-fancy", content: "Foundations of academic and professional writing, focusing on logic, cohesion, and professional tone." },
+            { title: "Lecture 9: Reading Comprehension", icon: "fa-book-open", content: "Critical analysis of written texts and strategies for extracting deep meaning from complex literature." },
+            { title: "Lecture 10: Speaking Skills", icon: "fa-comments", content: "Developing oral fluency and confidence for professional presentations and collaborative environments." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Resources</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes for this linguistics module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
 </body>
 </html>

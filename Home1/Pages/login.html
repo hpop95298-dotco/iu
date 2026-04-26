@@ -4,61 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Signup | Innovation University</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body class="faculty-theme">
 
 <div id="preloader"><div class="spinner"></div></div>
 
-<a href="iu.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Faculty Site</a>
-
-<div class="auth-wrapper">
-    <!-- Login Card -->
-    <div class="auth-card" id="loginCard">
-        <h2 class="auth-title">Student Portal Login</h2>
-        <form action="dashboard-STU.html">
-            <div class="input-group">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Username" required>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Faculty of Computers</span>
             </div>
-            <div class="input-group">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Password" required>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="active btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+            </nav>
+        </div>
+    </header>
+
+<div class="auth-wrapper" style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;">
+    <!-- Error Display -->
+    <div id="authError" style="display: none; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-weight: 600;"></div>
+
+    <!-- Login Card -->
+    <div class="glass-card animate-up" id="loginCard" style="max-width: 450px; width: 100%; padding: 50px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <img src="../images/iu-logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px;">
+            <h2 style="color: var(--iu-accent); font-size: 2rem;">Student Portal</h2>
+            <p style="color: var(--iu-text-muted); font-size: 0.9rem;">Enter your credentials to continue</p>
+        </div>
+        <form id="loginForm">
+            <div style="margin-bottom: 20px; position: relative;">
+                <i class="fa-solid fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                <input type="email" id="loginEmail" placeholder="Email Address" required style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
+            </div>
+            <div style="margin-bottom: 30px; position: relative;">
+                <i class="fa-solid fa-lock" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                <input type="password" id="loginPassword" placeholder="Password" required style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
             </div>
             <button type="submit" class="btn-premium btn-accent" style="width: 100%;">Sign In</button>
-            <div class="auth-switch">
-                Don't have an account? <a href="javascript:void(0)" onclick="toggleAuth()">Register Now</a>
+            <div style="text-align: center; margin-top: 25px; font-size: 0.9rem; color: var(--iu-text-muted);">
+                Don't have an account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color: var(--iu-accent); font-weight:700;">Register Now</a>
             </div>
         </form>
     </div>
 
     <!-- Register Card -->
-    <div class="auth-card" id="registerCard" style="display: none;">
-        <h2 class="auth-title">Register</h2>
-        <form action="#">
-            <div class="input-group">
-                <i class="fa-solid fa-user"></i>
-                <input type="text" placeholder="Full Name" required>
+    <div class="glass-card animate-up" id="registerCard" style="display: none; max-width: 450px; width: 100%; padding: 50px;">
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h2 style="color: var(--iu-accent); font-size: 2rem;">Register</h2>
+            <p style="color: var(--iu-text-muted); font-size: 0.9rem;">Create your student account</p>
+        </div>
+        <form id="registerForm">
+            <div style="margin-bottom: 20px; position: relative;">
+                <i class="fa-solid fa-user" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                <input type="text" id="registerName" placeholder="Full Name" required style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
             </div>
-            <div class="input-group">
-                <i class="fa-solid fa-envelope"></i>
-                <input type="email" placeholder="Email Address" required>
+            <div style="margin-bottom: 20px; position: relative;">
+                <i class="fa-solid fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                <input type="email" id="registerEmail" placeholder="Email Address" required style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
             </div>
-            <div class="input-group">
-                <i class="fa-solid fa-lock"></i>
-                <input type="password" placeholder="Password" required>
+            <div style="margin-bottom: 30px; position: relative;">
+                <i class="fa-solid fa-lock" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                <input type="password" id="registerPassword" placeholder="Password" required style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
             </div>
             <button type="submit" class="btn-premium btn-accent" style="width: 100%;">Create Account</button>
-            <div class="auth-switch">
-                Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()">Log In</a>
+            <div style="text-align: center; margin-top: 25px; font-size: 0.9rem; color: var(--iu-text-muted);">
+                Already have an account? <a href="javascript:void(0)" onclick="toggleAuth()" style="color: var(--iu-accent); font-weight:700;">Log In</a>
             </div>
         </form>
     </div>
 </div>
 
+<!-- Load Auth logic -->
+<script type="module" src="../js/auth.js"></script>
+
 <script>
-    // Preloader
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');
         setTimeout(() => {
@@ -67,7 +100,6 @@
         }, 800);
     });
 
-    // Toggle Auth Cards
     function toggleAuth() {
         const loginCard = document.getElementById('loginCard');
         const registerCard = document.getElementById('registerCard');
@@ -83,4 +115,4 @@
 </script>
 
 </body>
-</html>
+</html>

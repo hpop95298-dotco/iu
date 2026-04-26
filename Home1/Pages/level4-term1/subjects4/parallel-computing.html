@@ -6,121 +6,44 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Inter', sans-serif;
-            background: rgba(143, 143, 143, 0.33);
-        }
+    
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: url('../../../images/img.jpg') center / cover no-repeat;
-            filter: blur(3px);
-            transform: scale(1.1);
-            z-index: -1;
-        }
-
-        header {
-            padding: 18px 60px;
-            background: rgba(0, 26, 85, 0.9);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h2 {
-            color: white;
-            margin: 0;
-        }
-
-        nav a {
-            margin-left: 20px;
-            text-decoration: none;
-            color: #ffffff;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 30px;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: rgba(206, 206, 206, 0.23);
-            border-radius: 15px;
-            padding: 12px;
-            box-shadow: 0 4px 15px rgb(0, 26, 85);
-        }
-
-        .sidebar h3 {
-            text-align: center;
-            color: rgba(13, 42, 107, 0.85);
-            margin-top: 0;
-        }
-
-        .lecture-item {
-            padding: 10px;
-            margin-bottom: 8px;
-            background: rgba(7, 36, 102, 0.9);
-            color: white;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-size: 14px;
-        }
-
-        .lecture-item:hover {
-            background: #002e94;
-            transform: scale(1.03);
-        }
-
-        /* Content */
-        .content {
-            background: rgba(215, 215, 215, 0.48);
-            border-radius: 15px;
-            padding: 30px;
-            min-height: 350px;
-            box-shadow: 0 0px 16px rgba(0, 33, 107, 0.85);
-        }
-
-        .placeholder {
-            text-align: center;
-            color: #555;
-            font-size: 18px;
-            margin-top: 120px;
-        }
-
-        @media (max-width: 900px) {
-            .container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/subject.css">
+    
 </head>
 
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <h2>Innovation University</h2>
-    <nav>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Knowledge Base</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+
            <a href="./quizzes4/parallel-computing-quiz.html">Quiz</a>
            <a href="../level4-term1-pdf.html">Courses</a>
            <a href="../level4-term1-video.html">Videos</a>
            <a href="../../iu.html">Home</a>
-    </nav>
-</header>
+    
+            </nav>
+        </div>
+    </header>
 
-<div class="container">
+<div class="container-subject">
 
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="subject-sidebar">
         <h3>Parallel Computing (8 Lectures)</h3>
 
         <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Introduction to Parallel Computing</div>
@@ -134,7 +57,7 @@
     </div>
 
     <!-- Content -->
-    <div class="content" id="content">
+    <div class="subject-content" id="content">
         <div class="placeholder">
             ⚙️ Select a lecture from the left to view its content
         </div>
@@ -187,5 +110,22 @@
     }
 </script>
 
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>

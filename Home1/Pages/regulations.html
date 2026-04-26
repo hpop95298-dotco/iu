@@ -4,40 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Regulations | IU Faculty of Computers</title>
-    <link rel="icon" type="image/png" href="../images/iu-logo.png" />
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th {
+            text-align: left;
+            padding: 15px;
+            background: rgba(var(--iu-primary-rgb), 0.3);
+            color: var(--iu-accent);
+            border-bottom: 2px solid var(--glass-border);
+        }
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid var(--glass-border);
+            color: rgba(255,255,255,0.8);
+        }
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+            color: #fff;
+        }
+    </style>
 </head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Faculty of Computers</span>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Faculty of Computers</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html" class="active">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+            </nav>
         </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="iu-details.html">About FCIT</a>
-            <a href="courses.html">Programs</a>
-            <a href="regulations.html">Regulations</a>
-            <a href="events.html">Events</a>
-            <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-        </nav>
-    </div>
-</header>
+    </header>
 
     <main class="main-content">
-        <h1 class="text-gold" style="text-align: center; margin-bottom: 50px;">Academic Regulations & Policies</h1>
+        <h1 class="animate-up" style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Academic Regulations</h1>
 
-        <div class="grid-2">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 40px;">
             <!-- Grading System -->
-            <section class="glass-card section-card">
-                <h2 class="text-gold"><i class="fas fa-percentage"></i> Grading System (GPA)</h2>
-                <div class="table-responsive" style="margin-top: 20px;">
+            <section class="glass-card animate-up">
+                <h2 style="color: var(--iu-accent); display: flex; align-items: center; gap: 15px;"><i class="fas fa-percentage"></i> Official Grading System</h2>
+                <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
@@ -47,74 +73,118 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td>A+</td><td>95% - 100%</td><td>4.00</td></tr>
-                            <tr><td>A</td><td>90% - < 95%</td><td>4.00</td></tr>
-                            <tr><td>A-</td><td>85% - < 90%</td><td>3.70</td></tr>
-                            <tr><td>B+</td><td>80% - < 85%</td><td>3.30</td></tr>
-                            <tr><td>B</td><td>75% - < 80%</td><td>3.00</td></tr>
-                            <tr><td>C+</td><td>70% - < 75%</td><td>2.70</td></tr>
-                            <tr><td>C</td><td>65% - < 70%</td><td>2.40</td></tr>
-                            <tr><td>D</td><td>60% - < 65%</td><td>2.00</td></tr>
-                            <tr><td style="color: #ff4444;">F</td><td style="color: #ff4444;">< 60%</td><td style="color: #ff4444;">0.00</td></tr>
+                            <tr><td>A+</td><td>&gt; 96%</td><td>4.00</td></tr>
+                            <tr><td>A</td><td>92% - 96%</td><td>3.70</td></tr>
+                            <tr><td>A-</td><td>88% - 92%</td><td>3.40</td></tr>
+                            <tr><td>B+</td><td>84% - 88%</td><td>3.20</td></tr>
+                            <tr><td>B</td><td>80% - 84%</td><td>3.00</td></tr>
+                            <tr><td>B-</td><td>76% - 80%</td><td>2.80</td></tr>
+                            <tr><td>C+</td><td>72% - 76%</td><td>2.60</td></tr>
+                            <tr><td>C</td><td>68% - 72%</td><td>2.40</td></tr>
+                            <tr><td>C-</td><td>64% - 68%</td><td>2.20</td></tr>
+                            <tr><td>D+</td><td>60% - 64%</td><td>2.00</td></tr>
+                            <tr><td>D</td><td>55% - 60%</td><td>1.50</td></tr>
+                            <tr><td>D-</td><td>50% - 55%</td><td>1.00</td></tr>
+                            <tr><td style="color: #ff4444;">F</td><td style="color: #ff4444;">&lt; 50%</td><td style="color: #ff4444;">0.00</td></tr>
                         </tbody>
                     </table>
+
+                    <!-- Degree Classification -->
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: var(--iu-accent); margin-bottom: 20px;">Degree Classification</h4>
+                        <table style="width: 100%; border-collapse: collapse; background: rgba(0,0,0,0.2); border-radius: 10px; overflow: hidden;">
+                            <tr style="background: rgba(var(--iu-accent-rgb), 0.1);">
+                                <th style="padding: 12px; text-align: left; color: var(--iu-accent);">Cumulative GPA</th>
+                                <th style="padding: 12px; text-align: left; color: var(--iu-accent);">Classification</th>
+                            </tr>
+                            <tr><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">3.40 - 4.00</td><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">Excellent (امتياز)</td></tr>
+                            <tr><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">2.80 - < 3.40</td><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">Very Good (جيد جداً)</td></tr>
+                            <tr><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">2.20 - < 2.80</td><td style="padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05);">Good (جيد)</td></tr>
+                            <tr><td style="padding: 12px;">2.00 - < 2.20</td><td style="padding: 12px;">Pass (مقبول)</td></tr>
+                        </table>
+                    </div>
                 </div>
             </section>
 
-            <!-- Attendance & Warning -->
+            <!-- Policies -->
             <div style="display: flex; flex-direction: column; gap: 30px;">
-                <section class="glass-card section-card">
-                    <h2 class="text-gold"><i class="fas fa-user-clock"></i> Attendance Policy</h2>
-                    <p style="margin-top: 15px;">Students must attend at least <strong>75%</strong> of the total hours for each course (lectures and labs).</p>
-                    <p style="margin-top: 10px; color: var(--text-muted);">Failure to meet this requirement may result in the student being barred from entering the final examination for that course.</p>
+                <section class="glass-card animate-up" style="animation-delay: 0.1s;">
+                    <h2 style="color: var(--iu-accent); display: flex; align-items: center; gap: 15px;"><i class="fas fa-user-clock"></i> Attendance</h2>
+                    <p style="margin-top: 20px; line-height: 1.8;">Students must attend at least <strong style="color: var(--iu-accent);">75%</strong> of the total contact hours for every course (lectures and tutorials/labs).</p>
+                    <p style="margin-top: 15px; color: var(--iu-text-muted);">Failure to meet this requirement may lead to the student being barred from final examinations.</p>
                 </section>
 
-                <section class="glass-card section-card">
-                    <h2 class="text-gold"><i class="fas fa-medal"></i> Academic Honors</h2>
-                    <p style="margin-top: 15px;">The "Honor Degree" is awarded to graduates who achieve a cumulative GPA of <strong>3.4 or higher</strong>.</p>
-                    <p style="margin-top: 10px; color: var(--text-muted);">Requirement: The student must not have failed in any course during their study at the university.</p>
+                <section class="glass-card animate-up" style="animation-delay: 0.2s;">
+                    <h2 style="color: var(--iu-accent); display: flex; align-items: center; gap: 15px;"><i class="fas fa-medal"></i> Declaration of Honor</h2>
+                    <p style="margin-top: 20px; line-height: 1.8;">To achieve the declaration of honor, a student must maintain a cumulative GPA of <strong style="color: var(--iu-accent);">3.00 or higher</strong> throughout their study.</p>
+                    <p style="margin-top: 15px; color: var(--iu-text-muted);">Requirements: No failures in any course and completion within 8 semesters.</p>
                 </section>
             </div>
         </div>
 
-        <section class="glass-card section-card" style="margin-top: 40px;">
-            <h2 class="text-gold"><i class="fas fa-graduation-cap"></i> Graduation Requirements</h2>
-            <div class="grid-3" style="margin-top: 20px;">
-                <div style="text-align: center; padding: 20px;">
-                    <div class="value" style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">145</div>
-                    <p>Total Credit Hours</p>
+        <section class="glass-card animate-up" style="animation-delay: 0.3s; margin-bottom: 80px;">
+            <h2 style="color: var(--iu-accent); text-align: center; margin-bottom: 40px;"><i class="fas fa-graduation-cap"></i> Graduation Requirements</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px;">
+                <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 3rem; color: var(--iu-accent); font-weight: 800; margin-bottom: 10px;">136</div>
+                    <p style="color: var(--iu-text-muted); font-weight: 600;">Total Credit Hours</p>
                 </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div class="value" style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">2.0</div>
-                    <p>Minimum Cumulative GPA</p>
+                <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 3rem; color: var(--iu-accent); font-weight: 800; margin-bottom: 10px;">2.0</div>
+                    <p style="color: var(--iu-text-muted); font-weight: 600;">Min Cumulative GPA</p>
                 </div>
-                <div style="text-align: center; padding: 20px;">
-                    <div class="value" style="font-size: 2.5rem; color: var(--accent); font-weight: 800;">1 Yr</div>
-                    <p>Graduation Project</p>
+                <div style="text-align: center; padding: 30px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 3rem; color: var(--iu-accent); font-weight: 800; margin-bottom: 10px;">2 Sem</div>
+                    <p style="color: var(--iu-text-muted); font-weight: 600;">Senior Project Duration</p>
+                </div>
+            </div>
+        </section>
+        <!-- Academic Rules & Load Section -->
+        <section class="glass-card animate-up" style="padding: 50px; margin-top: 40px;">
+            <h2 style="color: var(--iu-accent); margin-bottom: 30px;"><i class="fas fa-info-circle"></i> Academic Rules & Load</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border: 1px solid var(--glass-border);">
+                    <h4 style="color: var(--iu-accent); margin-bottom: 15px;">Credit Hour Load</h4>
+                    <ul style="list-style: none; padding: 0; color: var(--iu-text-muted); line-height: 1.8;">
+                        <li><i class="fas fa-caret-right" style="color: var(--iu-accent);"></i> <strong>Minimum:</strong> 12 Credit Hours per semester.</li>
+                        <li><i class="fas fa-caret-right" style="color: var(--iu-accent);"></i> <strong>Maximum:</strong> 18 Credit Hours per semester.</li>
+                        <li><i class="fas fa-caret-right" style="color: var(--iu-accent);"></i> <strong>Exceptional Load:</strong> Up to 21 hours if GPA ≥ 3.0.</li>
+                        <li><i class="fas fa-caret-right" style="color: var(--iu-accent);"></i> <strong>Academic Probation:</strong> Max 12 hours if GPA < 2.0.</li>
+                    </ul>
+                </div>
+                <div style="background: rgba(255,255,255,0.03); padding: 25px; border-radius: 15px; border: 1px solid var(--glass-border);">
+                    <h4 style="color: var(--iu-accent); margin-bottom: 15px;">Attendance Policy</h4>
+                    <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 15px;">Innovation University maintains a strict attendance policy to ensure academic success.</p>
+                    <div style="background: rgba(var(--iu-accent-rgb), 0.1); border-left: 4px solid var(--iu-accent); padding: 15px; border-radius: 4px;">
+                        <span style="color: #fff; font-weight: 700;">75% Attendance Required</span>
+                        <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-top: 5px;">Students failing to meet this threshold will be barred from final exams.</p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <footer class="main-footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <img src="../images/iu-logo.png" alt="IU Logo" style="width: 140px; margin-bottom: 30px;">
-                <p style="color: var(--text-muted); font-size: 0.95rem;">Official Academic Bylaw summary for students of the Faculty of Computers.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Support</h4>
-                <ul class="footer-links">
-                    <li><a href="iu.html">Home</a></li>
-                    <li><a href="courses.html">Programs</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
             <p>© 2026 Innovation University. All Rights Reserved.</p>
         </div>
     </footer>
 
-    <script src="../js/style.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+    </script>
 </body>
 </html>

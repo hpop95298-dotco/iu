@@ -1,17 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>University Details | Innovation University</title>
-    <link rel="icon" type="image/png" href="../images/iu-logo.png" />
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    <!-- Global CSS -->
-    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Faculty of Computers</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html" class="active">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+            </nav>
+        </div>
+    </header>
 
     <style>
         /* Local specific styles for details page */
@@ -176,166 +190,154 @@
 </header>
 
     <main class="main-content">
-        
         <!-- Hero Banner -->
-        <div class="hero-banner">
-            <div class="hero-banner-content">
-                <h1 class="text-gold">Faculty of Computers & IT</h1>
-                <p>Establishing excellence in Artificial Intelligence, Software Engineering, and Information Systems to shape the digital transformation of Egypt.</p>
+        <div class="hero-banner" style="position: relative; height: 50vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 60px; border-radius: 30px; overflow: hidden; border: 1px solid var(--glass-border);">
+            <div style="position: absolute; inset: 0; background: linear-gradient(rgba(var(--iu-primary-rgb), 0.8), rgba(var(--iu-primary-rgb), 0.4)), url('../images/event-image1.png') center/cover; z-index: 1;"></div>
+            <div class="animate-up" style="position: relative; z-index: 2; padding: 40px; max-width: 800px;">
+                <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); color: var(--iu-accent); margin-bottom: 20px;">Faculty of Computers & IT</h1>
+                <p style="font-size: 1.2rem; color: rgba(255,255,255,0.9); line-height: 1.6;">Establishing excellence in AI, Software Engineering, and Information Systems to shape the digital transformation of Egypt.</p>
             </div>
         </div>
 
         <!-- Leadership Section -->
-        <div id="leadership" class="text-center" style="margin-bottom: 30px;">
-            <h2 class="text-gold" style="font-size: 2.5rem;">Our Leadership</h2>
-            <div style="width: 60px; height: 4px; background: var(--accent); margin: 15px auto; border-radius: 2px;"></div>
-        </div>
+        <h2 class="animate-up" style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Our Leadership</h2>
 
-        <div class="staff-grid">
-            <div class="glass-card staff-card">
-                <img src="../images/prof-helmy.jpg" alt="Prof. Helmy ElGhor" class="staff-img">
-                <h3 class="staff-name">Prof. Helmy ElGhor</h3>
-                <p class="staff-desc">Vice President of Innovation University, dedicated to promoting academic excellence and strategic growth.</p>
-                <a href="#" class="btn-premium btn-primary"><i class="fab fa-linkedin"></i> Profile</a>
+        <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px;">
+            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px;">
+                <img src="../images/prof-helmy.jpg" alt="Prof. Helmy ElGhor" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
+                <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">Prof. Helmy ElGhor</h3>
+                <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Vice President of Innovation University, dedicated to promotes academic excellence and strategic growth.</p>
+                <a href="#" class="btn-premium btn-glass" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
             </div>
 
-            <div class="glass-card staff-card">
-                <img src="../images/mohamed-fahmy.jpg" alt="ENG. Mohamed Fahmy" class="staff-img">
-                <h3 class="staff-name">ENG. Mohamed Fahmy</h3>
-                <p class="staff-desc">Head of the Board of Trustees | PhD | Partner – EHAF Consulting Engineers | Education & Innovation Leader.</p>
-                <a href="#" class="btn-premium btn-primary"><i class="fab fa-linkedin"></i> Profile</a>
+            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px; animation-delay: 0.1s;">
+                <img src="../images/mohamed-fahmy.jpg" alt="ENG. Mohamed Fahmy" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
+                <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">ENG. Mohamed Fahmy</h3>
+                <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Head of the Board of Trustees | PhD | Partner – EHAF Consulting Engineers | Education & Innovation Leader.</p>
+                <a href="#" class="btn-premium btn-glass" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
             </div>
 
-            <div class="glass-card staff-card">
-                <img src="../images/lamia.png" alt="DR. Lamiaa Elrefaei" class="staff-img">
-                <h3 class="staff-name">DR. Lamiaa Elrefaei</h3>
-                <p class="staff-desc">Professor of Computer Engineering & Dean of the Faculty of Computers and Information Technology at IU.</p>
-                <a href="#" class="btn-premium btn-primary"><i class="fab fa-linkedin"></i> Profile</a>
+            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px; animation-delay: 0.2s;">
+                <img src="../images/lamia.png" alt="DR. Lamiaa Elrefaei" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
+                <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">DR. Lamiaa Elrefaei</h3>
+                <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Professor of Computer Engineering & Dean of the Faculty of Computers and Information Technology at IU.</p>
+                <a href="#" class="btn-premium btn-glass" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
             </div>
         </div>
 
-        <!-- Faculty Goals Section -->
-        <div class="feature-row">
-            <div class="feature-content glass-card section-card">
-                <h2 class="text-gold" style="margin-bottom: 25px; font-size: 2rem;">Our Strategic Goals</h2>
-                <div class="feature-list">
-                    <p><i class="fas fa-star" style="color: var(--accent); margin-right: 10px;"></i> Excellence in IT education based on core competencies and global standards.</p>
-                    <p><i class="fas fa-handshake" style="color: var(--accent); margin-right: 10px;"></i> Strengthening partnerships with industry leaders for job-market readiness.</p>
-                    <p><i class="fas fa-flask" style="color: var(--accent); margin-right: 10px;"></i> Promoting research, AI development, and technical innovation.</p>
-                    <p><i class="fas fa-desktop" style="color: var(--accent); margin-right: 10px;"></i> Supporting digital transformation in alignment with Egypt Vision 2030.</p>
-                </div>
+        <!-- Vision & Mission Section -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px;">
+            <div class="glass-card animate-up" style="padding: 40px; border-left: 5px solid var(--iu-accent);">
+                <h2 style="color: var(--iu-accent); margin-bottom: 20px;"><i class="fas fa-eye"></i> Our Vision</h2>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.1rem;">
+                    The Faculty of Computers and Information Technology shall achieve excellence in the fields of information systems, computer science, artificial intelligence, and digital informatics, and that we be creative in developing the learning journey for students who are the focus of the educational process, and that we have leadership in our specialty at the local and regional levels.
+                </p>
             </div>
-            <div class="feature-image-container">
-                <div class="glass-card section-card" style="padding: 20px;">
-                    <h4 class="text-gold">Dean's Message</h4>
-                    <p style="font-size: 0.85rem; font-style: italic; color: var(--text-muted);">"Our commitment is to innovation and excellence. We bridge the gap between academic theory and the rapidly evolving tech market."</p>
-                    <p style="font-size: 0.8rem; margin-top: 10px; color: var(--accent);">Prof. Dr. Helmy ElGhor</p>
-                </div>
+            <div class="glass-card animate-up" style="padding: 40px; border-left: 5px solid var(--iu-primary); animation-delay: 0.1s;">
+                <h2 style="color: var(--iu-accent); margin-bottom: 20px;"><i class="fas fa-bullseye"></i> Our Mission</h2>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.1rem;">
+                    The Faculty is committed to providing students with basic knowledge and skills and providing an educational environment conducive to innovation in the field of computers and digital informatics with a balance between the ethical, professional, technical, and scientific aspects, and graduating highly competitive professionals and to contribute to advancing technological development in all its aspects for Egypt.
+                </p>
             </div>
         </div>
 
-        <!-- Curriculum Highlights -->
-        <section class="main-content" style="padding-top: 50px;">
-            <h2 class="text-gold" style="text-align: center; margin-bottom: 40px;">Academic Path Overview</h2>
-            <div class="grid-stats">
-                <div class="glass-card section-card">
-                    <h4 class="text-gold"><i class="fas fa-layer-group"></i> Foundation Year</h4>
-                    <ul class="footer-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                        <li>Math (1, 2, 3) & Physics</li>
-                        <li>Electronics & Digital Logic</li>
-                        <li>Introduction to Programming</li>
-                    </ul>
-                </div>
-                <div class="glass-card section-card">
-                    <h4 class="text-gold"><i class="fas fa-microchip"></i> Core Computing</h4>
-                    <ul class="footer-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                        <li>Data Structures & Algorithms</li>
-                        <li>Database Management Systems</li>
-                        <li>Operating Systems & Networks</li>
-                    </ul>
-                </div>
-                <div class="glass-card section-card">
-                    <h4 class="text-gold"><i class="fas fa-robot"></i> Advanced Tech</h4>
-                    <ul class="footer-links" style="font-size: 0.9rem; color: var(--text-muted);">
-                        <li>Artificial Intelligence & ML</li>
-                        <li>Software Engineering & DevOps</li>
-                        <li>Cybersecurity & Digital Forensics</li>
-                    </ul>
-                </div>
+        <!-- Strategic Objectives Section -->
+        <section class="glass-card animate-up" style="padding: 60px; margin-bottom: 80px;">
+            <h2 style="color: var(--iu-accent); text-align: center; margin-bottom: 50px; font-size: 2.5rem;">Strategic Objectives</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 20px;">
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing competitiveness through an advanced educational system that suits rapid growth in IT fields.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing scientific creativity to keep pace with modern scientific trends in specialization.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing innovation and creativity skills for our students.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Providing a standard environment and a typical climate for the educational process.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing practical creativity to keep pace with the requirements of specialized institutions.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing communication and teamwork skills.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing business management and leadership skills.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing students’ awareness of ethical standards.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>The ability to self-learn for life.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>The ability of dynamism, agility, resilience, and flexibility.</span></div>
             </div>
-            <p style="text-align: center; color: var(--text-muted);">Total of 136 Credit Hours including a 1-year Graduation Project.</p>
         </section>
 
-        <!-- Dean's Message -->
-        <div class="feature-row" style="flex-direction: row-reverse;">
-            <div class="feature-content glass-card section-card">
-                <h2 class="text-gold" style="margin-bottom: 25px; font-size: 2rem;">Dean's Message</h2>
-                <div class="feature-list">
-                    <p><strong>Coding the Future:</strong> At FCIT, we don't just teach technology; we inspire innovation. Our goal is to transform the dreams of our nation into global digital realities.</p>
-                    <p>By joining our family, you unleash limitless creativity and embark on a journey of daily challenges to learn, innovate, and share knowledge that impacts the world.</p>
+        <style>
+            .obj-item {
+                display: flex;
+                gap: 15px;
+                padding: 15px;
+                background: rgba(255,255,255,0.02);
+                border-radius: 12px;
+                border: 1px solid var(--glass-border);
+                transition: var(--transition);
+            }
+            .obj-item:hover {
+                background: rgba(var(--iu-accent-rgb), 0.05);
+                transform: translateX(10px);
+            }
+            .obj-item i {
+                color: var(--iu-accent);
+                margin-top: 5px;
+            }
+            .obj-item span {
+                color: rgba(255,255,255,0.85);
+                line-height: 1.5;
+            }
+        </style>
+
+        <!-- Curriculum Highlights -->
+        <section style="margin-bottom: 80px;">
+            <h2 style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 2.5rem;">Academic Path Overview</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="glass-card animate-up">
+                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-layer-group"></i> Foundation (Level 1)</h4>
+                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">A general foundation year shared across programs to build core logic and technical skills.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Intro to Programming & OOP</li>
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Math, Physics & Logic</li>
+                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Professional English & Soft Skills</li>
+                    </ul>
+                </div>
+                <div class="glass-card animate-up" style="animation-delay: 0.1s;">
+                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-microchip"></i> Specialization (Levels 2-3)</h4>
+                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Deep diving into specific program tracks and master core computing technologies.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Data Structures & DBMS</li>
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> OS & Computer Networks</li>
+                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Web & Mobile Development</li>
+                    </ul>
+                </div>
+                <div class="glass-card animate-up" style="animation-delay: 0.2s;">
+                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-graduation-cap"></i> Professional Exit (Level 4)</h4>
+                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Advanced electives and industry-ready projects to prepare for the global market.</p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> AI, Cloud & Cybersecurity</li>
+                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Specialized Program Electives</li>
+                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Capstone Project (1 & 2)</li>
+                    </ul>
                 </div>
             </div>
-            <div class="feature-image-container">
-                <img src="../images/computer-science-4.jpg" alt="Dean Message">
-            </div>
-        </div>
+        </section>
 
     </main>
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Faculty of Computers & IT. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<footer class="main-footer">
-    <div class="footer-grid">
-        <div class="footer-col">
-            <img src="../images/iu-logo.png" alt="IU Logo" style="width: 120px; margin-bottom: 20px;">
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Innovation University is a forward-thinking institution dedicated to shaping the future through cutting-edge research and transformative education.</p>
-        </div>
-        <div class="footer-col">
-            <h4>Quick Links</h4>
-            <ul class="footer-links">
-                <li><a href="iu.html">Home</a></li>
-                <li><a href="iu-details.html">About Us</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="login.html">Admission</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Academics</h4>
-            <ul class="footer-links">
-                <li><a href="#">Computer Science</a></li>
-                <li><a href="#">Information Systems</a></li>
-                <li><a href="#">Artificial Intelligence</a></li>
-                <li><a href="#">Digital Informatics</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h4>Get In Touch</h4>
-            <ul class="footer-links">
-                <li><i class="fas fa-phone" style="color: var(--accent); margin-right: 10px;"></i> Hotline: 16856</li>
-                <li><i class="fas fa-envelope" style="color: var(--accent); margin-right: 10px;"></i> info@iu.edu.eg</li>
-                <li><i class="fas fa-map-marker-alt" style="color: var(--accent); margin-right: 10px;"></i> 10th of Ramadan City, Egypt</li>
-            </ul>
-        </div>
-    </div>
-    <div class="footer-bottom">
-        <p>© 2026 Innovation University — Faculty of Computers & IT. All Rights Reserved.</p>
-    </div>
-</footer>
-
-    <script src="../js/style.js"></script>
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
                 setTimeout(() => {
                     preloader.style.opacity = '0';
                     setTimeout(() => preloader.style.display = 'none', 500);
-                }, 800);
+                }, 500);
             }
         });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
     </script>
 </body>
 </html>

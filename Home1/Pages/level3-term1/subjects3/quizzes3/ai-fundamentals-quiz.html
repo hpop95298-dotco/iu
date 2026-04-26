@@ -8,155 +8,24 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-<style>
-:root{
-  --neon-blue:#00c3ff;
-  --neon-dark:#071a2f;
-}
 
-body{
-  margin:0;
-  font-family:'Inter',sans-serif;
-  min-height:100vh;
-  display:flex;
-  color:rgb(255, 255, 255);
-  overflow-x:hidden;
-  background: var(--neon-dark);
-}
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:url('../../../../images/img.jpg') center/cover no-repeat;
-  filter:blur(6px) brightness(0.8);
-  transform:scale(1.1);
-  z-index:-1;
-}
 
-/* Sidebar */
-.sidebar{
-  width:220px;
-  background:rgba(0,0,0,0.4);
-  backdrop-filter:blur(12px);
-  border-right:1px solid rgba(255,255,255,0.1);
-  padding:20px;
-  box-sizing:border-box;
-}
-.sidebar h2{text-align:center;margin-bottom:20px;font-size:20px;color:#7fdcff;}
-.sidebar ul{list-style:none;padding:0;}
-.sidebar li{
-  margin:15px 0;
-  cursor:pointer;
-  padding:8px 10px;
-  border-radius:8px;
-  transition:0.3s;
-}
-.sidebar li:hover, .sidebar li.active{
-  background:rgba(127,220,255,0.2);
-  color:#00c3ff;
-}
-
-/* Main Area */
-.main{
-  flex:1;
-  padding:40px;
-  box-sizing:border-box;
-}
-.main h1{
-  text-align:center;
-  margin-bottom:25px;
-  font-size:28px;
-  color:rgb(255, 255, 255);
-}
-
-/* Quiz Card (Neon Glass) */
-.quiz-card{
-  background:rgba(255, 255, 255, 0.16);
-  backdrop-filter:blur(12px);
-  border-radius:18px;
-  padding:25px;
-  margin-top:20px;
-  border:1px solid rgba(0, 195, 255, 0.73);
-  box-shadow:0 0 5px #29aad2;
-  max-width:915px;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-/* Quiz Header */
-.quiz-header span{ color: #7fdcff; font-weight:600; letter-spacing:1px; }
-.quiz-header h3{ color:#dff5ff; margin-top:5px; font-weight:700; }
-
-/* Progress Bar */
-.progress { background: rgba(255,255,255,0.2); border-radius:20px; height:10px; margin:15px 0; }
-.progress-bar { display:block; height:100%; background:linear-gradient(90deg,#00c3ff,#008cff); transition:0.3s; }
-
-/* Question & Options */
-.question-count{ font-size:14px; color:#7fdcff; margin-bottom:10px; }
-.option{
-  border: 1.5px solid rgba(255,255,255,0.3);
-  padding:12px 14px;
-  border-radius:12px;
-  margin-bottom:12px;
-  cursor:pointer;
-  transition:0.3s;
-  display:block;
-}
-.option:hover{ background: rgba(0,195,255,0.1); border-color: var(--neon-blue); }
-.option input{ margin-right:10px; }
-
-/* Buttons */
-.btn-next, .back-btn, .btn-secondary{
-  background: var(--neon-blue);
-  color:#00111a;
-  border-radius:30px;
-  padding:10px 20px;
-  font-weight:600;
-  border:none;
-  cursor:pointer;
-  margin-top:10px;
-}
-.btn-next:hover, .back-btn:hover, .btn-secondary:hover{
-  background:#00f0ff;
-  color:#000;
-}
-
-/* Result Styles */
-.correct { background-color: #d4edda; color: green; font-weight:bold; padding:8px; border-radius:6px; margin-bottom:5px; }
-.wrong { background-color: #f8d7da; color: red; font-weight:bold; padding:8px; border-radius:6px; margin-bottom:5px; }
-.explanation{ font-style:italic; color:#7fdcff; margin-top:5px; }
-
-/* Back Buttons fixed */
-.back-btn-fixed{
-  position:fixed;
-  top:15px;
-  right:15px;
-  padding:8px 18px;
-  border-radius:50px;
-  background:rgba(0,0,0,0.5);
-  backdrop-filter:blur(6px);
-  color:#7fdcff;
-  border:1px solid rgba(255,255,255,0.2);
-  cursor:pointer;
-  z-index:1000;
-  transition:0.3s;
-}
-.back-btn-fixed:hover{ background:rgba(0,195,255,0.2); color:#00c3ff; }
-
-@media(max-width:800px){
-  body{flex-direction:column;}
-  .sidebar{width:100%;display:flex;overflow-x:auto;padding:10px;}
-  .sidebar ul{display:flex;}
-  .sidebar li{margin:0 10px;}
-  .main{padding:20px;}
-}
-</style>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../../css/subject.css">
+    
 </head>
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
 <div class="back-btn-fixed" onclick="goToLevels()">🏠 Back </div>
 
-<div class="sidebar">
+<div class="subject-sidebar">
   <h2>Fundamentals of AI</h2>
   <ul id="quizList">
     <li class="active" onclick="showQuiz(0)">Quiz 1</li>
@@ -266,5 +135,22 @@ function reviewAnswers(){
 
 showQuiz(0);
 </script>
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 800);
+            }
+        });
+    </script>
 </body>
 </html>

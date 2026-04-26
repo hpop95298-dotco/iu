@@ -1,233 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Courses Videos</title>
-<link href="../../css/bootstrap.min.css" rel="stylesheet">
-<style>
- body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: rgba(143, 143, 143, 0.33);
- }
-
- body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('../../images/img.jpg') center / cover no-repeat;
-    filter: blur(3px);
-    transform: scale(1.1);
-    z-index: -1;
- }
-
-header {
-    padding: 15px 40px;
-    background: rgba(0, 26, 85, 0.9);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: white;
-}
-
-header a {
-    color: white;
-    margin-left: 20px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 50px auto;
-}
-
-h1 {
-    font-size: 40px;
-    color: #0a3d62;
-    margin-bottom: 25px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-
-h2 {
-    font-size: 27px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-
-h4 {
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 17px;
-    text-shadow: 0 0 9px #ffffff;
-    font-weight: 600;
-    text-align: center;
-}
-
-.courses {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 37px;
-    justify-items: center;
-}
-
-/* ===== CARD ===== */
-.card {
-    background: rgba(184, 184, 184, 0.22);
-    backdrop-filter: blur(4px); /
-    border-radius: 23px;
-    box-shadow: 0 4px 15px #002b5b;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 350px;
-    color: rgb(0, 22, 71);
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px #1c5390;
-}
-
-.card-header {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px 15px 0 0;
-    font-size: 32px;
-    color: white;
-}
-
-.card-body {
-    padding: 20px;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    background: transparent;
-}
-
-.card h3 {
-    margin: 10px 0 5px;
-    font-size: 18px;
-    font-weight: 600;
-}
-
-.card p {
-    flex-grow: 1;
-    font-size: 14px;
-    line-height: 1.4;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-.card .btn {
-    margin-top: 15px;
-    background: #0a3c74;
-    color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.3s;
-}
-
-.card .btn:hover {
-    background: #002b5b;
-    transform: scale(1.05);
-}
-
-@media (max-width: 768px) {
-    .courses {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Stream | Level 03</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .video-card { border-radius: 20px; overflow: hidden; background: var(--glass-bg); border: 1px solid var(--glass-border); transition: var(--transition-smooth); display: flex; flex-direction: column; }
+        .video-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+        .video-thumbnail { height: 180px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--glass-border); }
+        .play-btn { width: 60px; height: 60px; background: rgba(253, 185, 19, 0.2); border: 2px solid var(--iu-accent); border-radius: 50%; color: var(--iu-accent); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); cursor: pointer; }
+        .video-card:hover .play-btn { background: var(--iu-accent); color: var(--iu-primary); transform: scale(1.1); }
+        .video-info { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .video-info h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .video-info p { color: var(--iu-text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; flex: 1; }
+    </style>
 </head>
-<body>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<header>
-    <div> <h2> Innovation University </h2>
- </div>
-    <div>
-<h4>
-             <a href="level3-term1-pdf.html">PDF</a>
-             <a href="./level3-quizzes.html">Quizzes</a>
-              <a href="../select-level.html">Levels</a>
-              <a href="../iu.html">Home</a>
-       </h4>
-    </div>
-</header>
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Media Stream</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level3-term1-pdf.html">Library</a>
+                <a href="level3-quizzes.html">Quizzes</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
+        </div>
+    </header>
 
-<div class="container">
-    <h1>Welcome to the Academic Video Library!</h1>
-    <p class="text"> Start your learning journey now. You can return to the courses list anytime. </p>
-    <div class="courses">
+    <main class="main-content">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="background: var(--iu-accent); color: var(--iu-primary); padding: 5px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px;">LEVEL 03</span>
+                <h1 class="animate-up" style="margin-top: 15px; margin-bottom: 10px; color: var(--iu-accent); font-size: 3rem; text-shadow: 0 5px 25px rgba(0,0,0,0.6);">Video Stream</h1>
+                <p class="animate-up" style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Watch recorded lectures and practical sessions.</p>
+            </div>
 
-        <!-- Introduction to Theoretical Computer Science -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">💻</div>
-            <div class="card-body">
-                <h3>Introduction to Theoretical Computer Science</h3>
-                <p>Learn the mathematical and theoretical foundations of computing.</p>
-                <button class="btn" onclick="window.location.href='./subjects3/Videos3/theoretical-computer-science-ved.html'">View</button>
+            <div class="video-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- AI -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>AI Lectures</h3>
+                        <p>Watch practical implementations of search algorithms and neural networks.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- Software Eng -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Software Eng</h3>
+                        <p>Tutorials on UML design, software architecture, and agile sprints.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- Networks -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Computer Networks</h3>
+                        <p>Packet Tracer labs and practical networking configurations.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- DB Systems -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Database Systems</h3>
+                        <p>Live coding sessions on SQL queries and schema design.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
             </div>
         </div>
+    </main>
 
-        <!-- Web Application Development -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">🌐</div>
-            <div class="card-body">
-                <h3>Web Application Development</h3>
-                <p>Build modern web apps using HTML, CSS, and JavaScript frameworks.</p>
-                <button class="btn" onclick="window.location.href='./subjects3/Videos3/web-development-ved.html'">View</button>
-            </div>
+    <footer class="main-footer" style="padding: 30px 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border); margin-top: 50px;">
+        <div style="text-align: center; color: var(--iu-text-muted); font-size: 0.85rem;">
+            <p>© 2026 Innovation University — Academic Excellence Hub.</p>
         </div>
+    </footer>
 
-        <!-- Data Visualization and Analytics -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">📊</div>
-            <div class="card-body">
-                <h3>Data Visualization and Analytics</h3>
-                <p>Visualize and analyze data to extract meaningful insights.</p>
-                <button class="btn" onclick="window.location.href='./subjects3/Videos3/data-visualization-ved.html'">View</button>
-            </div>
-        </div>
-
-        <!-- Fundamentals of Artificial Intelligence -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">🤖</div>
-            <div class="card-body">
-                <h3>Fundamentals of Artificial Intelligence</h3>
-                <p>Understand AI concepts, algorithms, and practical applications.</p>
-                <button class="btn" onclick="window.location.href='./subjects3/Videos3/ai-fundamentals-ved.html'">View</button>
-            </div>
-        </div>
-
-        <!-- Software Engineering -->
-        <div class="card">
-            <div class="card-header" style="background: linear-gradient(135deg, #0040a6, #002b5b);">💻</div>
-            <div class="card-body">
-                <h3>Software Engineering</h3>
-                <p>Learn software design, development, and maintenance principles.</p>
-                <button class="btn" onclick="window.location.href='./subjects3/Videos3/software-engineering-ved.html'">View</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+</script>
 </body>
 </html>

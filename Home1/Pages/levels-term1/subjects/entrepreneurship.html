@@ -1,201 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Entrepreneurship &amp; Innovation</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        margin: 0;
-        font-family: 'Inter', sans-serif;
-        background: rgba(143, 143, 143, 0.33);
-    }
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background: url('../../../images/img.jpg') center / cover no-repeat;
-        filter: blur(3px);
-        transform: scale(1.1);
-        z-index: -1;
-    }
-
-    header {
-        padding: 18px 60px;
-        background: rgba(0, 26, 85, 0.9);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    header h2 {
-        color: white;
-        margin: 0;
-    }
-
-    nav a {
-        margin-left: 20px;
-        text-decoration: none;
-        color: #ffffff;
-        font-weight: 600;
-    }
-
-    .container {
-        max-width: 1200px;
-        margin: 40px auto;
-        display: grid;
-        grid-template-columns: 300px 1fr;
-        gap: 30px;
-    }
-
-    /* Sidebar */
-    .sidebar {
-        background: rgba(206, 206, 206, 0.23);
-        border-radius: 15px;
-        padding: 12px;
-        box-shadow: 0 4px 15px rgb(0, 26, 85);
-    }
-
-    .sidebar h3 {
-        text-align: center;
-        color: rgba(13, 42, 107, 0.85);
-        margin-top: 0;
-    }
-
-    .lecture-item {
-        padding: 10px;
-        margin-bottom: 8px;
-        background: rgba(7, 36, 102, 0.9);
-        color: white;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: 0.3s;
-        font-size: 14px;
-    }
-
-    .lecture-item:hover {
-        background: #002e94;
-        transform: scale(1.03);
-    }
-
-    /* Content */
-    .content {
-        background: rgba(215, 215, 215, 0.48);
-        border-radius: 15px;
-        padding: 30px;
-        min-height: 350px;
-        box-shadow: 0 0px 16px rgba(0, 33, 107, 0.85);
-    }
-
-    .placeholder {
-        text-align: center;
-        color: #555;
-        font-size: 18px;
-        margin-top: 120px;
-    }
-
-    @media (max-width: 900px) {
-        .container {
-            grid-template-columns: 1fr;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Console | Entrepreneurship & Innovation</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../../css/core/base.css">
+    <link rel="stylesheet" href="../../../css/core/layout.css">
+    <link rel="stylesheet" href="../../../css/core/components.css">
+    <link rel="stylesheet" href="../../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .console-layout { display: flex; gap: 30px; margin: 40px 0; align-items: flex-start; }
+        .console-sidebar { width: 320px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 30px; }
+        .lecture-list { list-style: none; padding: 0; }
+        .lecture-btn { width: 100%; text-align: left; padding: 15px 20px; border-radius: 12px; margin-bottom: 12px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); color: #fff; cursor: pointer; transition: var(--transition-smooth); display: flex; align-items: center; gap: 12px; }
+        .lecture-btn:hover { border-color: var(--iu-accent); background: rgba(var(--iu-accent-rgb), 0.1); }
+        .lecture-btn.active { background: var(--iu-accent); color: var(--iu-primary); font-weight: 700; box-shadow: 0 0 15px var(--iu-accent-glow); border-color: var(--iu-accent); }
+        .lecture-btn i { font-size: 1rem; opacity: 0.7; }
+        .console-main { flex: 1; min-height: 500px; padding: 50px; position: relative; overflow: hidden; }
+        .content-placeholder { text-align: center; color: var(--iu-text-muted); margin-top: 100px; }
+        .content-placeholder i { font-size: 4rem; opacity: 0.3; margin-bottom: 20px; display: block; }
+        
+        @media (max-width: 992px) {
+            .console-layout { flex-direction: column; }
+            .console-sidebar { width: 100%; position: relative; top: 0; max-height: none; }
         }
-    }
-</style>
+    </style>
 </head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
 
-<body>
-
-<header>
-    <h2>Innovation University</h2>
-    <nav>
-      <a href="../quizzes/enterprenurship-quiz.html">quiz</a>
-     <a href="../level1-term1-pdf.html">courses</a>
-        <a href="../level1-term1-video.html">Videos</a>
-        <a href="../../iu.html">Home</a>
-    </nav>
-</header>
-
-<div class="container">
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h3>Entrepreneurship &amp; Innovation</h3>
-
-        <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Introduction to Entrepreneurship</div>
-        <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Entrepreneurial Mindset</div>
-        <div class="lecture-item" onclick="showLecture(2)">Lecture 3 – Innovation Concepts</div>
-        <div class="lecture-item" onclick="showLecture(3)">Lecture 4 – Business Ideas & Creativity</div>
-        <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Market Analysis</div>
-        <div class="lecture-item" onclick="showLecture(5)">Lecture 6 – Business Models</div>
-        <div class="lecture-item" onclick="showLecture(6)">Lecture 7 – Startups & SMEs</div>
-        <div class="lecture-item" onclick="showLecture(7)">Lecture 8 – Innovation Strategies</div>
-        <div class="lecture-item" onclick="showLecture(8)">Lecture 9 – Risk & Opportunity</div>
-        <div class="lecture-item" onclick="showLecture(9)">Lecture 10 – Case Studies</div>
-    </div>
-
-    <!-- Content -->
-    <div class="content" id="content">
-        <div class="placeholder">
-            💡 Select a lecture from the left to view its content
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Course Console</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="../quizzes/enterprenurship-quiz.html">Take Quiz</a>
+                <a href="../level1-term1-pdf.html">All Courses</a>
+                <a href="../level1-term1-video.html">Video Hub</a>
+                <a href="../../iu.html" class="btn-premium btn-accent" style="padding: 8px 18px; margin-left: 15px;">Home</a>
+            </nav>
         </div>
-    </div>
+    </header>
 
-</div>
+    <main class="main-content">
+        <div class="container">
+            <div class="animate-up" style="margin-bottom: 30px;">
+                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">Entrepreneurship & Innovation</h1>
+                <p style="color: var(--iu-text-muted);">Foundation Alpha | Academic Year 2026</p>
+            </div>
 
-<script>
-    const lectures = [
-        {
-            title: "Lecture 1 – Introduction to Entrepreneurship",
-            content: "Entrepreneurship is the process of creating value by identifying opportunities and taking risks."
-        },
-        {
-            title: "Lecture 2 – Entrepreneurial Mindset",
-            content: "An entrepreneurial mindset focuses on creativity, problem-solving, and innovation."
-        },
-        {
-            title: "Lecture 3 – Innovation Concepts",
-            content: "Innovation is the application of new ideas that create value."
-        },
-        {
-            title: "Lecture 4 – Business Ideas & Creativity",
-            content: "Creative thinking helps generate successful business ideas."
-        },
-        {
-            title: "Lecture 5 – Market Analysis",
-            content: "Market analysis helps understand customers, competitors, and opportunities."
-        },
-        {
-            title: "Lecture 6 – Business Models",
-            content: "A business model explains how a company creates and delivers value."
-        },
-        {
-            title: "Lecture 7 – Startups & SMEs",
-            content: "Startups and SMEs play a key role in economic growth."
-        },
-        {
-            title: "Lecture 8 – Innovation Strategies",
-            content: "Innovation strategies guide organizations toward sustainable success."
-        },
-        {
-            title: "Lecture 9 – Risk & Opportunity",
-            content: "Entrepreneurs manage risks while seeking new opportunities."
-        },
-        {
-            title: "Lecture 10 – Case Studies",
-            content: "Real-world case studies help understand entrepreneurship and innovation in practice."
+            <div class="console-layout animate-up" style="animation-delay: 0.1s;">
+                <!-- Sidebar -->
+                <aside class="glass-card console-sidebar">
+                    <h3 style="font-size: 1.1rem; color: var(--iu-accent); margin-bottom: 25px; letter-spacing: 1px;">CURRICULUM</h3>
+                    <div class="lecture-list" id="lectureList"></div>
+                </aside>
+
+                <!-- Core Content -->
+                <div class="glass-card console-main" id="lectureContent">
+                    <div class="content-placeholder">
+                        <i class="fas fa-lightbulb"></i>
+                        <h2>Architect your future</h2>
+                        <p>Select an innovation module from the curriculum sidebar to access strategy guides.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
+            <p>© 2026 Innovation University — Entrepreneurial Hub.</p>
+        </div>
+    </footer>
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Intro to Entrepreneurship", icon: "fa-rocket", content: "Entrepreneurship is the process of creating value by identifying opportunities and taking calculated risks to build sustainable organizations." },
+            { title: "Lecture 2: Entrepreneurial Mindset", icon: "fa-brain", content: "Cultivating a mindset focused on resilience, creative problem-solving, and the ability to pivot in dynamic market conditions." },
+            { title: "Lecture 3: Innovation Concepts", icon: "fa-bolt", content: "Defining innovation as the practical application of new ideas that result in improved products, services, or methodology." },
+            { title: "Lecture 4: Business Creativity", icon: "fa-paint-brush", content: "Strategies for generating breakthrough ideas and leveraging creativity as a competitive advantage in business development." },
+            { title: "Lecture 5: Market Analysis", icon: "fa-chart-pie", content: "Systematic data collection and evaluation of market size, competition, and customer behavior to inform strategic decisions." },
+            { title: "Lecture 6: Business Models", icon: "fa-layer-group", content: "Designing the logic of how an organization creates, delivers, and captures value through structured business modeling." },
+            { title: "Lecture 7: Startups & SMEs", icon: "fa-seedling", content: "Analyzing the lifecycle of early-stage ventures and the critical role of small and medium enterprises in global economic ecosystems." },
+            { title: "Lecture 8: Innovation Strategies", icon: "fa-chess-knight", content: "Frameworks for integrating innovation into organizational DNA to achieve long-term growth and market disruption." },
+            { title: "Lecture 9: Risk & Opportunity", icon: "fa-balance-scale", content: "Techniques for assessing potential hazards versus market opportunities to maximize entrepreneurial success rates." },
+            { title: "Lecture 10: Case Studies", icon: "fa-briefcase", content: "In-depth review of successful global startups and internal innovation projects from across the technology sector." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
         }
-    ];
 
-    function showLecture(index) {
-        const content = document.getElementById("content");
-        content.innerHTML = `
-            <h1>${lectures[index].title}</h1>
-            <p>${lectures[index].content}</p>
-        `;
-    }
-</script>
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Strategy Portal</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official strategy frameworks and module notes for your venture development.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
 
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
 </body>
 </html>

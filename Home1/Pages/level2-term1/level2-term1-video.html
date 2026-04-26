@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Stream | Level 02</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../../css/core/tokens.css">
+    <link rel="stylesheet" href="../../css/core/base.css">
+    <link rel="stylesheet" href="../../css/core/layout.css">
+    <link rel="stylesheet" href="../../css/core/components.css">
+    <link rel="stylesheet" href="../../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
+        .video-card { border-radius: 20px; overflow: hidden; background: var(--glass-bg); border: 1px solid var(--glass-border); transition: var(--transition-smooth); display: flex; flex-direction: column; }
+        .video-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
+        .video-thumbnail { height: 180px; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid var(--glass-border); }
+        .play-btn { width: 60px; height: 60px; background: rgba(253, 185, 19, 0.2); border: 2px solid var(--iu-accent); border-radius: 50%; color: var(--iu-accent); font-size: 1.5rem; display: flex; align-items: center; justify-content: center; transition: var(--transition-smooth); cursor: pointer; }
+        .video-card:hover .play-btn { background: var(--iu-accent); color: var(--iu-primary); transform: scale(1.1); }
+        .video-info { padding: 25px; flex: 1; display: flex; flex-direction: column; }
+        .video-info h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
+        .video-info p { color: var(--iu-text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 20px; flex: 1; }
+    </style>
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Media Stream</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="level2-term1-pdf.html">Library</a>
+                <a href="level2-quizzes.html">Quizzes</a>
+                <a href="../select-level.html">Levels</a>
+                <a href="../iu.html" class="btn-premium btn-accent" style="padding: 8px 20px; margin-left: 20px;">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <span style="background: var(--iu-accent); color: var(--iu-primary); padding: 5px 20px; border-radius: 50px; font-size: 0.8rem; font-weight: 800; letter-spacing: 1px;">LEVEL 02</span>
+                <h1 class="animate-up" style="margin-top: 15px; margin-bottom: 10px; color: var(--iu-accent); font-size: 3rem; text-shadow: 0 5px 25px rgba(0,0,0,0.6);">Video Stream</h1>
+                <p class="animate-up" style="color: rgba(255,255,255,0.7); font-size: 1.1rem;">Watch recorded lectures and practical sessions.</p>
+            </div>
+
+            <div class="video-grid animate-up" style="animation-delay: 0.1s;">
+                <!-- OOP -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>OOP Lectures</h3>
+                        <p>Watch full recordings of Object-Oriented Programming theory and lab sessions.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- Data Structures -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Structures</h3>
+                        <p>Visual explanations of algorithms, trees, and complexity analysis.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- Logic Design -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Logic Design</h3>
+                        <p>Hardware simulation sessions and boolean algebra tutorials.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+
+                <!-- Discrete Math -->
+                <div class="video-card glass-card">
+                    <div class="video-thumbnail">
+                        <div class="play-btn"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Discrete Math</h3>
+                        <p>Step-by-step problem solving for sets, logic, and graph theory.</p>
+                        <button class="btn-premium btn-glass" style="width: 100%;" onclick="alert('Player loading...')">Watch Series</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="main-footer" style="padding: 30px 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border); margin-top: 50px;">
+        <div style="text-align: center; color: var(--iu-text-muted); font-size: 0.85rem;">
+            <p>© 2026 Innovation University — Academic Excellence Hub.</p>
+        </div>
+    </footer>
+
+<script>
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+</script>
+</body>
+</html>
