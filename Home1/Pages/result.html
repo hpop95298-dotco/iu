@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Results | Innovation University</title>
+    <!-- Design System Core -->
+    <link rel="stylesheet" href="../css/core/tokens.css">
+    <link rel="stylesheet" href="../css/core/base.css">
+    <link rel="stylesheet" href="../css/core/layout.css">
+    <link rel="stylesheet" href="../css/core/components.css">
+    <link rel="stylesheet" href="../css/core/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    
+    <style>
+        .results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 80px;
+        }
+
+        .academic-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .summary-card {
+            padding: 30px;
+            text-align: center;
+            border-radius: 24px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(20px);
+            transition: var(--transition-smooth);
+        }
+
+        .summary-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--iu-accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .summary-val {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--iu-accent);
+            margin-bottom: 5px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .summary-label {
+            font-size: 0.85rem;
+            color: var(--iu-text-muted);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        .results-table-card {
+            margin-bottom: 50px;
+            overflow: hidden;
+        }
+
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .results-table th {
+            text-align: left;
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            color: var(--iu-accent);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .results-table td {
+            padding: 20px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.95rem;
+        }
+
+        .grade-badge {
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-weight: 800;
+            font-size: 0.8rem;
+        }
+
+        .grade-a { background: rgba(34, 197, 94, 0.1); color: #22c55e; border: 1px solid #22c55e; }
+        .grade-b { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border: 1px solid #3b82f6; }
+        .grade-c { background: rgba(249, 115, 22, 0.1); color: #f97316; border: 1px solid #f97316; }
+
+        .charts-row {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 30px;
+        }
+
+        @media (max-width: 992px) {
+            .charts-row { grid-template-columns: 1fr; }
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body class="faculty-theme">
+    <div id="preloader"><div class="spinner"></div></div>
+
+    <header>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span>IU | Student Results</span>
+            </div>
+            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+            <nav id="navMenu">
+                <a href="iu.html">Home</a>
+                <a href="dashboard-STU.html">Dashboard</a>
+                <a href="result.html" class="active">Results</a>
+                <a href="attendance.html">Attendance</a>
+                <a href="#" id="logoutBtn" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="results-container">
+        <div class="animate-up" style="margin-bottom: 50px;">
+            <h1 style="color: var(--iu-accent); font-size: 3rem; font-weight: 900; margin-bottom: 10px;">Academic Performance</h1>
+            <p style="color: var(--iu-text-muted); font-size: 1.1rem;">Official statement of results for the current academic cycle.</p>
+        </div>
+
+        <div class="action-btns animate-up" style="animation-delay: 0.1s;">
+            <button class="btn-premium btn-accent" onclick="window.print()">
+                <i class="fas fa-print"></i> Print Transcript
+            </button>
+            <button class="btn-premium btn-glass">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
+
+        <!-- Summary Statistics -->
+        <div class="academic-summary animate-up" style="animation-delay: 0.2s;">
+            <div class="summary-card">
+                <div class="summary-val">3.82</div>
+                <div class="summary-label">Cumulative GPA</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">94</div>
+                <div class="summary-label">Total Credits</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">Top 5%</div>
+                <div class="summary-label">Academic Rank</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-val">A+</div>
+                <div class="summary-label">Current Standing</div>
+            </div>
+        </div>
+
+        <!-- Detailed Results Table -->
+        <div class="glass-card results-table-card animate-up" style="animation-delay: 0.3s;">
+            <div class="chart-card-title">Subject Breakdown</div>
+            <div style="overflow-x: auto;">
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Subject Name</th>
+                            <th>Code</th>
+                            <th>Credits</th>
+                            <th>Grade</th>
+                            <th>Points</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Data Structures & Algorithms</strong></td>
+                            <td>CS201</td>
+                            <td>3</td>
+                            <td><span class="grade-badge grade-a">A</span></td>
+                            <td>4.0</td>
+                            <td style="color: #22c55e;">PASSED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Computer Architecture</strong></td>
+                            <td>CS202</td>
+                            <td>3</td>
+                            <td><span class="grade-badge grade-b">B+</span></td>
+                            <td>3.5</td>
+                            <td style="color: #22c55e;">PASSED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Discrete Mathematics</strong></td>
+                            <td>MA205</td>
+                            <td>3</td>
+                            <td><span class="grade-badge grade-a">A-</span></td>
+                            <td>3.7</td>
+                            <td style="color: #22c55e;">PASSED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Software Engineering I</strong></td>
+                            <td>SE210</td>
+                            <td>4</td>
+                            <td><span class="grade-badge grade-a">A</span></td>
+                            <td>4.0</td>
+                            <td style="color: #22c55e;">PASSED</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Database Systems</strong></td>
+                            <td>IS201</td>
+                            <td>3</td>
+                            <td><span class="grade-badge grade-b">B</span></td>
+                            <td>3.0</td>
+                            <td style="color: #22c55e;">PASSED</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Visual Analytics -->
+        <div class="charts-row animate-up" style="animation-delay: 0.4s;">
+            <div class="glass-card">
+                <div class="chart-card-title">Grade Distribution</div>
+                <div style="height: 300px;">
+                    <canvas id="gradeDistChart"></canvas>
+                </div>
+            </div>
+            <div class="glass-card">
+                <div class="chart-card-title">GPA Progress</div>
+                <div style="height: 300px;">
+                    <canvas id="gpaTrendChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+    <script>
+        // Preloader Logic
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 600);
+        });
+
+        // Initialize Charts
+        document.addEventListener('DOMContentLoaded', () => {
+            const gradeCtx = document.getElementById('gradeDistChart').getContext('2d');
+            new Chart(gradeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['CS201', 'CS202', 'MA205', 'SE210', 'IS201'],
+                    datasets: [{
+                        label: 'Points Earned',
+                        data: [4.0, 3.5, 3.7, 4.0, 3.0],
+                        backgroundColor: '#fdb913',
+                        borderRadius: 10
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { beginAtZero: true, max: 4, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+
+            const gpaCtx = document.getElementById('gpaTrendChart').getContext('2d');
+            new Chart(gpaCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
+                    datasets: [{
+                        label: 'GPA',
+                        data: [3.4, 3.6, 3.75, 3.82],
+                        borderColor: '#fdb913',
+                        tension: 0.4,
+                        fill: true,
+                        backgroundColor: 'rgba(253, 185, 19, 0.1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        y: { min: 3, max: 4, grid: { color: 'rgba(255,255,255,0.05)' } },
+                        x: { grid: { display: false } }
+                    }
+                }
+            });
+        });
+    </script>
+
+    
+    <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden; margin-top: 50px;">
+        <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(253, 185, 19, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <div class="footer-grid" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="images/iu-logo.png" alt="IU Logo" style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px #fdb913);">
+                    <p style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering excellence.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">ACADEMIC</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="programs.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="regulations.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">QUICK LINKS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="dashboard-admin.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Admin</a></li>
+                    <li style="margin-bottom: 8px;"><a href="iu.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Home Portal</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">CONNECT</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fdb913; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fdb913; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; font-weight: 800; margin: 0;"><i class="fas fa-envelope" style="margin-right: 8px; color: #fdb913;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+
+        <div style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <p>&copy; 2026 Innovation University.</p>
+            <p style="color: #fdb913; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.5px;">SECURED BY AES-256</p>
+        </div>
+    </footer>
+
+
+</body>
+</html>

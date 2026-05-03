@@ -2,100 +2,65 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Mathematics(3) Videos</title>
-<link href="../../../../css/bootstrap.min.css" rel="stylesheet">
-
-
-
-    <!-- Design System Core -->
-    <link rel="stylesheet" href="../../../../css/core/tokens.css">
-    <link rel="stylesheet" href="../../../../css/core/base.css">
-    <link rel="stylesheet" href="../../../../css/core/layout.css">
-    <link rel="stylesheet" href="../../../../css/core/components.css">
-    <link rel="stylesheet" href="../../../../css/core/animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../../../../css/subject.css">
-    
-    </head>
-
+<title>Data Science - Video Lectures</title>
+<!-- Design System Core -->
+<link rel="stylesheet" href="../../../../css/core/tokens.css">
+<link rel="stylesheet" href="../../../../css/core/base.css">
+<link rel="stylesheet" href="../../../../css/core/layout.css">
+<link rel="stylesheet" href="../../../../css/core/components.css">
+<link rel="stylesheet" href="../../../../css/core/animations.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<link rel="stylesheet" href="../../../../css/subject.css">
+</head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
-
     <header>
         <div class="nav-container">
-            <div class="logo">
-                <img src="../../../../images/iu-logo.png" alt="IU Logo">
-                <span>IU | Knowledge Base</span>
-            </div>
+            <div class="logo"><img src="../../../../images/iu-logo.png" alt="IU Logo"><span>IU | Knowledge Base</span></div>
             <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav id="navMenu">
-
-               <a href="../quizzes2/math3-quiz.html">Quiz</a>
-     <a href="../../level2-term1-video.html">Courses</a>
-        <a href="../../level2-term1-pdf.html">PDF</a>
-        <a href="../../../iu.html">Home</a>
-    
+                <a href="../quizzes4/data-science-quiz.html">Quiz</a>
+                <a href="../../level4-term1-video.html">Videos Hub</a>
+                <a href="../../level4-term1-pdf.html">PDFs</a>
+                <a href="../../../iu.html">Home</a>
             </nav>
         </div>
     </header>
 
-<div class="main-layout">
-<div class="subject-sidebar" id="lessonList">
-<h5 class="mb-3">Mathematics(3) Lectures</h5>
-</div>
-
-<div class="subject-content" id="content">
-<div class="placeholder">▶️ Select a lecture to watch</div>
-</div>
+<div class="container-subject">
+    <div class="subject-sidebar" id="lessonList">
+        <h3>Data Science</h3>
+    </div>
+    <div class="subject-content" id="content">
+        <div class="placeholder">📊 Select a lecture to start learning Data Science</div>
+    </div>
 </div>
 
 <script>
 const lectures = [
-{title:"Lecture 1 – Algebra Review", video:"https://www.youtube.com/embed/video1", desc:"Revising algebra basics."},
-{title:"Lecture 2 – Calculus Introduction", video:"https://www.youtube.com/embed/video2", desc:"Limits and derivatives."},
-{title:"Lecture 3 – Integrals", video:"https://www.youtube.com/embed/video3", desc:"Integration techniques."},
-{title:"Lecture 4 – Linear Algebra", video:"https://www.youtube.com/embed/video4", desc:"Matrices and vectors."},
-{title:"Lecture 5 – Differential Equations", video:"https://www.youtube.com/embed/video5", desc:"Solving ODEs."}
+    { title: "Lecture 1 – Intro to Data Science", video: "https://www.youtube.com/embed/ua-CiDNNj30", desc: "What is data science and why is it important?" },
+    { title: "Lecture 2 – Statistical Analysis", video: "https://www.youtube.com/embed/xxpc-HPKN28", desc: "Core statistical concepts for data scientists." },
+    { title: "Lecture 3 – Machine Learning", video: "https://www.youtube.com/embed/ukzFI9rgwfU", desc: "Supervised and unsupervised learning models." },
+    { title: "Lecture 4 – Data Wrangling", video: "https://www.youtube.com/embed/Z_36G_N4k7A", desc: "Cleaning and transforming raw data." },
+    { title: "Lecture 5 – Big Data Analytics", video: "https://www.youtube.com/embed/bAyrObl7TYE", desc: "Introduction to Hadoop and Spark ecosystems." }
 ];
 
 const lessonList = document.getElementById("lessonList");
-lectures.forEach((lec,index)=>{
-const div=document.createElement("div");
-div.className="lesson";
-div.textContent=lec.title;
-div.onclick=()=>loadLecture(index);
-lessonList.appendChild(div);
+lectures.forEach((lec, index) => {
+    const div = document.createElement("div");
+    div.className = "lesson";
+    div.textContent = lec.title;
+    div.onclick = () => loadLecture(index);
+    lessonList.appendChild(div);
 });
-function loadLecture(i){
-const lec=lectures[i];
-document.getElementById("content").innerHTML=`<h3>${lec.title}</h3>
-<iframe src="${lec.video}" allowfullscreen></iframe>
-<p class="mt-3">${lec.desc}</p>`;
+
+function loadLecture(i) {
+    const lec = lectures[i];
+    document.getElementById("content").innerHTML = `<h3>${lec.title}</h3><iframe src="${lec.video}" allowfullscreen></iframe><p style="margin-top:15px;">${lec.desc}</p>`;
 }
 </script>
 
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if(menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if(preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 800);
-            }
-        });
-    </script>
-
-    
-    
-    
-    
     <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden; margin-top: 50px;">
         <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(253, 185, 19, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
 
@@ -142,8 +107,11 @@ document.getElementById("content").innerHTML=`<h3>${lec.title}</h3>
     </footer>
 
 
-
-
-
-    </body>
+<script>
+    window.addEventListener('load', () => {
+        document.getElementById('preloader').style.opacity = '0';
+        setTimeout(() => document.getElementById('preloader').style.display = 'none', 500);
+    });
+</script>
+</body>
 </html>

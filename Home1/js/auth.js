@@ -36,16 +36,12 @@ if (loginForm) {
         const submitBtn = loginForm.querySelector('button[type="submit"]');
         
         if (isDevMode) {
-            console.warn("DEV MODE: Bypassing Supabase Login");
-            // Simulate role check for dev mode with explicit accounts
-            if (email === 'admin@iu.edu.eg' && password === 'admin123') {
+            console.warn("DEV MODE: Bypassing Supabase Login for UI Preview");
+            // Direct to dashboard based on email domain or selection for testing purposes
+            if (email.includes('admin')) {
                 window.location.href = 'dashboard-admin.html';
-            } else if (email === 'student@iu.edu.eg' && password === 'student123') {
-                window.location.href = 'dashboard-STU.html';
-            } else if (email === 'ebrahim.saeed.25030410@iu.edu.eg' && password === '01554@sis') {
-                window.location.href = 'dashboard-STU.html';
             } else {
-                showError("Invalid Credentials! Please check your email and password.");
+                window.location.href = 'dashboard-STU.html';
             }
             return;
         }
@@ -150,9 +146,7 @@ async function checkSession() {
         // 2. Early exit for Dev/Mock mode
         if (isDevMode || isMockMode) {
             console.info("Auth: Running in DEV/MOCK mode.");
-            // Banner creation code removed to hide the warning until DB connection
-            
-            if (userDisplay) userDisplay.innerText = "Demo Student (Dev Mode)";
+            if (userDisplay) userDisplay.innerText = "Guest (Dev Mode)";
             return;
         }
 

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Innovation University</title>
+    <title>404 - Page Not Found | Innovation University</title>
     <!-- Design System Core -->
     <link rel="stylesheet" href="../css/core/tokens.css">
     <link rel="stylesheet" href="../css/core/base.css">
@@ -12,89 +11,48 @@
     <link rel="stylesheet" href="../css/core/components.css">
     <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    </head>
-
+    <style>
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            background: radial-gradient(circle at center, rgba(82, 45, 128, 0.1) 0%, transparent 70%);
+        }
+        .error-code {
+            font-size: 12rem;
+            font-weight: 900;
+            color: var(--iu-accent);
+            line-height: 1;
+            margin-bottom: 20px;
+            font-family: 'Outfit', sans-serif;
+            text-shadow: 0 0 30px var(--iu-accent-glow);
+            letter-spacing: -5px;
+        }
+    </style>
+</head>
 <body class="faculty-theme">
-    <div id="preloader">
-        <div class="spinner"></div>
-    </div>
-
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../images/iu-logo.png" alt="IU Logo">
-                <span>IU | Faculty of Computers</span>
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="iu.html">Home</a>
-                <a href="iu-details.html">About FCIT</a>
-                <a href="programs.html">Programs</a>
-                <a href="regulations.html">Regulations</a>
-                <a href="events.html">Events</a>
-                <a href="login.html" class="active btn-premium btn-accent">Student Portal <i
-                        class="fas fa-sign-in-alt"></i></a>
-            </nav>
-        </div>
-    </header>
-
-    <div class="auth-wrapper"
-        style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;">
-        <!-- Error Display -->
-        <div id="authError"
-            style="display: none; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-weight: 600;">
-        </div>
-
-        <!-- Login Card -->
-        <div class="glass-card animate-up" id="loginCard" style="max-width: 450px; width: 100%; padding: 50px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <img src="../images/iu-logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px;">
-                <h2 style="color: var(--iu-accent); font-size: 2rem;">Student Portal</h2>
-                <p style="color: var(--iu-text-muted); font-size: 0.9rem;">Enter your credentials to continue</p>
-            </div>
-            <form id="loginForm">
-                <div style="margin-bottom: 20px; position: relative;">
-                    <i class="fa-solid fa-envelope"
-                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
-                    <input type="email" id="loginEmail" placeholder="Email Address" required
-                        style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
-                </div>
-                <div style="margin-bottom: 30px; position: relative;">
-                    <i class="fa-solid fa-lock"
-                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
-                    <input type="password" id="loginPassword" placeholder="Password" required
-                        style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
-                </div>
-                <div style="text-align: right; margin-top: -20px; margin-bottom: 30px;">
-                    <a href="forgot-password.html" style="color: var(--iu-accent); font-size: 0.8rem; text-decoration: none; opacity: 0.8; transition: 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn-premium btn-accent"
-                    style="width: 100%; padding: 18px; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 10px 20px rgba(var(--iu-accent-rgb), 0.3);">Sign
-                    In <i class="fas fa-sign-in-alt" style="margin-left: 10px;"></i></button>
-            </form>
-            <div style="margin-top: 25px; text-align: center; border-top: 1px solid var(--glass-border); padding-top: 20px;">
-                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Don't have an account? <a href="register.html" style="color: var(--iu-accent); font-weight: 700; text-decoration: none;">Register Now</a></p>
-            </div>
+    <div class="error-container animate-up">
+        <img src="../images/iu-logo.png" alt="IU Logo" style="width: 100px; margin-bottom: 40px;">
+        <div class="error-code">404</div>
+        <h2 style="color: white; font-size: 2rem; margin-bottom: 15px;">Lost in Cyberspace?</h2>
+        <p style="color: var(--iu-text-muted); font-size: 1.1rem; max-width: 500px; margin-bottom: 40px;">
+            The page you are looking for has been moved, deleted, or never existed in our database. 
+            Don't worry, your academic journey continues.
+        </p>
+        <div style="display: flex; gap: 20px;">
+            <a href="iu.html" class="btn-premium btn-accent" style="padding: 15px 40px; font-weight: 700;">
+                <i class="fas fa-home" style="margin-right: 10px;"></i> BACK TO HOME
+            </a>
+            <a href="javascript:history.back()" class="btn-premium btn-glass" style="padding: 15px 40px; font-weight: 700;">
+                <i class="fas fa-arrow-left" style="margin-right: 10px;"></i> GO BACK
+            </a>
         </div>
     </div>
 
-    <!-- Load Auth logic -->
-    <script type="module" src="../js/auth.js"></script>
-
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-        });
-
-        
-    </script>
-
-    
     
     <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden; margin-top: 50px;">
         <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(253, 185, 19, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
@@ -142,5 +100,5 @@
     </footer>
 
 
-    </body>
+</body>
 </html>

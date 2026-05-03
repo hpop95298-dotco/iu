@@ -16,46 +16,48 @@ function walkDir(dir, callback) {
 }
 
 const footerTemplate = (depthStr) => `
-    <footer class="main-footer">
-        <div class="footer-grid">
+    <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden; margin-top: 50px;">
+        <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(253, 185, 19, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <div class="footer-grid" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
             <div class="footer-col">
                 <div class="footer-brand">
-                    <img src="${depthStr}images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
-                    <p style="color: rgba(255,255,255,0.6); line-height: 1.4; font-size: 0.85rem;">
-                        Innovation University is a world-class institution dedicated to shaping the future of technology through academic excellence and practical innovation.
+                    <img src="${depthStr}images/iu-logo.png" alt="IU Logo" style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px #fdb913);">
+                    <p style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering excellence.
                     </p>
                 </div>
             </div>
+
             <div class="footer-col">
-                <h4>University</h4>
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">ACADEMIC</h4>
                 <ul style="list-style: none; padding: 0;">
-                    <li><a href="${depthStr}Pages/iu.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Home Portal</a></li>
-                    <li><a href="${depthStr}Pages/iu-details.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">About FCIT</a></li>
-                    <li><a href="${depthStr}Pages/programs.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Programs</a></li>
-                    <li><a href="${depthStr}Pages/regulations.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Bylaws & Rules</a></li>
+                    <li style="margin-bottom: 8px;"><a href="${depthStr}programs.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="${depthStr}regulations.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
-                <h4>Student Life</h4>
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">QUICK LINKS</h4>
                 <ul style="list-style: none; padding: 0;">
-                    <li><a href="${depthStr}Pages/login.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Student Portal</a></li>
-                    <li><a href="${depthStr}Pages/events.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Campus Events</a></li>
-                    <li><a href="${depthStr}Pages/schedule.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Calendar</a></li>
-                    <li><a href="${depthStr}Pages/profile.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">User Profile</a></li>
+                    <li style="margin-bottom: 8px;"><a href="${depthStr}dashboard-admin.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Admin</a></li>
+                    <li style="margin-bottom: 8px;"><a href="${depthStr}iu.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Home Portal</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
-                <h4>Connect</h4>
-                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
-                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                <h4 style="color: #fdb913; font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">CONNECT</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fdb913; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fdb913; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-github"></i></a>
                 </div>
-                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+                <p style="color: rgba(255,255,255,0.3); font-size: 0.7rem; font-weight: 800; margin: 0;"><i class="fas fa-envelope" style="margin-right: 8px; color: #fdb913;"></i> info@iu.edu.eg</p>
             </div>
         </div>
-        <div style="max-width: 1600px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
-            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
+
+        <div style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <p>&copy; 2026 Innovation University.</p>
+            <p style="color: #fdb913; font-weight: 700; font-size: 0.65rem; letter-spacing: 0.5px;">SECURED BY AES-256</p>
         </div>
     </footer>
 `;
@@ -63,13 +65,11 @@ const footerTemplate = (depthStr) => `
 walkDir(baseDir, (filePath) => {
     if (!filePath.endsWith('.html')) return;
 
-    console.log(`Unifying footer for: ${filePath}`);
-
     let content = fs.readFileSync(filePath, 'utf8');
 
-    // Determine depth relative to Home1
-    let relativeToHome1 = path.relative(path.join(__dirname, 'Home1'), path.dirname(filePath));
-    let depthCount = relativeToHome1.split(path.sep).filter(p => p !== '').length;
+    // Determine depth relative to Pages
+    let relativeToPages = path.relative(baseDir, path.dirname(filePath));
+    let depthCount = relativeToPages === '' ? 0 : relativeToPages.split(path.sep).length;
     let depthStr = '../'.repeat(depthCount);
 
     const newFooter = footerTemplate(depthStr);

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Innovation University</title>
+    <title>Register | Innovation University</title>
     <!-- Design System Core -->
     <link rel="stylesheet" href="../css/core/tokens.css">
     <link rel="stylesheet" href="../css/core/base.css">
@@ -12,8 +12,7 @@
     <link rel="stylesheet" href="../css/core/components.css">
     <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
-    </head>
+</head>
 
 <body class="faculty-theme">
     <div id="preloader">
@@ -33,48 +32,57 @@
                 <a href="programs.html">Programs</a>
                 <a href="regulations.html">Regulations</a>
                 <a href="events.html">Events</a>
-                <a href="login.html" class="active btn-premium btn-accent">Student Portal <i
-                        class="fas fa-sign-in-alt"></i></a>
+                <a href="login.html" class="active btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
             </nav>
         </div>
     </header>
 
-    <div class="auth-wrapper"
-        style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 20px;">
+    <div class="auth-wrapper" style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 20px 60px;">
         <!-- Error Display -->
-        <div id="authError"
-            style="display: none; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-weight: 600;">
+        <div id="authError" style="display: none; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-weight: 600; width: 100%; max-width: 500px;">
         </div>
 
-        <!-- Login Card -->
-        <div class="glass-card animate-up" id="loginCard" style="max-width: 450px; width: 100%; padding: 50px;">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <img src="../images/iu-logo.png" alt="Logo" style="width: 80px; margin-bottom: 20px;">
-                <h2 style="color: var(--iu-accent); font-size: 2rem;">Student Portal</h2>
-                <p style="color: var(--iu-text-muted); font-size: 0.9rem;">Enter your credentials to continue</p>
+        <!-- Register Card -->
+        <div class="glass-card animate-up" id="registerCard" style="max-width: 500px; width: 100%; padding: 50px;">
+            <div style="text-align: center; margin-bottom: 35px;">
+                <img src="../images/iu-logo.png" alt="Logo" style="width: 70px; margin-bottom: 15px;">
+                <h2 style="color: var(--iu-accent); font-size: 1.8rem;">Create Student Account</h2>
+                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Join the Faculty of Computers & Information Technology</p>
             </div>
-            <form id="loginForm">
-                <div style="margin-bottom: 20px; position: relative;">
-                    <i class="fa-solid fa-envelope"
-                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
-                    <input type="email" id="loginEmail" placeholder="Email Address" required
-                        style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
+            
+            <form id="registerForm">
+                <div style="margin-bottom: 18px; position: relative;">
+                    <i class="fa-solid fa-user" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                    <input type="text" id="registerName" placeholder="Full Name" required style="width: 100%; padding: 12px 15px 12px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; outline: none; font-size: 0.9rem;">
                 </div>
-                <div style="margin-bottom: 30px; position: relative;">
-                    <i class="fa-solid fa-lock"
-                        style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
-                    <input type="password" id="loginPassword" placeholder="Password" required
-                        style="width: 100%; padding: 15px 15px 15px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 12px; color: white; outline: none;">
+
+                <div style="margin-bottom: 18px; position: relative;">
+                    <i class="fa-solid fa-id-card" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                    <input type="text" id="registerID" placeholder="Academic ID (e.g. 20240001)" required style="width: 100%; padding: 12px 15px 12px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; outline: none; font-size: 0.9rem;">
                 </div>
-                <div style="text-align: right; margin-top: -20px; margin-bottom: 30px;">
-                    <a href="forgot-password.html" style="color: var(--iu-accent); font-size: 0.8rem; text-decoration: none; opacity: 0.8; transition: 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">Forgot Password?</a>
+
+                <div style="margin-bottom: 18px; position: relative;">
+                    <i class="fa-solid fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                    <input type="email" id="registerEmail" placeholder="University Email" required style="width: 100%; padding: 12px 15px 12px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; outline: none; font-size: 0.9rem;">
                 </div>
-                <button type="submit" class="btn-premium btn-accent"
-                    style="width: 100%; padding: 18px; font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 10px 20px rgba(var(--iu-accent-rgb), 0.3);">Sign
-                    In <i class="fas fa-sign-in-alt" style="margin-left: 10px;"></i></button>
+
+                <div style="margin-bottom: 25px; position: relative;">
+                    <i class="fa-solid fa-lock" style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--iu-accent);"></i>
+                    <input type="password" id="registerPassword" placeholder="Create Password" required style="width: 100%; padding: 12px 15px 12px 45px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border); border-radius: 10px; color: white; outline: none; font-size: 0.9rem;">
+                </div>
+
+                <div style="margin-bottom: 25px; display: flex; align-items: flex-start; gap: 10px;">
+                    <input type="checkbox" id="terms" required style="margin-top: 4px;">
+                    <label for="terms" style="font-size: 0.75rem; color: var(--iu-text-muted); line-height: 1.4;">
+                        I agree to the <a href="regulations.html" style="color: var(--iu-accent); text-decoration: none;">University Regulations</a> and academic honor code.
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-premium btn-accent" style="width: 100%; padding: 15px; font-size: 1rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;">Register Account <i class="fas fa-user-plus" style="margin-left: 10px;"></i></button>
             </form>
+
             <div style="margin-top: 25px; text-align: center; border-top: 1px solid var(--glass-border); padding-top: 20px;">
-                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Don't have an account? <a href="register.html" style="color: var(--iu-accent); font-weight: 700; text-decoration: none;">Register Now</a></p>
+                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Already have an account? <a href="login.html" style="color: var(--iu-accent); font-weight: 700; text-decoration: none;">Login Here</a></p>
             </div>
         </div>
     </div>
@@ -88,10 +96,8 @@
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
+            }, 600);
         });
-
-        
     </script>
 
     
@@ -142,5 +148,6 @@
     </footer>
 
 
-    </body>
+</body>
+
 </html>

@@ -2,12 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Communication Skills Course</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-    
-
+    <title>Data Science | Level 4</title>
     <!-- Design System Core -->
     <link rel="stylesheet" href="../../../css/core/tokens.css">
     <link rel="stylesheet" href="../../../css/core/base.css">
@@ -16,9 +11,7 @@
     <link rel="stylesheet" href="../../../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="stylesheet" href="../../../css/subject.css">
-    
-    </head>
-
+</head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
@@ -30,88 +23,52 @@
             </div>
             <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav id="navMenu">
-
-        <a href="./quizzes2/communication-skills-quiz.html">Quiz</a>
-     <a href="../level2-term1-pdf.html">Courses</a>
-        <a href="../level2-term1-video.html">Videos</a>
-        <a href="../../iu.html">Home</a>
-    
+               <a href="./quizzes4/data-science-quiz.html">Quiz</a>
+               <a href="../level4-term1-pdf.html">Courses</a>
+               <a href="../level4-term1-video.html">Videos</a>
+               <a href="../../iu.html">Home</a>
             </nav>
         </div>
     </header>
 
 <div class="container-subject">
-
-    <!-- Sidebar -->
     <div class="subject-sidebar">
-        <h3>Communication Skills (10 Lectures)</h3>
-
-        <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Introduction to Communication</div>
-        <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Listening Skills</div>
-        <div class="lecture-item" onclick="showLecture(2)">Lecture 3 – Speaking Skills</div>
-        <div class="lecture-item" onclick="showLecture(3)">Lecture 4 – Reading Skills</div>
-        <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Writing Skills</div>
-        <div class="lecture-item" onclick="showLecture(5)">Lecture 6 – Presentation Techniques</div>
-        <div class="lecture-item" onclick="showLecture(6)">Lecture 7 – Nonverbal Communication</div>
-        <div class="lecture-item" onclick="showLecture(7)">Lecture 8 – Interpersonal Communication</div>
-        <div class="lecture-item" onclick="showLecture(8)">Lecture 9 – Professional Communication</div>
-        <div class="lecture-item" onclick="showLecture(9)">Lecture 10 – Communication in Teams</div>
+        <h3>Data Science (8 Lectures)</h3>
+        <div class="lecture-item" onclick="showLecture(0)">Lecture 1 – Fundamentals of Data Science</div>
+        <div class="lecture-item" onclick="showLecture(1)">Lecture 2 – Data Collection & Cleaning</div>
+        <div class="lecture-item" onclick="showLecture(2)">Lecture 3 – Exploratory Data Analysis (EDA)</div>
+        <div class="lecture-item" onclick="showLecture(3)">Lecture 4 – Statistical Inference</div>
+        <div class="lecture-item" onclick="showLecture(4)">Lecture 5 – Machine Learning Basics</div>
+        <div class="lecture-item" onclick="showLecture(5)">Lecture 6 – Data Visualization Techniques</div>
+        <div class="lecture-item" onclick="showLecture(6)">Lecture 7 – Big Data Technologies (Hadoop/Spark)</div>
+        <div class="lecture-item" onclick="showLecture(7)">Lecture 8 – Ethics in Data Science</div>
     </div>
 
-    <!-- Content -->
     <div class="subject-content" id="content">
         <div class="placeholder">
-            📘 Select a lecture from the left to view its content
+            📊 Select a lecture from the left to view its content
         </div>
     </div>
-
 </div>
 
 <script>
     const lectures = [
-        { title: "Lecture 1: Introduction to Communication", content: "Understand the basics and importance of communication." },
-        { title: "Lecture 2: Listening Skills", content: "Learn effective listening strategies to comprehend messages clearly." },
-        { title: "Lecture 3: Speaking Skills", content: "Improve verbal expression and clarity in communication." },
-        { title: "Lecture 4: Reading Skills", content: "Enhance reading comprehension and critical analysis." },
-        { title: "Lecture 5: Writing Skills", content: "Develop effective written communication skills." },
-        { title: "Lecture 6: Presentation Techniques", content: "Learn how to create and deliver engaging presentations." },
-        { title: "Lecture 7: Nonverbal Communication", content: "Understand body language, gestures, and facial expressions." },
-        { title: "Lecture 8: Interpersonal Communication", content: "Improve communication in one-on-one interactions." },
-        { title: "Lecture 9: Professional Communication", content: "Master communication in professional and business contexts." },
-        { title: "Lecture 10: Communication in Teams", content: "Enhance teamwork through effective communication." }
+        { title: "Lecture 1: Fundamentals", content: "Defining data science, the data life cycle, and the role of a data scientist." },
+        { title: "Lecture 2: Data Cleaning", content: "Handling missing values, outliers, and preparing data for analysis." },
+        { title: "Lecture 3: EDA", content: "Summarizing main characteristics of data sets using visual methods." },
+        { title: "Lecture 4: Statistics", content: "Probability distributions, hypothesis testing, and p-values." },
+        { title: "Lecture 5: Machine Learning", content: "Introduction to supervised and unsupervised learning algorithms." },
+        { title: "Lecture 6: Visualization", content: "Creating impactful charts and dashboards using Python and Tableau." },
+        { title: "Lecture 7: Big Data", content: "Architectures for processing massive volumes of data in distributed clusters." },
+        { title: "Lecture 8: Ethics", content: "Data privacy, algorithmic bias, and responsible AI practices." }
     ];
 
     function showLecture(index) {
-        const content = document.getElementById("content");
-        content.innerHTML = `
-            <h1>${lectures[index].title}</h1>
-            <p>${lectures[index].content}</p>
-        `;
+        document.getElementById("content").innerHTML = `<h1>${lectures[index].title}</h1><p>${lectures[index].content}</p>`;
     }
 </script>
 
 
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if(menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if(preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 800);
-            }
-        });
-    </script>
-
-    
-    
-    
-    
     <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden; margin-top: 50px;">
         <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(253, 185, 19, 0.05) 0%, transparent 70%); pointer-events: none;"></div>
 
@@ -158,8 +115,13 @@
     </footer>
 
 
-
-
-
-    </body>
+<script>
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if(preloader) {
+            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 800);
+        }
+    });
+</script>
+</body>
 </html>
