@@ -34,29 +34,50 @@
             color: #fff;
         }
     </style>
-</head>
-<body class="faculty-theme">
+    </head>
+    <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../images/iu-logo.png" alt="IU Logo">
-                <span>IU | Faculty of Computers</span>
+        <!-- Option 7: Scroll Progress Bar -->
+        <div id="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--iu-accent); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--iu-accent);"></div>
+
+        <header>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/iu-logo.png" alt="IU Logo">
+                    <span>IU | Faculty of Computers</span>
+                </div>
+                <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+                <nav id="navMenu">
+                    <a href="iu.html">Home</a>
+                    <a href="iu-details.html">About FCIT</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="regulations.html" class="active">Regulations</a>
+                    <a href="events.html">Events</a>
+                    <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+                </nav>
             </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="iu.html">Home</a>
-                <a href="iu-details.html">About FCIT</a>
-                <a href="programs.html">Programs</a>
-                <a href="regulations.html" class="active">Regulations</a>
-                <a href="events.html">Events</a>
-                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-            </nav>
+        </header>
+
+        <!-- Option 1: Live News Ticker (Standard Portal Edition) -->
+        <div class="news-ticker-container" style="background: rgba(var(--iu-primary-rgb), 0.3); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(15px); padding: 12px 0; overflow: hidden; position: relative; z-index: 900;">
+            <!-- Soft Fading Edges -->
+            <div style="position: absolute; top: 0; left: 0; width: 120px; height: 100%; background: linear-gradient(to right, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;"></div>
+            <div style="position: absolute; top: 0; right: 0; width: 120px; height: 100%; background: linear-gradient(to left, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;"></div>
+            
+            <div style="display: flex; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 1;">
+                <div class="live-badge" style="background: var(--iu-accent); color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; letter-spacing: 1.5px; margin-right: 25px; flex-shrink: 0; box-shadow: 0 0 20px rgba(var(--iu-accent-rgb), 0.4); display: flex; align-items: center; gap: 8px; animation: badge-pulse 2s infinite;">
+                    <span style="width: 6px; height: 6px; background: #000; border-radius: 50%;"></span> SYSTEM FEED
+                </div>
+                <div class="ticker-content" style="white-space: nowrap; animation: ticker-scroll 35s linear infinite; color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif;">
+                    <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i class="fas fa-gavel" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b style="color: #fff;">RULES:</b> Updated grading scale for 2024 academic year is now in effect.</span>
+                    <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i class="fas fa-graduation-cap" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b style="color: #fff;">GRADUATION:</b> Senior project submission deadline extended to May 15th.</span>
+                </div>
+            </div>
         </div>
-    </header>
 
     <main class="main-content">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Previous</a>
         <h1 class="animate-up" style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Academic Regulations</h1>
 
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 40px;">
@@ -139,7 +160,7 @@
                 </div>
             </div>
         </section>
-        <!-- Academic Rules & Load Section -->
+
         <section class="glass-card animate-up" style="padding: 50px; margin-top: 40px;">
             <h2 style="color: var(--iu-accent); margin-bottom: 30px;"><i class="fas fa-info-circle"></i> Academic Rules & Load</h2>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
@@ -164,27 +185,58 @@
         </section>
     </main>
 
-    <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University. All Rights Reserved.</p>
+    <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden;">
+        <!-- Background Glow Effect -->
+        <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(var(--iu-accent-rgb), 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <div class="footer-grid" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px var(--iu-accent));">
+                    <p style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering excellence.
+                    </p>
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">ISO 27001</div>
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">AI-CERTIFIED</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">ACADEMIC</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="programs.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="regulations.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">QUICK LINKS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="login.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Portal</a></li>
+                    <li style="margin-bottom: 8px;"><a href="iu-details.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> About</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">NEWSLETTER</h4>
+                <div style="margin-bottom: 15px; position: relative;">
+                    <input type="email" placeholder="Email..." style="width: 100%; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 8px; color: #fff; font-size: 0.75rem; outline: none;">
+                    <button style="position: absolute; right: 4px; top: 4px; bottom: 4px; background: var(--iu-accent); border: none; border-radius: 6px; color: #000; padding: 0 10px; font-weight: 800; font-size: 0.65rem; cursor: pointer;">JOIN</button>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <p>&copy; 2026 Innovation University. SECURED BY AES-256</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 500);
-            }
-        });
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-    </script>
-</body>
+    
+    </body>
 </html>

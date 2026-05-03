@@ -19,6 +19,11 @@
         <div class="spinner"></div>
     </div>
 
+    <!-- Option 7: Scroll Progress Bar -->
+    <div id="scroll-progress"
+        style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--iu-accent); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--iu-accent);">
+    </div>
+
     <header>
         <div class="nav-container">
             <div class="logo">
@@ -38,87 +43,163 @@
         </div>
     </header>
 
+    <!-- Option 1: Live News Ticker (Standard Portal Edition) -->
+    <div class="news-ticker-container"
+        style="background: rgba(var(--iu-primary-rgb), 0.3); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(15px); padding: 12px 0; overflow: hidden; position: relative; z-index: 900;">
+        <!-- Soft Fading Edges -->
+        <div
+            style="position: absolute; top: 0; left: 0; width: 120px; height: 100%; background: linear-gradient(to right, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;">
+        </div>
+        <div
+            style="position: absolute; top: 0; right: 0; width: 120px; height: 100%; background: linear-gradient(to left, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;">
+        </div>
+
+        <div
+            style="display: flex; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 1;">
+            <div class="live-badge"
+                style="background: var(--iu-accent); color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; letter-spacing: 1.5px; margin-right: 25px; flex-shrink: 0; box-shadow: 0 0 20px rgba(var(--iu-accent-rgb), 0.4); display: flex; align-items: center; gap: 8px; animation: badge-pulse 2s infinite;">
+                <span style="width: 6px; height: 6px; background: #000; border-radius: 50%;"></span> SYSTEM FEED
+            </div>
+            <div class="ticker-content"
+                style="white-space: nowrap; animation: ticker-scroll 35s linear infinite; color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif;">
+                <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i
+                        class="fas fa-bolt" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b
+                        style="color: #fff;">ADMISSIONS:</b> Registration for the 2024 ICPC is officially open.</span>
+                <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i
+                        class="fas fa-microchip" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b
+                        style="color: #fff;">ACADEMIC:</b> New specialization tracks in AI and Quantum Computing are now
+                    live.</span>
+            </div>
+        </div>
+    </div>
+
     <main class="main-content">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Previous</a>
+
         <h1 class="animate-up"
             style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Scientific
             Departments</h1>
 
-        <div class="grid-2"
-            style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;">
+        <div class="programs-grid"
+            style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 80px;">
             <!-- Computer Science -->
-            <div class="glass-card dept-card animate-up">
+            <div class="glass-card dept-card animate-up tilt-card"
+                style="padding: 35px; text-align: center; display: flex; flex-direction: column;">
                 <i class="fas fa-code"
-                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
-                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Computer Science (CS)</h3>
-                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Focuses on computational
-                    theory, programming, algorithms, computer structure, and software engineering foundations.</p>
-                <div class="careers" style="margin-bottom: 20px;">
-                    <span class="career-badge">Software Developer</span>
-                    <span class="career-badge">Algorithm Engineer</span>
-                    <span class="career-badge">Systems Researcher</span>
+                    style="font-size: 2.8rem; color: var(--iu-accent); margin-bottom: 20px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.6rem;">Computer Science (CS)</h3>
+                <p
+                    style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.6; font-size: 0.95rem; flex-grow: 1;">
+                    Focuses on computational theory, programming, algorithms, computer structure, and software
+                    engineering foundations.</p>
+                <div class="careers"
+                    style="margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Software
+                        Developer</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Algorithm
+                        Engineer</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Systems
+                        Researcher</span>
                 </div>
-                <button class="btn-premium btn-glass" onclick="openPlan('cs')" style="width: 100%;">View Study Plan <i
+                <button class="btn-premium btn-accent" style="width: 100%;" onclick="openPlan('cs')">VIEW STUDY PLAN <i
                         class="fas fa-list-ul"></i></button>
             </div>
 
             <!-- Information Systems -->
-            <div class="glass-card dept-card animate-up" style="animation-delay: 0.1s;">
+            <div class="glass-card dept-card animate-up tilt-card"
+                style="animation-delay: 0.1s; padding: 35px; text-align: center; display: flex; flex-direction: column;">
                 <i class="fas fa-database"
-                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
-                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Information Systems (IS)
+                    style="font-size: 2.8rem; color: var(--iu-accent); margin-bottom: 20px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.6rem;">Information Systems (IS)
                 </h3>
-                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Integrating information
-                    technology and business processes to meet the information needs of organizations.</p>
-                <div class="careers" style="margin-bottom: 20px;">
-                    <span class="career-badge">Database Administrator</span>
-                    <span class="career-badge">Systems Analyst</span>
-                    <span class="career-badge">IT Project Manager</span>
+                <p
+                    style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.6; font-size: 0.95rem; flex-grow: 1;">
+                    Integrating information technology and business processes to meet the information needs of
+                    organizations.</p>
+                <div class="careers"
+                    style="margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Database
+                        Administrator</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Systems
+                        Analyst</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">IT
+                        Project Manager</span>
                 </div>
-                <button class="btn-premium btn-glass" onclick="openPlan('is')" style="width: 100%;">View Study Plan <i
+                <button class="btn-premium btn-accent" style="width: 100%;" onclick="openPlan('is')">VIEW STUDY PLAN <i
                         class="fas fa-list-ul"></i></button>
             </div>
 
             <!-- Artificial Intelligence -->
-            <div class="glass-card dept-card animate-up" style="animation-delay: 0.2s;">
+            <div class="glass-card dept-card animate-up tilt-card"
+                style="animation-delay: 0.2s; padding: 35px; text-align: center; display: flex; flex-direction: column;">
                 <i class="fas fa-brain"
-                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
-                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Artificial Intelligence
+                    style="font-size: 2.8rem; color: var(--iu-accent); margin-bottom: 20px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.6rem;">Artificial Intelligence
                     (AI)</h3>
-                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Building intelligent
-                    systems, machine learning, robotics, and cognitive computing to automate society.</p>
-                <div class="careers" style="margin-bottom: 20px;">
-                    <span class="career-badge">AI/ML Engineer</span>
-                    <span class="career-badge">Robotics Expert</span>
-                    <span class="career-badge">Data Scientist</span>
+                <p
+                    style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.6; font-size: 0.95rem; flex-grow: 1;">
+                    Building intelligent systems, machine learning, robotics, and cognitive computing to automate
+                    society.</p>
+                <div class="careers"
+                    style="margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">AI/ML
+                        Engineer</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Robotics
+                        Expert</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Data
+                        Scientist</span>
                 </div>
-                <button class="btn-premium btn-glass" onclick="openPlan('ai')" style="width: 100%;">View Study Plan <i
+                <button class="btn-premium btn-accent" style="width: 100%;" onclick="openPlan('ai')">VIEW STUDY PLAN <i
                         class="fas fa-list-ul"></i></button>
             </div>
 
             <!-- Digital Informatics -->
-            <div class="glass-card dept-card animate-up" style="animation-delay: 0.3s;">
+            <div class="glass-card dept-card animate-up tilt-card"
+                style="animation-delay: 0.3s; padding: 35px; text-align: center; display: flex; flex-direction: column;">
                 <i class="fas fa-network-wired"
-                    style="font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 25px; display: block;"></i>
-                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.5rem;">Digital Informatics (DI)
+                    style="font-size: 2.8rem; color: var(--iu-accent); margin-bottom: 20px; display: block;"></i>
+                <h3 style="color: var(--iu-accent); margin-bottom: 15px; font-size: 1.6rem;">Digital Informatics (DI)
                 </h3>
-                <p style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.7;">Specializing in
-                    cybersecurity, IoT, cloud computing, and advanced network communication technologies.</p>
-                <div class="careers" style="margin-bottom: 20px;">
-                    <span class="career-badge">Cybersecurity Analyst</span>
-                    <span class="career-badge">IoT Solutions Architect</span>
-                    <span class="career-badge">Network Engineer</span>
+                <p
+                    style="color: var(--iu-text-muted); margin-bottom: 25px; line-height: 1.6; font-size: 0.95rem; flex-grow: 1;">
+                    Specializing in cybersecurity, IoT, cloud computing, and advanced network communication
+                    technologies.</p>
+                <div class="careers"
+                    style="margin-bottom: 25px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Cybersecurity
+                        Analyst</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">IoT
+                        Solutions Architect</span>
+                    <span class="career-badge"
+                        style="background: rgba(var(--iu-accent-rgb), 0.1); color: var(--iu-accent); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.2);">Network
+                        Engineer</span>
                 </div>
-                <button class="btn-premium btn-glass" onclick="openPlan('di')" style="width: 100%;">View Study Plan <i
+                <button class="btn-premium btn-accent" style="width: 100%;" onclick="openPlan('di')">VIEW STUDY PLAN <i
                         class="fas fa-list-ul"></i></button>
             </div>
         </div>
 
         <!-- STUDY PLAN MODAL -->
-        <div id="planModal" class="modal-overlay">
-            <div class="modal-content glass-card">
-                <div class="modal-header">
+        <div id="planModal" class="modal-overlay"
+            style="position: fixed; inset: 0; background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1000; padding: 20px;">
+            <div class="modal-content glass-card"
+                style="width: 100%; max-width: 1000px; max-height: 90vh; overflow-y: auto; padding: 40px; position: relative;">
+                <div class="modal-header"
+                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px;">
                     <h2 id="planTitle" style="color: var(--iu-accent);">Study Plan</h2>
-                    <button class="close-btn" onclick="closePlan()">&times;</button>
+                    <button class="close-btn" onclick="closePlan()"
+                        style="background: none; border: none; color: #fff; font-size: 2.5rem; cursor: pointer;">&times;</button>
                 </div>
                 <div id="planBody" class="modal-body">
                     <!-- Dynamic Content -->
@@ -127,58 +208,6 @@
         </div>
 
         <style>
-            .career-badge {
-                display: inline-block;
-                background: rgba(var(--iu-accent-rgb), 0.1);
-                color: var(--iu-accent);
-                padding: 5px 12px;
-                border-radius: 20px;
-                font-size: 0.8rem;
-                margin: 5px;
-                border: 1px solid rgba(var(--iu-accent-rgb), 0.2);
-                font-weight: 600;
-            }
-
-            /* Modal Styling */
-            .modal-overlay {
-                position: fixed;
-                inset: 0;
-                background: rgba(0, 0, 0, 0.8);
-                backdrop-filter: blur(10px);
-                display: none;
-                justify-content: center;
-                align-items: center;
-                z-index: 1000;
-                padding: 20px;
-            }
-
-            .modal-content {
-                width: 100%;
-                max-width: 1000px;
-                max-height: 90vh;
-                overflow-y: auto;
-                padding: 40px;
-                position: relative;
-            }
-
-            .modal-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                margin-bottom: 30px;
-                border-bottom: 1px solid var(--glass-border);
-                padding-bottom: 15px;
-            }
-
-            .close-btn {
-                background: none;
-                border: none;
-                color: #fff;
-                font-size: 2.5rem;
-                cursor: pointer;
-                line-height: 1;
-            }
-
             .plan-table {
                 width: 100%;
                 border-collapse: collapse;
@@ -208,15 +237,163 @@
         </style>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer"
+        style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden;">
+        <!-- Background Glow Effect -->
         <div
-            style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University. All Rights Reserved.</p>
+            style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(var(--iu-accent-rgb), 0.05) 0%, transparent 70%); pointer-events: none;">
+        </div>
+
+        <div class="footer-grid"
+            style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo"
+                        style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px var(--iu-accent));">
+                    <p
+                        style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering
+                        excellence.
+                    </p>
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <div
+                            style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">
+                            ISO 27001</div>
+                        <div
+                            style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">
+                            AI-CERTIFIED</div>
+                    </div>
+                    <div class="social-links" style="display: flex; gap: 10px;">
+                        <a href="#"
+                            style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i
+                                class="fab fa-linkedin-in"></i></a>
+                        <a href="#"
+                            style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i
+                                class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4
+                    style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">
+                    ACADEMIC</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="programs.html"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study
+                            Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Digital
+                            Library</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Research
+                            Labs</a></li>
+                    <li style="margin-bottom: 8px;"><a href="regulations.html"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4
+                    style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">
+                    QUICK LINKS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="dashboard-admin.html"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Admin</a>
+                    </li>
+                    <li style="margin-bottom: 8px;"><a href="login.html"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Portal</a>
+                    </li>
+                    <li style="margin-bottom: 8px;"><a href="#"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> IT
+                            Support</a></li>
+                    <li style="margin-bottom: 8px;"><a href="iu-details.html"
+                            style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i
+                                class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> About</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4
+                    style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">
+                    NEWSLETTER</h4>
+                <div style="margin-bottom: 15px; position: relative;">
+                    <input type="email" placeholder="Email..."
+                        style="width: 100%; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 8px; color: #fff; font-size: 0.75rem; outline: none;">
+                    <button
+                        style="position: absolute; right: 4px; top: 4px; bottom: 4px; background: var(--iu-accent); border: none; border-radius: 6px; color: #000; padding: 0 10px; font-weight: 800; font-size: 0.65rem; cursor: pointer;">JOIN</button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <p
+                        style="color: rgba(255,255,255,0.3); font-size: 0.75rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-location-dot" style="color: var(--iu-accent); width: 12px;"></i> Smart Village,
+                        Cairo
+                    </p>
+                    <div
+                        style="background: rgba(var(--iu-accent-rgb), 0.03); border: 1px solid rgba(var(--iu-accent-rgb), 0.08); padding: 6px 12px; border-radius: 6px; display: inline-block;">
+                        <p style="color: var(--iu-accent); font-size: 0.7rem; font-weight: 800; margin: 0;"><i
+                                class="fas fa-envelope" style="margin-right: 8px;"></i> support@iu.edu.eg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <p>&copy; 2026 Innovation University.</p>
+                <span style="opacity: 0.2;">|</span>
+                <p style="color: var(--iu-accent); font-weight: 700; font-size: 0.65rem; letter-spacing: 0.5px;">SECURED
+                    BY AES-256</p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <script src="../js/navigation.js"></script>
     <script>
+        // Option 7: Scroll Progress Logic
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scroll-progress');
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            if (scrollProgress) scrollProgress.style.width = progress + '%';
+        });
+
+        // Option 2: 3D Tilt Logic
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+        });
+
+        document.addEventListener('mouseleave', () => {
+            const cards = document.querySelectorAll('.tilt-card');
+            cards.forEach(card => card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`);
+        });
+
         const plans = {
             cs: {
                 title: "Computer Science (CS) Study Plan",
@@ -279,40 +456,25 @@
             let html = "";
             plan.levels.forEach(lvl => {
                 html += `<div class="level-header">${lvl.name}</div>`;
-                html += `<table class="plan-table"><tr><th style="width: 70%;">Course Name</th><th>Type</th></tr>`;
+                html += `<table class="plan-table"><tr><th>Course Name</th><th>Type</th></tr>`;
                 lvl.courses.forEach(c => {
-                    html += `<tr><td>${c}</td><td><span style="color: var(--iu-accent); font-size: 0.8rem; border: 1px solid rgba(var(--iu-accent-rgb), 0.3); padding: 2px 8px; border-radius: 4px;">CORE</span></td></tr>`;
+                    html += `<tr><td>${c}</td><td>CORE</td></tr>`;
                 });
                 html += `</table>`;
             });
             document.getElementById('planBody').innerHTML = html;
             document.getElementById('planModal').style.display = 'flex';
         }
-
-        function closePlan() {
-            document.getElementById('planModal').style.display = 'none';
-        }
-
-        window.onclick = function (event) {
-            if (event.target == document.getElementById('planModal')) {
-                closePlan();
-            }
-        }
-
+        function closePlan() { document.getElementById('planModal').style.display = 'none'; }
         window.addEventListener('load', () => {
             const preloader = document.getElementById('preloader');
             if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 500);
+                setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 500);
             }
         });
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     </script>
 </body>
 

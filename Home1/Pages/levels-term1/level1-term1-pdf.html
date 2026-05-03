@@ -3,21 +3,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academic Library | Level 01</title>
     <!-- Design System Core -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academic Library | Level 01</title>
+    <!-- Design System Core -->
     <link rel="stylesheet" href="../../css/core/tokens.css">
     <link rel="stylesheet" href="../../css/core/base.css">
     <link rel="stylesheet" href="../../css/core/layout.css">
     <link rel="stylesheet" href="../../css/core/components.css">
     <link rel="stylesheet" href="../../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        .library-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .course-card { padding: 35px; text-align: center; display: flex; flex-direction: column; justify-content: space-between; min-height: 280px; transition: var(--transition-smooth); }
-        .course-card:hover { transform: translateY(-10px); border-color: var(--iu-accent); }
-        .course-icon { font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 20px; opacity: 0.8; }
-        .course-card h3 { font-size: 1.5rem; color: #fff; margin-bottom: 12px; }
-        .course-card p { color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 25px; line-height: 1.5; }
-    </style>
-</head>
+    <link rel="stylesheet" href="../../css/hub-pages.css">
+    
+    </head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
@@ -38,14 +37,14 @@
     </header>
     <main class="main-content">
         <div class="container">
-            <h1 class="animate-up" style="text-align: center; margin-bottom: 40px; color: var(--iu-accent); font-size: 3rem;">Academic Library</h1>
+            <h1 class="animate-up" style="text-align: center; margin-bottom: 20px; color: var(--iu-accent); font-size: 3rem;">Academic Library</h1>
             <p class="animate-up" style="text-align: center; color: var(--iu-text-muted); margin-bottom: 50px;">Access your Level 01 course materials and digital resources.</p>
             
-            <div class="library-grid animate-up" style="animation-delay: 0.1s;">
+            <div class="hub-grid animate-up" style="animation-delay: 0.1s;">
                 <!-- Programming -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-code"></i></div>
+                        <div class="hub-icon"><i class="fas fa-code"></i></div>
                         <h3>Programming</h3>
                         <p>Fundamental logic and algorithm construction using the C# ecosystem.</p>
                     </div>
@@ -53,9 +52,9 @@
                 </div>
 
                 <!-- Math1 -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="hub-icon"><i class="fas fa-calculator"></i></div>
                         <h3>Mathematics I</h3>
                         <p>Comprehensive study of calculus, algebraic structures, and equations.</p>
                     </div>
@@ -63,9 +62,9 @@
                 </div>
 
                 <!-- Physics -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-atom"></i></div>
+                        <div class="hub-icon"><i class="fas fa-atom"></i></div>
                         <h3>Physics</h3>
                         <p>Analysis of mechanical motion, energy dynamics, and physical laws.</p>
                     </div>
@@ -73,9 +72,9 @@
                 </div>
 
                 <!-- English -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-language"></i></div>
+                        <div class="hub-icon"><i class="fas fa-language"></i></div>
                         <h3>English Hub</h3>
                         <p>Enhancing professional communication and linguistic proficiency.</p>
                     </div>
@@ -83,9 +82,9 @@
                 </div>
 
                 <!-- Computer -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-desktop"></i></div>
+                        <div class="hub-icon"><i class="fas fa-desktop"></i></div>
                         <h3>Computing</h3>
                         <p>Foundation of digital systems and essential hardware components.</p>
                     </div>
@@ -93,9 +92,9 @@
                 </div>
 
                 <!-- Math0 -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-square-root-alt"></i></div>
+                        <div class="hub-icon"><i class="fas fa-square-root-alt"></i></div>
                         <h3>Mathematics 0</h3>
                         <p>Essential preparatory foundations for advanced calculus.</p>
                     </div>
@@ -103,9 +102,9 @@
                 </div>
 
                 <!-- Entrepreneurship -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="hub-icon"><i class="fas fa-lightbulb"></i></div>
                         <h3>Innovation</h3>
                         <p>Transitioning theoretical concepts into scalable business models.</p>
                     </div>
@@ -113,9 +112,9 @@
                 </div>
 
                 <!-- Human Rights -->
-                <div class="glass-card course-card">
+                <div class="glass-card hub-card">
                     <div>
-                        <div class="course-icon"><i class="fas fa-balance-scale"></i></div>
+                        <div class="hub-icon"><i class="fas fa-balance-scale"></i></div>
                         <h3>Ethics Hub</h3>
                         <p>Examination of global human rights and social equality frameworks.</p>
                     </div>
@@ -125,11 +124,54 @@
         </div>
     </main>
 
+    
+    
+    
     <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Faculty of Digital Arts & Technology.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../../images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
+                    <p style="color: rgba(255,255,255,0.6); line-height: 1.4; font-size: 0.85rem;">
+                        Innovation University is a world-class institution dedicated to shaping the future of technology through academic excellence and practical innovation.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>University</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../Pages/iu.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Home Portal</a></li>
+                    <li><a href="../../Pages/iu-details.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">About FCIT</a></li>
+                    <li><a href="../../Pages/programs.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Programs</a></li>
+                    <li><a href="../../Pages/regulations.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Bylaws & Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Life</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../Pages/login.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Student Portal</a></li>
+                    <li><a href="../../Pages/events.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Campus Events</a></li>
+                    <li><a href="../../Pages/schedule.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Calendar</a></li>
+                    <li><a href="../../Pages/profile.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">User Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+        <div style="max-width: 1600px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
+            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
         </div>
     </footer>
+
+
+
 
 <script src="../../js/navigation.js"></script>
 <script>
@@ -157,7 +199,9 @@
     if (menuToggle && navMenu) {
         menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     }
+
+    
 </script>
 
-</body>
+    </body>
 </html>

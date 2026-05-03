@@ -1,0 +1,83 @@
+/* Hub Pages (PDF, Video, Quiz) shared design system */
+.hub-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+    gap: 30px; 
+    margin-top: 40px; 
+}
+
+.hub-card { 
+    padding: 50px 30px; 
+    text-align: center; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    min-height: 440px; 
+    transition: var(--transition-smooth); 
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+}
+
+.hub-card:hover { 
+    transform: translateY(-12px); 
+    border-color: var(--iu-accent); 
+    background: rgba(253, 185, 19, 0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.hub-icon { 
+    width: 90px;
+    height: 90px;
+    background: rgba(253, 185, 19, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    font-size: 2.6rem; 
+    color: var(--iu-accent); 
+    transition: var(--transition-smooth);
+    filter: drop-shadow(0 0 15px var(--iu-accent-glow));
+}
+
+.hub-card:hover .hub-icon {
+    background: var(--iu-accent);
+    color: var(--iu-primary);
+    transform: scale(1.1);
+}
+
+.hub-card h3 { 
+    font-size: 1.6rem; 
+    color: #fff; 
+    margin-bottom: 15px;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+}
+
+.hub-card p { 
+    color: var(--iu-text-muted); 
+    font-size: 0.95rem; 
+    margin-bottom: 30px; 
+    line-height: 1.5; 
+}
+
+.hub-card .btn-premium {
+    width: 100%;
+    margin-top: auto;
+}
+
+/* Section overrides for Quiz pages */
+.quiz-section { margin-bottom: 60px; }
+.quiz-section-title { 
+    font-size: 1.8rem; 
+    color: var(--iu-accent); 
+    margin-bottom: 30px; 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+    border-left: 4px solid var(--iu-accent); 
+    padding-left: 20px; 
+    font-family: 'Outfit', sans-serif;
+}

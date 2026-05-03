@@ -11,20 +11,14 @@
     <link rel="stylesheet" href="../../css/core/components.css">
     <link rel="stylesheet" href="../../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <style>
-        .quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-top: 40px; }
-        .quiz-card { padding: 30px 20px; text-align: center; position: relative; border-radius: 20px; border: 1px solid var(--glass-border); background: var(--glass-bg); transition: var(--transition-smooth); display: flex; flex-direction: column; }
-        .quiz-card:hover { border-color: var(--iu-accent); transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.4); }
-        .quiz-icon { font-size: 2.5rem; color: var(--iu-accent); margin-bottom: 20px; filter: drop-shadow(0 0 10px var(--iu-accent-glow)); }
-        .quiz-card h3 { color: #fff; font-size: 1.3rem; margin-bottom: 10px; }
-        .quiz-card p { color: var(--iu-text-muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 25px; flex: 1; }
-        .quiz-meta { display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 20px; padding: 10px; background: rgba(0,0,0,0.2); border-radius: 8px; }
-    </style>
-</head>
-<body class="faculty-theme">
+    
+    <link rel="stylesheet" href="../../css/hub-pages.css">
+    
+    </head>
+    <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
-    <header>
+        <header>
         <div class="nav-container">
             <div class="logo">
                 <img src="../../images/iu-logo.png" alt="IU Logo">
@@ -50,8 +44,8 @@
 
             <div class="quiz-grid animate-up" style="animation-delay: 0.1s;">
                 <!-- Cyber Quiz -->
-                <div class="glass-card quiz-card">
-                    <div class="quiz-icon"><i class="fas fa-shield-virus"></i></div>
+                <div class="glass-card hub-card">
+                    <div class="hub-icon"><i class="fas fa-shield-virus"></i></div>
                     <h3>Cyber Security</h3>
                     <p>Test your knowledge on attack vectors and security policies.</p>
                     <div class="quiz-meta">
@@ -62,8 +56,8 @@
                 </div>
 
                 <!-- Cloud Quiz -->
-                <div class="glass-card quiz-card">
-                    <div class="quiz-icon"><i class="fas fa-cloud"></i></div>
+                <div class="glass-card hub-card">
+                    <div class="hub-icon"><i class="fas fa-cloud"></i></div>
                     <h3>Cloud Computing</h3>
                     <p>Assess your understanding of cloud architecture and pricing.</p>
                     <div class="quiz-meta">
@@ -74,8 +68,8 @@
                 </div>
 
                 <!-- Data Science Quiz -->
-                <div class="glass-card quiz-card">
-                    <div class="quiz-icon"><i class="fas fa-chart-pie"></i></div>
+                <div class="glass-card hub-card">
+                    <div class="hub-icon"><i class="fas fa-chart-pie"></i></div>
                     <h3>Data Science</h3>
                     <p>Evaluate your skills in statistical modeling.</p>
                     <div class="quiz-meta">
@@ -88,11 +82,54 @@
         </div>
     </main>
 
-    <footer class="main-footer" style="padding: 30px 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(15px); border-top: 1px solid var(--glass-border); margin-top: 50px;">
-        <div style="text-align: center; color: var(--iu-text-muted); font-size: 0.85rem;">
-            <p>© 2026 Innovation University — Academic Excellence Hub.</p>
+    
+    
+    
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../../images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
+                    <p style="color: rgba(255,255,255,0.6); line-height: 1.4; font-size: 0.85rem;">
+                        Innovation University is a world-class institution dedicated to shaping the future of technology through academic excellence and practical innovation.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>University</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../Pages/iu.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Home Portal</a></li>
+                    <li><a href="../../Pages/iu-details.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">About FCIT</a></li>
+                    <li><a href="../../Pages/programs.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Programs</a></li>
+                    <li><a href="../../Pages/regulations.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Bylaws & Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Life</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../Pages/login.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Student Portal</a></li>
+                    <li><a href="../../Pages/events.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Campus Events</a></li>
+                    <li><a href="../../Pages/schedule.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Calendar</a></li>
+                    <li><a href="../../Pages/profile.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">User Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+        <div style="max-width: 1600px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
+            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
         </div>
     </footer>
+
+
+
 
 <script>
     // Navigation & Preloader
@@ -104,12 +141,8 @@
                 setTimeout(() => preloader.style.display = 'none', 500);
             }, 500);
         }
-    });
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
+
+        
 </script>
-</body>
+    </body>
 </html>

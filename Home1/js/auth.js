@@ -31,8 +31,8 @@ if (loginForm) {
         e.preventDefault();
         if (authError) authError.style.display = 'none';
         
-        const email = document.getElementById('loginEmail').value;
-        const password = document.getElementById('loginPassword').value;
+        const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        const password = document.getElementById('loginPassword').value.trim();
         const submitBtn = loginForm.querySelector('button[type="submit"]');
         
         if (isDevMode) {
@@ -42,8 +42,10 @@ if (loginForm) {
                 window.location.href = 'dashboard-admin.html';
             } else if (email === 'student@iu.edu.eg' && password === 'student123') {
                 window.location.href = 'dashboard-STU.html';
+            } else if (email === 'ebrahim.saeed.25030410@iu.edu.eg' && password === '01554@sis') {
+                window.location.href = 'dashboard-STU.html';
             } else {
-                showError("Invalid Credentials! Try: admin@iu.edu.eg / admin123");
+                showError("Invalid Credentials! Please check your email and password.");
             }
             return;
         }
@@ -148,11 +150,7 @@ async function checkSession() {
         // 2. Early exit for Dev/Mock mode
         if (isDevMode || isMockMode) {
             console.info("Auth: Running in DEV/MOCK mode.");
-            const banner = document.createElement('div');
-            banner.style = "background: #fdb913; color: #000; text-align: center; padding: 10px; font-weight: 800; font-size: 0.85rem; position: fixed; top: 0; left: 0; width: 100%; z-index: 9999; box-shadow: 0 5px 20px rgba(0,0,0,0.5);";
-            banner.innerHTML = `<i class="fas fa-exclamation-triangle"></i> DEMO MODE ACTIVE: Not connected to Supabase Database. All data is simulated.`;
-            document.body.prepend(banner);
-            document.body.style.paddingTop = "40px";
+            // Banner creation code removed to hide the warning until DB connection
             
             if (userDisplay) userDisplay.innerText = "Demo Student (Dev Mode)";
             return;

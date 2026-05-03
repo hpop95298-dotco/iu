@@ -13,9 +13,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="../css/dashboard.css">
-</head>
-<body class="faculty-theme">
+    
+    </head>
+    <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
+
+        <!-- Option 7: Scroll Progress Bar -->
+    <div id="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--iu-accent); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--iu-accent);"></div>
 
     <header>
         <div class="nav-container">
@@ -34,70 +38,176 @@
         </div>
     </header>
 
-    <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding-top: 50px;">
-        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Executive Command Center</h1>
-
-        <div class="dashboard-grid-stats">
-            <div class="glass-card animate-up" style="text-align: center; padding: 30px;">
-                <i class="fas fa-users" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
-                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Enrolled Students</div>
-                <div style="font-size: 2.5rem; font-weight: 800;">1,240</div>
+    <main class="main-content" style="max-width: 1500px; margin: 0 auto; padding-top: 130px; padding-bottom: 80px; width: 92%;">
+        
+        <!-- Cinematic Header -->
+        <div class="animate-up" style="margin-bottom: 60px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 40px;">
+            <div>
+                <h1 style="color: var(--iu-accent); font-size: 3.5rem; margin-bottom: 12px; font-family: 'Outfit', sans-serif; letter-spacing: -2px; font-weight: 900; background: linear-gradient(to right, var(--iu-accent), #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                    Admin Command Center
+                </h1>
+                <p style="color: var(--iu-text-muted); font-size: 1.2rem; max-width: 600px; font-weight: 500; opacity: 0.8;">Executive oversight of academic operations and student engagement.</p>
             </div>
-            <div class="glass-card animate-up" style="text-align: center; padding: 30px; animation-delay: 0.1s;">
-                <i class="fas fa-book-open" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
-                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Course Modules</div>
-                <div style="font-size: 2.5rem; font-weight: 800;">48</div>
-            </div>
-            <div class="glass-card animate-up" style="text-align: center; padding: 30px; animation-delay: 0.2s;">
-                <i class="fas fa-check-double" style="font-size: 2rem; color: var(--iu-accent); margin-bottom: 15px;"></i>
-                <div style="color: var(--iu-text-muted); font-size: 0.9rem;">Active Submissions</div>
-                <div style="font-size: 2.5rem; font-weight: 800;">8,421</div>
+            <div style="background: rgba(var(--iu-accent-rgb), 0.05); border: 1px solid rgba(var(--iu-accent-rgb), 0.2); padding: 15px 30px; border-radius: 20px; text-align: right;">
+                <div style="color: var(--iu-accent); font-size: 0.75rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;">Terminal Session</div>
+                <div style="color: #fff; font-family: monospace; font-size: 1.1rem; font-weight: 700;">#ADM-ROOT-101</div>
             </div>
         </div>
 
-        <div class="dashboard-grid-2" style="margin-top: 30px;">
-            <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.3s;">
-                <h3 class="chart-card-title"><i class="fas fa-chart-line"></i> Strategic Growth</h3>
-                <div class="chart-container">
+        <!-- Enhanced Stats Summary -->
+        <div class="dashboard-grid-stats" style="margin-bottom: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+            <div class="glass-card animate-up" style="padding: 45px 30px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, transparent, var(--iu-accent), transparent);"></div>
+                <i class="fas fa-user-graduate" style="font-size: 2.8rem; color: var(--iu-accent); margin-bottom: 25px; display: block; filter: drop-shadow(0 0 10px var(--iu-accent-glow));"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Enrolled Students</div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: white; letter-spacing: -1px;">1,240</div>
+            </div>
+            <div class="glass-card animate-up" style="padding: 45px 30px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; animation-delay: 0.1s;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, transparent, #fff, transparent); opacity: 0.2;"></div>
+                <i class="fas fa-book-open" style="font-size: 2.8rem; color: #fff; margin-bottom: 25px; display: block; opacity: 0.9;"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Active Modules</div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: white; letter-spacing: -1px;">48</div>
+            </div>
+            <div class="glass-card animate-up" style="padding: 45px 30px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.08); position: relative; overflow: hidden; animation-delay: 0.2s;">
+                <div style="position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: linear-gradient(to right, transparent, #22c55e, transparent); opacity: 0.3;"></div>
+                <i class="fas fa-rocket" style="font-size: 2.8rem; color: #22c55e; margin-bottom: 25px; display: block; filter: drop-shadow(0 0 10px rgba(34,197,94,0.3));"></i>
+                <div style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Avg. Performance</div>
+                <div style="font-size: 3.5rem; font-weight: 900; color: white; letter-spacing: -1px;">94%</div>
+            </div>
+        </div>
+
+        <!-- Interactive Data Visuals -->
+        <div class="dashboard-grid-2" style="margin-bottom: 50px; display: grid; grid-template-columns: 1.8fr 1fr; gap: 40px;">
+            <div class="glass-card animate-up" style="padding: 40px; animation-delay: 0.3s; border-radius: 35px; border: 1px solid rgba(255,255,255,0.1);">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px;">
+                    <h3 class="chart-card-title" style="margin-bottom: 0; font-size: 1.5rem; font-weight: 800;"><i class="fas fa-chart-area" style="color: var(--iu-accent); margin-right: 15px;"></i> Submissions Pulse</h3>
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 18px; border-radius: 12px; font-size: 0.8rem; color: var(--iu-text-muted); font-weight: 700; letter-spacing: 1px;">7-DAY TREND</div>
+                </div>
+                <div class="chart-container" style="height: 300px;">
                     <canvas id="lineChart"></canvas>
                 </div>
             </div>
-            <div class="glass-card animate-up" style="padding: 30px; animation-delay: 0.4s;">
-                <h3 class="chart-card-title"><i class="fas fa-chart-pie"></i> Faculty Distribution</h3>
-                <div class="chart-container">
+            <div class="glass-card animate-up" style="padding: 40px; animation-delay: 0.4s; border-radius: 35px; border: 1px solid rgba(255,255,255,0.1);">
+                <h3 class="chart-card-title" style="margin-bottom: 40px; font-size: 1.5rem; font-weight: 800;"><i class="fas fa-layer-group" style="color: #fff; margin-right: 15px;"></i> Distribution</h3>
+                <div class="chart-container" style="height: 250px;">
                     <canvas id="doughnutChart"></canvas>
                 </div>
             </div>
         </div>
 
-        <div class="glass-card animate-up" style="margin-top: 30px; padding: 40px; animation-delay: 0.5s;">
-            <h3 class="chart-card-title"><i class="fas fa-tasks"></i> Recent Academic Activity</h3>
+        <!-- Recent Activity Registry -->
+        <div class="glass-card animate-up" style="padding: 50px; animation-delay: 0.5s; border-radius: 35px; border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 30px 100px rgba(0,0,0,0.6);">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 45px;">
+                <h3 class="chart-card-title" style="margin-bottom: 0; font-size: 1.8rem; font-weight: 900; letter-spacing: -0.5px;"><i class="fas fa-clock-rotate-left" style="color: var(--iu-accent); margin-right: 20px;"></i> Academic Activity Registry</h3>
+                <button class="btn-premium btn-accent" style="font-size: 0.8rem; padding: 12px 25px; border-radius: 12px; font-weight: 800;">
+                    VIEW FULL HISTORY <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                </button>
+            </div>
             <div class="table-responsive">
-                <table>
+                <table style="border-collapse: separate; border-spacing: 0 15px; margin-top: -15px;">
                     <thead>
-                        <tr>
-                            <th>Student Representative</th>
-                            <th>Academic Module</th>
-                            <th>Timeline</th>
-                            <th>Status</th>
+                        <tr style="background: transparent;">
+                            <th style="color: var(--iu-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; padding: 0 30px 25px; font-weight: 800; opacity: 0.7;">Student Profile</th>
+                            <th style="color: var(--iu-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; padding: 0 30px 25px; font-weight: 800; opacity: 0.7;">Module Target</th>
+                            <th style="color: var(--iu-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; padding: 0 30px 25px; font-weight: 800; opacity: 0.7;">Submission Date</th>
+                            <th style="color: var(--iu-accent); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; border: none; padding: 0 30px 25px; font-weight: 800; opacity: 0.7; text-align: right;">Authorization</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr><td>Ahmed Anter</td><td>Advanced Web Design</td><td>Oct 24, 2026</td><td><span class="status-pill status-completed">Validated</span></td></tr>
-                        <tr><td>Sarah Miller</td><td>Database Structures</td><td>Oct 23, 2026</td><td><span class="status-pill status-pending">In Review</span></td></tr>
-                        <tr><td>John Doe</td><td>AI Fundamentals</td><td>Oct 22, 2026</td><td><span class="status-pill status-completed">Validated</span></td></tr>
+                    <tbody id="activityBody">
+                        <!-- Content rendered by admin-dashboard.js -->
                     </tbody>
                 </table>
             </div>
         </div>
     </main>
 
-    <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Administrative Command. Excellence in Education.</p>
+    <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden;">
+        <!-- Background Glow Effect -->
+        <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(var(--iu-accent-rgb), 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <div class="footer-grid" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px var(--iu-accent));">
+                    <p style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering excellence.
+                    </p>
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">ISO 27001</div>
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">AI-CERTIFIED</div>
+                    </div>
+                    <div class="social-links" style="display: flex; gap: 10px;">
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">ACADEMIC</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="programs.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Digital Library</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Research Labs</a></li>
+                    <li style="margin-bottom: 8px;"><a href="regulations.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">QUICK LINKS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="dashboard-admin.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Admin</a></li>
+                    <li style="margin-bottom: 8px;"><a href="login.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Portal</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> IT Support</a></li>
+                    <li style="margin-bottom: 8px;"><a href="iu-details.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> About</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">NEWSLETTER</h4>
+                <div style="margin-bottom: 15px; position: relative;">
+                    <input type="email" placeholder="Email..." style="width: 100%; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 8px; color: #fff; font-size: 0.75rem; outline: none;">
+                    <button style="position: absolute; right: 4px; top: 4px; bottom: 4px; background: var(--iu-accent); border: none; border-radius: 6px; color: #000; padding: 0 10px; font-weight: 800; font-size: 0.65rem; cursor: pointer;">JOIN</button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <p style="color: rgba(255,255,255,0.3); font-size: 0.75rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-location-dot" style="color: var(--iu-accent); width: 12px;"></i> Smart Village, Cairo
+                    </p>
+                    <div style="background: rgba(var(--iu-accent-rgb), 0.03); border: 1px solid rgba(var(--iu-accent-rgb), 0.08); padding: 6px 12px; border-radius: 6px; display: inline-block;">
+                        <p style="color: var(--iu-accent); font-size: 0.7rem; font-weight: 800; margin: 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> support@iu.edu.eg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <p>&copy; 2026 Innovation University.</p>
+                <span style="opacity: 0.2;">|</span>
+                <p style="color: var(--iu-accent); font-weight: 700; font-size: 0.65rem; letter-spacing: 0.5px;">SECURED BY AES-256</p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+            </div>
         </div>
     </footer>
+
+
+
+    <script>
+        // Option 7: Scroll Progress Logic
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scroll-progress');
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            if(scrollProgress) scrollProgress.style.width = progress + '%';
+        });
+
+        
+    </script>
     <script type="module" src="../js/admin-dashboard.js"></script>
     <script type="module" src="../js/auth.js"></script>
-</body>
+    </body>
 </html>

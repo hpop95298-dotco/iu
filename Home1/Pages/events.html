@@ -11,11 +11,12 @@
     <link rel="stylesheet" href="../css/core/components.css">
     <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body class="faculty-theme">
+    
+    </head>
+    <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
-    <header>
+        <header>
         <div class="nav-container">
             <div class="logo">
                 <img src="../images/iu-logo.png" alt="IU Logo">
@@ -34,6 +35,7 @@
     </header>
 
     <main class="main-content">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Previous</a>
         <div class="hero-events" style="text-align: center; padding: 100px 5%; background: linear-gradient(rgba(var(--iu-primary-rgb), 0.7), rgba(var(--iu-primary-rgb), 0.9)), url('../images/event.jpeg') center/cover; border-radius: 30px; margin-bottom: 60px; border: 1px solid var(--glass-border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
             <h1 class="animate-up" style="font-size: 4rem; color: var(--iu-accent); margin-bottom: 20px;">Events & Workshops</h1>
             <p class="animate-up" style="max-width: 700px; margin: 0 auto; color: rgba(255,255,255,0.9); font-size: 1.2rem; animation-delay: 0.2s;">Stay updated with the latest activities, seminars, and competitions happening at the Faculty of Computers.</p>
@@ -76,8 +78,43 @@
     </main>
 
     <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Faculty of Computers & IT. All Rights Reserved.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
+                    <p>Innovation University is a world-class institution dedicated to shaping the future of technology through academic excellence and practical innovation.</p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>University</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="iu.html">Home Portal</a></li>
+                    <li><a href="iu-details.html">About FCIT</a></li>
+                    <li><a href="programs.html">Academic Programs</a></li>
+                    <li><a href="regulations.html">Bylaws & Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Life</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="login.html">Student Portal</a></li>
+                    <li><a href="events.html">Campus Events</a></li>
+                    <li><a href="schedule.html">Academic Calendar</a></li>
+                    <li><a href="profile.html">User Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="font-size: 0.75rem; color: rgba(255,255,255,0.4);"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+        <div style="max-width: 1600px; margin: 25px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.3); font-size: 0.7rem;">
+            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
         </div>
     </footer>
 
@@ -92,6 +129,8 @@
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        
     </script>
-</body>
+    </body>
 </html>

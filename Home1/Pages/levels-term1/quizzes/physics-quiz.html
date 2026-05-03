@@ -54,7 +54,7 @@
             .quiz-sidebar { width: 100%; position: relative; top: 0; max-height: none; }
         }
     </style>
-</head>
+    </head>
 <body class="faculty-theme">
     <div id="preloader"><div class="spinner"></div></div>
 
@@ -93,11 +93,54 @@
         </div>
     </main>
 
+    
+    
+    
     <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Department of Applied Physics.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../../../images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
+                    <p style="color: rgba(255,255,255,0.6); line-height: 1.4; font-size: 0.85rem;">
+                        Innovation University is a world-class institution dedicated to shaping the future of technology through academic excellence and practical innovation.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>University</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../../Pages/iu.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Home Portal</a></li>
+                    <li><a href="../../../Pages/iu-details.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">About FCIT</a></li>
+                    <li><a href="../../../Pages/programs.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Programs</a></li>
+                    <li><a href="../../../Pages/regulations.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Bylaws & Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Life</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../../../Pages/login.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Student Portal</a></li>
+                    <li><a href="../../../Pages/events.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Campus Events</a></li>
+                    <li><a href="../../../Pages/schedule.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic Calendar</a></li>
+                    <li><a href="../../../Pages/profile.html" style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">User Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+        <div style="max-width: 1600px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
+            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
         </div>
     </footer>
+
+
+
 
     <!-- Quiz Data -->
     <script type="application/json" id="quiz-data">
@@ -290,5 +333,5 @@
             startQuiz(0);
         });
     </script>
-</body>
+    </body>
 </html>

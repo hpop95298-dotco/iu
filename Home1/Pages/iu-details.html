@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FCIT | Innovation University</title>
     <!-- Design System Core -->
     <link rel="stylesheet" href="../css/core/tokens.css">
     <link rel="stylesheet" href="../css/core/base.css">
@@ -5,30 +12,7 @@
     <link rel="stylesheet" href="../css/core/components.css">
     <link rel="stylesheet" href="../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-</head>
-<body class="faculty-theme">
-    <div id="preloader"><div class="spinner"></div></div>
-
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../images/iu-logo.png" alt="IU Logo">
-                <span>IU | Faculty of Computers</span>
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="iu.html">Home</a>
-                <a href="iu-details.html" class="active">About FCIT</a>
-                <a href="programs.html">Programs</a>
-                <a href="regulations.html">Regulations</a>
-                <a href="events.html">Events</a>
-                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-            </nav>
-        </div>
-    </header>
-
     <style>
-        /* Local specific styles for details page */
         .staff-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -36,160 +20,73 @@
             margin: 50px 0;
         }
 
-        .staff-card {
-            text-align: center;
-            padding: 40px 20px;
+        .obj-item {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .staff-img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid var(--accent);
-            margin-bottom: 20px;
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .staff-name {
-            font-size: 1.5rem;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .staff-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
-        .feature-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: stretch;
-            gap: 30px;
-            margin: 60px 0;
-        }
-
-        .feature-content {
-            flex: 1;
-            min-width: 300px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .feature-image-container {
-            flex: 1;
-            min-width: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            gap: 15px;
+            padding: 15px;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
             border: 1px solid var(--glass-border);
+            transition: var(--transition-smooth);
         }
-
-        .feature-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            min-height: 350px;
-            transition: var(--transition);
+        .obj-item:hover {
+            background: rgba(var(--iu-accent-rgb), 0.05);
+            transform: translateX(10px);
         }
-
-        .feature-image-container:hover img {
-            transform: scale(1.05);
-        }
-
-        .feature-list p {
-            margin-bottom: 15px;
-            line-height: 1.7;
-            position: relative;
-            padding-left: 25px;
-            color: var(--text-light);
-        }
-
-        .feature-list p::before {
-            content: "\f058";
-            font-family: "Font Awesome 6 Free";
-            font-weight: 900;
-            color: var(--accent);
-            position: absolute;
-            left: 0;
-            top: 2px;
-        }
-
-        .hero-banner {
-            position: relative;
-            height: 50vh;
-            min-height: 400px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            margin-bottom: 50px;
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid var(--glass-border);
-        }
-
-        .hero-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to right, rgba(0, 15, 36, 0.9), rgba(0, 15, 36, 0.4)), url('../images/event-image1.png') center/cover;
-            z-index: 1;
-        }
-
-        .hero-banner-content {
-            position: relative;
-            z-index: 2;
-            padding: 40px;
-            max-width: 800px;
-        }
-
-        .hero-banner h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            color: #fff;
-            margin-bottom: 20px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        .hero-banner p {
-            font-size: 1.1rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 30px;
-            line-height: 1.6;
+        .obj-item i {
+            color: var(--iu-accent);
+            margin-top: 5px;
         }
     </style>
-</head>
+    </head>
 
-<body class="faculty-theme">
-    <div id="preloader"><div class="spinner"></div></div>
-
-<header>
-    <div class="nav-container">
-        <div class="logo">
-            <img src="../images/iu-logo.png" alt="IU Logo">
-            <span>IU | Faculty of Computers</span>
+    <body class="faculty-theme">
+    <div id="preloader">
+            <div class="spinner"></div>
         </div>
-        <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-        <nav id="navMenu">
-            <a href="iu.html">Home</a>
-            <a href="iu-details.html">About FCIT</a>
-            <a href="courses.html">Programs</a>
-            <a href="regulations.html">Regulations</a>
-            <a href="events.html">Events</a>
-            <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-        </nav>
-    </div>
-</header>
+
+        <!-- Option 7: Scroll Progress Bar -->
+        <div id="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--iu-accent); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--iu-accent);"></div>
+
+        <header>
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="../images/iu-logo.png" alt="IU Logo">
+                    <span>IU | Faculty of Computers</span>
+                </div>
+                <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
+                <nav id="navMenu">
+                    <a href="iu.html">Home</a>
+                    <a href="iu-details.html" class="active">About FCIT</a>
+                    <a href="programs.html">Programs</a>
+                    <a href="regulations.html">Regulations</a>
+                    <a href="events.html">Events</a>
+                    <a href="login.html" class="btn-premium btn-accent">Student Portal <i
+                            class="fas fa-sign-in-alt"></i></a>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Option 1: Live News Ticker (Standard Portal Edition) -->
+        <div class="news-ticker-container" style="background: rgba(var(--iu-primary-rgb), 0.3); border-bottom: 1px solid rgba(255,255,255,0.08); backdrop-filter: blur(15px); padding: 12px 0; overflow: hidden; position: relative; z-index: 900;">
+            <!-- Soft Fading Edges -->
+            <div style="position: absolute; top: 0; left: 0; width: 120px; height: 100%; background: linear-gradient(to right, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;"></div>
+            <div style="position: absolute; top: 0; right: 0; width: 120px; height: 100%; background: linear-gradient(to left, rgba(20,12,35,0.6), transparent); z-index: 2; pointer-events: none;"></div>
+            
+            <div style="display: flex; align-items: center; max-width: 1400px; margin: 0 auto; padding: 0 5%; position: relative; z-index: 1;">
+                <div class="live-badge" style="background: var(--iu-accent); color: #000; padding: 4px 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 900; letter-spacing: 1.5px; margin-right: 25px; flex-shrink: 0; box-shadow: 0 0 20px rgba(var(--iu-accent-rgb), 0.4); display: flex; align-items: center; gap: 8px; animation: badge-pulse 2s infinite;">
+                    <span style="width: 6px; height: 6px; background: #000; border-radius: 50%;"></span> SYSTEM FEED
+                </div>
+                <div class="ticker-content" style="white-space: nowrap; animation: ticker-scroll 35s linear infinite; color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 500; font-family: 'Inter', sans-serif;">
+                    <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i class="fas fa-bolt" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b style="color: #fff;">NEWS:</b> Innovation University launches the first Quantum Computing lab in the region.</span>
+                    <span style="margin-right: 60px; display: inline-flex; align-items: center; gap: 10px;"><i class="fas fa-microchip" style="color: var(--iu-accent); font-size: 0.9rem;"></i> <b style="color: #fff;">TECH:</b> New AI Research Center opened for Level 3 and 4 students.</span>
+                </div>
+            </div>
+        </div>
 
     <main class="main-content">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Previous</a>
+        
         <!-- Hero Banner -->
         <div class="hero-banner" style="position: relative; height: 50vh; min-height: 400px; display: flex; align-items: center; justify-content: center; text-align: center; margin-bottom: 60px; border-radius: 30px; overflow: hidden; border: 1px solid var(--glass-border);">
             <div style="position: absolute; inset: 0; background: linear-gradient(rgba(var(--iu-primary-rgb), 0.8), rgba(var(--iu-primary-rgb), 0.4)), url('../images/event-image1.png') center/cover; z-index: 1;"></div>
@@ -202,22 +99,22 @@
         <!-- Leadership Section -->
         <h2 class="animate-up" style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 3rem;">Our Leadership</h2>
 
-        <div class="staff-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px;">
-            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px;">
+        <div class="staff-grid">
+            <div class="glass-card animate-up tilt-card" style="text-align: center; padding: 50px 30px;">
                 <img src="../images/prof-helmy.jpg" alt="Prof. Helmy ElGhor" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
                 <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">Prof. Helmy ElGhor</h3>
                 <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Vice President of Innovation University, dedicated to promotes academic excellence and strategic growth.</p>
                 <a href="#" class="btn-premium btn-glass" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
             </div>
 
-            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px; animation-delay: 0.1s;">
+            <div class="glass-card animate-up tilt-card" style="text-align: center; padding: 50px 30px; animation-delay: 0.1s;">
                 <img src="../images/mohamed-fahmy.jpg" alt="ENG. Mohamed Fahmy" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
                 <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">ENG. Mohamed Fahmy</h3>
                 <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Head of the Board of Trustees | PhD | Partner – EHAF Consulting Engineers | Education & Innovation Leader.</p>
                 <a href="#" class="btn-premium btn-glass" style="display: flex; align-items: center; gap: 10px; justify-content: center;"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
             </div>
 
-            <div class="glass-card animate-up" style="text-align: center; padding: 50px 30px; animation-delay: 0.2s;">
+            <div class="glass-card animate-up tilt-card" style="text-align: center; padding: 50px 30px; animation-delay: 0.2s;">
                 <img src="../images/lamia.png" alt="DR. Lamiaa Elrefaei" style="width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--iu-accent); margin-bottom: 25px; box-shadow: 0 0 25px var(--iu-accent-glow); object-fit: cover;">
                 <h3 style="font-size: 1.6rem; color: var(--iu-accent); margin-bottom: 15px;">DR. Lamiaa Elrefaei</h3>
                 <p style="color: var(--iu-text-muted); line-height: 1.7; margin-bottom: 25px;">Professor of Computer Engineering & Dean of the Faculty of Computers and Information Technology at IU.</p>
@@ -226,17 +123,17 @@
         </div>
 
         <!-- Vision & Mission Section -->
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 80px;">
             <div class="glass-card animate-up" style="padding: 40px; border-left: 5px solid var(--iu-accent);">
                 <h2 style="color: var(--iu-accent); margin-bottom: 20px;"><i class="fas fa-eye"></i> Our Vision</h2>
                 <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.1rem;">
-                    The Faculty of Computers and Information Technology shall achieve excellence in the fields of information systems, computer science, artificial intelligence, and digital informatics, and that we be creative in developing the learning journey for students who are the focus of the educational process, and that we have leadership in our specialty at the local and regional levels.
+                    The Faculty shall achieve excellence in information systems, computer science, AI, and digital informatics, creating innovative learning journeys.
                 </p>
             </div>
             <div class="glass-card animate-up" style="padding: 40px; border-left: 5px solid var(--iu-primary); animation-delay: 0.1s;">
                 <h2 style="color: var(--iu-accent); margin-bottom: 20px;"><i class="fas fa-bullseye"></i> Our Mission</h2>
                 <p style="color: rgba(255,255,255,0.9); line-height: 1.8; font-size: 1.1rem;">
-                    The Faculty is committed to providing students with basic knowledge and skills and providing an educational environment conducive to innovation in the field of computers and digital informatics with a balance between the ethical, professional, technical, and scientific aspects, and graduating highly competitive professionals and to contribute to advancing technological development in all its aspects for Egypt.
+                    To provide students with balanced ethical and technical skills, graduating competitive professionals for Egypt's technological growth.
                 </p>
             </div>
         </div>
@@ -244,100 +141,91 @@
         <!-- Strategic Objectives Section -->
         <section class="glass-card animate-up" style="padding: 60px; margin-bottom: 80px;">
             <h2 style="color: var(--iu-accent); text-align: center; margin-bottom: 50px; font-size: 2.5rem;">Strategic Objectives</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 20px;">
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing competitiveness through an advanced educational system that suits rapid growth in IT fields.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing scientific creativity to keep pace with modern scientific trends in specialization.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing innovation and creativity skills for our students.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Providing a standard environment and a typical climate for the educational process.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing practical creativity to keep pace with the requirements of specialized institutions.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing communication and teamwork skills.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing business management and leadership skills.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing students’ awareness of ethical standards.</span></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing competitiveness through advanced educational systems.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing scientific creativity and innovation skills.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Providing a standard environment for the educational process.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing communication and leadership skills.</span></div>
+                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>Developing awareness of ethical standards.</span></div>
                 <div class="obj-item"><i class="fas fa-check-circle"></i> <span>The ability to self-learn for life.</span></div>
-                <div class="obj-item"><i class="fas fa-check-circle"></i> <span>The ability of dynamism, agility, resilience, and flexibility.</span></div>
             </div>
         </section>
-
-        <style>
-            .obj-item {
-                display: flex;
-                gap: 15px;
-                padding: 15px;
-                background: rgba(255,255,255,0.02);
-                border-radius: 12px;
-                border: 1px solid var(--glass-border);
-                transition: var(--transition);
-            }
-            .obj-item:hover {
-                background: rgba(var(--iu-accent-rgb), 0.05);
-                transform: translateX(10px);
-            }
-            .obj-item i {
-                color: var(--iu-accent);
-                margin-top: 5px;
-            }
-            .obj-item span {
-                color: rgba(255,255,255,0.85);
-                line-height: 1.5;
-            }
-        </style>
-
-        <!-- Curriculum Highlights -->
-        <section style="margin-bottom: 80px;">
-            <h2 style="text-align: center; margin-bottom: 60px; color: var(--iu-accent); font-size: 2.5rem;">Academic Path Overview</h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="glass-card animate-up">
-                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-layer-group"></i> Foundation (Level 1)</h4>
-                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">A general foundation year shared across programs to build core logic and technical skills.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Intro to Programming & OOP</li>
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Math, Physics & Logic</li>
-                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Professional English & Soft Skills</li>
-                    </ul>
-                </div>
-                <div class="glass-card animate-up" style="animation-delay: 0.1s;">
-                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-microchip"></i> Specialization (Levels 2-3)</h4>
-                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Deep diving into specific program tracks and master core computing technologies.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Data Structures & DBMS</li>
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> OS & Computer Networks</li>
-                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Web & Mobile Development</li>
-                    </ul>
-                </div>
-                <div class="glass-card animate-up" style="animation-delay: 0.2s;">
-                    <h4 style="color: var(--iu-accent); margin-bottom: 20px; font-size: 1.3rem;"><i class="fas fa-graduation-cap"></i> Professional Exit (Level 4)</h4>
-                    <p style="color: var(--iu-text-muted); font-size: 0.9rem; margin-bottom: 15px;">Advanced electives and industry-ready projects to prepare for the global market.</p>
-                    <ul style="list-style: none; padding: 0;">
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> AI, Cloud & Cybersecurity</li>
-                        <li style="margin-bottom: 12px; color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Specialized Program Electives</li>
-                        <li style="color: rgba(255,255,255,0.7); display: flex; gap: 10px;"><i class="fas fa-angle-right" style="color: var(--iu-accent);"></i> Capstone Project (1 & 2)</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
     </main>
-    <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Faculty of Computers & IT. All Rights Reserved.</p>
+
+    <footer class="main-footer" style="background: linear-gradient(to top, #050308, #0a0612); border-top: 1px solid rgba(255,255,255,0.1); padding: 40px 5% 20px; position: relative; overflow: hidden;">
+        <!-- Background Glow Effect -->
+        <div style="position: absolute; bottom: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 150px; background: radial-gradient(circle, rgba(var(--iu-accent-rgb), 0.05) 0%, transparent 70%); pointer-events: none;"></div>
+
+        <div class="footer-grid" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.5fr; gap: 30px; position: relative; z-index: 1;">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 32px; margin-bottom: 15px; filter: drop-shadow(0 0 8px var(--iu-accent));">
+                    <p style="color: rgba(255,255,255,0.4); line-height: 1.5; font-size: 0.8rem; margin-bottom: 15px; max-width: 280px;">
+                        Innovation University's FCIT is a hub for digital pioneers, fostering research and engineering excellence.
+                    </p>
+                    <div style="display: flex; gap: 8px; margin-bottom: 15px;">
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">ISO 27001</div>
+                        <div style="padding: 3px 8px; background: rgba(255,255,255,0.03); border-radius: 4px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.65rem; color: var(--iu-accent); font-weight: 700;">AI-CERTIFIED</div>
+                    </div>
+                    <div class="social-links" style="display: flex; gap: 10px;">
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" style="width: 30px; height: 30px; background: rgba(255,255,255,0.02); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--iu-accent); font-size: 0.9rem; transition: all 0.3s; border: 1px solid rgba(255,255,255,0.05);"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">ACADEMIC</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="programs.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Study Plans</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Digital Library</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Research Labs</a></li>
+                    <li style="margin-bottom: 8px;"><a href="regulations.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Bylaws</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">QUICK LINKS</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="margin-bottom: 8px;"><a href="dashboard-admin.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Admin</a></li>
+                    <li style="margin-bottom: 8px;"><a href="login.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> Portal</a></li>
+                    <li style="margin-bottom: 8px;"><a href="#" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> IT Support</a></li>
+                    <li style="margin-bottom: 8px;"><a href="iu-details.html" style="color: rgba(255,255,255,0.35); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; display: flex; align-items: center; gap: 8px;"><i class="fas fa-chevron-right" style="font-size: 0.55rem; opacity: 0.4;"></i> About</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 style="color: var(--iu-accent); font-size: 0.8rem; margin-bottom: 18px; font-family: 'Outfit', sans-serif; letter-spacing: 1.5px; font-weight: 900;">NEWSLETTER</h4>
+                <div style="margin-bottom: 15px; position: relative;">
+                    <input type="email" placeholder="Email..." style="width: 100%; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.08); padding: 8px 12px; border-radius: 8px; color: #fff; font-size: 0.75rem; outline: none;">
+                    <button style="position: absolute; right: 4px; top: 4px; bottom: 4px; background: var(--iu-accent); border: none; border-radius: 6px; color: #000; padding: 0 10px; font-weight: 800; font-size: 0.65rem; cursor: pointer;">JOIN</button>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <p style="color: rgba(255,255,255,0.3); font-size: 0.75rem; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-location-dot" style="color: var(--iu-accent); width: 12px;"></i> Smart Village, Cairo
+                    </p>
+                    <div style="background: rgba(var(--iu-accent-rgb), 0.03); border: 1px solid rgba(var(--iu-accent-rgb), 0.08); padding: 6px 12px; border-radius: 6px; display: inline-block;">
+                        <p style="color: var(--iu-accent); font-size: 0.7rem; font-weight: 800; margin: 0;"><i class="fas fa-envelope" style="margin-right: 8px;"></i> support@iu.edu.eg</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="max-width: 1400px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center; color: rgba(255,255,255,0.25); font-size: 0.7rem; position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <p>&copy; 2026 Innovation University.</p>
+                <span style="opacity: 0.2;">|</span>
+                <p style="color: var(--iu-accent); font-weight: 700; font-size: 0.65rem; letter-spacing: 0.5px;">SECURED BY AES-256</p>
+            </div>
+            <div style="display: flex; gap: 20px;">
+                <a href="#" style="color: inherit; text-decoration: none;">Privacy</a>
+                <a href="#" style="color: inherit; text-decoration: none;">Terms</a>
+            </div>
         </div>
     </footer>
 
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 500);
-            }
-        });
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-    </script>
-</body>
+    
+    </body>
+
 </html>

@@ -13,54 +13,38 @@
 
 html {
     scroll-behavior: smooth;
-    background-color: var(--iu-bg);
+    background-color: #050308; /* Fallback */
 }
 
 body {
-    background-color: #0a0a1a; /* Slightly lighter navy base */
-    background-image: 
-        var(--glow-1), 
-        var(--glow-2), 
-        linear-gradient(rgba(10, 10, 26, 0.4), rgba(10, 10, 26, 0.4)), /* Subtle tint */
-        url('../../images/img.jpg');
-    background-size: auto, auto, cover, cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-blend-mode: screen, screen, normal, normal; /* Better blending for glows */
     color: var(--iu-text);
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.01em;
+    background: transparent;
 }
 
+/* Optimized Background Engine */
 body::before {
     content: '';
     position: fixed;
     inset: 0;
-    background: linear-gradient(180deg, rgba(5, 2, 8, 0.2) 0%, rgba(5, 2, 8, 0.6) 100%);
-    backdrop-filter: brightness(0.85) saturate(1.1) contrast(1.1);
-    -webkit-backdrop-filter: brightness(0.85) saturate(1.1) contrast(1.1);
-    z-index: -1;
-    pointer-events: none;
+    background: linear-gradient(rgba(5, 3, 8, 0.15), rgba(5, 3, 8, 0.15)),
+                url('../../images/img.jpg') center/cover no-repeat;
+    z-index: -2;
+    filter: brightness(0.9) saturate(1.1); 
+    will-change: transform;
 }
 
 body::after {
     content: '';
     position: fixed;
     inset: 0;
-    background: radial-gradient(circle at 50% 50%, hsla(var(--iu-primary-h), 40%, 20%, 0.1), transparent 80%);
+    background: radial-gradient(circle at 50% 0%, rgba(var(--iu-primary-rgb), 0.2), transparent 75%);
     z-index: -1;
     pointer-events: none;
-    animation: pulseGlow 15s ease-in-out infinite alternate;
-}
-
-@keyframes pulseGlow {
-    from { opacity: 0.4; transform: scale(1); }
-    to { opacity: 1; transform: scale(1.2); }
 }
 
 h1, h2, h3, h4, .font-heading {

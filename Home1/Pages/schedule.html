@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,24 +11,87 @@
     <link rel="stylesheet" href="../css/core/layout.css">
     <link rel="stylesheet" href="../css/core/components.css">
     <link rel="stylesheet" href="../css/core/animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        .filter-section { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 25px; align-items: center; }
-        .filter-section select { padding: 10px 15px; border-radius: 10px; border: 1px solid var(--glass-border); background: rgba(0,0,0,0.3); color: white; outline: none; transition: var(--transition-smooth); }
-        .filter-section select:focus { border-color: var(--iu-accent); box-shadow: 0 0 15px var(--iu-accent-glow); }
-        
-        input[type="time"], input.grid-input { background: transparent; border: none; color: #fff; text-align: center; width: 100%; outline: none; font-family: inherit; }
-        select.grid-select { background: transparent; border: none; color: #fff; text-align-last: center; width: 100%; outline: none; cursor: pointer; }
-        option { background: var(--iu-primary); color: #fff; }
-        
-        .prog-track { height: 6px; background: rgba(255,255,255,0.05); border-radius: 10px; overflow: hidden; margin-top: 5px; }
-        .prog-fill { height: 100%; background: linear-gradient(90deg, var(--iu-primary), var(--iu-accent)); transition: width 0.5s ease; box-shadow: 0 0 10px var(--iu-accent-glow); }
-    </style>
-</head>
-<body class="faculty-theme">
+        .filter-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 25px;
+            align-items: center;
+        }
 
-<div id="preloader"><div class="spinner"></div></div>
+        .filter-section select {
+            padding: 10px 15px;
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            outline: none;
+            transition: var(--transition-smooth);
+        }
+
+        .filter-section select:focus {
+            border-color: var(--iu-accent);
+            box-shadow: 0 0 15px var(--iu-accent-glow);
+        }
+
+        input[type="time"],
+        input.grid-input {
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-align: center;
+            width: 100%;
+            outline: none;
+            font-family: inherit;
+        }
+
+        select.grid-select {
+            background: transparent;
+            border: none;
+            color: #fff;
+            text-align-last: center;
+            width: 100%;
+            outline: none;
+            cursor: pointer;
+        }
+
+        option {
+            background: var(--iu-primary);
+            color: #fff;
+        }
+
+        .prog-track {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .prog-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--iu-primary), var(--iu-accent));
+            transition: width 0.5s ease;
+            box-shadow: 0 0 10px var(--iu-accent-glow);
+        }
+
+        .grid-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+    </head>
+
+<body class="faculty-theme">
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
 
     <header>
         <div class="nav-container">
@@ -40,13 +104,17 @@
                 <a href="iu.html">Home</a>
                 <a href="dashboard-STU.html">Dashboard</a>
                 <a href="schedule.html" class="active">Schedule</a>
-                <a href="login.html" class="btn-premium btn-accent">Logout <i class="fas fa-sign-out-alt"></i></a>
+                <a href="login.html" class="btn-premium btn-accent"
+                    style="padding: 8px 20px; font-size: 0.85rem;">Logout <i class="fas fa-sign-out-alt"></i></a>
             </nav>
         </div>
     </header>
 
-    <main class="main-content" style="max-width: 1200px; margin: 0 auto;">
-        <h1 class="animate-up" style="text-align: center; margin-bottom: 50px; color: var(--iu-accent); font-size: 3rem;">Study Planner</h1>
+    <main class="main-content" style="max-width: 1200px; margin: 0 auto; padding-top: 120px;">
+        <a href="javascript:history.back()" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Previous</a>
+        <h1 class="animate-up"
+            style="text-align: center; margin-bottom: 40px; color: var(--iu-accent); font-size: 2.2rem; letter-spacing: 1px;">
+            Study Planner</h1>
 
         <div class="grid-stats" style="margin-bottom: 30px;">
             <div class="glass-card animate-up" style="text-align: center; padding: 25px;">
@@ -60,7 +128,8 @@
                 <div style="font-size: 2rem; font-weight: 700;" id="totalDuration">0h</div>
             </div>
             <div class="glass-card animate-up" style="text-align: center; padding: 25px; animation-delay: 0.2s;">
-                <i class="fas fa-check-circle" style="color: var(--iu-accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
+                <i class="fas fa-check-circle"
+                    style="color: var(--iu-accent); font-size: 1.5rem; margin-bottom: 10px;"></i>
                 <div style="color: var(--iu-text-muted);">Completed</div>
                 <div style="font-size: 2rem; font-weight: 700;" id="statusCount">0</div>
             </div>
@@ -70,13 +139,19 @@
             <div class="filter-section">
                 <select id="filter-day">
                     <option value="">By Day</option>
-                    <option>Sunday</option><option>Monday</option><option>Tuesday</option>
-                    <option>Wednesday</option><option>Thursday</option><option>Friday</option>
+                    <option>Sunday</option>
+                    <option>Monday</option>
+                    <option>Tuesday</option>
+                    <option>Wednesday</option>
+                    <option>Thursday</option>
+                    <option>Friday</option>
                     <option>Saturday</option>
                 </select>
                 <select id="filter-status">
                     <option value="">By Status</option>
-                    <option>Completed</option><option>In Progress</option><option>Not Started</option>
+                    <option>Completed</option>
+                    <option>In Progress</option>
+                    <option>Not Started</option>
                 </select>
                 <div style="display: flex; gap: 10px; margin-left: auto;">
                     <button class="btn-premium btn-accent" onclick="addRow()">+ New Entry</button>
@@ -85,72 +160,141 @@
                 </div>
             </div>
 
-        <div class="table-responsive">
-            <table id="scheduleTable">
-                <thead>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Day</th>
-                        <th>Time</th>
-                        <th>Duration</th>
-                        <th>Priority</th>
-                        <th>Status</th>
-                        <th>Progress</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="table-responsive">
+                <table id="scheduleTable">
+                    <thead>
+                        <tr>
+                            <th>Subject</th>
+                            <th>Day</th>
+                            <th>Time</th>
+                            <th>Duration</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                            <th>Progress</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
-    </div>
 
         <div class="glass-card animate-up" style="margin-top: 30px; padding: 40px; animation-delay: 0.4s;">
-            <h3 style="color: var(--iu-accent); margin-bottom: 25px; display: flex; align-items: center; gap: 15px;"><i class="fas fa-chart-area"></i> Efficiency Metrics</h3>
+            <h3 style="color: var(--iu-accent); margin-bottom: 25px; display: flex; align-items: center; gap: 15px;"><i
+                    class="fas fa-chart-area"></i> Efficiency Metrics</h3>
             <div style="height: 300px;">
                 <canvas id="studyChart"></canvas>
             </div>
         </div>
     </main>
 
+
+
+
     <footer class="main-footer">
-        <div style="border-top: 1px solid var(--glass-border); padding-top: 30px; text-align: center; color: var(--iu-text-muted);">
-            <p>© 2026 Innovation University — Academic Excellence.</p>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <div class="footer-brand">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 35px; margin-bottom: 12px;">
+                    <p style="color: rgba(255,255,255,0.6); line-height: 1.4; font-size: 0.85rem;">
+                        Innovation University is a world-class institution dedicated to shaping the future of technology
+                        through academic excellence and practical innovation.
+                    </p>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>University</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../Pages/iu.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Home
+                            Portal</a></li>
+                    <li><a href="../Pages/iu-details.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">About
+                            FCIT</a></li>
+                    <li><a href="../Pages/programs.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic
+                            Programs</a></li>
+                    <li><a href="../Pages/regulations.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Bylaws
+                            & Rules</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Student Life</h4>
+                <ul style="list-style: none; padding: 0;">
+                    <li><a href="../Pages/login.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Student
+                            Portal</a></li>
+                    <li><a href="../Pages/events.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Campus
+                            Events</a></li>
+                    <li><a href="../Pages/schedule.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">Academic
+                            Calendar</a></li>
+                    <li><a href="../Pages/profile.html"
+                            style="color: rgba(255,255,255,0.7); text-decoration: none; margin-bottom: 6px; display: block; font-size: 0.85rem;">User
+                            Profile</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Connect</h4>
+                <div style="display: flex; gap: 12px; margin-bottom: 12px;">
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="#" style="color: var(--iu-accent); font-size: 1.2rem;"><i class="fab fa-github"></i></a>
+                </div>
+                <p style="color: rgba(255,255,255,0.5); font-size: 0.75rem;"><i class="fas fa-envelope"
+                        style="margin-right: 8px;"></i> info@iu.edu.eg</p>
+            </div>
+        </div>
+        <div
+            style="max-width: 1600px; margin: 30px auto 0; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: rgba(255,255,255,0.4); font-size: 0.75rem;">
+            <p>&copy; 2026 Innovation University | Faculty of Computers & IT. Crafted for Excellence.</p>
         </div>
     </footer>
 
-<script>
-    // Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => preloader.style.display = 'none', 500);
-        }, 800);
-    });
 
-    // Chart
-    const ctx = document.getElementById('studyChart').getContext('2d');
-    let studyChart = new Chart(ctx, {
-        type: 'line',
-        data: { labels: [], datasets: [{ label: 'Study Hours', data: [], borderColor: '#fdb913', backgroundColor: 'rgba(253, 185, 19, 0.1)', fill: true, tension: 0.4, borderWidth: 3 }] },
-        options: { 
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: { 
-                y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } },
-                x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)' } }
+
+
+    <script>
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
             }
-        }
-    });
+        });
 
-    // Core Logic
-    document.addEventListener("DOMContentLoaded", loadFromStorage);
+        
 
-    function addRow(subject = "", day = "", time = "", duration = "", priority = "Medium", status = "Not Started") {
-        const tbody = document.querySelector("#scheduleTable tbody");
-        const tr = document.createElement("tr");
-        tr.innerHTML = `
+        // Chart
+        const ctx = document.getElementById('studyChart').getContext('2d');
+        let studyChart = new Chart(ctx, {
+            type: 'line',
+            data: { labels: [], datasets: [{ label: 'Study Hours', data: [], borderColor: '#fdb913', backgroundColor: 'rgba(253, 185, 19, 0.1)', fill: true, tension: 0.4, borderWidth: 3 }] },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: 'rgba(255,255,255,0.5)' } },
+                    x: { grid: { display: false }, ticks: { color: 'rgba(255,255,255,0.5)' } }
+                }
+            }
+        });
+
+        // Core Logic
+        document.addEventListener("DOMContentLoaded", loadFromStorage);
+
+        function addRow(subject = "", day = "", time = "", duration = "", priority = "Medium", status = "Not Started") {
+            const tbody = document.querySelector("#scheduleTable tbody");
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
             <td><input class="grid-input" value="${subject}" placeholder="e.g. AI Ethics"></td>
             <td><select class="grid-select">
                 <option>Select Day</option>
@@ -163,89 +307,90 @@
             <td><div class="prog-track"><div class="prog-fill" style="width:${getProgressValue(status)}%"></div></div></td>
             <td><button style="background:none; border:none; color:#ef4444; cursor:pointer;" onclick="deleteRow(this)"><i class="fas fa-trash-alt"></i></button></td>
         `;
-        tbody.appendChild(tr);
-        tr.querySelectorAll("input, select").forEach(el => el.addEventListener("change", saveSchedule));
-        updateSummary();
-    }
-
-    function deleteRow(btn) { btn.closest("tr").remove(); saveSchedule(); }
-
-    function getProgressValue(status) {
-        if (status === "Not Started") return 0;
-        if (status === "In Progress") return 50;
-        if (status === "Completed") return 100;
-        return 0;
-    }
-
-    function updateSummary() {
-        const rows = [...document.querySelectorAll("#scheduleTable tbody tr")];
-        document.getElementById("subCount").innerText = rows.length;
-        let totalH = 0, completed = 0, chartLabels = [], chartData = [];
-        rows.forEach(tr => {
-            const dur = tr.querySelector("td:nth-child(4) input").value;
-            if (dur.match(/\d+/)) totalH += parseInt(dur.match(/\d+/)[0]);
-            const status = tr.querySelector("td:nth-child(6) select").value;
-            if (status === "Completed") completed++;
-            tr.querySelector(".prog-fill").style.width = getProgressValue(status) + "%";
-            chartLabels.push(tr.querySelector("td:nth-child(1) input").value || "...");
-            chartData.push(dur.match(/\d+/) ? parseInt(dur.match(/\d+/)[0]) : 0);
-        });
-        document.getElementById("totalDuration").innerText = totalH + "h";
-        document.getElementById("statusCount").innerText = completed;
-        studyChart.data.labels = chartLabels;
-        studyChart.data.datasets[0].data = chartData;
-        studyChart.update();
-    }
-
-    function saveSchedule() {
-        const rows = [...document.querySelectorAll("#scheduleTable tbody tr")].map(tr => ({
-            subject: tr.querySelector("td:nth-child(1) input").value,
-            day: tr.querySelector("td:nth-child(2) select").value,
-            time: tr.querySelector("td:nth-child(3) input").value,
-            duration: tr.querySelector("td:nth-child(4) input").value,
-            priority: tr.querySelector("td:nth-child(5) select").value,
-            status: tr.querySelector("td:nth-child(6) select").value
-        }));
-        localStorage.setItem("StudyScheduleData", JSON.stringify(rows));
-        updateSummary();
-    }
-
-    function loadFromStorage() {
-        const saved = JSON.parse(localStorage.getItem("StudyScheduleData") || "[]");
-        if(saved.length === 0) {
-            addRow("Web Development", "Sunday", "09:00", "2h", "High", "In Progress");
-        } else {
-            saved.forEach(r => addRow(r.subject, r.day, r.time, r.duration, r.priority, r.status));
+            tbody.appendChild(tr);
+            tr.querySelectorAll("input, select").forEach(el => el.addEventListener("change", saveSchedule));
+            updateSummary();
         }
-        updateSummary();
-    }
 
-    function autoFill() {
-        const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-        document.querySelectorAll("#scheduleTable tbody tr").forEach((tr, i) => {
-            tr.querySelector("td:nth-child(2) select").value = days[i % 7];
-            tr.querySelector("td:nth-child(3) input").value = "10:00";
-        });
-        saveSchedule();
-    }
+        function deleteRow(btn) { btn.closest("tr").remove(); saveSchedule(); }
 
-    // Filters
-    document.getElementById("filter-day").addEventListener("change", applyFilters);
-    document.getElementById("filter-status").addEventListener("change", applyFilters);
+        function getProgressValue(status) {
+            if (status === "Not Started") return 0;
+            if (status === "In Progress") return 50;
+            if (status === "Completed") return 100;
+            return 0;
+        }
 
-    function applyFilters() {
-        const day = document.getElementById("filter-day").value;
-        const status = document.getElementById("filter-status").value;
-        document.querySelectorAll("#scheduleTable tbody tr").forEach(tr => {
-            const tDay = tr.querySelector("td:nth-child(2) select").value;
-            const tStatus = tr.querySelector("td:nth-child(6) select").value;
-            tr.style.display = ((!day || tDay === day) && (!status || tStatus === status)) ? "" : "none";
-        });
-    }
-    // Navbar Toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        function updateSummary() {
+            const rows = [...document.querySelectorAll("#scheduleTable tbody tr")];
+            document.getElementById("subCount").innerText = rows.length;
+            let totalH = 0, completed = 0, chartLabels = [], chartData = [];
+            rows.forEach(tr => {
+                const dur = tr.querySelector("td:nth-child(4) input").value;
+                if (dur.match(/\d+/)) totalH += parseInt(dur.match(/\d+/)[0]);
+                const status = tr.querySelector("td:nth-child(6) select").value;
+                if (status === "Completed") completed++;
+                tr.querySelector(".prog-fill").style.width = getProgressValue(status) + "%";
+                chartLabels.push(tr.querySelector("td:nth-child(1) input").value || "...");
+                chartData.push(dur.match(/\d+/) ? parseInt(dur.match(/\d+/)[0]) : 0);
+            });
+            document.getElementById("totalDuration").innerText = totalH + "h";
+            document.getElementById("statusCount").innerText = completed;
+            studyChart.data.labels = chartLabels;
+            studyChart.data.datasets[0].data = chartData;
+            studyChart.update();
+        }
+
+        function saveSchedule() {
+            const rows = [...document.querySelectorAll("#scheduleTable tbody tr")].map(tr => ({
+                subject: tr.querySelector("td:nth-child(1) input").value,
+                day: tr.querySelector("td:nth-child(2) select").value,
+                time: tr.querySelector("td:nth-child(3) input").value,
+                duration: tr.querySelector("td:nth-child(4) input").value,
+                priority: tr.querySelector("td:nth-child(5) select").value,
+                status: tr.querySelector("td:nth-child(6) select").value
+            }));
+            localStorage.setItem("StudyScheduleData", JSON.stringify(rows));
+            updateSummary();
+        }
+
+        function loadFromStorage() {
+            const saved = JSON.parse(localStorage.getItem("StudyScheduleData") || "[]");
+            if (saved.length === 0) {
+                addRow("Web Development", "Sunday", "09:00", "2h", "High", "In Progress");
+            } else {
+                saved.forEach(r => addRow(r.subject, r.day, r.time, r.duration, r.priority, r.status));
+            }
+            updateSummary();
+        }
+
+        function autoFill() {
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            document.querySelectorAll("#scheduleTable tbody tr").forEach((tr, i) => {
+                tr.querySelector("td:nth-child(2) select").value = days[i % 7];
+                tr.querySelector("td:nth-child(3) input").value = "10:00";
+            });
+            saveSchedule();
+        }
+
+        // Filters
+        document.getElementById("filter-day").addEventListener("change", applyFilters);
+        document.getElementById("filter-status").addEventListener("change", applyFilters);
+
+        function applyFilters() {
+            const day = document.getElementById("filter-day").value;
+            const status = document.getElementById("filter-status").value;
+            document.querySelectorAll("#scheduleTable tbody tr").forEach(tr => {
+                const tDay = tr.querySelector("td:nth-child(2) select").value;
+                const tStatus = tr.querySelector("td:nth-child(6) select").value;
+                tr.style.display = ((!day || tDay === day) && (!status || tStatus === status)) ? "" : "none";
+            });
+        }
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
     </script>
-</body>
+    </body>
+
 </html>
