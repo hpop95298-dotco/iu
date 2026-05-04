@@ -125,6 +125,45 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <!-- Profile Logic -->
+    <script src="../js/navigation.js"></script>
+    <script type="module" src="../js/profile.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
+
+        
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -238,42 +277,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <!-- Profile Logic -->
-    <script src="../js/navigation.js"></script>
-    <script type="module" src="../js/profile.js"></script>
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 500);
-            }
-        });
-
-        
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

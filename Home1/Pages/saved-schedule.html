@@ -85,6 +85,107 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+    <script>
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            loadSavedSchedule();
+            document.getElementById("searchInput").addEventListener("input", filterTable);
+            document.getElementById("filterDay").addEventListener("change", filterTable);
+        });
+
+        function loadSavedSchedule() {
+            const saved = JSON.parse(localStorage.getItem("StudyScheduleData") || "[]");
+            const tbody = document.querySelector("#savedTable tbody");
+            const noData = document.getElementById("noData");
+
+            if (saved.length === 0) {
+                noData.style.display = "block";
+                document.getElementById('savedTable').style.display = 'none';
+                return;
+            }
+
+            saved.forEach(row => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+                    <td style="font-weight: 700;">${row.subject || "-"}</td>
+                    <td style="color: var(--iu-accent);">${row.day || "-"}</td>
+                    <td style="color: var(--iu-text-muted); font-size: 0.9rem;">${row.date || "-"}</td>
+                    <td><span class="status-pill status-completed">${row.time || "-"}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function filterTable() {
+            const search = document.getElementById("searchInput").value.toLowerCase();
+            const filterDay = document.getElementById("filterDay").value.toLowerCase();
+            const rows = document.querySelectorAll("#savedTable tbody tr");
+            let visibleCount = 0;
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll("td");
+                const text = Array.from(cells).map(td => td.textContent.toLowerCase()).join(' ');
+                const dayText = cells[1].textContent.toLowerCase();
+
+                const matchesSearch = text.includes(search);
+                const matchesDay = filterDay === "" || dayText === filterDay;
+
+                if (matchesSearch && matchesDay) {
+                    row.style.display = "";
+                    visibleCount++;
+                } else {
+                    row.style.display = "none";
+                }
+            });
+
+            document.getElementById("noData").style.display = (visibleCount === 0) ? "block" : "none";
+            document.getElementById("savedTable").style.display = (visibleCount === 0) ? "none" : "table";
+        }
+
+        function goBack() {
+            window.location.href = "schedule.html";
+        }
+
+        
+    </script>
+
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -198,104 +299,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-    <script>
-        // Navbar Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-            loadSavedSchedule();
-            document.getElementById("searchInput").addEventListener("input", filterTable);
-            document.getElementById("filterDay").addEventListener("change", filterTable);
-        });
-
-        function loadSavedSchedule() {
-            const saved = JSON.parse(localStorage.getItem("StudyScheduleData") || "[]");
-            const tbody = document.querySelector("#savedTable tbody");
-            const noData = document.getElementById("noData");
-
-            if (saved.length === 0) {
-                noData.style.display = "block";
-                document.getElementById('savedTable').style.display = 'none';
-                return;
-            }
-
-            saved.forEach(row => {
-                const tr = document.createElement("tr");
-                tr.innerHTML = `
-                    <td style="font-weight: 700;">${row.subject || "-"}</td>
-                    <td style="color: var(--iu-accent);">${row.day || "-"}</td>
-                    <td style="color: var(--iu-text-muted); font-size: 0.9rem;">${row.date || "-"}</td>
-                    <td><span class="status-pill status-completed">${row.time || "-"}</span></td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
-
-        function filterTable() {
-            const search = document.getElementById("searchInput").value.toLowerCase();
-            const filterDay = document.getElementById("filterDay").value.toLowerCase();
-            const rows = document.querySelectorAll("#savedTable tbody tr");
-            let visibleCount = 0;
-
-            rows.forEach(row => {
-                const cells = row.querySelectorAll("td");
-                const text = Array.from(cells).map(td => td.textContent.toLowerCase()).join(' ');
-                const dayText = cells[1].textContent.toLowerCase();
-
-                const matchesSearch = text.includes(search);
-                const matchesDay = filterDay === "" || dayText === filterDay;
-
-                if (matchesSearch && matchesDay) {
-                    row.style.display = "";
-                    visibleCount++;
-                } else {
-                    row.style.display = "none";
-                }
-            });
-
-            document.getElementById("noData").style.display = (visibleCount === 0) ? "block" : "none";
-            document.getElementById("savedTable").style.display = (visibleCount === 0) ? "none" : "table";
-        }
-
-        function goBack() {
-            window.location.href = "schedule.html";
-        }
-
-        
-    </script>
-
-    
-
-
-
-
 
 </body>
 

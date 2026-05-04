@@ -163,7 +163,8 @@ walkDir(baseDir, (filePath) => {
     content = content.replace(/<!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
 
     // Strategy 1: Dashboard Integration (Inject inside <main>)
-    if (content.includes('main-content') || content.includes('dashboard-main')) {
+    // ONLY for true dashboard layouts with sidebars to keep footer to the right
+    if (content.includes('dashboard-sidebar') || content.includes('sidebar-nav')) {
         if (content.includes('</main>')) {
             content = content.replace('</main>', newFooter + '\n</main>');
             processed++;

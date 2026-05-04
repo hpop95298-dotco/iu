@@ -73,6 +73,96 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Intro to Entrepreneurship", icon: "fa-rocket", content: "Entrepreneurship is the process of creating value by identifying opportunities and taking calculated risks to build sustainable organizations." },
+            { title: "Lecture 2: Entrepreneurial Mindset", icon: "fa-brain", content: "Cultivating a mindset focused on resilience, creative problem-solving, and the ability to pivot in dynamic market conditions." },
+            { title: "Lecture 3: Innovation Concepts", icon: "fa-bolt", content: "Defining innovation as the practical application of new ideas that result in improved products, services, or methodology." },
+            { title: "Lecture 4: Business Creativity", icon: "fa-paint-brush", content: "Strategies for generating breakthrough ideas and leveraging creativity as a competitive advantage in business development." },
+            { title: "Lecture 5: Market Analysis", icon: "fa-chart-pie", content: "Systematic data collection and evaluation of market size, competition, and customer behavior to inform strategic decisions." },
+            { title: "Lecture 6: Business Models", icon: "fa-layer-group", content: "Designing the logic of how an organization creates, delivers, and captures value through structured business modeling." },
+            { title: "Lecture 7: Startups & SMEs", icon: "fa-seedling", content: "Analyzing the lifecycle of early-stage ventures and the critical role of small and medium enterprises in global economic ecosystems." },
+            { title: "Lecture 8: Innovation Strategies", icon: "fa-chess-knight", content: "Frameworks for integrating innovation into organizational DNA to achieve long-term growth and market disruption." },
+            { title: "Lecture 9: Risk & Opportunity", icon: "fa-balance-scale", content: "Techniques for assessing potential hazards versus market opportunities to maximize entrepreneurial success rates." },
+            { title: "Lecture 10: Case Studies", icon: "fa-briefcase", content: "In-depth review of successful global startups and internal innovation projects from across the technology sector." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Strategy Portal</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official strategy frameworks and module notes for your venture development.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,93 +276,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Intro to Entrepreneurship", icon: "fa-rocket", content: "Entrepreneurship is the process of creating value by identifying opportunities and taking calculated risks to build sustainable organizations." },
-            { title: "Lecture 2: Entrepreneurial Mindset", icon: "fa-brain", content: "Cultivating a mindset focused on resilience, creative problem-solving, and the ability to pivot in dynamic market conditions." },
-            { title: "Lecture 3: Innovation Concepts", icon: "fa-bolt", content: "Defining innovation as the practical application of new ideas that result in improved products, services, or methodology." },
-            { title: "Lecture 4: Business Creativity", icon: "fa-paint-brush", content: "Strategies for generating breakthrough ideas and leveraging creativity as a competitive advantage in business development." },
-            { title: "Lecture 5: Market Analysis", icon: "fa-chart-pie", content: "Systematic data collection and evaluation of market size, competition, and customer behavior to inform strategic decisions." },
-            { title: "Lecture 6: Business Models", icon: "fa-layer-group", content: "Designing the logic of how an organization creates, delivers, and captures value through structured business modeling." },
-            { title: "Lecture 7: Startups & SMEs", icon: "fa-seedling", content: "Analyzing the lifecycle of early-stage ventures and the critical role of small and medium enterprises in global economic ecosystems." },
-            { title: "Lecture 8: Innovation Strategies", icon: "fa-chess-knight", content: "Frameworks for integrating innovation into organizational DNA to achieve long-term growth and market disruption." },
-            { title: "Lecture 9: Risk & Opportunity", icon: "fa-balance-scale", content: "Techniques for assessing potential hazards versus market opportunities to maximize entrepreneurial success rates." },
-            { title: "Lecture 10: Case Studies", icon: "fa-briefcase", content: "In-depth review of successful global startups and internal innovation projects from across the technology sector." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Strategy Portal</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official strategy frameworks and module notes for your venture development.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

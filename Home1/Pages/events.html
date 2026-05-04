@@ -76,6 +76,37 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+
+
+
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -189,34 +220,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-
-
-
-    <script>
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-        });
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

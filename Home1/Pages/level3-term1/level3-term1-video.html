@@ -91,6 +91,46 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+<script>
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+
+        
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -204,43 +244,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-<script>
-    // Navigation & Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 500);
-        }
-    });
-        if (menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-        }
-
-        
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

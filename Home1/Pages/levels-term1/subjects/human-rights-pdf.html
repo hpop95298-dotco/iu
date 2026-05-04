@@ -73,6 +73,96 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Intro to Human Rights", icon: "fa-universal-access", content: "Human rights are the basic rights and freedoms that belong to every person in the world, from birth until death." },
+            { title: "Lecture 2: History of Human Rights", icon: "fa-history", content: "Exploring the evolution of human rights from ancient natural law to modern international declarations and treaties." },
+            { title: "Lecture 3: Universal Declaration", icon: "fa-file-signature", content: "Detailed analysis of the UDHR (1948) and its role in establishing common standards for all nations." },
+            { title: "Lecture 4: Civil & Political Rights", icon: "fa-vote-yea", content: "Protecting individual freedom from infringement by governments, social organizations, and private entities." },
+            { title: "Lecture 5: Economic & Social Rights", icon: "fa-users", content: "The right to education, housing, healthcare, and an adequate standard of living for all citizens." },
+            { title: "Lecture 6: Women's Rights", icon: "fa-venus", content: "Advancing gender equality and addressing the historical and systemic challenges faced by women globally." },
+            { title: "Lecture 7: Children's Rights", icon: "fa-child", content: "Special protection and care afforded to minors, including the right to education and protection from exploitation." },
+            { title: "Lecture 8: Rights Violations", icon: "fa-exclamation-triangle", content: "Identifying and documenting cases where basic freedoms are suppressed or denied by institutional power." },
+            { title: "Lecture 9: International Orgs", icon: "fa-globe", content: "The role of the UN, Amnesty International, and NGOs in monitoring and enforcing global human rights standards." },
+            { title: "Lecture 10: Rights in Daily Life", icon: "fa-home", content: "Applying human rights principles to everyday interactions, community building, and local governance." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Repository</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes and legal case studies for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,93 +276,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Intro to Human Rights", icon: "fa-universal-access", content: "Human rights are the basic rights and freedoms that belong to every person in the world, from birth until death." },
-            { title: "Lecture 2: History of Human Rights", icon: "fa-history", content: "Exploring the evolution of human rights from ancient natural law to modern international declarations and treaties." },
-            { title: "Lecture 3: Universal Declaration", icon: "fa-file-signature", content: "Detailed analysis of the UDHR (1948) and its role in establishing common standards for all nations." },
-            { title: "Lecture 4: Civil & Political Rights", icon: "fa-vote-yea", content: "Protecting individual freedom from infringement by governments, social organizations, and private entities." },
-            { title: "Lecture 5: Economic & Social Rights", icon: "fa-users", content: "The right to education, housing, healthcare, and an adequate standard of living for all citizens." },
-            { title: "Lecture 6: Women's Rights", icon: "fa-venus", content: "Advancing gender equality and addressing the historical and systemic challenges faced by women globally." },
-            { title: "Lecture 7: Children's Rights", icon: "fa-child", content: "Special protection and care afforded to minors, including the right to education and protection from exploitation." },
-            { title: "Lecture 8: Rights Violations", icon: "fa-exclamation-triangle", content: "Identifying and documenting cases where basic freedoms are suppressed or denied by institutional power." },
-            { title: "Lecture 9: International Orgs", icon: "fa-globe", content: "The role of the UN, Amnesty International, and NGOs in monitoring and enforcing global human rights standards." },
-            { title: "Lecture 10: Rights in Daily Life", icon: "fa-home", content: "Applying human rights principles to everyday interactions, community building, and local governance." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Repository</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes and legal case studies for this module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

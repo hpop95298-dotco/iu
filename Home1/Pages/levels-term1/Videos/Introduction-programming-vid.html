@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Introduction to C#", video: "https://www.youtube.com/embed/CxGTRLkXUYg", desc: "Foundational overview of the C# ecosystem and its role in modern software engineering." },
+            { title: "02: Install Visual Studio", video: "https://www.youtube.com/embed/NQE7UMZc0tE", desc: "Setting up the Integrated Development Environment (IDE) for optimal performance." },
+            { title: "03: First C# Program", video: "https://www.youtube.com/embed/eKo7wvCnvjM", desc: "Synthesizing the initial code blocks and understanding the static void main execution entry." },
+            { title: "04: Input & Output", video: "https://www.youtube.com/embed/ji4Sz529lhA", desc: "Synchronizing data flow between the user and the system through console interfaces." },
+            { title: "05: Variables & Types", video: "https://www.youtube.com/embed/mhZH1EuIM9E", desc: "Allocating memory buffers and defining data schemas for information storage." },
+            { title: "06: String Manipulation", video: "https://www.youtube.com/embed/RVJ2C_I9Myo", desc: "Advanced techniques for handling alphanumeric data arrays and string transformations." },
+            { title: "07: Logical Operators", video: "https://www.youtube.com/embed/L9ZEdKXhAOI", desc: "Mathematical and logical foundations for conditional execution and arithmetic." },
+            { title: "08: Nullable Systems", video: "https://www.youtube.com/embed/PXIkCbaqxTM", desc: "Managing null states and preventing reference errors in C# application architecture." },
+            { title: "09: Type Conversion", video: "https://www.youtube.com/embed/MZns_z4pUtg", desc: "Casting and parsing methodologies for data transformation between incompatible schemas." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Introduction to C#", video: "https://www.youtube.com/embed/CxGTRLkXUYg", desc: "Foundational overview of the C# ecosystem and its role in modern software engineering." },
-            { title: "02: Install Visual Studio", video: "https://www.youtube.com/embed/NQE7UMZc0tE", desc: "Setting up the Integrated Development Environment (IDE) for optimal performance." },
-            { title: "03: First C# Program", video: "https://www.youtube.com/embed/eKo7wvCnvjM", desc: "Synthesizing the initial code blocks and understanding the static void main execution entry." },
-            { title: "04: Input & Output", video: "https://www.youtube.com/embed/ji4Sz529lhA", desc: "Synchronizing data flow between the user and the system through console interfaces." },
-            { title: "05: Variables & Types", video: "https://www.youtube.com/embed/mhZH1EuIM9E", desc: "Allocating memory buffers and defining data schemas for information storage." },
-            { title: "06: String Manipulation", video: "https://www.youtube.com/embed/RVJ2C_I9Myo", desc: "Advanced techniques for handling alphanumeric data arrays and string transformations." },
-            { title: "07: Logical Operators", video: "https://www.youtube.com/embed/L9ZEdKXhAOI", desc: "Mathematical and logical foundations for conditional execution and arithmetic." },
-            { title: "08: Nullable Systems", video: "https://www.youtube.com/embed/PXIkCbaqxTM", desc: "Managing null states and preventing reference errors in C# application architecture." },
-            { title: "09: Type Conversion", video: "https://www.youtube.com/embed/MZns_z4pUtg", desc: "Casting and parsing methodologies for data transformation between incompatible schemas." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

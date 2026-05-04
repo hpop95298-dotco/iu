@@ -73,6 +73,96 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Intro to Computer", icon: "fa-desktop", content: "Understanding the computer as a multi-purpose electronic processing system for data transformation." },
+            { title: "Lecture 2: System Components", icon: "fa-microchip", content: "Deep dive into CPU architecture, memory hierarchies, and the motherboard infrastructure." },
+            { title: "Lecture 3: I/O Architectures", icon: "fa-keyboard", content: "Analyzing input and output synchronization and the peripheral communication protocols." },
+            { title: "Lecture 4: Memory Units", icon: "fa-memory", content: "Exploring RAM, ROM, cache levels, and the fundamental structures of data storage." },
+            { title: "Lecture 5: Operating Systems", icon: "fa-window-maximize", content: "Strategic management of hardware resources and the abstraction layer between users and silicon." },
+            { title: "Lecture 6: Software Ecology", icon: "fa-layer-group", content: "Distinction between system-level kernel software and high-level application ecosystems." },
+            { title: "Lecture 7: Hardware Engineering", icon: "fa-tools", content: "Physical maintenance, assembly logic, and the mechanical foundations of computing clusters." },
+            { title: "Lecture 8: Networking Basics", icon: "fa-network-wired", content: "The topology of connected systems, packet switching, and the foundations of global telemetry." },
+            { title: "Lecture 9: Internet Protocols", icon: "fa-globe", content: "Exploring the TCP/IP stack, DNS resolution, and the architecture of the World Wide Web." },
+            { title: "Lecture 10: Digital Security", icon: "fa-shield-halved", content: "Threat vectors, encryption methodologies, and standard practices for hardening computing environments." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Technical Manual</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official technical documentation and hardware specifications for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,93 +276,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Intro to Computer", icon: "fa-desktop", content: "Understanding the computer as a multi-purpose electronic processing system for data transformation." },
-            { title: "Lecture 2: System Components", icon: "fa-microchip", content: "Deep dive into CPU architecture, memory hierarchies, and the motherboard infrastructure." },
-            { title: "Lecture 3: I/O Architectures", icon: "fa-keyboard", content: "Analyzing input and output synchronization and the peripheral communication protocols." },
-            { title: "Lecture 4: Memory Units", icon: "fa-memory", content: "Exploring RAM, ROM, cache levels, and the fundamental structures of data storage." },
-            { title: "Lecture 5: Operating Systems", icon: "fa-window-maximize", content: "Strategic management of hardware resources and the abstraction layer between users and silicon." },
-            { title: "Lecture 6: Software Ecology", icon: "fa-layer-group", content: "Distinction between system-level kernel software and high-level application ecosystems." },
-            { title: "Lecture 7: Hardware Engineering", icon: "fa-tools", content: "Physical maintenance, assembly logic, and the mechanical foundations of computing clusters." },
-            { title: "Lecture 8: Networking Basics", icon: "fa-network-wired", content: "The topology of connected systems, packet switching, and the foundations of global telemetry." },
-            { title: "Lecture 9: Internet Protocols", icon: "fa-globe", content: "Exploring the TCP/IP stack, DNS resolution, and the architecture of the World Wide Web." },
-            { title: "Lecture 10: Digital Security", icon: "fa-shield-halved", content: "Threat vectors, encryption methodologies, and standard practices for hardening computing environments." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Technical Manual</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official technical documentation and hardware specifications for this module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

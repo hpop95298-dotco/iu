@@ -73,6 +73,96 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Domain & Range", icon: "fa-arrows-alt-h", content: "Comprehensive analysis of function mapping, identifying input constraints (domain) and the set of possible output values (range)." },
+            { title: "Lecture 2: Polynomial Functions", icon: "fa-layer-group", content: "Exploring the behavior, roots, and graphical properties of various degree polynomial expressions." },
+            { title: "Lecture 3: Transcendental Functions", icon: "fa-infinity", content: "Deep dive into exponential, logarithmic, and trigonometric functions and their engineering applications." },
+            { title: "Lecture 4: Limits", icon: "fa-arrow-right", content: "The formal definition of limits, continuity concepts, and the foundations of calculus logic." },
+            { title: "Lecture 5: Continuity", icon: "fa-wave-square", content: "Defining continuous systems and the intermediate value theorem in mathematical analysis." },
+            { title: "Lecture 6: Differentiation", icon: "fa-slash", content: "Calculating the instantaneous rate of change and the geometric interpretation of the derivative." },
+            { title: "Lecture 7: Apps of Differentiation", icon: "fa-chart-line", content: "Optimization problems, curve sketching, and motion analysis using derivative calculus." },
+            { title: "Lecture 8: Indefinite Integrals", icon: "fa-integrals", content: "Reversing differentiation: the fundamental concepts of antiderivatives and integration constants." },
+            { title: "Lecture 9: Integration Tech", icon: "fa-wrench", content: "Advanced techniques including substitution, integration by parts, and trigonometric substitution logic." },
+            { title: "Lecture 10: Definite Integrals", icon: "fa-fill-drip", content: "Calculating areas under curves and the application of the Fundamental Theorem of Calculus." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Calculus Repository</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official derivation sheets and practice problem sets for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,93 +276,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Domain & Range", icon: "fa-arrows-alt-h", content: "Comprehensive analysis of function mapping, identifying input constraints (domain) and the set of possible output values (range)." },
-            { title: "Lecture 2: Polynomial Functions", icon: "fa-layer-group", content: "Exploring the behavior, roots, and graphical properties of various degree polynomial expressions." },
-            { title: "Lecture 3: Transcendental Functions", icon: "fa-infinity", content: "Deep dive into exponential, logarithmic, and trigonometric functions and their engineering applications." },
-            { title: "Lecture 4: Limits", icon: "fa-arrow-right", content: "The formal definition of limits, continuity concepts, and the foundations of calculus logic." },
-            { title: "Lecture 5: Continuity", icon: "fa-wave-square", content: "Defining continuous systems and the intermediate value theorem in mathematical analysis." },
-            { title: "Lecture 6: Differentiation", icon: "fa-slash", content: "Calculating the instantaneous rate of change and the geometric interpretation of the derivative." },
-            { title: "Lecture 7: Apps of Differentiation", icon: "fa-chart-line", content: "Optimization problems, curve sketching, and motion analysis using derivative calculus." },
-            { title: "Lecture 8: Indefinite Integrals", icon: "fa-integrals", content: "Reversing differentiation: the fundamental concepts of antiderivatives and integration constants." },
-            { title: "Lecture 9: Integration Tech", icon: "fa-wrench", content: "Advanced techniques including substitution, integration by parts, and trigonometric substitution logic." },
-            { title: "Lecture 10: Definite Integrals", icon: "fa-fill-drip", content: "Calculating areas under curves and the application of the Fundamental Theorem of Calculus." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Calculus Repository</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official derivation sheets and practice problem sets for this module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

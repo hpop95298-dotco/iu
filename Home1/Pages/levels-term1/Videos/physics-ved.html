@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Intro to Physics", video: "https://www.youtube.com/embed/1nF6u7Kz5mY", desc: "Overview of physical constants, the scientific method, and course trajectory for Level 1." },
+            { title: "02: Quantities & Units", video: "https://www.youtube.com/embed/6n5n1x3wzYk", desc: "Understanding SI measurements, dimensional analysis, and error propagation logic." },
+            { title: "03: 1D Motion Mechanics", video: "https://www.youtube.com/embed/7M0zN5hA5nI", desc: "Analyzing displacement, velocity, and acceleration vectors in linear systems." },
+            { title: "04: Newton's Dynamics", video: "https://www.youtube.com/embed/kKKM8Y-u7ds", desc: "Deep dive into the three laws of motion and their role in establishing force equilibrium." },
+            { title: "05: Work, Energy & Power", video: "https://www.youtube.com/embed/YtX8R9m9RzQ", desc: "Exploring thermodynamic principles, potential energy states, and mechanical efficiency." },
+            { title: "06: Momentum Law", video: "https://www.youtube.com/embed/W2R9kR8JxYc", desc: "Linear momentum, impulse functions, and the conservation laws in collision engineering." },
+            { title: "07: Waves & Sound", video: "https://www.youtube.com/embed/ZG1ZVQ4c7qA", desc: "Basic concepts of harmonic wave propagation and acoustic physics." },
+            { title: "08: Light & Optics", video: "https://www.youtube.com/embed/7xZz4Z7z9qU", desc: "Reflection, refraction, and the behavior of light through optical instrumentation." },
+            { title: "09: Electricity Basics", video: "https://www.youtube.com/embed/HX8pYc0M9Zk", desc: "Electric charge vectors, current flow metrics, and simple circuit architecture logic." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Intro to Physics", video: "https://www.youtube.com/embed/1nF6u7Kz5mY", desc: "Overview of physical constants, the scientific method, and course trajectory for Level 1." },
-            { title: "02: Quantities & Units", video: "https://www.youtube.com/embed/6n5n1x3wzYk", desc: "Understanding SI measurements, dimensional analysis, and error propagation logic." },
-            { title: "03: 1D Motion Mechanics", video: "https://www.youtube.com/embed/7M0zN5hA5nI", desc: "Analyzing displacement, velocity, and acceleration vectors in linear systems." },
-            { title: "04: Newton's Dynamics", video: "https://www.youtube.com/embed/kKKM8Y-u7ds", desc: "Deep dive into the three laws of motion and their role in establishing force equilibrium." },
-            { title: "05: Work, Energy & Power", video: "https://www.youtube.com/embed/YtX8R9m9RzQ", desc: "Exploring thermodynamic principles, potential energy states, and mechanical efficiency." },
-            { title: "06: Momentum Law", video: "https://www.youtube.com/embed/W2R9kR8JxYc", desc: "Linear momentum, impulse functions, and the conservation laws in collision engineering." },
-            { title: "07: Waves & Sound", video: "https://www.youtube.com/embed/ZG1ZVQ4c7qA", desc: "Basic concepts of harmonic wave propagation and acoustic physics." },
-            { title: "08: Light & Optics", video: "https://www.youtube.com/embed/7xZz4Z7z9qU", desc: "Reflection, refraction, and the behavior of light through optical instrumentation." },
-            { title: "09: Electricity Basics", video: "https://www.youtube.com/embed/HX8pYc0M9Zk", desc: "Electric charge vectors, current flow metrics, and simple circuit architecture logic." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Intro to Human Rights", video: "https://www.youtube.com/embed/7Jv5D8p7K6k", desc: "Overview of basic human rights concepts, historical contexts, and global importance." },
+            { title: "02: Universal Declaration", video: "https://www.youtube.com/embed/svE5b8Zz4eU", desc: "Understanding the UDHR (1948) as the foundation for international human rights law." },
+            { title: "03: Civil & Political Rights", video: "https://www.youtube.com/embed/Q0Z9rK6E5Gk", desc: "Analyzing individual freedoms, right to fair trial, and political participation mechanisms." },
+            { title: "04: Econ, Social & Cultural", video: "https://www.youtube.com/embed/3Z6HkP9Y7Rk", desc: "Rights to education, health, adequate standard of living, and cultural participation." },
+            { title: "05: Human Rights & Law", video: "https://www.youtube.com/embed/Z4K8P6rE2kU", desc: "The relationship between moral human rights and enforceable national/international legal codes." },
+            { title: "06: Women & Children", video: "https://www.youtube.com/embed/9H7Kp3E5R6M", desc: "Special protections and empowerment frameworks for vulnerable demographic groups." },
+            { title: "07: Rights Violations", video: "https://www.youtube.com/embed/R9K5Z7H6P2E", desc: "Identifying systemic abuses and the global challenges of human rights enforcement." },
+            { title: "08: International Orgs", video: "https://www.youtube.com/embed/K6H9R3Z5P7Y", desc: "The role of the UN, NGO ecosystems, and monitoring agencies in global justice." },
+            { title: "09: Rights in Digital Age", video: "https://www.youtube.com/embed/5R6K7P9Z3Hk", desc: "Privacy, freedom of expression, and digital identity rights in the age of advanced technology." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Intro to Human Rights", video: "https://www.youtube.com/embed/7Jv5D8p7K6k", desc: "Overview of basic human rights concepts, historical contexts, and global importance." },
-            { title: "02: Universal Declaration", video: "https://www.youtube.com/embed/svE5b8Zz4eU", desc: "Understanding the UDHR (1948) as the foundation for international human rights law." },
-            { title: "03: Civil & Political Rights", video: "https://www.youtube.com/embed/Q0Z9rK6E5Gk", desc: "Analyzing individual freedoms, right to fair trial, and political participation mechanisms." },
-            { title: "04: Econ, Social & Cultural", video: "https://www.youtube.com/embed/3Z6HkP9Y7Rk", desc: "Rights to education, health, adequate standard of living, and cultural participation." },
-            { title: "05: Human Rights & Law", video: "https://www.youtube.com/embed/Z4K8P6rE2kU", desc: "The relationship between moral human rights and enforceable national/international legal codes." },
-            { title: "06: Women & Children", video: "https://www.youtube.com/embed/9H7Kp3E5R6M", desc: "Special protections and empowerment frameworks for vulnerable demographic groups." },
-            { title: "07: Rights Violations", video: "https://www.youtube.com/embed/R9K5Z7H6P2E", desc: "Identifying systemic abuses and the global challenges of human rights enforcement." },
-            { title: "08: International Orgs", video: "https://www.youtube.com/embed/K6H9R3Z5P7Y", desc: "The role of the UN, NGO ecosystems, and monitoring agencies in global justice." },
-            { title: "09: Rights in Digital Age", video: "https://www.youtube.com/embed/5R6K7P9Z3Hk", desc: "Privacy, freedom of expression, and digital identity rights in the age of advanced technology." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

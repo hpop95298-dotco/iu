@@ -75,6 +75,98 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Introduction", icon: "fa-terminal", content: "Programming is the systematic process of designing and building an executable computer program to accomplish a specific computing result." },
+            { title: "Lecture 2: Logic Systems", icon: "fa-code-branch", content: "Understanding binary logic, boolean transformations, and decision-making structures in modern software." },
+            { title: "Lecture 3: Algorithms", icon: "fa-cogs", content: "A step-by-step procedure for calculations. Algorithms are used for data processing, automated reasoning, and computation." },
+            { title: "Lecture 4: Flowcharts", icon: "fa-project-diagram", content: "Visualizing process flows and logical branching through standardized notation systems." },
+            { title: "Lecture 5: Variables", icon: "fa-box", content: "Storage locations paired with symbolic names which contain some known or unknown quantity of information." },
+            { title: "Lecture 6: Data Types", icon: "fa-database", content: "Classification of data which tells the compiler or interpreter how the programmer intends to use the data." },
+            { title: "Lecture 7: Conditions", icon: "fa-code", content: "Statements that execute specific blocks of code based on logical boolean evaluations." },
+            { title: "Lecture 8: Loops", icon: "fa-sync", content: "Programming constructs that repeat a sequence of instructions until a specific condition is met." },
+            { title: "Lecture 9: Functions", icon: "fa-puzzle-piece", content: "A unit of code that performs a specific task and can be invoked multiple times across an application." },
+            { title: "Lecture 10: Problem Solving", icon: "fa-lightbulb", content: "Critical thinking and analytical strategies for decomposing complex requirements into executable code." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Resources</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes and supplementary documentation for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -188,95 +280,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Introduction", icon: "fa-terminal", content: "Programming is the systematic process of designing and building an executable computer program to accomplish a specific computing result." },
-            { title: "Lecture 2: Logic Systems", icon: "fa-code-branch", content: "Understanding binary logic, boolean transformations, and decision-making structures in modern software." },
-            { title: "Lecture 3: Algorithms", icon: "fa-cogs", content: "A step-by-step procedure for calculations. Algorithms are used for data processing, automated reasoning, and computation." },
-            { title: "Lecture 4: Flowcharts", icon: "fa-project-diagram", content: "Visualizing process flows and logical branching through standardized notation systems." },
-            { title: "Lecture 5: Variables", icon: "fa-box", content: "Storage locations paired with symbolic names which contain some known or unknown quantity of information." },
-            { title: "Lecture 6: Data Types", icon: "fa-database", content: "Classification of data which tells the compiler or interpreter how the programmer intends to use the data." },
-            { title: "Lecture 7: Conditions", icon: "fa-code", content: "Statements that execute specific blocks of code based on logical boolean evaluations." },
-            { title: "Lecture 8: Loops", icon: "fa-sync", content: "Programming constructs that repeat a sequence of instructions until a specific condition is met." },
-            { title: "Lecture 9: Functions", icon: "fa-puzzle-piece", content: "A unit of code that performs a specific task and can be invoked multiple times across an application." },
-            { title: "Lecture 10: Problem Solving", icon: "fa-lightbulb", content: "Critical thinking and analytical strategies for decomposing complex requirements into executable code." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Resources</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes and supplementary documentation for this module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        // Navbar Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

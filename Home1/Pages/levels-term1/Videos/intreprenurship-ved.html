@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Intro to Entrepreneurship", video: "https://www.youtube.com/embed/6n5RZKxPp7A", desc: "Overview of entrepreneurial ecosystems, innovation frameworks, and the business mindset." },
+            { title: "02: Entrepreneurial Mindset", video: "https://www.youtube.com/embed/V8rZ9kZ6J0A", desc: "Understanding creative problem solving, risk mitigation, and opportunity recognition." },
+            { title: "03: Innovation & Creativity", video: "https://www.youtube.com/embed/9Ew3H6kYz0A", desc: "How disruptive ideas are generated and developed into market-ready concepts." },
+            { title: "04: From Idea to Startup", video: "https://www.youtube.com/embed/xYqQ8R7FZzA", desc: "The transition phases of turning raw ideas into viable, scalable startup projects." },
+            { title: "05: Business Models", video: "https://www.youtube.com/embed/Ip1S8yY6X2M", desc: "Introduction to business model canvas and value proposition engineering." },
+            { title: "06: Market Analysis", video: "https://www.youtube.com/embed/5Z9HqL2pZ8A", desc: "Analyzing customer segments, market needs, and competitive landscapes." },
+            { title: "07: Funding & Finance", video: "https://www.youtube.com/embed/4R9xQZ6H2YQ", desc: "Basic financial modeling concepts and startup capital acquisition options." },
+            { title: "08: Leadership & Teams", video: "https://www.youtube.com/embed/kP6ZxR8Y7ZQ", desc: "Building high-performance teams and the psychology of entrepreneurial leadership." },
+            { title: "09: Pitching & Presentation", video: "https://www.youtube.com/embed/W6R9xY2H7P8", desc: "How to communicate venture value propositions clearly and capture investor interest." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Intro to Entrepreneurship", video: "https://www.youtube.com/embed/6n5RZKxPp7A", desc: "Overview of entrepreneurial ecosystems, innovation frameworks, and the business mindset." },
-            { title: "02: Entrepreneurial Mindset", video: "https://www.youtube.com/embed/V8rZ9kZ6J0A", desc: "Understanding creative problem solving, risk mitigation, and opportunity recognition." },
-            { title: "03: Innovation & Creativity", video: "https://www.youtube.com/embed/9Ew3H6kYz0A", desc: "How disruptive ideas are generated and developed into market-ready concepts." },
-            { title: "04: From Idea to Startup", video: "https://www.youtube.com/embed/xYqQ8R7FZzA", desc: "The transition phases of turning raw ideas into viable, scalable startup projects." },
-            { title: "05: Business Models", video: "https://www.youtube.com/embed/Ip1S8yY6X2M", desc: "Introduction to business model canvas and value proposition engineering." },
-            { title: "06: Market Analysis", video: "https://www.youtube.com/embed/5Z9HqL2pZ8A", desc: "Analyzing customer segments, market needs, and competitive landscapes." },
-            { title: "07: Funding & Finance", video: "https://www.youtube.com/embed/4R9xQZ6H2YQ", desc: "Basic financial modeling concepts and startup capital acquisition options." },
-            { title: "08: Leadership & Teams", video: "https://www.youtube.com/embed/kP6ZxR8Y7ZQ", desc: "Building high-performance teams and the psychology of entrepreneurial leadership." },
-            { title: "09: Pitching & Presentation", video: "https://www.youtube.com/embed/W6R9xY2H7P8", desc: "How to communicate venture value propositions clearly and capture investor interest." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

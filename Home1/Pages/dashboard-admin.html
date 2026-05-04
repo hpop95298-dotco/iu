@@ -120,6 +120,38 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+
+
+
+
+
+    <script>
+        // Option 7: Scroll Progress Logic
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scroll-progress');
+            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = (window.scrollY / totalHeight) * 100;
+            if(scrollProgress) scrollProgress.style.width = progress + '%';
+        });
+
+        
+    </script>
+    <script type="module" src="../js/admin-dashboard.js"></script>
+    <script type="module" src="../js/auth.js"></script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -233,35 +265,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-
-
-
-
-
-    <script>
-        // Option 7: Scroll Progress Logic
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scroll-progress');
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            if(scrollProgress) scrollProgress.style.width = progress + '%';
-        });
-
-        
-    </script>
-    <script type="module" src="../js/admin-dashboard.js"></script>
-    <script type="module" src="../js/auth.js"></script>
-    
-
-
-
-
 
 </body>
 </html>

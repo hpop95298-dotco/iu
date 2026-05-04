@@ -79,6 +79,86 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lec 1: Intro to English", video: "https://www.youtube.com/embed/3i1lNJPY-4Q", desc: "Foundational concepts of English language and its academic applications." },
+            { title: "Lec 2: Parts of Speech", video: "https://www.youtube.com/embed/mY9lG0E8P6o", desc: "Analyzing the building blocks of grammatical structures." },
+            { title: "Lec 3: Verb Tenses", video: "https://www.youtube.com/embed/8J2q6P7nWn0", desc: "Temporal systems and their correct implementation in formal speech." },
+            { title: "Lec 4: Vocabulary Building", video: "https://www.youtube.com/embed/1Pz2d8ZCj7A", desc: "Strategies for expanding linguistic range and professional lexicon." },
+            { title: "Lec 5: Reading Skills", video: "https://www.youtube.com/embed/KM1kZqFv5xY", desc: "Techniques for high-speed comprehension and experimental text analysis." },
+            { title: "Lec 6: Writing Skills", video: "https://www.youtube.com/embed/YG8v4C1kq5E", desc: "The mechanics of academic writing and structured argumentation." },
+            { title: "Lec 7: Listening Skills", video: "https://www.youtube.com/embed/7w4J9H5zQnE", desc: "Improving auditory synchronization and semantic extraction." },
+            { title: "Lec 8: Speaking Skills", video: "https://www.youtube.com/embed/0ZkP6K9b8Hg", desc: "Foundations of oral communication and professional presentation." },
+            { title: "Lec 9: Grammar Real-time", video: "https://www.youtube.com/embed/UQ6hJq3vZ8E", desc: "Identifying and correcting syntax errors in dynamic communication." },
+            { title: "Lec 10: Final Synthesis", video: "https://www.youtube.com/embed/tgbNymZ7vqY", desc: "Comprehensive review of Level 1 linguistic methodologies." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,83 +272,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lec 1: Intro to English", video: "https://www.youtube.com/embed/3i1lNJPY-4Q", desc: "Foundational concepts of English language and its academic applications." },
-            { title: "Lec 2: Parts of Speech", video: "https://www.youtube.com/embed/mY9lG0E8P6o", desc: "Analyzing the building blocks of grammatical structures." },
-            { title: "Lec 3: Verb Tenses", video: "https://www.youtube.com/embed/8J2q6P7nWn0", desc: "Temporal systems and their correct implementation in formal speech." },
-            { title: "Lec 4: Vocabulary Building", video: "https://www.youtube.com/embed/1Pz2d8ZCj7A", desc: "Strategies for expanding linguistic range and professional lexicon." },
-            { title: "Lec 5: Reading Skills", video: "https://www.youtube.com/embed/KM1kZqFv5xY", desc: "Techniques for high-speed comprehension and experimental text analysis." },
-            { title: "Lec 6: Writing Skills", video: "https://www.youtube.com/embed/YG8v4C1kq5E", desc: "The mechanics of academic writing and structured argumentation." },
-            { title: "Lec 7: Listening Skills", video: "https://www.youtube.com/embed/7w4J9H5zQnE", desc: "Improving auditory synchronization and semantic extraction." },
-            { title: "Lec 8: Speaking Skills", video: "https://www.youtube.com/embed/0ZkP6K9b8Hg", desc: "Foundations of oral communication and professional presentation." },
-            { title: "Lec 9: Grammar Real-time", video: "https://www.youtube.com/embed/UQ6hJq3vZ8E", desc: "Identifying and correcting syntax errors in dynamic communication." },
-            { title: "Lec 10: Final Synthesis", video: "https://www.youtube.com/embed/tgbNymZ7vqY", desc: "Comprehensive review of Level 1 linguistic methodologies." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

@@ -129,6 +129,70 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle) menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    setTimeout(() => preloader.style.display = 'none', 500);
+                }, 500);
+            }
+        });
+
+        const files = {
+            term1: {
+                1: { pdf: 'levels-term1/level1-term1-pdf.html', video: 'levels-term1/level1-term1-video.html' },
+                2: { pdf: 'level2-term1/level2-term1-pdf.html', video: 'level2-term1/level2-term1-video.html' },
+                3: { pdf: 'level3-term1/level3-term1-pdf.html', video: 'level3-term1/level3-term1-video.html' },
+                4: { pdf: 'level4-term1/level4-term1-pdf.html', video: 'level4-term1/level4-term1-video.html' }
+            }
+        };
+
+        function switchTerm(term) {
+            if(term === 'term2') {
+                const msg = document.getElementById("comingSoonMsg");
+                if (msg) {
+                    msg.classList.add("show");
+                    setTimeout(() => msg.classList.remove("show"), 2000);
+                } else {
+                    alert("Spring Semester opening soon.");
+                }
+            }
+        }
+
+        function openPDF(level) { window.location.href = files.term1[level].pdf; }
+        function openVideo(level) { window.location.href = files.term1[level].video; }
+
+        
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -242,67 +306,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if(menuToggle) menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 500);
-            }
-        });
-
-        const files = {
-            term1: {
-                1: { pdf: 'levels-term1/level1-term1-pdf.html', video: 'levels-term1/level1-term1-video.html' },
-                2: { pdf: 'level2-term1/level2-term1-pdf.html', video: 'level2-term1/level2-term1-video.html' },
-                3: { pdf: 'level3-term1/level3-term1-pdf.html', video: 'level3-term1/level3-term1-video.html' },
-                4: { pdf: 'level4-term1/level4-term1-pdf.html', video: 'level4-term1/level4-term1-video.html' }
-            }
-        };
-
-        function switchTerm(term) {
-            if(term === 'term2') {
-                const msg = document.getElementById("comingSoonMsg");
-                if (msg) {
-                    msg.classList.add("show");
-                    setTimeout(() => msg.classList.remove("show"), 2000);
-                } else {
-                    alert("Spring Semester opening soon.");
-                }
-            }
-        }
-
-        function openPDF(level) { window.location.href = files.term1[level].pdf; }
-        function openVideo(level) { window.location.href = files.term1[level].video; }
-
-        
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Chap 1: Basic Concepts", video: "https://www.youtube.com/embed/4hBdtutGw-k", desc: "Foundational overview of computing machines and their roles in modern data transformation." },
+            { title: "Chap 1: Concepts (Part 2)", video: "https://www.youtube.com/embed/yzrgEXDa3Po", desc: "Advanced conceptual framework for computing systems and logical data structures." },
+            { title: "Chap 2: Hardware Architecture", video: "https://www.youtube.com/embed/1NQkegC39cE", desc: "Analyzing the physical silicon and mechanical foundations of modern hardware." },
+            { title: "Input Device Logic", video: "https://www.youtube.com/embed/Qy8SNWlQP9Q", desc: "Synchronization and processing techniques for user input stream devices." },
+            { title: "Output Device Systems", video: "https://www.youtube.com/embed/NTuH2B5kykM", desc: "Visual and auditory data representation through advanced output peripheral systems." },
+            { title: "Storage Architectures", video: "https://www.youtube.com/embed/w7S1iqSslMk", desc: "Non-volatile memory systems, raid arrays, and long-term data persistence logic." },
+            { title: "Software Ecosystems", video: "https://www.youtube.com/embed/K1BXyCICvpo", desc: "The relationship between operating systems, kernel drivers, and user-level applications." },
+            { title: "Flowchart Engineering", video: "https://www.youtube.com/embed/K1BXyCICvpo", desc: "Visualizing logical branching and algorithmic flows through standardized notation." },
+            { title: "Numbering Systems", video: "https://www.youtube.com/embed/_goCkdgNYko", desc: "Binary, Octal, Hexadecimal, and Decimal transformation methodologies in computing logic." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Chap 1: Basic Concepts", video: "https://www.youtube.com/embed/4hBdtutGw-k", desc: "Foundational overview of computing machines and their roles in modern data transformation." },
-            { title: "Chap 1: Concepts (Part 2)", video: "https://www.youtube.com/embed/yzrgEXDa3Po", desc: "Advanced conceptual framework for computing systems and logical data structures." },
-            { title: "Chap 2: Hardware Architecture", video: "https://www.youtube.com/embed/1NQkegC39cE", desc: "Analyzing the physical silicon and mechanical foundations of modern hardware." },
-            { title: "Input Device Logic", video: "https://www.youtube.com/embed/Qy8SNWlQP9Q", desc: "Synchronization and processing techniques for user input stream devices." },
-            { title: "Output Device Systems", video: "https://www.youtube.com/embed/NTuH2B5kykM", desc: "Visual and auditory data representation through advanced output peripheral systems." },
-            { title: "Storage Architectures", video: "https://www.youtube.com/embed/w7S1iqSslMk", desc: "Non-volatile memory systems, raid arrays, and long-term data persistence logic." },
-            { title: "Software Ecosystems", video: "https://www.youtube.com/embed/K1BXyCICvpo", desc: "The relationship between operating systems, kernel drivers, and user-level applications." },
-            { title: "Flowchart Engineering", video: "https://www.youtube.com/embed/K1BXyCICvpo", desc: "Visualizing logical branching and algorithmic flows through standardized notation." },
-            { title: "Numbering Systems", video: "https://www.youtube.com/embed/_goCkdgNYko", desc: "Binary, Octal, Hexadecimal, and Decimal transformation methodologies in computing logic." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

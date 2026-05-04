@@ -73,6 +73,96 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Mechanics Basics", icon: "fa-cubes", content: "Foundations of classical mechanics, units of measurement, and vector analysis for physical systems." },
+            { title: "Lecture 2: 1D Motion", icon: "fa-arrow-right", content: "Analyzing displacement, instantaneous velocity, and constant acceleration in a single dimension." },
+            { title: "Lecture 3: 2D & Projectile Motion", icon: "fa-long-arrow-alt-up", content: "Kinematics in two dimensions, including parabolic trajectories and relative motion analysis." },
+            { title: "Lecture 4: Newton's Laws", icon: "fa-weight-hanging", content: "The three fundamental laws of motion and their applications in calculating force and dynamic equilibrium." },
+            { title: "Lecture 5: Work & Energy", icon: "fa-charging-station", content: "Exploring the transfer of energy, work-energy theorem, and the conservation of mechanical energy." },
+            { title: "Lecture 6: Momentum & Impulse", icon: "fa-hammer", content: "Linear momentum, collision theory, and the conservation of momentum in isolated systems." },
+            { title: "Lecture 7: Circular Motion", icon: "fa-sync", content: "Analyzing rotational kinematics, centripetal force, and the dynamics of uniform circular movement." },
+            { title: "Lecture 8: Gravitation", icon: "fa-globe-africa", content: "Newton's universal law of gravitation and its application to planetary motion and satellite orbits." },
+            { title: "Lecture 9: Oscillations", icon: "fa-wave-square", content: "Periodic motion, simple harmonic oscillators, and the mathematical modeling of rhythmic systems." },
+            { title: "Lecture 10: Wave Mechanics", icon: "fa-water", content: "Properties of mechanical waves, sound propagation, and the physics of wave interference and resonance." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Physics Repository</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download official lecture notes, derivations, and experimental datasets for this module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,93 +276,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Mechanics Basics", icon: "fa-cubes", content: "Foundations of classical mechanics, units of measurement, and vector analysis for physical systems." },
-            { title: "Lecture 2: 1D Motion", icon: "fa-arrow-right", content: "Analyzing displacement, instantaneous velocity, and constant acceleration in a single dimension." },
-            { title: "Lecture 3: 2D & Projectile Motion", icon: "fa-long-arrow-alt-up", content: "Kinematics in two dimensions, including parabolic trajectories and relative motion analysis." },
-            { title: "Lecture 4: Newton's Laws", icon: "fa-weight-hanging", content: "The three fundamental laws of motion and their applications in calculating force and dynamic equilibrium." },
-            { title: "Lecture 5: Work & Energy", icon: "fa-charging-station", content: "Exploring the transfer of energy, work-energy theorem, and the conservation of mechanical energy." },
-            { title: "Lecture 6: Momentum & Impulse", icon: "fa-hammer", content: "Linear momentum, collision theory, and the conservation of momentum in isolated systems." },
-            { title: "Lecture 7: Circular Motion", icon: "fa-sync", content: "Analyzing rotational kinematics, centripetal force, and the dynamics of uniform circular movement." },
-            { title: "Lecture 8: Gravitation", icon: "fa-globe-africa", content: "Newton's universal law of gravitation and its application to planetary motion and satellite orbits." },
-            { title: "Lecture 9: Oscillations", icon: "fa-wave-square", content: "Periodic motion, simple harmonic oscillators, and the mathematical modeling of rhythmic systems." },
-            { title: "Lecture 10: Wave Mechanics", icon: "fa-water", content: "Properties of mechanical waves, sound propagation, and the physics of wave interference and resonance." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Physics Repository</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download official lecture notes, derivations, and experimental datasets for this module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

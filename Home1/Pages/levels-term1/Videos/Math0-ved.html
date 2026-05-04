@@ -79,6 +79,85 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Revision of Basic Math", video: "https://www.youtube.com/embed/0EnklH5hY5Y", desc: "Foundational review of high-school mathematics essential for technical university curriculum." },
+            { title: "02: Number Systems", video: "https://www.youtube.com/embed/9b5pXG9GQqQ", desc: "Deep dive into real, rational, and integer systems and their formal proofs." },
+            { title: "03: Fractions & Decimals", video: "https://www.youtube.com/embed/f2X7xgJmF6w", desc: "Computational logic for fractional transformations and high-precision decimal operations." },
+            { title: "04: Powers & Roots", video: "https://www.youtube.com/embed/8qH6E2pY3qM", desc: "Understanding the behavior of exponential growth and the engineering of radical expressions." },
+            { title: "05: Algebraic Expressions", icon: "fa-superscript", video: "https://www.youtube.com/embed/3t6rJp6m3dA", desc: "Simplification methodologies for complex symptomatic expressions and variables." },
+            { title: "06: Linear Equations", video: "https://www.youtube.com/embed/7Z0E4Y0D0kQ", desc: "Step-by-step algorithms for solving first-degree equations on a cartesian plane." },
+            { title: "07: Inequalities", video: "https://www.youtube.com/embed/2xXxkZ8GJ6E", desc: "Mapping magnitude comparisons and interval constraints in mathematical logic." },
+            { title: "08: Polynomials", video: "https://www.youtube.com/embed/5pKk4ZyGQ3Q", desc: "Higher-order algebraic structures and the mechanics of multi-term operations." },
+            { title: "09: Introduction to Functions", video: "https://www.youtube.com/embed/Wm7b8b5G6kM", desc: "The formal bridge between input sets and output values through functional mapping." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,82 +271,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Revision of Basic Math", video: "https://www.youtube.com/embed/0EnklH5hY5Y", desc: "Foundational review of high-school mathematics essential for technical university curriculum." },
-            { title: "02: Number Systems", video: "https://www.youtube.com/embed/9b5pXG9GQqQ", desc: "Deep dive into real, rational, and integer systems and their formal proofs." },
-            { title: "03: Fractions & Decimals", video: "https://www.youtube.com/embed/f2X7xgJmF6w", desc: "Computational logic for fractional transformations and high-precision decimal operations." },
-            { title: "04: Powers & Roots", video: "https://www.youtube.com/embed/8qH6E2pY3qM", desc: "Understanding the behavior of exponential growth and the engineering of radical expressions." },
-            { title: "05: Algebraic Expressions", icon: "fa-superscript", video: "https://www.youtube.com/embed/3t6rJp6m3dA", desc: "Simplification methodologies for complex symptomatic expressions and variables." },
-            { title: "06: Linear Equations", video: "https://www.youtube.com/embed/7Z0E4Y0D0kQ", desc: "Step-by-step algorithms for solving first-degree equations on a cartesian plane." },
-            { title: "07: Inequalities", video: "https://www.youtube.com/embed/2xXxkZ8GJ6E", desc: "Mapping magnitude comparisons and interval constraints in mathematical logic." },
-            { title: "08: Polynomials", video: "https://www.youtube.com/embed/5pKk4ZyGQ3Q", desc: "Higher-order algebraic structures and the mechanics of multi-term operations." },
-            { title: "09: Introduction to Functions", video: "https://www.youtube.com/embed/Wm7b8b5G6kM", desc: "The formal bridge between input sets and output values through functional mapping." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

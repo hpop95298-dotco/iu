@@ -73,6 +73,98 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "Lecture 1: Parts of Speech", icon: "fa-font", content: "Introduction to the structural building blocks of English: nouns, verbs, adjectives, and adverbs." },
+            { title: "Lecture 2: Tenses", icon: "fa-clock", content: "Comprehensive overview of present, past, and future temporal structures in English grammar." },
+            { title: "Lecture 3: Sentence Structure", icon: "fa-align-left", content: "Understanding syntax, sentence types, and the mechanics of formal English construction." },
+            { title: "Lecture 4: Voice & Style", icon: "fa-bullhorn", content: "Strategic usage of active and passive voice to enhance communicative clarity and professional impact." },
+            { title: "Lecture 5: Question Forms", icon: "fa-question-circle", content: "Analyzing interrogative structures and correctly formulating inquiries in complex scenarios." },
+            { title: "Lecture 6: Articles", icon: "fa-quote-left", content: "Precision in using definite and indefinite articles (a, an, the) within formal writing." },
+            { title: "Lecture 7: Prepositions", icon: "fa-map-pin", content: "Mastering directional and positional markers to ensure clear spatial and temporal communication." },
+            { title: "Lecture 8: Writing Skills", icon: "fa-pen-fancy", content: "Foundations of academic and professional writing, focusing on logic, cohesion, and professional tone." },
+            { title: "Lecture 9: Reading Comprehension", icon: "fa-book-open", content: "Critical analysis of written texts and strategies for extracting deep meaning from complex literature." },
+            { title: "Lecture 10: Speaking Skills", icon: "fa-comments", content: "Developing oral fluency and confidence for professional presentations and collaborative environments." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('lectureList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'lecture-btn';
+                btn.onclick = () => showLecture(index);
+                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function showLecture(index) {
+            const content = document.getElementById('lectureContent');
+            const btns = document.querySelectorAll('.lecture-btn');
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            content.style.opacity = '0';
+            content.style.transform = 'translateY(10px)';
+            
+            setTimeout(() => {
+                content.innerHTML = `
+                    <div class="animate-up">
+                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
+                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
+                            <p>${lectures[index].content}</p>
+                        </div>
+                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
+                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Resources</h4>
+                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes for this linguistics module.</p>
+                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
+                        </div>
+                    </div>
+                `;
+                content.style.opacity = '1';
+                content.style.transform = 'translateY(0)';
+            }, 150);
+        }
+
+        // Navbar Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        // Preloader
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -186,95 +278,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "Lecture 1: Parts of Speech", icon: "fa-font", content: "Introduction to the structural building blocks of English: nouns, verbs, adjectives, and adverbs." },
-            { title: "Lecture 2: Tenses", icon: "fa-clock", content: "Comprehensive overview of present, past, and future temporal structures in English grammar." },
-            { title: "Lecture 3: Sentence Structure", icon: "fa-align-left", content: "Understanding syntax, sentence types, and the mechanics of formal English construction." },
-            { title: "Lecture 4: Voice & Style", icon: "fa-bullhorn", content: "Strategic usage of active and passive voice to enhance communicative clarity and professional impact." },
-            { title: "Lecture 5: Question Forms", icon: "fa-question-circle", content: "Analyzing interrogative structures and correctly formulating inquiries in complex scenarios." },
-            { title: "Lecture 6: Articles", icon: "fa-quote-left", content: "Precision in using definite and indefinite articles (a, an, the) within formal writing." },
-            { title: "Lecture 7: Prepositions", icon: "fa-map-pin", content: "Mastering directional and positional markers to ensure clear spatial and temporal communication." },
-            { title: "Lecture 8: Writing Skills", icon: "fa-pen-fancy", content: "Foundations of academic and professional writing, focusing on logic, cohesion, and professional tone." },
-            { title: "Lecture 9: Reading Comprehension", icon: "fa-book-open", content: "Critical analysis of written texts and strategies for extracting deep meaning from complex literature." },
-            { title: "Lecture 10: Speaking Skills", icon: "fa-comments", content: "Developing oral fluency and confidence for professional presentations and collaborative environments." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('lectureList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'lecture-btn';
-                btn.onclick = () => showLecture(index);
-                btn.innerHTML = `<i class="fas ${lec.icon}"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function showLecture(index) {
-            const content = document.getElementById('lectureContent');
-            const btns = document.querySelectorAll('.lecture-btn');
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            content.style.opacity = '0';
-            content.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                content.innerHTML = `
-                    <div class="animate-up">
-                        <h2 style="color: var(--iu-accent); margin-bottom: 25px; font-size: 2rem;">${lectures[index].title}</h2>
-                        <div style="line-height: 1.8; color: rgba(255,255,255,0.9); font-size: 1.1rem; margin-bottom: 40px;">
-                            <p>${lectures[index].content}</p>
-                        </div>
-                        <div class="glass-card" style="padding: 30px; background: rgba(var(--iu-accent-rgb), 0.05); border-left: 4px solid var(--iu-accent);">
-                            <h4 style="color: var(--iu-accent); margin-bottom: 15px;"><i class="fas fa-file-pdf"></i> Academic Resources</h4>
-                            <p style="font-size: 0.9rem; color: var(--iu-text-muted); margin-bottom: 20px;">Download the official lecture notes for this linguistics module.</p>
-                            <button class="btn-premium btn-accent">Download PDF <i class="fas fa-download"></i></button>
-                        </div>
-                    </div>
-                `;
-                content.style.opacity = '1';
-                content.style.transform = 'translateY(0)';
-            }, 150);
-        }
-
-        // Navbar Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        // Preloader
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

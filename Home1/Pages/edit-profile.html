@@ -106,6 +106,107 @@
             </div>
         </div>
     
+
+
+</main>
+
+    <script>
+        const uploadInput = document.getElementById("image");
+        const previewImg = document.getElementById("preview-img");
+
+        // تحميل البيانات عند فتح الصفحة
+        window.addEventListener("DOMContentLoaded", function () {
+            const data = JSON.parse(localStorage.getItem("profileData"));
+            if (data) {
+                document.getElementById("name").value = data.name || "";
+                document.getElementById("role").value = data.role || "";
+                document.getElementById("bio").value = data.bio || "";
+                document.getElementById("email").value = data.email || "";
+                document.getElementById("phone").value = data.phone || "";
+                document.getElementById("city").value = data.city || "";
+                document.getElementById("ID").value = data.ID || "";
+
+                const skills = document.querySelectorAll('#skills-inputs input');
+                skills[0].value = data.skills.html || 0;
+                skills[1].value = data.skills.css || 0;
+                skills[2].value = data.skills.js || 0;
+                skills[3].value = data.skills.csharp || 0;
+
+                if (data.imageUrl) {
+                    previewImg.src = data.imageUrl;
+                }
+            }
+            // Preloader finish
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+        });
+
+        // عرض الصورة فور رفعها
+        uploadInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    previewImg.src = reader.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        function saveProfile() {
+            const oldData = JSON.parse(localStorage.getItem("profileData")) || {};
+            const skillsInputs = document.querySelectorAll('#skills-inputs input');
+            const profileData = {
+                name: document.getElementById("name").value,
+                role: document.getElementById("role").value,
+                bio: document.getElementById("bio").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                city: document.getElementById("city").value,
+                ID: document.getElementById("ID").value,
+                imageUrl: previewImg.src,
+                interests: oldData.interests || [],
+                skills: {
+                    html: skillsInputs[0].value,
+                    css: skillsInputs[1].value,
+                    js: skillsInputs[2].value,
+                    csharp: skillsInputs[3].value
+                }
+            };
+
+            localStorage.setItem("profileData", JSON.stringify(profileData));
+            alert("Digital Identity Synchronized Successfully!");
+            window.location.href = "profile.html";
+        }
+
+        function cancelEdit() {
+            window.location.href = "profile.html";
+        }
+
+        
+    </script>
+
+
+    
+    
+    
+    
+    
+
+
+
+
+
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -219,104 +320,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    <script>
-        const uploadInput = document.getElementById("image");
-        const previewImg = document.getElementById("preview-img");
-
-        // تحميل البيانات عند فتح الصفحة
-        window.addEventListener("DOMContentLoaded", function () {
-            const data = JSON.parse(localStorage.getItem("profileData"));
-            if (data) {
-                document.getElementById("name").value = data.name || "";
-                document.getElementById("role").value = data.role || "";
-                document.getElementById("bio").value = data.bio || "";
-                document.getElementById("email").value = data.email || "";
-                document.getElementById("phone").value = data.phone || "";
-                document.getElementById("city").value = data.city || "";
-                document.getElementById("ID").value = data.ID || "";
-
-                const skills = document.querySelectorAll('#skills-inputs input');
-                skills[0].value = data.skills.html || 0;
-                skills[1].value = data.skills.css || 0;
-                skills[2].value = data.skills.js || 0;
-                skills[3].value = data.skills.csharp || 0;
-
-                if (data.imageUrl) {
-                    previewImg.src = data.imageUrl;
-                }
-            }
-            // Preloader finish
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-        });
-
-        // عرض الصورة فور رفعها
-        uploadInput.addEventListener("change", function () {
-            const file = this.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = function () {
-                    previewImg.src = reader.result;
-                }
-                reader.readAsDataURL(file);
-            }
-        });
-
-        function saveProfile() {
-            const oldData = JSON.parse(localStorage.getItem("profileData")) || {};
-            const skillsInputs = document.querySelectorAll('#skills-inputs input');
-            const profileData = {
-                name: document.getElementById("name").value,
-                role: document.getElementById("role").value,
-                bio: document.getElementById("bio").value,
-                email: document.getElementById("email").value,
-                phone: document.getElementById("phone").value,
-                city: document.getElementById("city").value,
-                ID: document.getElementById("ID").value,
-                imageUrl: previewImg.src,
-                interests: oldData.interests || [],
-                skills: {
-                    html: skillsInputs[0].value,
-                    css: skillsInputs[1].value,
-                    js: skillsInputs[2].value,
-                    csharp: skillsInputs[3].value
-                }
-            };
-
-            localStorage.setItem("profileData", JSON.stringify(profileData));
-            alert("Digital Identity Synchronized Successfully!");
-            window.location.href = "profile.html";
-        }
-
-        function cancelEdit() {
-            window.location.href = "profile.html";
-        }
-
-        
-    </script>
-
-
-    
-    
-    
-    
-    
-
-
-
-
-
-    
-
-
-
-
 
 </body>
 

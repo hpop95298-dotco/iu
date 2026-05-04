@@ -79,6 +79,86 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+    <script>
+        const lectures = [
+            { title: "01: Intro to Calculus", video: "https://www.youtube.com/embed/EJkxkfgZ_yY", desc: "Foundational overview of calculus, function theory, and their engineering applications." },
+            { title: "02: Domain & Range", video: "https://www.youtube.com/embed/09wg9Pgpa6c", desc: "Techniques for identifying input sets and output values for multi-variant functions." },
+            { title: "03: Polynomials", video: "https://www.youtube.com/embed/_a2_RqTI0vs", desc: "Analyzing the behavior and graphical properties of degree-based polynomial functions." },
+            { title: "04: Functions & Graphs", video: "https://www.youtube.com/embed/y8BYQmVM-zo", desc: "Advanced plotting methodologies and structural analysis of functional graphs." },
+            { title: "05: Limits in Calculus", video: "https://www.youtube.com/embed/yywfUe84z6E", desc: "Understanding the formal logic of limits and their role in establishing continuity." },
+            { title: "06: Differentiation", video: "https://www.youtube.com/embed/RZYAZu5P-S8", desc: "Calculating instantaneous rates of change and the mechanics of derivative calculus." },
+            { title: "07: Apps of Derivatives", video: "https://www.youtube.com/embed/mYqci04Xoc8", desc: "Optimization, growth modeling, and technical physics applications of differentiation." },
+            { title: "08: Indefinite Integrals", video: "https://www.youtube.com/embed/1VwCICA-Dus", desc: "The inverse of differentiation: understanding antiderivatives and the area summation logic." },
+            { title: "09: Integration Tech", video: "https://www.youtube.com/embed/1VPabrVyG-E", desc: "Substitution, parts, and trigonometric integration methodologies for complex systems." },
+            { title: "10: Definite Integrals", video: "https://www.youtube.com/embed/VjTekYr1tuU", desc: "Applying definite integral calculus to calculate concrete areas and volumes in engineering." }
+        ];
+
+        function initSidebar() {
+            const list = document.getElementById('videoList');
+            lectures.forEach((lec, index) => {
+                const btn = document.createElement('button');
+                btn.className = 'video-btn';
+                btn.onclick = () => loadVideo(index);
+                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                list.appendChild(btn);
+            });
+        }
+
+        function loadVideo(index) {
+            const area = document.getElementById('playerArea');
+            const btns = document.querySelectorAll('.video-btn');
+            const lec = lectures[index];
+            
+            btns.forEach(b => b.classList.remove('active'));
+            btns[index].classList.add('active');
+            
+            area.innerHTML = `
+                <div class="video-container">
+                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                </div>
+                <div class="video-info animate-up">
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                </div>
+            `;
+        }
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 800);
+            initSidebar();
+        });
+    </script>
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -192,83 +272,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-    <script>
-        const lectures = [
-            { title: "01: Intro to Calculus", video: "https://www.youtube.com/embed/EJkxkfgZ_yY", desc: "Foundational overview of calculus, function theory, and their engineering applications." },
-            { title: "02: Domain & Range", video: "https://www.youtube.com/embed/09wg9Pgpa6c", desc: "Techniques for identifying input sets and output values for multi-variant functions." },
-            { title: "03: Polynomials", video: "https://www.youtube.com/embed/_a2_RqTI0vs", desc: "Analyzing the behavior and graphical properties of degree-based polynomial functions." },
-            { title: "04: Functions & Graphs", video: "https://www.youtube.com/embed/y8BYQmVM-zo", desc: "Advanced plotting methodologies and structural analysis of functional graphs." },
-            { title: "05: Limits in Calculus", video: "https://www.youtube.com/embed/yywfUe84z6E", desc: "Understanding the formal logic of limits and their role in establishing continuity." },
-            { title: "06: Differentiation", video: "https://www.youtube.com/embed/RZYAZu5P-S8", desc: "Calculating instantaneous rates of change and the mechanics of derivative calculus." },
-            { title: "07: Apps of Derivatives", video: "https://www.youtube.com/embed/mYqci04Xoc8", desc: "Optimization, growth modeling, and technical physics applications of differentiation." },
-            { title: "08: Indefinite Integrals", video: "https://www.youtube.com/embed/1VwCICA-Dus", desc: "The inverse of differentiation: understanding antiderivatives and the area summation logic." },
-            { title: "09: Integration Tech", video: "https://www.youtube.com/embed/1VPabrVyG-E", desc: "Substitution, parts, and trigonometric integration methodologies for complex systems." },
-            { title: "10: Definite Integrals", video: "https://www.youtube.com/embed/VjTekYr1tuU", desc: "Applying definite integral calculus to calculate concrete areas and volumes in engineering." }
-        ];
-
-        function initSidebar() {
-            const list = document.getElementById('videoList');
-            lectures.forEach((lec, index) => {
-                const btn = document.createElement('button');
-                btn.className = 'video-btn';
-                btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
-                list.appendChild(btn);
-            });
-        }
-
-        function loadVideo(index) {
-            const area = document.getElementById('playerArea');
-            const btns = document.querySelectorAll('.video-btn');
-            const lec = lectures[index];
-            
-            btns.forEach(b => b.classList.remove('active'));
-            btns[index].classList.add('active');
-            
-            area.innerHTML = `
-                <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
-                </div>
-                <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
-                </div>
-            `;
-        }
-
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 800);
-            initSidebar();
-        });
-    </script>
-    
-
-
-
-
 
 </body>
 </html>

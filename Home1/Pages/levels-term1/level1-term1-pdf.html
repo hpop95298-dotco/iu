@@ -123,6 +123,59 @@
             </div>
         </div>
     
+
+
+</main>
+
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+<script src="../../js/navigation.js"></script>
+<script>
+    function openProgramming() { window.location.href = "subjects/Introduction-to-programing-pdf.html"; }
+    function openMath1() { window.location.href = "subjects/math1-pdf.html"; }
+    function openPhysics() { window.location.href = "subjects/physics-pdf.html"; }
+    function openEnglish() { window.location.href = "subjects/english-pdf.html"; }
+    function openComputer() { window.location.href = "subjects/intro-computers-pdf.html"; }
+    function openMath0() { window.location.href = "subjects/math0.html"; }
+    function openEntrepreneurship() { window.location.href = "subjects/entrepreneurship.html"; }
+    function openHumanRights() { window.location.href = "subjects/human-rights-pdf.html"; }
+
+    // Navigation & Preloader
+    window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }, 500);
+        }
+    });
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+    }
+
+    
+</script>
+
+    
+
+
+
+
+
+
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(18, 12, 36, 0.98) 0%, rgba(10, 6, 20, 1) 100%);
@@ -236,56 +289,6 @@
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
-
-</main>
-
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-<script src="../../js/navigation.js"></script>
-<script>
-    function openProgramming() { window.location.href = "subjects/Introduction-to-programing-pdf.html"; }
-    function openMath1() { window.location.href = "subjects/math1-pdf.html"; }
-    function openPhysics() { window.location.href = "subjects/physics-pdf.html"; }
-    function openEnglish() { window.location.href = "subjects/english-pdf.html"; }
-    function openComputer() { window.location.href = "subjects/intro-computers-pdf.html"; }
-    function openMath0() { window.location.href = "subjects/math0.html"; }
-    function openEntrepreneurship() { window.location.href = "subjects/entrepreneurship.html"; }
-    function openHumanRights() { window.location.href = "subjects/human-rights-pdf.html"; }
-
-    // Navigation & Preloader
-    window.addEventListener('load', () => {
-        const preloader = document.getElementById('preloader');
-        if (preloader) {
-            setTimeout(() => {
-                preloader.style.opacity = '0';
-                setTimeout(() => preloader.style.display = 'none', 500);
-            }, 500);
-        }
-    });
-    const menuToggle = document.getElementById('menuToggle');
-    const navMenu = document.getElementById('navMenu');
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
-    }
-
-    
-</script>
-
-    
-
-
-
-
 
 </body>
 </html>
