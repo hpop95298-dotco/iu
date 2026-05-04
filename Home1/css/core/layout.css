@@ -12,7 +12,7 @@ header {
     left: 0;
     width: 100%;
     z-index: 5000;
-    border-bottom: 2px solid var(--iu-accent);
+    border-bottom: none;
     padding: 12px 0;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
@@ -79,7 +79,7 @@ main, .main-content {
 .main-footer {
     background: #050308;
     padding: 35px 5% 15px;
-    border-top: 2px solid var(--iu-accent);
+    border-top: none;
     position: relative;
     z-index: 10;
     margin-top: 50px;
