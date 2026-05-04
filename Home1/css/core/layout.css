@@ -4,17 +4,18 @@
 
 /* Master Header */
 header {
-    background: rgba(var(--iu-primary-rgb), 0.8); /* Slightly more transparent */
-    backdrop-filter: blur(12px); /* Reduced blur for performance */
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(var(--iu-primary-rgb), 0.9); /* Strong Royal Background */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 5000;
-    border-bottom: none;
+    border-bottom: 2px solid var(--iu-accent); /* The Bold Golden Shape */
     padding: 12px 0;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    transition: var(--transition-smooth);
 }
 
 .nav-container {
@@ -79,7 +80,7 @@ main, .main-content {
 .main-footer {
     background: #050308;
     padding: 35px 5% 15px;
-    border-top: none;
+    border-top: 2px solid var(--iu-accent);
     position: relative;
     z-index: 10;
     margin-top: 50px;
