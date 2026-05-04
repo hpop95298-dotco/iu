@@ -151,27 +151,35 @@ walkDir(baseDir, (filePath) => {
     // Calculate depth relative to Pages/
     const relativeToPages = path.relative(baseDir, path.dirname(filePath));
     const depthCount      = relativeToPages === '' ? 0 : relativeToPages.split(path.sep).filter(Boolean).length;
-    const dep             = '../'.repeat(depthCount);
+    
+    // Prefix to get out of Pages/ PLUS depth prefix
+    const dep = '../' + '../'.repeat(depthCount);
 
     const newFooter = buildFooter(dep);
 
     // Clean up any double footers or old versions first
     content = content.replace(/<!-- ═══════════════ UNIFIED FOOTER v3 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
     content = content.replace(/<!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v4 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
+    content = content.replace(/<!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v5 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
 
-    // Replace existing <footer ...>...</footer>
-    if (/<footer[\s\S]*?<\/footer>/i.test(content)) {
+    // Strategy 1: Dashboard Integration (Inject inside <main>)
+    if (content.includes('main-content') || content.includes('dashboard-main')) {
+        if (content.includes('</main>')) {
+            content = content.replace('</main>', newFooter + '\n</main>');
+            processed++;
+        } else {
+            content = content + '\n' + newFooter;
+            processed++;
+        }
+    }
+    // Strategy 2: replace existing <footer ...>...</footer>
+    else if (/<footer[\s\S]*?<\/footer>/i.test(content)) {
         content = content.replace(/<footer[\s\S]*?<\/footer>/i, newFooter.trim());
         processed++;
     }
-    // Strategy 2: insert before </body>
+    // Strategy 3: insert before </body>
     else if (content.includes('</body>')) {
         content = content.replace('</body>', newFooter + '\n</body>');
-        processed++;
-    }
-    // Strategy 3: append before </main> if dashboard layout
-    else if (content.includes('dashboard-main')) {
-        content = content.replace('</main>', newFooter + '\n</main>');
         processed++;
     } else {
         console.warn('  [SKIP] no insertion point found:', path.relative(baseDir, filePath));
