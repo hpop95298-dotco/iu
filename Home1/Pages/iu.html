@@ -180,7 +180,7 @@
         </div>
 
         <!-- Option 7: Scroll Progress Bar -->
-    <div id="scroll-progress" style="position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--iu-accent); z-index: 9999; transition: width 0.1s ease-out; box-shadow: 0 0 10px var(--iu-accent);"></div>
+    
 
     <header>
         <div class="nav-container">
@@ -345,13 +345,7 @@
 
 
     <script>
-        // Option 7: Scroll Progress Logic
-        window.addEventListener('scroll', () => {
-            const scrollProgress = document.getElementById('scroll-progress');
-            const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = (window.scrollY / totalHeight) * 100;
-            scrollProgress.style.width = progress + '%';
-        });
+        
 
         // Option 2: 3D Tilt Logic
         const tiltCards = document.querySelectorAll('.tilt-card');
