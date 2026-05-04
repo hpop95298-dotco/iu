@@ -167,9 +167,3 @@ walkDir(baseDir, (filePath) => {
 });
 
 console.log(`\n✅ Done — ${processed} updated, ${skipped} skipped.\n`);
-
-    fs.writeFileSync(filePath, content, 'utf8');
-    console.log(`  [OK]  depth=${depthCount}  ${path.relative(baseDir, filePath)}`);
-});
-
-console.log(`\n✅ Done — ${processed} updated, ${skipped} skipped.\n`);
