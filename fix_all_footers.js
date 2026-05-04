@@ -1,139 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Parallel Computing</title>
+/**
+ * fix_all_footers.js
+ * 
+ * سكريبت شامل لتوحيد التذييل (Footer) في جميع صفحات جامعة الابتكار.
+ * يحسب المسار النسبي الصحيح لكل ملف HTML ويضمن تطابق التصميم في كل مكان.
+ */
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+const fs   = require('fs');
+const path = require('path');
 
+const baseDir = path.join(__dirname, 'Home1', 'Pages');
 
-
-    <!-- Design System Core -->
-    <link rel="stylesheet" href="../../../../css/core/tokens.css">
-    <link rel="stylesheet" href="../../../../css/core/base.css">
-    <link rel="stylesheet" href="../../../../css/core/layout.css">
-    <link rel="stylesheet" href="../../../../css/core/components.css">
-    <link rel="stylesheet" href="../../../../css/core/animations.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="../../../../css/subject.css">
-    
-    </head>
-
-<body class="faculty-theme">
-    <div id="preloader"><div class="spinner"></div></div>
-
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../../../../images/iu-logo.png" alt="IU Logo">
-                <span>IU | Knowledge Base</span>
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-
-               <a href="../quizzes4/parallel-computing-quiz.html">Quiz</a>
-               <a href="../../level4-term1-video.html">Courses</a>
-               <a href="../../level4-term1-pdf.html">PDF</a>
-               <a href="../../../iu.html">Home</a>
-    
-            </nav>
-        </div>
-    </header>
-
-<div class="container-subject">
-
-    <!-- Sidebar -->
-    <div class="subject-sidebar" id="lessonList">
-        <h3>Parallel Computing</h3>
-    </div>
-
-    <!-- Content -->
-    <div class="subject-content" id="content">
-        <div class="placeholder">
-            ⚙️ Select a lecture to start learning Parallel Computing
-        </div>
-    </div>
-
-</div>
-
-<script>
-const lectures = [
-    {
-        title: "Lecture 1 – Introduction to Parallel Computing",
-        video: "https://www.youtube.com/embed/1Q1z8V2Y8yE",
-        desc: "Basics of parallel computing and performance concepts."
-    },
-    {
-        title: "Lecture 2 – Parallel Architectures",
-        video: "https://www.youtube.com/embed/3KZ0n3V4NZY",
-        desc: "Shared memory, distributed memory, and hybrid systems."
-    },
-    {
-        title: "Lecture 3 – Parallel Programming Models",
-        video: "https://www.youtube.com/embed/k9uG7d8J3mY",
-        desc: "Threads, MPI, OpenMP, and CUDA basics."
-    },
-    {
-        title: "Lecture 4 – Performance Evaluation",
-        video: "https://www.youtube.com/embed/WjvJpF3yJjE",
-        desc: "Speedup, efficiency, scalability, and Amdahl’s Law."
-    },
-    {
-        title: "Lecture 5 – Applications of Parallel Computing",
-        video: "https://www.youtube.com/embed/4ZQ9p7Yx6cQ",
-        desc: "Real-world applications in science, AI, and big data."
-    }
-];
-
-const lessonList = document.getElementById("lessonList");
-
-lectures.forEach((lec, index) => {
-    const div = document.createElement("div");
-    div.className = "lesson";
-    div.textContent = lec.title;
-    div.onclick = () => loadLecture(index);
-    lessonList.appendChild(div);
-});
-
-function loadLecture(i) {
-    const lec = lectures[i];
-    document.getElementById("content").innerHTML = `
-        <h3>${lec.title}</h3>
-        <iframe src="${lec.video}" allowfullscreen></iframe>
-        <p style="margin-top:15px;">${lec.desc}</p>
-    `;
-}
-</script>
-
-
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
-        if(menuToggle && navMenu) {
-            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+// ─── Recursive directory walker ────────────────────────────────────────────
+function walkDir(dir, callback) {
+    fs.readdirSync(dir).forEach(f => {
+        const full = path.join(dir, f);
+        if (fs.statSync(full).isDirectory()) {
+            walkDir(full, callback);
+        } else {
+            callback(full);
         }
-        window.addEventListener('load', () => {
-            const preloader = document.getElementById('preloader');
-            if(preloader) {
-                setTimeout(() => {
-                    preloader.style.opacity = '0';
-                    setTimeout(() => preloader.style.display = 'none', 500);
-                }, 800);
-            }
-        });
-    </script>
+    });
+}
 
-    
-    
-    
-    
-    
-
-
-
-
-
-    
+// ─── Footer HTML template ──────────────────────────────────────────────────
+const buildFooter = (dep) => `
 <!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v4 ═══════════════ -->
 <footer class="royal-footer" style="
     background: linear-gradient(180deg, rgba(10, 6, 18, 0.95) 0%, rgba(5, 3, 8, 1) 100%);
@@ -157,7 +47,7 @@ function loadLecture(i) {
             <!-- Column 1: Brand Identity -->
             <div class="footer-brand-section">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <img src="../../../images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
+                    <img src="${dep}images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
                     <div>
                         <h2 style="margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: #fdb913;">INNOVATION</h2>
                         <p style="margin: 0; font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); font-weight: 600;">UNIVERSITY</p>
@@ -179,9 +69,9 @@ function loadLecture(i) {
                     <span style="position: absolute; bottom: -10px; left: 0; width: 30px; height: 2px; background: #fdb913;"></span>
                 </h4>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 15px;"><a href="../../../programs.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Degree Programs</a></li>
-                    <li style="margin-bottom: 15px;"><a href="../../../regulations.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Academic Bylaws</a></li>
-                    <li style="margin-bottom: 15px;"><a href="../../../events.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Research & Innovation</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}programs.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Degree Programs</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}regulations.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Academic Bylaws</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}events.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-chevron-right" style="font-size: 0.6rem; color: #fdb913;"></i> Research & Innovation</a></li>
                 </ul>
             </div>
 
@@ -192,9 +82,9 @@ function loadLecture(i) {
                     <span style="position: absolute; bottom: -10px; left: 0; width: 30px; height: 2px; background: #fdb913;"></span>
                 </h4>
                 <ul style="list-style: none; padding: 0; margin: 0;">
-                    <li style="margin-bottom: 15px;"><a href="../../../dashboard-STU.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-user-graduate" style="font-size: 0.7rem; color: #fdb913;"></i> Student Dashboard</a></li>
-                    <li style="margin-bottom: 15px;"><a href="../../../dashboard-admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-user-shield" style="font-size: 0.7rem; color: #fdb913;"></i> Admin Portal</a></li>
-                    <li style="margin-bottom: 15px;"><a href="../../../login.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-sign-in-alt" style="font-size: 0.7rem; color: #fdb913;"></i> Secure Login</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}dashboard-STU.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-user-graduate" style="font-size: 0.7rem; color: #fdb913;"></i> Student Dashboard</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}dashboard-admin.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-user-shield" style="font-size: 0.7rem; color: #fdb913;"></i> Admin Portal</a></li>
+                    <li style="margin-bottom: 15px;"><a href="${dep}login.html" style="color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.9rem; transition: all 0.3s ease; display: flex; align-items: center; gap: 10px;" onmouseover="this.style.color='#fdb913'; this.style.paddingLeft='8px'" onmouseout="this.style.color='rgba(255,255,255,0.4)'; this.style.paddingLeft='0'"><i class="fas fa-sign-in-alt" style="font-size: 0.7rem; color: #fdb913;"></i> Secure Login</a></li>
                 </ul>
             </div>
 
@@ -246,6 +136,50 @@ function loadLecture(i) {
     </style>
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
+`;
 
-</body>
-</html>
+// ─── Main: process all HTML files ─────────────────────────────────────────
+let processed = 0;
+let skipped   = 0;
+
+walkDir(baseDir, (filePath) => {
+    if (!filePath.endsWith('.html')) return;
+
+    let content = fs.readFileSync(filePath, 'utf8');
+
+    // Calculate depth relative to Pages/
+    const relativeToPages = path.relative(baseDir, path.dirname(filePath));
+    const depthCount      = relativeToPages === '' ? 0 : relativeToPages.split(path.sep).filter(Boolean).length;
+    const dep             = '../'.repeat(depthCount);
+
+    const newFooter = buildFooter(dep);
+
+    // Clean up any double footers or old versions first
+    content = content.replace(/<!-- ═══════════════ UNIFIED FOOTER v3 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
+    content = content.replace(/<!-- ═══════════════ ROYAL GLASS UNIFIED FOOTER v4 ═══════════════ -->[\s\S]*?<!-- ═══════════════════════════════════════════════════ -->/g, '');
+
+    // Replace existing <footer ...>...</footer>
+    if (/<footer[\s\S]*?<\/footer>/i.test(content)) {
+        content = content.replace(/<footer[\s\S]*?<\/footer>/i, newFooter.trim());
+        processed++;
+    }
+    // Strategy 2: insert before </body>
+    else if (content.includes('</body>')) {
+        content = content.replace('</body>', newFooter + '\n</body>');
+        processed++;
+    }
+    // Strategy 3: append before </main> if dashboard layout
+    else if (content.includes('dashboard-main')) {
+        content = content.replace('</main>', newFooter + '\n</main>');
+        processed++;
+    } else {
+        console.warn('  [SKIP] no insertion point found:', path.relative(baseDir, filePath));
+        skipped++;
+        return;
+    }
+
+    fs.writeFileSync(filePath, content, 'utf8');
+    console.log(`  [OK]  depth=${depthCount}  ${path.relative(baseDir, filePath)}`);
+});
+
+console.log(`\n✅ Done — ${processed} updated, ${skipped} skipped.\n`);
