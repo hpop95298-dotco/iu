@@ -178,3 +178,65 @@
     font-size: 0.8rem;
     transition: var(--transition-fast);
 }
+/* Breadcrumb Component */
+.breadcrumb-container {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.breadcrumb-premium {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 25px;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    list-style: none;
+    margin: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.breadcrumb-item a {
+    color: rgba(255, 255, 255, 0.5);
+    text-decoration: none;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.breadcrumb-item a:hover {
+    color: var(--iu-accent);
+}
+
+.breadcrumb-item i {
+    font-size: 0.8rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "\f105";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--iu-accent);
+    font-size: 0.9rem;
+}
+
+.breadcrumb-item.active {
+    color: var(--iu-accent);
+    text-shadow: 0 0 15px var(--iu-accent-glow);
+}

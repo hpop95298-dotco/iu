@@ -46,25 +46,34 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <img src="images/iu-logo.png" alt="IU Logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
             </div>
             <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav id="navMenu">
-                <a href="Pages/iu.html">Home</a>
-                <a href="Pages/iu-details.html">About FCIT</a>
-                <a href="Pages/programs.html">Programs</a>
-                <a href="Pages/regulations.html">Regulations</a>
-                <a href="Pages/events.html">Events</a>
-                <a href="Pages/login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
             </nav>
         </div>
     </header>
 
     <main class="main-content">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <h1 class="animate-up" style="color: var(--iu-accent); font-size: 3.2rem; margin-bottom: 15px; text-shadow: 0 10px 30px rgba(0,0,0,0.7); font-weight: 900;">Academic Repository</h1>
-            <p class="animate-up" style="color: rgba(255,255,255,0.75); font-size: 1.2rem; animation-delay: 0.1s; letter-spacing: 0.5px;">Select your current level to explore scientific resources.</p>
-        </div>
+        <div class="container">
+            <nav class="breadcrumb-container animate-up">
+                <ol class="breadcrumb-premium">
+                    <li class="breadcrumb-item"><a href="iu.html"><i class="fas fa-home"></i> HOME</a></li>
+                    <li class="breadcrumb-item"><a href="dashboard-STU.html">DASHBOARD</a></li>
+                    <li class="breadcrumb-item active">REPOSITORY</li>
+                </ol>
+            </nav>
+
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h1 class="animate-up" style="color: var(--iu-accent); font-size: 3.2rem; margin-bottom: 15px; text-shadow: 0 10px 30px rgba(0,0,0,0.7); font-weight: 900;">Academic Repository</h1>
+                <p class="animate-up" style="color: rgba(255,255,255,0.75); font-size: 1.2rem; animation-delay: 0.1s; letter-spacing: 0.5px;">Select your current level to explore scientific resources.</p>
+            </div>
 
         <div class="term-switch animate-up" style="animation-delay: 0.2s;">
             <button id="term1Btn" class="term-btn active" onclick="switchTerm('term1')">Autumn Semester</button>
@@ -226,7 +235,7 @@
             <!-- Column 1: Brand Identity -->
             <div class="footer-brand-section">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <img src="images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
                     <div>
                         <h2 style="margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: #fdb913;">INNOVATION</h2>
                         <p style="margin: 0; font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); font-weight: 600;">UNIVERSITY</p>

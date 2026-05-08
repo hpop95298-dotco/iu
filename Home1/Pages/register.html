@@ -23,21 +23,22 @@
     <header>
         <div class="nav-container">
             <div class="logo">
-                <img src="images/iu-logo.png" alt="IU Logo">
+                <img src="../images/iu-logo.png" alt="IU Logo">
+                <span style="background: linear-gradient(90deg, #fdb913, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; margin-left: 15px; font-family: 'Outfit', sans-serif; font-size: 1.8rem; letter-spacing: 2px;">IU-FCIT</span>
             </div>
             <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav id="navMenu">
-                <a href="Pages/iu.html">Home</a>
-                <a href="Pages/iu-details.html">About FCIT</a>
-                <a href="Pages/programs.html">Programs</a>
-                <a href="Pages/regulations.html">Regulations</a>
-                <a href="Pages/events.html">Events</a>
-                <a href="Pages/login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
+                <a href="iu.html">Home</a>
+                <a href="iu-details.html">About FCIT</a>
+                <a href="programs.html">Programs</a>
+                <a href="regulations.html">Regulations</a>
+                <a href="events.html">Events</a>
+                <a href="login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
             </nav>
         </div>
     </header>
 
-    <div class="auth-wrapper" style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 100px 20px 60px;">
+    <div class="auth-wrapper" style="min-height: 100vh; display: flex; justify-content: center; align-items: center; padding: 60px 20px 40px;">
         <!-- Error Display -->
         <div id="authError" style="display: none; background: rgba(239, 68, 68, 0.1); color: #ef4444; border: 1px solid #ef4444; padding: 15px; border-radius: 12px; margin-bottom: 20px; text-align: center; font-weight: 600; width: 100%; max-width: 500px;">
         </div>
@@ -47,7 +48,7 @@
             <div style="text-align: center; margin-bottom: 35px;">
                 <img src="../images/iu-logo.png" alt="Logo" style="width: 70px; margin-bottom: 15px;">
                 <h2 style="color: var(--iu-accent); font-size: 1.8rem;">Create Student Account</h2>
-                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Join the Faculty of Computers & Information Technology</p>
+                <p style="color: var(--iu-text-muted); font-size: 0.85rem;">Join the IU-FCIT Community</p>
             </div>
             
             <form id="registerForm">
@@ -130,10 +131,10 @@
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
     border-top: 1px solid rgba(253, 185, 19, 0.2);
-    padding: 80px 5% 30px;
+    padding: 60px 5% 30px;
     position: relative;
     overflow: hidden;
-    margin-top: 100px;
+    margin-top: 60px;
     font-family: 'Outfit', 'Inter', sans-serif;
     color: #ffffff;
     box-shadow: 0 -20px 50px rgba(0,0,0,0.3);
@@ -148,7 +149,7 @@
             <!-- Column 1: Brand Identity -->
             <div class="footer-brand-section">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <img src="images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
+                    <img src="../images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
                     <div>
                         <h2 style="margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: #fdb913;">INNOVATION</h2>
                         <p style="margin: 0; font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); font-weight: 600;">UNIVERSITY</p>
@@ -238,6 +239,19 @@
 </footer>
 <!-- ═══════════════════════════════════════════════════ -->
 
+    <script>
+        window.addEventListener('load', () => {
+            const preloader = document.getElementById('preloader');
+            if(preloader) {
+                preloader.style.opacity = '0';
+                setTimeout(() => preloader.style.display = 'none', 500);
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        if(menuToggle && navMenu) {
+            menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
+        }
+    </script>
 </body>
-
 </html>
