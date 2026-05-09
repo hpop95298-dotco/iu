@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../../css/core/components.css">
     <link rel="stylesheet" href="../../../css/core/animations.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../../../css/dashboard.css">
     <style>
         .theater-layout { display: flex; gap: 30px; margin: 40px 0; align-items: flex-start; }
         .theater-sidebar { width: 320px; position: sticky; top: 100px; max-height: calc(100vh - 120px); overflow-y: auto; padding: 25px; }
@@ -35,28 +36,40 @@
         }
     </style>
     </head>
-<body class="faculty-theme">
+<body class="faculty-theme dashboard-body">
     <div id="preloader"><div class="spinner"></div></div>
 
-    
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../../images/iu-logo.png" alt="IU Logo">
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="../../iu.html">Home</a>
-                <a href="../../iu-details.html">About FCIT</a>
-                <a href="../../programs.html">Programs</a>
-                <a href="../../regulations.html">Regulations</a>
-                <a href="../../events.html">Events</a>
-                <a href="../../login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-            </nav>
-        </div>
-    </header>
+    <div class="dashboard-layout">
+  <aside class="glass-card dashboard-sidebar" id="sidebar">
+    <div class="logo-container">
+      <img src="../../../images/iu-logo.png" alt="IU Logo">
+      <span class="brand-name">IU-FCIT</span>
+      <span class="brand-sub">Student Portal</span>
+      <div id="sidebarCollapseBtn" class="sidebar-toggle-internal">
+        <i class="fas fa-chevron-left"></i>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+        <a class="nav-item" href="../../dashboard-STU.html"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+        <a class="nav-item" href="../level1-term1-pdf.html"><i class="fas fa-book"></i><span>PDF Courses</span></a>
+        <a class="nav-item active" href="../level1-term1-video.html"><i class="fas fa-video"></i><span>Video Courses</span></a>
+        <a class="nav-item" href="../level1-quizzes.html"><i class="fas fa-question-circle"></i><span>Quizzes</span></a>
+        <a class="nav-item" href="../../assignments.html"><i class="fas fa-file-signature"></i><span>Assignments</span></a>
+        <a class="nav-item" href="../../attendance.html"><i class="fas fa-user-check"></i><span>Attendance</span></a>
+        <a class="nav-item" href="../../schedule.html"><i class="fas fa-calendar"></i><span>Schedule</span></a>
+        <a class="nav-item" href="../../result.html"><i class="fas fa-poll"></i><span>Results</span></a>
+        <a class="nav-item" href="../../profile.html"><i class="fas fa-user"></i><span>Profile</span></a>
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
+        <a class="nav-item" href="../../../iu.html"><i class="fas fa-house"></i><span>Home Page</span></a>
+        <a class="nav-item" id="logoutBtn" style="color: #ef4444;"><i class="fas fa-sign-out-alt"></i><span>Logout</span></a>
+    </nav>
+  </aside>
 
-    <main class="main-content">
+  <main class="main-content dashboard-main">
+                <div class="dashboard-topbar" style="margin-bottom: 20px; padding: 10px 20px;">
+            <div class="menu-icon" id="sidebarToggle" style="display: none; cursor: pointer; color: var(--iu-accent); font-size: 1.5rem;"><i class="fas fa-bars"></i></div>
+            <a href="../level1-term1-video.html" class="btn-premium" style="font-size: 0.8rem; padding: 8px 15px;"><i class="fas fa-arrow-left"></i> Back to Video Courses</a>
+        </div>
         <div class="container">
             <div class="animate-up" style="margin-bottom: 30px;">
                 <h1 style="color: var(--iu-accent); margin-bottom: 5px;">Intro to Computers | Streams</h1>
@@ -84,6 +97,7 @@
 
 
 </main>
+</div><!-- end dashboard-layout -->
 
     
     
@@ -140,6 +154,13 @@
             `;
         }
 
+                // Sidebar Toggle Logic
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
+        const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed');
+        if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
+        if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
+
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         menuToggle.addEventListener('click', () => navMenu.classList.toggle('active'));
@@ -193,7 +214,7 @@
             <!-- Column 1: Brand Identity -->
             <div class="footer-brand-section">
                 <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 25px;">
-                    <img src="../../images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
+                    <img src="../../../images/iu-logo.png" alt="IU Logo" style="height: 50px; filter: drop-shadow(0 0 15px rgba(253, 185, 19, 0.3)); transition: transform 0.3s ease;">
                     <div>
                         <h2 style="margin: 0; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; color: #fdb913;">INNOVATION</h2>
                         <p style="margin: 0; font-size: 0.7rem; letter-spacing: 3px; color: rgba(255,255,255,0.5); font-weight: 600;">UNIVERSITY</p>

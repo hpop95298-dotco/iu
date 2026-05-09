@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../css/dashboard.css">
 <meta charset="UTF-8">
 <title>Web Application Development</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,28 +17,25 @@
     <link rel="stylesheet" href="../../../css/subject.css">
     
     </head>
-<body class="faculty-theme">
+<body class="faculty-theme dashboard-body">
     <div id="preloader"><div class="spinner"></div></div>
 
-    
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../../images/iu-logo.png" alt="IU Logo">
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="../../iu.html">Home</a>
-                <a href="../../iu-details.html">About FCIT</a>
-                <a href="../../programs.html">Programs</a>
-                <a href="../../regulations.html">Regulations</a>
-                <a href="../../events.html">Events</a>
-                <a href="../../login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-            </nav>
-        </div>
-    </header>
-
-<div class="container-subject">
+<div class="dashboard-layout">
+  <aside class="glass-card dashboard-sidebar" id="sidebar">
+    <div class="logo-container">
+      <img src="../../images/iu-logo.png" alt="IU Logo">
+      <span class="brand-name">IU-FCIT</span>
+      <span class="brand-sub">Student Portal</span>
+      <div id="sidebarCollapseBtn" class="sidebar-toggle-internal"><i class="fas fa-chevron-left"></i></div>
+    </div>
+    <nav class="sidebar-nav">
+        <a class="nav-item" href="../../dashboard-STU.html"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
+        <a class="nav-item" href="../../iu.html"><i class="fas fa-house"></i><span>Home Page</span></a>
+    </nav>
+  </aside>
+  <main class="main-content dashboard-main">
+<div class='container-subject' style='margin-top:0; padding-top:0 !important;'>
 <div class="subject-sidebar">
 <h3>Web Development</h3>
 <div class="lecture" onclick="show(0)">HTML &amp; CSS</div>
@@ -49,8 +47,12 @@
 
 <div class="subject-content" id="content"></div>
 </div>
-
+</main>
+</div>
+</main>
+</div>
 <script>
+        const sidebarToggle = document.getElementById('sidebarToggle'); const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn'); const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed'); if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar); if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
 const data=[
 "Structure and styling of web pages.",
 "Client-side scripting.",
@@ -64,6 +66,7 @@ content.innerHTML=`<h2>${data[i].split('.')[0]}</h2><p>${data[i]}</p>`;
 </script>
 
     <script>
+        const sidebarToggle = document.getElementById('sidebarToggle'); const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn'); const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed'); if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar); if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
         if(menuToggle && navMenu) {

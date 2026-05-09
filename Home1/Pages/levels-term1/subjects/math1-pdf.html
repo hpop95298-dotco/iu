@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../css/dashboard.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Course Console | Mathematics I</title>
@@ -29,28 +30,24 @@
         }
     </style>
     </head>
-<body class="faculty-theme">
+<body class="faculty-theme dashboard-body">
     <div id="preloader"><div class="spinner"></div></div>
 
-    
-    <header>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../../images/iu-logo.png" alt="IU Logo">
-            </div>
-            <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
-            <nav id="navMenu">
-                <a href="../../iu.html">Home</a>
-                <a href="../../iu-details.html">About FCIT</a>
-                <a href="../../programs.html">Programs</a>
-                <a href="../../regulations.html">Regulations</a>
-                <a href="../../events.html">Events</a>
-                <a href="../../login.html" class="btn-premium btn-accent">Student Portal <i class="fas fa-sign-in-alt"></i></a>
-            </nav>
-        </div>
-    </header>
-
-    <main class="main-content">
+    <div class="dashboard-layout">
+  <aside class="glass-card dashboard-sidebar" id="sidebar">
+    <div class="logo-container">
+      <img src="../../images/iu-logo.png" alt="IU Logo">
+      <span class="brand-name">IU-FCIT</span>
+      <span class="brand-sub">Student Portal</span>
+      <div id="sidebarCollapseBtn" class="sidebar-toggle-internal"><i class="fas fa-chevron-left"></i></div>
+    </div>
+    <nav class="sidebar-nav">
+        <a class="nav-item" href="../../dashboard-STU.html"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
+        <hr style="border: 0; border-top: 1px solid var(--glass-border); margin: 20px 0;">
+        <a class="nav-item" href="../../iu.html"><i class="fas fa-house"></i><span>Home Page</span></a>
+    </nav>
+  </aside>
+  <main class="main-content dashboard-main">
         <div class="container">
             <div class="animate-up" style="margin-bottom: 30px;">
                 <h1 style="color: var(--iu-accent); margin-bottom: 5px;">Mathematics I</h1>
@@ -78,6 +75,7 @@
 
 
 </main>
+</div>
 
     
     
@@ -92,6 +90,7 @@
 
 
     <script>
+        const sidebarToggle = document.getElementById('sidebarToggle'); const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn'); const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed'); if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar); if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
         const lectures = [
             { title: "Lecture 1: Domain & Range", icon: "fa-arrows-alt-h", content: "Comprehensive analysis of function mapping, identifying input constraints (domain) and the set of possible output values (range)." },
             { title: "Lecture 2: Polynomial Functions", icon: "fa-layer-group", content: "Exploring the behavior, roots, and graphical properties of various degree polynomial expressions." },

@@ -224,10 +224,20 @@ function renderCharts(data) {
 // Sidebar Toggle Logic
 function initSidebar() {
     const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
     const sidebar = document.getElementById('sidebar');
-    if (sidebarToggle && sidebar) {
-        sidebarToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
-    }
+
+    const toggleSidebar = () => {
+        document.body.classList.toggle('sidebar-collapsed');
+        
+        // For mobile compatibility
+        if (window.innerWidth <= 768 && sidebar) {
+            sidebar.classList.toggle('active');
+        }
+    };
+
+    if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
+    if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
 }
 
 // Global Logout Handler

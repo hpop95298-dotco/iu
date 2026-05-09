@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="../../../css/dashboard.css">
 <meta charset="UTF-8">
 <title>Cloud Computing - Video Lectures</title>
 <!-- Design System Core -->
@@ -12,13 +13,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 <link rel="stylesheet" href="../../../../css/subject.css">
 </head>
-<body class="faculty-theme">
+<body class="faculty-theme dashboard-body">
     <div id="preloader"><div class="spinner"></div></div>
     
     <header>
         <div class="nav-container">
             <div class="logo">
                 <img src="../../../images/iu-logo.png" alt="IU Logo">
+                <span style="background: linear-gradient(90deg, #fdb913, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; margin-left: 15px; font-family: 'Outfit', sans-serif; font-size: 1.8rem; letter-spacing: 2px;">IU-FCIT</span>
             </div>
             <div class="menu-icon" id="menuToggle"><i class="fas fa-bars"></i></div>
             <nav id="navMenu">
@@ -42,6 +44,7 @@
 </div>
 
 <script>
+        const sidebarToggle = document.getElementById('sidebarToggle'); const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn'); const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed'); if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar); if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
 const lectures = [
     { title: "Lecture 1 – Intro to Cloud", video: "https://www.youtube.com/embed/M988_fsOSWo", desc: "Understanding the cloud computing revolution." },
     { title: "Lecture 2 – Virtualization", video: "https://www.youtube.com/embed/GZ6iR1z-v2k", desc: "Hypervisors and virtual machine management." },
@@ -70,6 +73,7 @@ function loadLecture(i) {
 
 
 <script>
+        const sidebarToggle = document.getElementById('sidebarToggle'); const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn'); const toggleSidebar = () => document.body.classList.toggle('sidebar-collapsed'); if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar); if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
     window.addEventListener('load', () => {
         document.getElementById('preloader').style.opacity = '0';
         setTimeout(() => document.getElementById('preloader').style.display = 'none', 500);

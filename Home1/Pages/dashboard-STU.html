@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +17,7 @@
 
 </head>
 
-<body class="faculty-theme">
+<body class="faculty-theme dashboard-body">
   <header>
     <div class="nav-container">
       <div class="logo">
@@ -35,14 +35,14 @@
       </nav>
     </div>
   </header>
-  <!-- Option 7: Scroll Progress Bar -->
-
-
   <div class="dashboard-layout">
     <aside class="glass-card dashboard-sidebar" id="sidebar">
-      <div class="logo-container">
-        <img src="../images/iu-logo.png" alt="IU Logo">
+      
+        <span class="brand-name">IU-FCIT</span>
         <h2>STUDENT PORTAL</h2>
+        <div id="sidebarCollapseBtn" class="sidebar-toggle-internal">
+          <i class="fas fa-chevron-left"></i>
+        </div>
       </div>
       <nav class="sidebar-nav">
         <a class="nav-item active" href="dashboard-STU.html"><i class="fas fa-chart-pie"></i><span>Dashboard</span></a>
@@ -124,7 +124,7 @@
 
       <div class="dashboard-topbar">
         <div style="display: flex; align-items: center; gap: 20px;">
-          <div class="menu-icon" id="sidebarToggle" style="display: none;"><i class="fas fa-bars"></i></div>
+          <div class="menu-icon" id="sidebarToggle"><i class="fas fa-bars"></i></div>
           <a href="javascript:history.back()" class="back-btn" style="margin-bottom: 0;"><i
               class="fas fa-arrow-left"></i> Back</a>
         </div>
@@ -325,31 +325,32 @@
 
 
   <script>
+    // 3D Tilt Logic
+    const tiltCards = document.querySelectorAll('.tilt-card');
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = (y - centerY) / 15;
+        const rotateY = (centerX - x) / 15;
 
-
-        /     2: 3D Tilt Logic
-        c    tCards = document.querySelectorAll('.tilt-card');
-    t.forEach(card => {
-      ventListener('mousemove', (e) => {
-        t = card.getBoundingClientRect();
-        e.clientX - rect.left;
-        e.clientY - rect.top;
-        terX = rect.width / 2;
-        terY = rect.height / 2;
-        ateX = (y - centerY) / 15;
-        ateY = (centerX - x) / 15;
-
-        e.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-        ventListener('mouseleave', () => {
-          e.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
-        }        w    dEventListener('load', () => {
-          loader = document.getElementById('preloader');
-               ad er) {
-          r.style.opacity = '0';
-          ut(() => preloader.style.display = 'none', 500);
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
       });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+      });
+    });
 
-
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      if (preloader) {
+        preloader.style.opacity = '0';
+        setTimeout(() => preloader.style.display = 'none', 500);
+      }
+    });
   </script>
 
 
