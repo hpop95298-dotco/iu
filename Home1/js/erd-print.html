@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="description" content="Entity Relationship Diagram (ERD) for Innovation University (IU-FCIT) database built on Supabase / PostgreSQL. Shows all tables, relationships, and Row Level Security policies.">
+<title>ERD – Innovation University Database | IU-FCIT</title>
+
+<!-- SEO Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://iu-fcit.edu.eg/Home1/js/erd-print.html",
+      "headline": "Entity Relationship Diagram (ERD) – Innovation University Database",
+      "description": "A complete Entity Relationship Diagram documenting the IU-FCIT academic platform database schema built on Supabase/PostgreSQL, covering 7 tables, 8 relationships, and Row Level Security policies.",
+      "url": "https://iu-fcit.edu.eg/Home1/js/erd-print.html",
+      "inLanguage": "en",
+      "author": {
+        "@type": "Organization",
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      },
+      "about": {
+        "@type": "Dataset",
+        "@id": "https://iu-fcit.edu.eg/#database-schema",
+        "name": "IU-FCIT Academic Platform Database Schema",
+        "description": "Supabase/PostgreSQL database schema for the Innovation University student portal. Includes tables for profiles, programs, courses, enrollments, attendance, audit logs, and system logs.",
+        "creator": { "@id": "https://iu-fcit.edu.eg/#organization" },
+        "license": "https://iu-fcit.edu.eg/license",
+        "variableMeasured": [
+          { "@type": "PropertyValue", "name": "Total Tables", "value": "7" },
+          { "@type": "PropertyValue", "name": "Total Relationships", "value": "8" },
+          { "@type": "PropertyValue", "name": "RLS Enabled Tables", "value": "5" },
+          { "@type": "PropertyValue", "name": "Database Engine", "value": "Supabase / PostgreSQL" }
+        ]
+      },
+      "keywords": ["ERD", "Entity Relationship Diagram", "database schema", "Supabase", "PostgreSQL", "IU-FCIT", "Innovation University"],
+      "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" },
+        { "@type": "ListItem", "position": 2, "name": "Documentation", "item": "https://iu-fcit.edu.eg/Home1/js/" },
+        { "@type": "ListItem", "position": 3, "name": "ERD – Database Schema", "item": "https://iu-fcit.edu.eg/Home1/js/erd-print.html" }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size: A4 landscape; margin: 10mm; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#fff; padding:0; color:#111;
+       -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.hdr { display:flex; align-items:center; justify-content:space-between;
+       border-bottom:3px solid #1a1a2e; padding-bottom:8px; margin-bottom:10px; }
+.hdr h1 { font-size:1.1rem; font-weight:900; color:#1a1a2e; }
+.hdr p  { font-size:0.68rem; color:#555; margin-top:2px; }
+.badge  { background:#1a1a2e; color:#fff; padding:5px 12px; border-radius:5px;
+          font-weight:800; font-size:0.75rem; letter-spacing:1px; }
+.erd-wrap { width:100%; }
+svg.erd { display:block; width:100%; height:auto; }
+/* SVG text */
+.eh  { font-weight:900; font-size:13.5px; fill:#fff; }
+.ehd { font-weight:900; font-size:13.5px; fill:#1a1a2e; }
+.at  { font-size:12px; fill:#222; }
+.pk  { font-size:12px; fill:#1a5276; font-weight:700; }
+.fk  { font-size:12px; fill:#922b21; font-weight:600; }
+.dm  { font-size:11px; fill:#555; }
+.rl  { font-size:10.5px; fill:#333; font-weight:700; }
+.cn  { font-size:10.5px; fill:#111; font-weight:900; }
+/* Page 2 */
+.p2 { page-break-before:always; padding-top:8px; }
+.legend { display:flex; gap:14px; flex-wrap:wrap; border:1px solid #ccc;
+          border-radius:6px; padding:10px 14px; margin-bottom:14px; }
+.li { display:flex; align-items:center; gap:6px; font-size:0.72rem; color:#333; }
+.lb { width:13px; height:13px; border-radius:3px; border:1px solid #999; }
+.rt { width:100%; border-collapse:collapse; font-size:0.8rem; }
+.rt thead tr { background:#1a1a2e; color:#fff; }
+.rt th { padding:8px 12px; text-align:left; font-weight:700; }
+.rt td { padding:7px 12px; border-bottom:1px solid #ddd; }
+.rt tr:nth-child(even) td { background:#f5f5f5; }
+.t1 { display:inline-block; padding:1px 7px; border-radius:4px; font-size:0.7rem;
+      font-weight:700; background:#e8f4ff; color:#1a5276; border:1px solid #acd; }
+.t2 { display:inline-block; padding:1px 7px; border-radius:4px; font-size:0.7rem;
+      font-weight:700; background:#e9f7ef; color:#1e8449; border:1px solid #adc; }
+.ftr { margin-top:16px; border-top:2px solid #1a1a2e; padding-top:10px;
+       display:flex; justify-content:space-between; font-size:0.7rem; color:#555; }
+.pbtn { position:fixed; bottom:22px; right:22px; background:#1a1a2e; color:#fff;
+        border:none; padding:11px 22px; font-weight:800; font-size:0.84rem;
+        border-radius:7px; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,.25); }
+@media print { .no-print { display:none !important; } }
+</style>
+</head>
+<body>
+<button class="pbtn no-print" onclick="window.print()">🖨️ Print / PDF</button>
+
+<div class="hdr">
+  <div><h1>Entity Relationship Diagram (ERD)</h1>
+    <p>Innovation University – IU-FCIT &nbsp;|&nbsp; Supabase / PostgreSQL</p></div>
+  <div class="badge">ERD v1.0</div>
+</div>
+
+<div class="erd-wrap">
+<svg class="erd" viewBox="0 0 1040 680" width="1040" height="680" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L7,3 z" fill="#555"/>
+  </marker>
+</defs>
+
+<!-- ══ LINES DRAWN FIRST (behind entities) ══ -->
+<!-- 1. auth.users → profiles (1:1) -->
+<polyline points="520,98 488,115" fill="none" stroke="#6d28d9" stroke-width="1.6" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+<!-- 2. programs → courses (1:N) -->
+<polyline points="125,245 125,265" fill="none" stroke="#1e8449" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 3. profiles → enrollments (1:N) -->
+<polyline points="440,293 424,310" fill="none" stroke="#b7770d" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 4. courses → enrollments (1:N) -->
+<polyline points="236,355 298,385" fill="none" stroke="#1a5276" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 5. profiles → attendance (1:N): exit right → enter attendance top -->
+<polyline points="616,185 621,185 621,260 742,260 742,268" fill="none" stroke="#922b21" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 6. courses → attendance (1:N dashed): exit bottom → detour below → enter attendance bottom -->
+<polyline points="127,413 127,500 742,500 742,474" fill="none" stroke="#1a5276" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+<!-- 7. profiles → audit_logs (1:N) -->
+<polyline points="616,178 756,172" fill="none" stroke="#6d28d9" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 8. profiles → system_logs (1:N dashed): exit right → around right side → enter top -->
+<polyline points="616,258 640,258 640,482 879,482 879,490" fill="none" stroke="#117a8b" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+
+<!-- Cardinality numbers -->
+<text x="524" y="103" class="cn">1</text><text x="492" y="112" class="cn">1</text>
+<text x="110" y="253" class="cn">1</text><text x="110" y="262" class="cn">N</text>
+<text x="444" y="301" class="cn">1</text><text x="427" y="307" class="cn">N</text>
+<text x="238" y="352" class="cn">1</text><text x="294" y="382" class="cn">N</text>
+<text x="620" y="182" class="cn">1</text><text x="732" y="266" class="cn">N</text>
+<text x="110" y="418" class="cn">1</text><text x="732" y="497" class="cn">N</text>
+<text x="620" y="175" class="cn">1</text><text x="740" y="169" class="cn">N</text>
+<text x="620" y="255" class="cn">1</text><text x="869" y="488" class="cn">N</text>
+
+<!-- Relation labels -->
+<text x="506" y="110" class="rl" fill="#6d28d9">triggers</text>
+<text x="128" y="257" class="rl" fill="#1e8449">contains</text>
+<text x="436" y="305" class="rl" fill="#b7770d">enrolls</text>
+<text x="245" y="368" class="rl" fill="#1a5276">in</text>
+<text x="623" y="225" class="rl" fill="#922b21">records</text>
+<text x="360" y="494" class="rl" fill="#1a5276">for course</text>
+<text x="668" y="172" class="rl" fill="#6d28d9">logs</text>
+<text x="643" y="390" class="rl" fill="#117a8b">system evt</text>
+
+<!-- ══ ENTITIES (drawn on top of lines) ══ -->
+
+<!-- auth.users: x=415 y=8 w=210 h=90 -->
+<rect x="415" y="8" width="210" height="90" rx="4" fill="#fff" stroke="#6d28d9" stroke-width="1.8"/>
+<rect x="415" y="8" width="210" height="24" rx="4" fill="#6d28d9"/>
+<rect x="415" y="28" width="210" height="4" fill="#6d28d9"/>
+<text x="520" y="25" text-anchor="middle" class="eh">auth.users</text>
+<text x="424" y="51" class="pk">🔑 id : UUID (PK)</text>
+<text x="424" y="68" class="at">   email : TEXT</text>
+<text x="424" y="85" class="at">   raw_user_meta_data : JSONB</text>
+
+<!-- profiles: x=360 y=115 w=256 h=178 bottom=293 -->
+<rect x="360" y="115" width="256" height="178" rx="4" fill="#fff" stroke="#e6a817" stroke-width="2"/>
+<rect x="360" y="115" width="256" height="24" rx="4" fill="#e6a817"/>
+<rect x="360" y="135" width="256" height="4" fill="#e6a817"/>
+<text x="488" y="132" text-anchor="middle" class="ehd">profiles</text>
+<text x="369" y="156" class="pk">🔑 id : UUID (PK, FK→auth.users)</text>
+<text x="369" y="173" class="at">   full_name : TEXT NOT NULL</text>
+<text x="369" y="190" class="at">   role : TEXT ['student','admin']</text>
+<text x="369" y="207" class="at">   level : TEXT</text>
+<text x="369" y="224" class="at">   department_id : TEXT</text>
+<text x="369" y="241" class="dm">   created_at : TIMESTAMPTZ</text>
+<text x="369" y="257" class="dm">   ⚙ RLS Enabled</text>
+
+<!-- programs: x=18 y=115 w=215 h=130 bottom=245 -->
+<rect x="18" y="115" width="215" height="130" rx="4" fill="#fff" stroke="#1e8449" stroke-width="1.8"/>
+<rect x="18" y="115" width="215" height="24" rx="4" fill="#1e8449"/>
+<rect x="18" y="135" width="215" height="4" fill="#1e8449"/>
+<text x="125" y="132" text-anchor="middle" class="eh">programs</text>
+<text x="27" y="156" class="pk">🔑 id : UUID (PK)</text>
+<text x="27" y="173" class="at">   name : TEXT NOT NULL</text>
+<text x="27" y="190" class="at">   degree_type : TEXT</text>
+<text x="27" y="206" class="dm">         ['BSc','MSc','PhD']</text>
+<text x="27" y="222" class="dm">   created_at : TIMESTAMPTZ</text>
+
+<!-- courses: x=18 y=265 w=218 h=148 bottom=413 -->
+<rect x="18" y="265" width="218" height="148" rx="4" fill="#fff" stroke="#1a5276" stroke-width="1.8"/>
+<rect x="18" y="265" width="218" height="24" rx="4" fill="#1a5276"/>
+<rect x="18" y="285" width="218" height="4" fill="#1a5276"/>
+<text x="127" y="282" text-anchor="middle" class="eh">courses</text>
+<text x="27" y="306" class="pk">🔑 id : UUID (PK)</text>
+<text x="27" y="323" class="at">   name : TEXT NOT NULL</text>
+<text x="27" y="340" class="at">   credits : INT (default 3)</text>
+<text x="27" y="357" class="fk">🔗 program_id : UUID (FK)</text>
+<text x="27" y="374" class="dm">   created_at : TIMESTAMPTZ</text>
+<text x="27" y="390" class="dm">   ⚙ RLS Enabled</text>
+
+<!-- enrollments: x=298 y=310 w=252 h=190 bottom=500 -->
+<rect x="298" y="310" width="252" height="190" rx="4" fill="#fff" stroke="#b7770d" stroke-width="1.8"/>
+<rect x="298" y="310" width="252" height="24" rx="4" fill="#b7770d"/>
+<rect x="298" y="330" width="252" height="4" fill="#b7770d"/>
+<text x="424" y="327" text-anchor="middle" class="eh">enrollments</text>
+<text x="307" y="351" class="pk">🔑 id : UUID (PK)</text>
+<text x="307" y="368" class="fk">🔗 student_id : UUID (FK→profiles)</text>
+<text x="307" y="385" class="fk">🔗 course_id : UUID (FK→courses)</text>
+<text x="307" y="402" class="at">   status : TEXT</text>
+<text x="307" y="418" class="dm">          ['active','completed','dropped']</text>
+<text x="307" y="435" class="at">   progress : INT (0–100)</text>
+<text x="307" y="452" class="dm">   created_at : TIMESTAMPTZ</text>
+<text x="307" y="468" class="dm">   ⚙ RLS Enabled</text>
+
+<!-- attendance: x=620 y=268 w=246 h=206 bottom=474 -->
+<rect x="620" y="268" width="246" height="206" rx="4" fill="#fff" stroke="#922b21" stroke-width="1.8"/>
+<rect x="620" y="268" width="246" height="24" rx="4" fill="#922b21"/>
+<rect x="620" y="288" width="246" height="4" fill="#922b21"/>
+<text x="743" y="285" text-anchor="middle" class="eh">attendance</text>
+<text x="629" y="309" class="pk">🔑 id : UUID (PK)</text>
+<text x="629" y="326" class="fk">🔗 student_id : UUID (FK→profiles)</text>
+<text x="629" y="343" class="fk">🔗 course_id : UUID (FK→courses)</text>
+<text x="629" y="360" class="at">   date : DATE</text>
+<text x="629" y="377" class="at">   category : TEXT</text>
+<text x="629" y="394" class="at">   status : TEXT</text>
+<text x="629" y="410" class="dm">          ['present','absent','late']</text>
+<text x="629" y="427" class="dm">   created_at : TIMESTAMPTZ</text>
+<text x="629" y="444" class="dm">   ⚙ RLS Enabled</text>
+
+<!-- audit_logs: x=756 y=100 w=236 h=145 bottom=245 -->
+<rect x="756" y="100" width="236" height="145" rx="4" fill="#fff" stroke="#6d28d9" stroke-width="1.8"/>
+<rect x="756" y="100" width="236" height="24" rx="4" fill="#6d28d9"/>
+<rect x="756" y="120" width="236" height="4" fill="#6d28d9"/>
+<text x="874" y="117" text-anchor="middle" class="eh">audit_logs</text>
+<text x="765" y="141" class="pk">🔑 id : UUID (PK)</text>
+<text x="765" y="158" class="fk">🔗 user_id : UUID (FK→profiles)</text>
+<text x="765" y="175" class="at">   action : TEXT NOT NULL</text>
+<text x="765" y="192" class="at">   ip_address : TEXT</text>
+<text x="765" y="209" class="dm">   created_at : TIMESTAMPTZ</text>
+
+<!-- system_logs: x=756 y=490 w=246 h=160 bottom=650 -->
+<rect x="756" y="490" width="246" height="160" rx="4" fill="#fff" stroke="#117a8b" stroke-width="1.8"/>
+<rect x="756" y="490" width="246" height="24" rx="4" fill="#117a8b"/>
+<rect x="756" y="510" width="246" height="4" fill="#117a8b"/>
+<text x="879" y="507" text-anchor="middle" class="eh">system_logs</text>
+<text x="765" y="531" class="pk">🔑 id : UUID (PK)</text>
+<text x="765" y="548" class="at">   event_type : TEXT NOT NULL</text>
+<text x="765" y="565" class="at">   details : JSONB</text>
+<text x="765" y="582" class="fk">🔗 user_id : UUID (FK→profiles)</text>
+<text x="765" y="599" class="dm">   created_at : TIMESTAMPTZ</text>
+<text x="765" y="615" class="dm">   ⚙ RLS Enabled</text>
+</svg>
+</div>
+
+<!-- PAGE 2 -->
+<div class="p2">
+  <div class="hdr" style="margin-bottom:12px;">
+    <div><h1>ERD – Relationships &amp; Legend</h1>
+      <p>Innovation University – IU-FCIT</p></div>
+    <div class="badge">ERD v1.0</div>
+  </div>
+
+  <div class="legend">
+    <div class="li"><div class="lb" style="background:#e6a817;border-color:#e6a817"></div>profiles (central)</div>
+    <div class="li"><div class="lb" style="background:#1e8449;border-color:#1e8449"></div>programs</div>
+    <div class="li"><div class="lb" style="background:#1a5276;border-color:#1a5276"></div>courses</div>
+    <div class="li"><div class="lb" style="background:#b7770d;border-color:#b7770d"></div>enrollments</div>
+    <div class="li"><div class="lb" style="background:#922b21;border-color:#922b21"></div>attendance</div>
+    <div class="li"><div class="lb" style="background:#6d28d9;border-color:#6d28d9"></div>audit_logs / auth.users</div>
+    <div class="li"><div class="lb" style="background:#117a8b;border-color:#117a8b"></div>system_logs</div>
+    <div class="li" style="margin-left:8px;">
+      <svg width="26" height="12"><line x1="0" y1="6" x2="26" y2="6" stroke="#555" stroke-width="1.8"/></svg> Direct FK
+    </div>
+    <div class="li">
+      <svg width="26" height="12"><line x1="0" y1="6" x2="26" y2="6" stroke="#555" stroke-width="1.5" stroke-dasharray="4,3"/></svg> Optional FK
+    </div>
+    <div class="li"><b style="color:#1a5276">🔑 PK</b> = Primary Key</div>
+    <div class="li"><b style="color:#922b21">🔗 FK</b> = Foreign Key</div>
+    <div class="li">⚙ = Row Level Security</div>
+  </div>
+
+  <table class="rt">
+    <thead>
+      <tr><th>#</th><th>From Entity</th><th>Relationship</th><th>To Entity</th><th>Type</th><th>FK Field</th><th>On Delete</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>auth.users</td><td>creates →</td><td>profiles</td><td><span class="t2">1 : 1</span></td><td>profiles.id</td><td>CASCADE</td></tr>
+      <tr><td>2</td><td>programs</td><td>contains →</td><td>courses</td><td><span class="t1">1 : N</span></td><td>courses.program_id</td><td>SET NULL</td></tr>
+      <tr><td>3</td><td>profiles</td><td>enrolls in →</td><td>enrollments</td><td><span class="t1">1 : N</span></td><td>enrollments.student_id</td><td>CASCADE</td></tr>
+      <tr><td>4</td><td>courses</td><td>listed in →</td><td>enrollments</td><td><span class="t1">1 : N</span></td><td>enrollments.course_id</td><td>CASCADE</td></tr>
+      <tr><td>5</td><td>profiles</td><td>tracked in →</td><td>attendance</td><td><span class="t1">1 : N</span></td><td>attendance.student_id</td><td>CASCADE</td></tr>
+      <tr><td>6</td><td>courses</td><td>linked to →</td><td>attendance</td><td><span class="t1">1 : N</span></td><td>attendance.course_id</td><td>SET NULL</td></tr>
+      <tr><td>7</td><td>profiles</td><td>generates →</td><td>audit_logs</td><td><span class="t1">1 : N</span></td><td>audit_logs.user_id</td><td>SET NULL</td></tr>
+      <tr><td>8</td><td>profiles</td><td>triggers →</td><td>system_logs</td><td><span class="t1">1 : N</span></td><td>system_logs.user_id</td><td>SET NULL</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ftr">
+    <span>© 2026 Innovation University – IU-FCIT &nbsp;|&nbsp; Supabase / PostgreSQL</span>
+    <span>Tables: 7 &nbsp;|&nbsp; Relationships: 8 &nbsp;|&nbsp; RLS: Enabled on 5 tables</span>
+  </div>
+</div>
+</body>
+</html>

@@ -79,7 +79,42 @@ function formatPageName(filename) {
         .join(' ');
 }
 
+// Sidebar Toggle Logic (Shared across all portal pages)
+function initSidebar() {
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
+    const sidebar = document.getElementById('sidebar');
+
+    const toggleSidebar = () => {
+        document.body.classList.toggle('sidebar-collapsed');
+        
+        // For mobile compatibility
+        if (window.innerWidth <= 768 && sidebar) {
+            sidebar.classList.toggle('active');
+        }
+    };
+
+    if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
+    if (menuToggle) menuToggle.addEventListener('click', toggleSidebar);
+    if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
+}
+
 // Global Search/Navigation helper can be added here
 window.addEventListener('DOMContentLoaded', () => {
     initBreadcrumbs();
+    initSidebar();
 });
+
+// Preloader fail-safe
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.style.opacity = '0';
+            setTimeout(() => preloader.style.display = 'none', 500);
+        }, 800);
+    }
+});
+
+

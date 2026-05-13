@@ -5,6 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Innovation University | Excellence in Education</title>
+
+    <!-- SEO Structured Data (JSON-LD) - Full Site Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollegeOrUniversity",
+          "@id": "https://iu-fcit.edu.eg/#organization",
+          "name": "Innovation University (IU-FCIT)",
+          "alternateName": "IU-FCIT",
+          "url": "https://iu-fcit.edu.eg",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://iu-fcit.edu.eg/Home1/images/iu-logo.png"
+          },
+          "description": "Innovation University - Faculty of Computing and Information Technology (IU-FCIT) is a leading academic institution specializing in Computing, Artificial Intelligence, Cybersecurity, and Advanced Engineering.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "EG",
+            "addressRegion": "Cairo",
+            "addressLocality": "Cairo"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+20-100-000-0000",
+            "contactType": "customer service",
+            "email": "info@iu.edu.eg",
+            "availableLanguage": ["Arabic", "English"]
+          },
+          "sameAs": [
+            "https://www.facebook.com/IU.FCIT",
+            "https://www.linkedin.com/school/iu-fcit",
+            "https://www.instagram.com/iu.fcit"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://iu-fcit.edu.eg/#website",
+          "url": "https://iu-fcit.edu.eg",
+          "name": "Innovation University - Student Portal",
+          "description": "The official student portal for Innovation University (IU-FCIT). Access academic materials, schedules, results, and more.",
+          "publisher": { "@id": "https://iu-fcit.edu.eg/#organization" },
+          "inLanguage": ["ar", "en"]
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://iu-fcit.edu.eg/Home1/Pages/iu.html",
+          "url": "https://iu-fcit.edu.eg/Home1/Pages/iu.html",
+          "name": "Innovation University | Excellence in Education",
+          "description": "Welcome to IU-FCIT. Leading the digital transformation through excellence in education and research.",
+          "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" },
+          "about": { "@id": "https://iu-fcit.edu.eg/#organization" },
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" }
+            ]
+          }
+        }
+      ]
+    }
+    </script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <!-- Design System Core -->
     <link rel="stylesheet" href="../css/core/tokens.css">

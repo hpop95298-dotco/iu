@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Schema Documentation - Innovation University (IU-FCIT)</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f4f6f9;
+            color: #1a1a2e;
+            padding: 40px;
+        }
+
+        /* ── HEADER ── */
+        .page-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 4px solid #fdb913;
+            padding-bottom: 20px;
+            margin-bottom: 40px;
+        }
+        .page-header .logo-area { display: flex; align-items: center; gap: 15px; }
+        .page-header img { height: 65px; }
+        .page-header h1 { font-size: 1.5rem; font-weight: 900; color: #1a1a2e; }
+        .page-header p  { font-size: 0.8rem; color: #666; }
+        .badge {
+            background: #fdb913;
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 6px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+        }
+
+        /* ── SECTION ── */
+        .section { margin-bottom: 35px; }
+        .section-title {
+            background: #1a1a2e;
+            color: #fdb913;
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border-radius: 6px 6px 0 0;
+        }
+        .section-body {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-top: none;
+            border-radius: 0 0 6px 6px;
+            padding: 25px;
+        }
+
+        /* ── FIELD ROWS ── */
+        .field-row {
+            display: flex;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: flex-start;
+        }
+        .field-row:last-child { border-bottom: none; }
+        .field-key {
+            font-weight: 700;
+            font-size: 0.82rem;
+            color: #555;
+            min-width: 160px;
+            font-family: 'Courier New', monospace;
+            padding-top: 2px;
+        }
+        .field-val {
+            font-size: 0.88rem;
+            color: #1a1a2e;
+            flex: 1;
+            line-height: 1.6;
+            word-break: break-all;
+        }
+        .type-badge {
+            display: inline-block;
+            background: #e8f4fd;
+            color: #1a6bb5;
+            padding: 2px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 4px;
+        }
+
+        /* ── COURSE TABLE ── */
+        table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+        thead tr { background: #1a1a2e; color: #fdb913; }
+        thead th { padding: 10px 12px; text-align: left; font-weight: 800; letter-spacing: 0.5px; }
+        tbody tr:nth-child(even) { background: #f8f9fa; }
+        tbody tr:hover { background: #fff8e1; }
+        tbody td { padding: 9px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+        .level-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.72rem;
+            font-weight: 700;
+        }
+        .y1 { background: #e3f2fd; color: #1565c0; }
+        .y2 { background: #e8f5e9; color: #2e7d32; }
+        .y3 { background: #fff3e0; color: #e65100; }
+        .y4 { background: #fce4ec; color: #880e4f; }
+
+        /* ── FOOTER ── */
+        .page-footer {
+            margin-top: 50px;
+            border-top: 2px solid #fdb913;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* ── PRINT ── */
+        @media print {
+            body { background: #fff; padding: 20px; }
+            .no-print { display: none; }
+            .section { page-break-inside: avoid; }
+            table { font-size: 0.75rem; }
+        }
+
+        /* ── PRINT BUTTON ── */
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #fdb913;
+            color: #000;
+            border: none;
+            padding: 14px 28px;
+            font-size: 0.9rem;
+            font-weight: 900;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(253,185,19,0.4);
+            transition: transform 0.2s;
+        }
+        .print-btn:hover { transform: scale(1.05); }
+    </style>
+</head>
+<body>
+
+<!-- PRINT BUTTON -->
+<button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+
+<!-- HEADER -->
+<div class="page-header">
+    <div class="logo-area">
+        <img src="../images/iu-logo.png" alt="IU Logo">
+        <div>
+            <h1>Innovation University – IU-FCIT</h1>
+            <p>Schema.org Structured Data Documentation &nbsp;|&nbsp; SEO Markup Report</p>
+            <p style="color:#aaa; font-size:0.7rem;">Generated: <span id="genDate"></span></p>
+        </div>
+    </div>
+    <div style="text-align:right;">
+        <div class="badge">JSON-LD</div>
+        <p style="margin-top:8px; font-size:0.72rem; color:#888;">Schema Version: 2.0</p>
+        <p style="font-size:0.72rem; color:#888;">Standard: schema.org / @graph</p>
+    </div>
+</div>
+
+<!-- SECTION 1: ORGANIZATION -->
+<div class="section">
+    <div class="section-title">① Organization — CollegeOrUniversity</div>
+    <div class="section-body">
+        <div class="field-row">
+            <span class="field-key">@type</span>
+            <span class="field-val"><span class="type-badge">CollegeOrUniversity</span></span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">@id</span>
+            <span class="field-val">https://iu-fcit.edu.eg/#organization</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">name</span>
+            <span class="field-val">Innovation University (IU-FCIT)</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">alternateName</span>
+            <span class="field-val">IU-FCIT</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">url</span>
+            <span class="field-val">https://iu-fcit.edu.eg</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">logo</span>
+            <span class="field-val"><span class="type-badge">ImageObject</span><br>https://iu-fcit.edu.eg/Home1/images/iu-logo.png</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">description</span>
+            <span class="field-val">Innovation University – Faculty of Computing and Information Technology (IU-FCIT) is a leading academic institution specializing in Computing, Artificial Intelligence, Cybersecurity, and Advanced Engineering.</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">address</span>
+            <span class="field-val">
+                <span class="type-badge">PostalAddress</span><br>
+                streetAddress: Innovation University Campus<br>
+                addressLocality: Cairo &nbsp;|&nbsp; addressRegion: Cairo<br>
+                postalCode: 11511 &nbsp;|&nbsp; addressCountry: EG
+            </span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">contactPoint</span>
+            <span class="field-val">
+                <span class="type-badge">ContactPoint</span><br>
+                telephone: +20-100-000-0000<br>
+                email: info@iu.edu.eg<br>
+                contactType: customer service<br>
+                availableLanguage: Arabic, English
+            </span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">sameAs</span>
+            <span class="field-val">
+                https://www.facebook.com/IU.FCIT<br>
+                https://www.linkedin.com/school/iu-fcit<br>
+                https://www.instagram.com/iu.fcit
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: WEBSITE -->
+<div class="section">
+    <div class="section-title">② WebSite</div>
+    <div class="section-body">
+        <div class="field-row">
+            <span class="field-key">@type</span>
+            <span class="field-val"><span class="type-badge">WebSite</span></span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">@id</span>
+            <span class="field-val">https://iu-fcit.edu.eg/#website</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">name</span>
+            <span class="field-val">Innovation University – Student Portal</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">description</span>
+            <span class="field-val">The official student portal for IU-FCIT. Access academic materials, schedules, results, and more.</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">publisher</span>
+            <span class="field-val">→ #organization</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">inLanguage</span>
+            <span class="field-val">ar, en</span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: WEB PAGES -->
+<div class="section">
+    <div class="section-title">③ Web Pages — BreadcrumbList</div>
+    <div class="section-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Page Name</th>
+                    <th>URL</th>
+                    <th>Breadcrumb Path</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Home Page</td>
+                    <td>/Pages/iu.html</td>
+                    <td>Home</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Student Login</td>
+                    <td>/Pages/login.html</td>
+                    <td>Home → Login</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Student Dashboard</td>
+                    <td>/Pages/dashboard-STU.html</td>
+                    <td>Home → Student Dashboard</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Degree Programs</td>
+                    <td>/Pages/programs.html</td>
+                    <td>Home → Programs</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Exam Schedule</td>
+                    <td>/Pages/schedule.html</td>
+                    <td>Home → Schedule</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Academic Results</td>
+                    <td>/Pages/result.html</td>
+                    <td>Home → Results</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Attendance Tracker</td>
+                    <td>/Pages/attendance.html</td>
+                    <td>Home → Attendance</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Student Profile</td>
+                    <td>/Pages/profile.html</td>
+                    <td>Home → Profile</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SECTION 4: COURSES -->
+<div class="section">
+    <div class="section-title">④ Course Catalog — ItemList (24 Courses)</div>
+    <div class="section-body">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Course Name</th>
+                    <th>Level</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Introduction to Programming</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Fundamentals of programming logic, algorithms, and problem solving.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Introduction to Computers</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Overview of computer systems, hardware, software, and basic computing concepts.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Mathematics 1</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Foundational mathematics covering calculus, limits, and derivatives.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Physics</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Core physics principles including mechanics, electricity, and magnetism.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>English Language</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Academic English for reading, writing, and technical communication.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Human Rights</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Introduction to human rights principles and international law.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Entrepreneurship</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Principles of entrepreneurship, innovation, and startup development.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Mathematics 0</td>
+                    <td><span class="level-badge y1">Year 1</span></td>
+                    <td>Pre-calculus: algebra, trigonometry, and analytical geometry.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Data Structures</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>Arrays, linked lists, trees, graphs, and their algorithms.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Computer Architecture</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>CPU design, memory hierarchy, instruction sets, and digital logic.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Probability and Statistics</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>Probability theory, statistical analysis, and data inference.</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>Project Management</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>Software project planning, scheduling, and risk management.</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>Communication Skills</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>Technical writing, presentations, and teamwork in engineering.</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>Mathematics 3</td>
+                    <td><span class="level-badge y2">Year 2</span></td>
+                    <td>Differential equations, linear algebra, and numerical methods.</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>Software Engineering</td>
+                    <td><span class="level-badge y3">Year 3</span></td>
+                    <td>SDLC, requirements engineering, design patterns, testing, and agile.</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>AI Fundamentals</td>
+                    <td><span class="level-badge y3">Year 3</span></td>
+                    <td>Machine learning, neural networks, search algorithms, and intelligent systems.</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>Data Visualization</td>
+                    <td><span class="level-badge y3">Year 3</span></td>
+                    <td>Charts, dashboards, and storytelling with data for decision making.</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>Web Application Development</td>
+                    <td><span class="level-badge y3">Year 3</span></td>
+                    <td>HTML, CSS, JavaScript, and frameworks for responsive web apps.</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>Theoretical Computer Science</td>
+                    <td><span class="level-badge y3">Year 3</span></td>
+                    <td>Automata, computability, complexity theory, and formal languages.</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>Advanced Software Engineering</td>
+                    <td><span class="level-badge y4">Year 4</span></td>
+                    <td>Microservices, DevOps, design patterns, and large-scale systems.</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>Cloud Computing</td>
+                    <td><span class="level-badge y4">Year 4</span></td>
+                    <td>IaaS, PaaS, SaaS, virtualization, and deployment on AWS/Azure.</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>Computer and Cyber Security</td>
+                    <td><span class="level-badge y4">Year 4</span></td>
+                    <td>Network security, ethical hacking, cryptography, and incident response.</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>Data Science</td>
+                    <td><span class="level-badge y4">Year 4</span></td>
+                    <td>Data mining, machine learning, big data processing, and predictive analytics.</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>Parallel Computing</td>
+                    <td><span class="level-badge y4">Year 4</span></td>
+                    <td>Multi-threading, GPU computing, and distributed high-performance algorithms.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- SUMMARY BOX -->
+<div style="background:#1a1a2e; color:#fff; border-radius:10px; padding:25px; display:flex; gap:40px; justify-content:center; text-align:center; margin-bottom:30px;">
+    <div>
+        <div style="font-size:2rem; font-weight:900; color:#fdb913;">1</div>
+        <div style="font-size:0.75rem; color:#aaa; margin-top:4px;">Organization</div>
+    </div>
+    <div>
+        <div style="font-size:2rem; font-weight:900; color:#fdb913;">1</div>
+        <div style="font-size:0.75rem; color:#aaa; margin-top:4px;">WebSite</div>
+    </div>
+    <div>
+        <div style="font-size:2rem; font-weight:900; color:#fdb913;">8</div>
+        <div style="font-size:0.75rem; color:#aaa; margin-top:4px;">Web Pages</div>
+    </div>
+    <div>
+        <div style="font-size:2rem; font-weight:900; color:#fdb913;">24</div>
+        <div style="font-size:0.75rem; color:#aaa; margin-top:4px;">Courses</div>
+    </div>
+    <div>
+        <div style="font-size:2rem; font-weight:900; color:#22c55e;">✓</div>
+        <div style="font-size:0.75rem; color:#aaa; margin-top:4px;">Google Valid</div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+    <span>© 2026 Innovation University – IU-FCIT &nbsp;|&nbsp; Faculty of Computing and Information Technology</span>
+    <span>Schema Standard: schema.org &nbsp;|&nbsp; Format: JSON-LD &nbsp;|&nbsp; @graph pattern</span>
+</div>
+
+<script>
+    document.getElementById('genDate').textContent = new Date().toLocaleDateString('en-EG', {
+        year: 'numeric', month: 'long', day: 'numeric'
+    });
+</script>
+</body>
+</html>

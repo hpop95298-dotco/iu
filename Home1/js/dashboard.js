@@ -221,25 +221,6 @@ function renderCharts(data) {
     }
 }
 
-// Sidebar Toggle Logic
-function initSidebar() {
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebarCollapseBtn = document.getElementById('sidebarCollapseBtn');
-    const sidebar = document.getElementById('sidebar');
-
-    const toggleSidebar = () => {
-        document.body.classList.toggle('sidebar-collapsed');
-        
-        // For mobile compatibility
-        if (window.innerWidth <= 768 && sidebar) {
-            sidebar.classList.toggle('active');
-        }
-    };
-
-    if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-    if (sidebarCollapseBtn) sidebarCollapseBtn.addEventListener('click', toggleSidebar);
-}
-
 // Global Logout Handler
 window.handleLogout = () => {
     // This will be connected to auth.js later
@@ -249,10 +230,10 @@ window.handleLogout = () => {
 
 // Initialize on DOM Load
 window.addEventListener('DOMContentLoaded', () => {
-    initSidebar();
     initNotifications();
     initializeDashboard();
 });
+
 
 /**
  * Handle Notification Toggle and Rendering

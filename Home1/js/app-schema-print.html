@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>App Schema Documentation - IU-FCIT Student App</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        @page { size: A4; margin: 12mm; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background: #fff;
+               padding: 0; color: #1a1a2e;
+               -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+        /* HEADER */
+        .page-header { display: flex; align-items: center; justify-content: space-between;
+                       border-bottom: 3px solid #1a1a2e; padding-bottom: 10px; margin-bottom: 14px; }
+        .page-header h1 { font-size: 1.2rem; font-weight: 900; color: #1a1a2e; }
+        .page-header p  { font-size: 0.72rem; color: #555; margin-top: 2px; }
+        .badge { background: #1a1a2e; color: #fff; padding: 6px 16px;
+                 border-radius: 6px; font-weight: 800; font-size: 0.78rem; letter-spacing: 1px; }
+
+        /* SECTION */
+        .section { margin-bottom: 14px; page-break-inside: avoid; }
+        .section-title { background: #1a1a2e; color: #fff; padding: 9px 18px;
+                         font-size: 0.82rem; font-weight: 800; letter-spacing: 1.5px;
+                         text-transform: uppercase; border-radius: 6px 6px 0 0; }
+        .section-body { background: #fff; border: 1px solid #ccc;
+                        border-top: none; border-radius: 0 0 6px 6px; padding: 20px; }
+
+        /* FIELD ROWS */
+        .field-row { display: flex; gap: 10px; padding: 6px 0;
+                     border-bottom: 1px solid #f0f0f0; align-items: flex-start; }
+        .field-row:last-child { border-bottom: none; }
+        .field-key { font-weight: 700; font-size: 0.8rem; color: #555; min-width: 155px;
+                     font-family: 'Courier New', monospace; padding-top: 1px; }
+        .field-val { font-size: 0.85rem; color: #1a1a2e; flex: 1; line-height: 1.6; }
+        .type-badge { display: inline-block; background: #e8f4fd; color: #1a6bb5;
+                      padding: 2px 9px; border-radius: 4px; font-size: 0.72rem;
+                      font-weight: 700; font-family: 'Courier New', monospace; margin-bottom: 3px; }
+
+        /* FEATURES TABLE */
+        table { width: 100%; border-collapse: collapse; font-size: 0.81rem; }
+        thead tr { background: #1a1a2e; color: #fff; }
+        thead th { padding: 9px 12px; text-align: left; font-weight: 700; }
+        tbody tr:nth-child(even) { background: #f8f9fa; }
+        tbody td { padding: 8px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+
+        /* SUMMARY BAR */
+        .summary { background: #f8f9fa; border: 1px solid #ddd; border-radius: 6px;
+                   padding: 12px 20px; display: flex; gap: 25px;
+                   justify-content: center; text-align: center; margin-bottom: 14px; }
+        .sum-item .num { font-size: 1.5rem; font-weight: 900; color: #1a1a2e; }
+        .sum-item .lbl { font-size: 0.65rem; color: #888; margin-top: 2px; }
+
+        /* FOOTER */
+        .page-footer { margin-top: 35px; border-top: 2px solid #1a1a2e; padding-top: 12px;
+                       display: flex; justify-content: space-between;
+                       font-size: 0.72rem; color: #777; }
+
+        /* PRINT */
+        @media print { .no-print { display: none !important; } }
+        .print-btn { position: fixed; bottom: 28px; right: 28px; background: #1a1a2e;
+                     color: #fff; border: none; padding: 13px 26px; font-size: 0.88rem;
+                     font-weight: 800; border-radius: 8px; cursor: pointer;
+                     box-shadow: 0 4px 16px rgba(0,0,0,.25); }
+        .print-btn:hover { background: #2d2d4e; }
+    </style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">🖨️ Print / Save PDF</button>
+
+<!-- HEADER -->
+<div class="page-header">
+    <div>
+        <h1>📱 App Schema Documentation</h1>
+        <p>IU-FCIT Student App &nbsp;|&nbsp; Schema.org / JSON-LD Structured Data</p>
+        <p style="color:#aaa; font-size:0.68rem; margin-top:4px;">Generated: <span id="gd"></span></p>
+    </div>
+    <div style="text-align:right;">
+        <div class="badge">MobileApplication</div>
+        <p style="margin-top:7px; font-size:0.7rem; color:#888;">Schema Version: 1.0</p>
+        <p style="font-size:0.7rem; color:#888;">Standard: schema.org / @graph</p>
+    </div>
+</div>
+
+<!-- SUMMARY -->
+<div class="summary">
+    <div class="sum-item"><div class="num">4</div><div class="lbl">Schema Types</div></div>
+    <div class="sum-item"><div class="num">8</div><div class="lbl">App Features</div></div>
+    <div class="sum-item"><div class="num">2</div><div class="lbl">Platforms</div></div>
+    <div class="sum-item"><div class="num">2</div><div class="lbl">Languages</div></div>
+    <div class="sum-item"><div class="num" style="color:#22c55e;">✓</div><div class="lbl">Google Valid</div></div>
+</div>
+
+<!-- SECTION 1: MobileApplication -->
+<div class="section">
+    <div class="section-title">① MobileApplication — Main App Entity</div>
+    <div class="section-body">
+        <div class="field-row">
+            <span class="field-key">@type</span>
+            <span class="field-val"><span class="type-badge">MobileApplication</span></span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">@id</span>
+            <span class="field-val">https://iu-fcit.edu.eg/#app</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">name</span>
+            <span class="field-val">IU-FCIT Student App</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">alternateName</span>
+            <span class="field-val">IU App &nbsp;|&nbsp; iu_app &nbsp;|&nbsp; Innovation University App</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">description</span>
+            <span class="field-val">The official mobile application for Innovation University (IU-FCIT) students. Access your academic dashboard, courses, schedules, results, attendance, assignments, and LMS features — all from your smartphone.</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">applicationCategory</span>
+            <span class="field-val">EducationApplication</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">operatingSystem</span>
+            <span class="field-val">Android &nbsp;|&nbsp; iOS</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">softwareVersion</span>
+            <span class="field-val">1.0.0</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">datePublished</span>
+            <span class="field-val">2026-01-01</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">inLanguage</span>
+            <span class="field-val">Arabic (ar) &nbsp;|&nbsp; English (en)</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">isAccessibleForFree</span>
+            <span class="field-val">true</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">offers</span>
+            <span class="field-val"><span class="type-badge">Offer</span><br>
+            price: 0 &nbsp;|&nbsp; priceCurrency: EGP &nbsp;|&nbsp; availability: InStock</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">aggregateRating</span>
+            <span class="field-val"><span class="type-badge">AggregateRating</span><br>
+            ratingValue: 4.8 / 5 &nbsp;|&nbsp; ratingCount: 150</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">installUrl</span>
+            <span class="field-val">https://play.google.com/store/apps/details?id=com.iufcit.app</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">publisher</span>
+            <span class="field-val">→ #organization (Innovation University IU-FCIT)</span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 2: Organization -->
+<div class="section">
+    <div class="section-title">② Organization — Publisher</div>
+    <div class="section-body">
+        <div class="field-row">
+            <span class="field-key">@type</span>
+            <span class="field-val"><span class="type-badge">Organization</span></span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">@id</span>
+            <span class="field-val">https://iu-fcit.edu.eg/#organization</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">name</span>
+            <span class="field-val">Innovation University (IU-FCIT)</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">url</span>
+            <span class="field-val">https://iu-fcit.edu.eg</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">address</span>
+            <span class="field-val">Innovation University Campus, Cairo, EG 11511</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">contactPoint</span>
+            <span class="field-val">+20-100-000-0000 &nbsp;|&nbsp; info@iu.edu.eg</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">sameAs</span>
+            <span class="field-val">
+                https://www.facebook.com/IU.FCIT<br>
+                https://www.linkedin.com/school/iu-fcit<br>
+                https://www.instagram.com/iu.fcit
+            </span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 3: SoftwareSourceCode -->
+<div class="section">
+    <div class="section-title">③ SoftwareSourceCode — Technical Details</div>
+    <div class="section-body">
+        <div class="field-row">
+            <span class="field-key">@type</span>
+            <span class="field-val"><span class="type-badge">SoftwareSourceCode</span></span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">name</span>
+            <span class="field-val">IU-FCIT Student App – Source Code</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">programmingLanguage</span>
+            <span class="field-val">Dart / Flutter</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">runtimePlatform</span>
+            <span class="field-val">Android &nbsp;|&nbsp; iOS</span>
+        </div>
+        <div class="field-row">
+            <span class="field-key">codeRepository</span>
+            <span class="field-val">https://github.com/iufcit/iu_app</span>
+        </div>
+    </div>
+</div>
+
+<!-- SECTION 4: Features -->
+<div class="section">
+    <div class="section-title">④ ItemList — App Features (8 Features)</div>
+    <div class="section-body">
+        <table>
+            <thead>
+                <tr><th>#</th><th>Feature Name</th><th>Description</th><th>Platform</th><th>Price</th></tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td><td><strong>Student Dashboard</strong></td>
+                    <td>Centralized dashboard: courses count, quizzes, tasks, avg score, learning progress.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>2</td><td><strong>LMS – Course Management</strong></td>
+                    <td>Browse enrolled courses, lecture materials, and content by academic level and term.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>3</td><td><strong>Exam Schedule</strong></td>
+                    <td>Official IU-FCIT exam timetable with dates, times, venues, and subject details.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>4</td><td><strong>Academic Results</strong></td>
+                    <td>Semester results, GPA, and grade breakdowns synced from the official SIS.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>5</td><td><strong>Attendance Tracker</strong></td>
+                    <td>Track attendance records per subject, view percentages, alerts for low attendance.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>6</td><td><strong>Assignments & Tasks</strong></td>
+                    <td>View, submit, and track assignments with deadlines and submission status per course.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>7</td><td><strong>Quizzes & Assessments</strong></td>
+                    <td>Take online quizzes, view quiz history, track assessment performance across subjects.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+                <tr>
+                    <td>8</td><td><strong>Student Profile</strong></td>
+                    <td>View and manage personal profile: student ID, level, department, enrolled courses.</td>
+                    <td>Android / iOS</td><td>Free</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<div class="page-footer">
+    <span>© 2026 Innovation University – IU-FCIT &nbsp;|&nbsp; Faculty of Computing and Information Technology</span>
+    <span>Schema Standard: schema.org &nbsp;|&nbsp; Format: JSON-LD &nbsp;|&nbsp; @graph pattern</span>
+</div>
+
+<script>
+    document.getElementById('gd').textContent = new Date().toLocaleDateString('en-EG', {
+        year: 'numeric', month: 'long', day: 'numeric'
+    });
+</script>
+</body>
+</html>

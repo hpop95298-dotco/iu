@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>App ERD – IU-FCIT Student App</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+@page { size: A4 landscape; margin: 10mm; }
+body { font-family:'Segoe UI',Arial,sans-serif; background:#fff; padding:0; color:#111;
+       -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.hdr { display:flex; align-items:center; justify-content:space-between;
+       border-bottom:3px solid #1a1a2e; padding-bottom:8px; margin-bottom:10px; }
+.hdr h1 { font-size:1.1rem; font-weight:900; color:#1a1a2e; }
+.hdr p  { font-size:0.68rem; color:#555; margin-top:2px; }
+.badge  { background:#1a1a2e; color:#fff; padding:5px 12px; border-radius:5px;
+          font-weight:800; font-size:0.75rem; letter-spacing:1px; }
+.erd-wrap { width:100%; }
+svg.erd { display:block; width:100%; height:auto; }
+.eh  { font-weight:900; font-size:13px; fill:#fff; }
+.ehd { font-weight:900; font-size:13px; fill:#1a1a2e; }
+.at  { font-size:11.5px; fill:#222; }
+.pk  { font-size:11.5px; fill:#1a5276; font-weight:700; }
+.fk  { font-size:11.5px; fill:#922b21; font-weight:600; }
+.dm  { font-size:10.5px; fill:#555; }
+.rl  { font-size:10px; fill:#333; font-weight:700; }
+.cn  { font-size:10px; fill:#111; font-weight:900; }
+.p2 { page-break-before:always; padding-top:6px; }
+.legend { display:flex; gap:14px; flex-wrap:wrap; border:1px solid #ccc;
+          border-radius:5px; padding:8px 14px; margin-bottom:12px; }
+.li { display:flex; align-items:center; gap:6px; font-size:0.7rem; color:#333; }
+.lb { width:12px; height:12px; border-radius:3px; border:1px solid #999; }
+.rt { width:100%; border-collapse:collapse; font-size:0.78rem; }
+.rt thead tr { background:#1a1a2e; color:#fff; }
+.rt th { padding:8px 11px; text-align:left; font-weight:700; }
+.rt td { padding:7px 11px; border-bottom:1px solid #ddd; }
+.rt tr:nth-child(even) td { background:#f5f5f5; }
+.t1 { display:inline-block; padding:1px 7px; border-radius:4px; font-size:0.69rem;
+      font-weight:700; background:#e8f4ff; color:#1a5276; border:1px solid #acd; }
+.t2 { display:inline-block; padding:1px 7px; border-radius:4px; font-size:0.69rem;
+      font-weight:700; background:#e9f7ef; color:#1e8449; border:1px solid #adc; }
+.ftr { margin-top:14px; border-top:2px solid #1a1a2e; padding-top:10px;
+       display:flex; justify-content:space-between; font-size:0.68rem; color:#555; }
+.pbtn { position:fixed; bottom:20px; right:20px; background:#1a1a2e; color:#fff;
+        border:none; padding:10px 20px; font-weight:800; font-size:0.82rem;
+        border-radius:7px; cursor:pointer; }
+@media print { .no-print { display:none !important; } }
+</style>
+</head>
+<body>
+<button class="pbtn no-print" onclick="window.print()">🖨️ Print / PDF</button>
+
+<div class="hdr">
+  <div><h1>📱 App Data Models – Entity Relationship Diagram (ERD)</h1>
+    <p>IU-FCIT Student App &nbsp;|&nbsp; Flutter / Dart &nbsp;|&nbsp; Backend: Supabase / PostgreSQL</p></div>
+  <div class="badge">App ERD v1.0</div>
+</div>
+
+<div class="erd-wrap">
+<svg class="erd" viewBox="0 0 1040 545" width="1040" height="545" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="ar" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+    <path d="M0,0 L0,6 L7,3 z" fill="#555"/>
+  </marker>
+</defs>
+
+<!-- ══ LINES FIRST ══ -->
+<!-- 1. User → StudentProfile (1:1) -->
+<polyline points="520,102 492,122" fill="none" stroke="#6d28d9" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+<!-- 2. Course → Assignment (1:N) straight down -->
+<polyline points="127,188 127,210" fill="none" stroke="#1e8449" stroke-width="1.5" marker-end="url(#ar)"/>
+<!-- 3. Assignment → Quiz (1:N) straight down -->
+<polyline points="127,350 127,372" fill="none" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#ar)"/>
+<!-- 4. Course → Enrollment (1:N) via left corridor -->
+<polyline points="253,98 276,98 276,388 300,388" fill="none" stroke="#1e8449" stroke-width="1.5" marker-end="url(#ar)"/>
+<!-- 5. StudentProfile → Enrollment (1:N) straight down -->
+<polyline points="429,287 429,317" fill="none" stroke="#e6a817" stroke-width="1.6" marker-end="url(#ar)"/>
+<!-- 6. StudentProfile → Attendance (1:N) right to right col -->
+<polyline points="626,175 634,175 634,75 640,75" fill="none" stroke="#922b21" stroke-width="1.5" marker-end="url(#ar)"/>
+<!-- 7. StudentProfile → Result (1:N) right to right col -->
+<polyline points="626,240 634,240 634,392 640,392" fill="none" stroke="#117a8b" stroke-width="1.5" marker-end="url(#ar)"/>
+<!-- 8. Course → ExamSchedule via bottom detour -->
+<polyline points="253,148 276,148 276,525 764,525 764,302" fill="none" stroke="#f59e0b" stroke-width="1.4" stroke-dasharray="4,3" marker-end="url(#ar)"/>
+
+<!-- Cardinality -->
+<text x="524" y="106" class="cn">1</text><text x="494" y="120" class="cn">1</text>
+<text x="112" y="195" class="cn">1</text><text x="112" y="207" class="cn">N</text>
+<text x="112" y="356" class="cn">1</text><text x="112" y="369" class="cn">N</text>
+<text x="255" y="94" class="cn">1</text><text x="292" y="385" class="cn">N</text>
+<text x="433" y="296" class="cn">1</text><text x="433" y="314" class="cn">N</text>
+<text x="630" y="172" class="cn">1</text><text x="630" y="73" class="cn">N</text>
+<text x="630" y="237" class="cn">1</text><text x="630" y="390" class="cn">N</text>
+<text x="255" y="144" class="cn">1</text><text x="754" y="300" class="cn">N</text>
+
+<!-- Relation labels -->
+<text x="506" y="115" class="rl" fill="#6d28d9">triggers</text>
+<text x="130" y="200" class="rl" fill="#1e8449">has</text>
+<text x="130" y="362" class="rl" fill="#3b82f6">has</text>
+<text x="278" y="240" class="rl" fill="#1e8449">enrolls</text>
+<text x="432" y="304" class="rl" fill="#e6a817">has</text>
+<text x="635" y="125" class="rl" fill="#922b21">tracks</text>
+<text x="635" y="340" class="rl" fill="#117a8b">has</text>
+<text x="380" y="519" class="rl" fill="#f59e0b">scheduled</text>
+
+<!-- ══ ENTITIES ══ -->
+
+<!-- User (AuthModel): x=415 y=8 w=210 h=94 -->
+<rect x="415" y="8" width="210" height="94" rx="4" fill="#fff" stroke="#6d28d9" stroke-width="1.8"/>
+<rect x="415" y="8" width="210" height="22" rx="4" fill="#6d28d9"/>
+<rect x="415" y="26" width="210" height="4" fill="#6d28d9"/>
+<text x="520" y="23" text-anchor="middle" class="eh">User (AuthModel)</text>
+<text x="424" y="46" class="pk">🔑 userId : String (PK)</text>
+<text x="424" y="62" class="at">   email : String</text>
+<text x="424" y="78" class="at">   role : String</text>
+<text x="424" y="94" class="dm">   accessToken : String</text>
+
+<!-- StudentProfile: x=358 y=122 w=268 h=165 -->
+<rect x="358" y="122" width="268" height="165" rx="4" fill="#fff" stroke="#e6a817" stroke-width="2"/>
+<rect x="358" y="122" width="268" height="22" rx="4" fill="#e6a817"/>
+<rect x="358" y="140" width="268" height="4" fill="#e6a817"/>
+<text x="492" y="139" text-anchor="middle" class="ehd">StudentProfile</text>
+<text x="367" y="160" class="pk">🔑 studentId : String (PK)</text>
+<text x="367" y="176" class="fk">🔗 userId : String (FK→User)</text>
+<text x="367" y="192" class="at">   fullName : String</text>
+<text x="367" y="208" class="at">   level : String</text>
+<text x="367" y="224" class="at">   department : String</text>
+<text x="367" y="240" class="dm">   gpa : double</text>
+<text x="367" y="256" class="dm">   avatarUrl : String?</text>
+
+<!-- Course: x=18 y=8 w=235 h=180 -->
+<rect x="18" y="8" width="235" height="180" rx="4" fill="#fff" stroke="#1e8449" stroke-width="1.8"/>
+<rect x="18" y="8" width="235" height="22" rx="4" fill="#1e8449"/>
+<rect x="18" y="26" width="235" height="4" fill="#1e8449"/>
+<text x="135" y="23" text-anchor="middle" class="eh">Course</text>
+<text x="27" y="46" class="pk">🔑 courseId : String (PK)</text>
+<text x="27" y="62" class="at">   name : String</text>
+<text x="27" y="78" class="at">   credits : int</text>
+<text x="27" y="94" class="at">   level : String</text>
+<text x="27" y="110" class="at">   term : String</text>
+<text x="27" y="126" class="at">   professorName : String</text>
+<text x="27" y="142" class="dm">   description : String?</text>
+<text x="27" y="158" class="dm">   isEnrolled : bool</text>
+
+<!-- Assignment: x=18 y=210 w=235 h=130 -->
+<rect x="18" y="210" width="235" height="130" rx="4" fill="#fff" stroke="#3b82f6" stroke-width="1.8"/>
+<rect x="18" y="210" width="235" height="22" rx="4" fill="#3b82f6"/>
+<rect x="18" y="228" width="235" height="4" fill="#3b82f6"/>
+<text x="135" y="225" text-anchor="middle" class="eh">Assignment</text>
+<text x="27" y="248" class="pk">🔑 assignmentId : String (PK)</text>
+<text x="27" y="264" class="fk">🔗 courseId : String (FK)</text>
+<text x="27" y="280" class="at">   title : String</text>
+<text x="27" y="296" class="at">   dueDate : DateTime</text>
+<text x="27" y="312" class="dm">   submissionStatus : String</text>
+<text x="27" y="328" class="dm">   maxGrade : double</text>
+
+<!-- Quiz: x=18 y=372 w=235 h=130 -->
+<rect x="18" y="372" width="235" height="130" rx="4" fill="#fff" stroke="#8b5cf6" stroke-width="1.8"/>
+<rect x="18" y="372" width="235" height="22" rx="4" fill="#8b5cf6"/>
+<rect x="18" y="390" width="235" height="4" fill="#8b5cf6"/>
+<text x="135" y="387" text-anchor="middle" class="eh">Quiz</text>
+<text x="27" y="410" class="pk">🔑 quizId : String (PK)</text>
+<text x="27" y="426" class="fk">🔗 courseId : String (FK)</text>
+<text x="27" y="442" class="at">   title : String</text>
+<text x="27" y="458" class="at">   totalQuestions : int</text>
+<text x="27" y="474" class="dm">   score : double?</text>
+<text x="27" y="490" class="dm">   submittedAt : DateTime?</text>
+
+<!-- Enrollment: x=300 y=317 w=258 h=140 -->
+<rect x="300" y="317" width="258" height="140" rx="4" fill="#fff" stroke="#b7770d" stroke-width="1.8"/>
+<rect x="300" y="317" width="258" height="22" rx="4" fill="#b7770d"/>
+<rect x="300" y="335" width="258" height="4" fill="#b7770d"/>
+<text x="429" y="332" text-anchor="middle" class="eh">Enrollment</text>
+<text x="309" y="352" class="pk">🔑 enrollmentId : String (PK)</text>
+<text x="309" y="368" class="fk">🔗 studentId : String (FK)</text>
+<text x="309" y="384" class="fk">🔗 courseId : String (FK)</text>
+<text x="309" y="400" class="at">   status : String</text>
+<text x="309" y="416" class="at">   progress : double</text>
+<text x="309" y="432" class="dm">   enrolledAt : DateTime</text>
+
+<!-- Attendance: x=640 y=8 w=248 h=148 -->
+<rect x="640" y="8" width="248" height="148" rx="4" fill="#fff" stroke="#922b21" stroke-width="1.8"/>
+<rect x="640" y="8" width="248" height="22" rx="4" fill="#922b21"/>
+<rect x="640" y="26" width="248" height="4" fill="#922b21"/>
+<text x="764" y="23" text-anchor="middle" class="eh">Attendance</text>
+<text x="649" y="46" class="pk">🔑 attendanceId : String (PK)</text>
+<text x="649" y="62" class="fk">🔗 studentId : String (FK)</text>
+<text x="649" y="78" class="fk">🔗 courseId : String (FK)</text>
+<text x="649" y="94" class="at">   date : DateTime</text>
+<text x="649" y="110" class="at">   category : String</text>
+<text x="649" y="126" class="at">   status : String</text>
+<text x="649" y="142" class="dm">          [present/absent/late]</text>
+
+<!-- ExamSchedule: x=640 y=178 w=248 h=130 -->
+<rect x="640" y="178" width="248" height="130" rx="4" fill="#fff" stroke="#f59e0b" stroke-width="1.8"/>
+<rect x="640" y="178" width="248" height="22" rx="4" fill="#f59e0b"/>
+<rect x="640" y="196" width="248" height="4" fill="#f59e0b"/>
+<text x="764" y="193" text-anchor="middle" class="ehd">ExamSchedule</text>
+<text x="649" y="214" class="pk">🔑 scheduleId : String (PK)</text>
+<text x="649" y="230" class="fk">🔗 courseId : String (FK)</text>
+<text x="649" y="246" class="at">   examDate : DateTime</text>
+<text x="649" y="262" class="at">   startTime : String</text>
+<text x="649" y="278" class="at">   venue : String</text>
+<text x="649" y="294" class="dm">   type : String [Mid/Final]</text>
+
+<!-- Result: x=640 y=330 w=248 h=138 -->
+<rect x="640" y="330" width="248" height="138" rx="4" fill="#fff" stroke="#117a8b" stroke-width="1.8"/>
+<rect x="640" y="330" width="248" height="22" rx="4" fill="#117a8b"/>
+<rect x="640" y="348" width="248" height="4" fill="#117a8b"/>
+<text x="764" y="345" text-anchor="middle" class="eh">Result</text>
+<text x="649" y="366" class="pk">🔑 resultId : String (PK)</text>
+<text x="649" y="382" class="fk">🔗 studentId : String (FK)</text>
+<text x="649" y="398" class="fk">🔗 courseId : String (FK)</text>
+<text x="649" y="414" class="at">   semester : String</text>
+<text x="649" y="430" class="at">   totalGrade : double</text>
+<text x="649" y="446" class="dm">   gradeLetter : String</text>
+</svg>
+</div>
+
+<!-- PAGE 2 -->
+<div class="p2">
+  <div class="hdr" style="margin-bottom:12px;">
+    <div><h1>App ERD – Relationships &amp; Legend</h1>
+      <p>IU-FCIT Student App &nbsp;|&nbsp; Flutter / Dart</p></div>
+    <div class="badge">App ERD v1.0</div>
+  </div>
+
+  <div class="legend">
+    <div class="li"><div class="lb" style="background:#e6a817;border-color:#e6a817"></div>StudentProfile (central)</div>
+    <div class="li"><div class="lb" style="background:#1e8449;border-color:#1e8449"></div>Course</div>
+    <div class="li"><div class="lb" style="background:#3b82f6;border-color:#3b82f6"></div>Assignment</div>
+    <div class="li"><div class="lb" style="background:#8b5cf6;border-color:#8b5cf6"></div>Quiz</div>
+    <div class="li"><div class="lb" style="background:#b7770d;border-color:#b7770d"></div>Enrollment</div>
+    <div class="li"><div class="lb" style="background:#922b21;border-color:#922b21"></div>Attendance</div>
+    <div class="li"><div class="lb" style="background:#f59e0b;border-color:#f59e0b"></div>ExamSchedule</div>
+    <div class="li"><div class="lb" style="background:#117a8b;border-color:#117a8b"></div>Result</div>
+    <div class="li"><div class="lb" style="background:#6d28d9;border-color:#6d28d9"></div>User (AuthModel)</div>
+    <div class="li" style="margin-left:8px;">
+      <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#555" stroke-width="1.6"/></svg>Direct FK
+    </div>
+    <div class="li">
+      <svg width="24" height="10"><line x1="0" y1="5" x2="24" y2="5" stroke="#555" stroke-width="1.4" stroke-dasharray="4,3"/></svg>Optional FK
+    </div>
+    <div class="li"><b style="color:#1a5276">🔑 PK</b> = Primary Key</div>
+    <div class="li"><b style="color:#922b21">🔗 FK</b> = Foreign Key</div>
+  </div>
+
+  <table class="rt">
+    <thead>
+      <tr><th>#</th><th>From Model</th><th>Relationship</th><th>To Model</th><th>Type</th><th>FK Field</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td>User</td><td>authenticates →</td><td>StudentProfile</td><td><span class="t2">1 : 1</span></td><td>StudentProfile.userId</td></tr>
+      <tr><td>2</td><td>Course</td><td>has →</td><td>Assignment</td><td><span class="t1">1 : N</span></td><td>Assignment.courseId</td></tr>
+      <tr><td>3</td><td>Course</td><td>has →</td><td>Quiz</td><td><span class="t1">1 : N</span></td><td>Quiz.courseId</td></tr>
+      <tr><td>4</td><td>Course</td><td>enrolls in →</td><td>Enrollment</td><td><span class="t1">1 : N</span></td><td>Enrollment.courseId</td></tr>
+      <tr><td>5</td><td>StudentProfile</td><td>enrolls →</td><td>Enrollment</td><td><span class="t1">1 : N</span></td><td>Enrollment.studentId</td></tr>
+      <tr><td>6</td><td>StudentProfile</td><td>has attendance →</td><td>Attendance</td><td><span class="t1">1 : N</span></td><td>Attendance.studentId</td></tr>
+      <tr><td>7</td><td>StudentProfile</td><td>has results →</td><td>Result</td><td><span class="t1">1 : N</span></td><td>Result.studentId</td></tr>
+      <tr><td>8</td><td>Course</td><td>scheduled in →</td><td>ExamSchedule</td><td><span class="t1">1 : N</span></td><td>ExamSchedule.courseId</td></tr>
+    </tbody>
+  </table>
+
+  <div class="ftr">
+    <span>© 2026 Innovation University – IU-FCIT &nbsp;|&nbsp; Flutter App Data Models</span>
+    <span>Models: 9 &nbsp;|&nbsp; Relationships: 8 &nbsp;|&nbsp; Backend: Supabase / PostgreSQL</span>
+  </div>
+</div>
+</body>
+</html>

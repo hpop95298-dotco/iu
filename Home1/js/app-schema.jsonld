@@ -1,0 +1,236 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "MobileApplication",
+      "@id": "https://iu-fcit.edu.eg/#app",
+      "name": "IU-FCIT Student App",
+      "alternateName": ["IU App", "iu_app", "Innovation University App"],
+      "description": "The official mobile application for Innovation University (IU-FCIT) students. Access your academic dashboard, courses, schedules, results, attendance, assignments, and LMS features — all from your smartphone.",
+      "url": "https://iu-fcit.edu.eg",
+      "applicationCategory": "EducationApplication",
+      "applicationSubCategory": "University Student Portal",
+      "operatingSystem": ["Android", "iOS"],
+      "installUrl": "https://play.google.com/store/apps/details?id=com.iufcit.app",
+      "downloadUrl": "https://play.google.com/store/apps/details?id=com.iufcit.app",
+      "softwareVersion": "1.0.0",
+      "datePublished": "2026-01-01",
+      "dateModified": "2026-05-10",
+      "inLanguage": ["ar", "en"],
+      "isAccessibleForFree": true,
+      "price": "0",
+      "priceCurrency": "EGP",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EGP",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@type": "Organization",
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      },
+      "maintainer": {
+        "@type": "Organization",
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      },
+      "featureList": [
+        "Student Academic Dashboard",
+        "Course Management (LMS)",
+        "Exam Schedule & Timetable",
+        "Academic Results & GPA",
+        "Attendance Tracking",
+        "Assignments Management",
+        "Quizzes & Assessments",
+        "Student Profile",
+        "Push Notifications",
+        "Bilingual Interface (Arabic / English)"
+      ],
+      "screenshot": [
+        "https://iu-fcit.edu.eg/Home1/images/app-screenshot-dashboard.png",
+        "https://iu-fcit.edu.eg/Home1/images/app-screenshot-courses.png",
+        "https://iu-fcit.edu.eg/Home1/images/app-screenshot-schedule.png",
+        "https://iu-fcit.edu.eg/Home1/images/app-screenshot-results.png"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.8",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "150"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://iu-fcit.edu.eg/#website"
+      },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://iu-fcit.edu.eg/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    },
+
+    {
+      "@type": "Organization",
+      "@id": "https://iu-fcit.edu.eg/#organization",
+      "name": "Innovation University (IU-FCIT)",
+      "alternateName": "IU-FCIT",
+      "url": "https://iu-fcit.edu.eg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://iu-fcit.edu.eg/Home1/images/iu-logo.png"
+      },
+      "description": "Innovation University – Faculty of Computing and Information Technology (IU-FCIT) is a leading academic institution specializing in Computing, Artificial Intelligence, Cybersecurity, and Advanced Engineering.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Innovation University Campus",
+        "addressLocality": "Cairo",
+        "addressRegion": "Cairo",
+        "postalCode": "11511",
+        "addressCountry": "EG"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+20-100-000-0000",
+        "contactType": "customer service",
+        "email": "info@iu.edu.eg",
+        "availableLanguage": ["Arabic", "English"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/IU.FCIT",
+        "https://www.linkedin.com/school/iu-fcit",
+        "https://www.instagram.com/iu.fcit"
+      ]
+    },
+
+    {
+      "@type": "SoftwareSourceCode",
+      "@id": "https://iu-fcit.edu.eg/#app-source",
+      "name": "IU-FCIT Student App – Source Code",
+      "description": "Flutter-based mobile application source code for the Innovation University student portal.",
+      "codeRepository": "https://github.com/iufcit/iu_app",
+      "programmingLanguage": {
+        "@type": "ComputerLanguage",
+        "name": "Dart / Flutter"
+      },
+      "runtimePlatform": ["Android", "iOS"],
+      "author": {
+        "@id": "https://iu-fcit.edu.eg/#organization"
+      }
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://iu-fcit.edu.eg/#app-features",
+      "name": "IU-FCIT App Key Features",
+      "description": "List of main features available in the IU-FCIT Student Mobile Application.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Student Dashboard",
+            "description": "Centralized dashboard showing enrolled courses count, quizzes, tasks, average score, and learning progress.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "LMS – Course Management",
+            "description": "Browse and access all enrolled courses, lecture materials, and course content organized by academic level and term.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Exam Schedule",
+            "description": "View the official IU-FCIT exam timetable with dates, times, venues, and subject details for all levels.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Academic Results",
+            "description": "Access semester results, GPA, and grade breakdowns synced from the official Student Information System (SIS).",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Attendance Tracker",
+            "description": "Track attendance records per subject, view percentages, and receive alerts for low attendance.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Assignments & Tasks",
+            "description": "View, submit, and track assignments with deadlines and submission status per course.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Quizzes & Assessments",
+            "description": "Take online quizzes, view quiz history, and track assessment performance across all subjects.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Student Profile",
+            "description": "View and manage personal academic profile including student ID, level, department, enrolled courses, and contact details.",
+            "applicationCategory": "EducationApplication",
+            "operatingSystem": ["Android", "iOS"],
+            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EGP" }
+          }
+        }
+      ]
+    }
+
+  ]
+}

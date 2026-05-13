@@ -1,0 +1,436 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+
+    {
+      "@type": "CollegeOrUniversity",
+      "@id": "https://iu-fcit.edu.eg/#organization",
+      "name": "Innovation University (IU-FCIT)",
+      "alternateName": "IU-FCIT",
+      "url": "https://iu-fcit.edu.eg",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://iu-fcit.edu.eg/Home1/images/iu-logo.png"
+      },
+      "description": "Innovation University - Faculty of Computing and Information Technology (IU-FCIT) is a leading academic institution specializing in Computing, Artificial Intelligence, Cybersecurity, and Advanced Engineering.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Innovation University Campus",
+        "addressLocality": "Cairo",
+        "addressRegion": "Cairo",
+        "postalCode": "11511",
+        "addressCountry": "EG"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+20-100-000-0000",
+        "contactType": "customer service",
+        "email": "info@iu.edu.eg",
+        "availableLanguage": ["Arabic", "English"]
+      },
+      "sameAs": [
+        "https://www.facebook.com/IU.FCIT",
+        "https://www.linkedin.com/school/iu-fcit",
+        "https://www.instagram.com/iu.fcit"
+      ]
+    },
+
+    {
+      "@type": "WebSite",
+      "@id": "https://iu-fcit.edu.eg/#website",
+      "url": "https://iu-fcit.edu.eg",
+      "name": "Innovation University - Student Portal",
+      "description": "The official student portal for Innovation University (IU-FCIT). Access academic materials, schedules, results, and more.",
+      "publisher": { "@id": "https://iu-fcit.edu.eg/#organization" },
+      "inLanguage": ["ar", "en"]
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://iu-fcit.edu.eg/Home1/Pages/iu.html",
+      "url": "https://iu-fcit.edu.eg/Home1/Pages/iu.html",
+      "name": "Innovation University | Excellence in Education",
+      "description": "Welcome to IU-FCIT. Leading the digital transformation through excellence in education and research.",
+      "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" },
+      "about": { "@id": "https://iu-fcit.edu.eg/#organization" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" }
+        ]
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://iu-fcit.edu.eg/Home1/Pages/login.html",
+      "url": "https://iu-fcit.edu.eg/Home1/Pages/login.html",
+      "name": "Student Login | IU-FCIT",
+      "description": "Secure login portal for Innovation University students and staff.",
+      "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" },
+          { "@type": "ListItem", "position": 2, "name": "Login", "item": "https://iu-fcit.edu.eg/Home1/Pages/login.html" }
+        ]
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://iu-fcit.edu.eg/Home1/Pages/dashboard-STU.html",
+      "url": "https://iu-fcit.edu.eg/Home1/Pages/dashboard-STU.html",
+      "name": "Student Dashboard | IU-FCIT",
+      "description": "Student dashboard for managing courses, attendance, assignments, and academic results at Innovation University.",
+      "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" },
+          { "@type": "ListItem", "position": 2, "name": "Student Dashboard", "item": "https://iu-fcit.edu.eg/Home1/Pages/dashboard-STU.html" }
+        ]
+      }
+    },
+
+    {
+      "@type": "WebPage",
+      "@id": "https://iu-fcit.edu.eg/Home1/Pages/programs.html",
+      "url": "https://iu-fcit.edu.eg/Home1/Pages/programs.html",
+      "name": "Degree Programs | IU-FCIT",
+      "description": "Explore all academic degree programs offered at Innovation University including Computer Science, AI, Cybersecurity, and Software Engineering.",
+      "isPartOf": { "@id": "https://iu-fcit.edu.eg/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://iu-fcit.edu.eg/Home1/Pages/iu.html" },
+          { "@type": "ListItem", "position": 2, "name": "Programs", "item": "https://iu-fcit.edu.eg/Home1/Pages/programs.html" }
+        ]
+      }
+    },
+
+    {
+      "@type": "ItemList",
+      "@id": "https://iu-fcit.edu.eg/#all-courses",
+      "name": "All Courses - Innovation University (IU-FCIT)",
+      "description": "Complete list of academic courses offered across all years at Innovation University, Faculty of Computing and Information Technology.",
+      "itemListElement": [
+
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Course",
+            "name": "Introduction to Programming",
+            "description": "Fundamentals of programming logic, algorithms, and problem solving using structured programming techniques.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/Introduction-to-programing-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Course",
+            "name": "Introduction to Computers",
+            "description": "Overview of computer systems, hardware components, software types, and basic computing concepts.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/intro-computers-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Course",
+            "name": "Mathematics 1",
+            "description": "Foundational mathematics covering calculus, limits, derivatives, and mathematical analysis for engineering students.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/math1-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Course",
+            "name": "Physics",
+            "description": "Core physics principles including mechanics, electricity, magnetism, and optics applied to computing and engineering.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/physics-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Course",
+            "name": "English Language",
+            "description": "Academic English language skills for reading, writing, and communication in a technical context.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/english-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Course",
+            "name": "Human Rights",
+            "description": "Introduction to human rights principles, international law, and their application in modern technological society.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/human-rights-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Course",
+            "name": "Entrepreneurship",
+            "description": "Principles of entrepreneurship, innovation, startup development, and business models in the technology sector.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/entrepreneurship.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "Course",
+            "name": "Mathematics 0",
+            "description": "Pre-calculus mathematics including algebra, trigonometry, and analytical geometry as a foundation for higher mathematics.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/levels-term1/subjects/math0.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 1",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "Course",
+            "name": "Data Structures",
+            "description": "Study of fundamental data structures including arrays, linked lists, trees, graphs, and their algorithms for efficient data management.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/data-structure.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "Course",
+            "name": "Computer Architecture",
+            "description": "Principles of computer organization, CPU design, memory hierarchy, instruction sets, and digital logic.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/computer-architecture-PDF.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "Course",
+            "name": "Probability and Statistics",
+            "description": "Mathematical probability theory, statistical analysis, distributions, and data inference for engineering and computer science applications.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/probability-statistics.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "Course",
+            "name": "Project Management",
+            "description": "Principles of software project planning, scheduling, risk management, and team leadership using modern methodologies.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/project-management.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "Course",
+            "name": "Communication Skills",
+            "description": "Professional communication strategies including technical writing, presentations, and teamwork in an engineering environment.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/communication-skills.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "Course",
+            "name": "Mathematics 3",
+            "description": "Advanced mathematics covering differential equations, linear algebra, and numerical methods for computer science.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level2-term1/subjects/math3-pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 2",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "Course",
+            "name": "Software Engineering",
+            "description": "The discipline of designing, developing, and maintaining software systems, covering SDLC, requirements engineering, design patterns, testing, and agile methodologies.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level3-term1/subjects3/software-engineering.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 3",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "Course",
+            "name": "AI Fundamentals",
+            "description": "Foundational concepts of Artificial Intelligence including machine learning, neural networks, search algorithms, and intelligent system design.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level3-term1/subjects3/ai-fundamentals.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 3",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "Course",
+            "name": "Data Visualization",
+            "description": "Techniques and tools for visualizing data, including charts, graphs, dashboards, and storytelling with data for decision making.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level3-term1/subjects3/data-visualization.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 3",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "Course",
+            "name": "Web Application Development",
+            "description": "Modern web development using HTML, CSS, JavaScript, and frameworks for building interactive and responsive web applications.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level3-term1/subjects3/web-app-dev.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 3",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "Course",
+            "name": "Theoretical Computer Science",
+            "description": "Formal language theory, automata, computability, complexity theory, and the mathematical foundations of computation.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level3-term1/subjects3/theoretical-compsci.pdf.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 3",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "Course",
+            "name": "Advanced Software Engineering",
+            "description": "Advanced topics in software architecture, design patterns, microservices, DevOps, and large-scale software system development.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level4-term1/subjects4/advanced-software-engineering.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 4",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "Course",
+            "name": "Cloud Computing",
+            "description": "Principles of cloud infrastructure, services models (IaaS, PaaS, SaaS), virtualization, and deployment on platforms like AWS and Azure.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level4-term1/subjects4/cloud-computing.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 4",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "Course",
+            "name": "Computer and Cyber Security",
+            "description": "Advanced cybersecurity principles covering network security, ethical hacking, cryptography, threat analysis, and incident response.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level4-term1/subjects4/computer-cyber-security.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 4",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "Course",
+            "name": "Data Science",
+            "description": "Applied data science techniques including data mining, machine learning, big data processing, and predictive analytics.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level4-term1/subjects4/data-science.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 4",
+            "inLanguage": "ar"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "Course",
+            "name": "Parallel Computing",
+            "description": "Concepts of parallel processing, multi-threading, GPU computing, and distributed algorithms for high-performance applications.",
+            "url": "https://iu-fcit.edu.eg/Home1/Pages/level4-term1/subjects4/parallel-computing.html",
+            "provider": { "@id": "https://iu-fcit.edu.eg/#organization" },
+            "educationalLevel": "Year 4",
+            "inLanguage": "ar"
+          }
+        }
+
+      ]
+    }
+
+  ]
+}
