@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تقرير سكيما قاعدة البيانات - IU SQL Schema Report</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cairo:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-purple: #2d1b4e;
+            --gold: #fdb913;
+            --white: #ffffff;
+            --light-gray: #f4f4f9;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--primary-purple);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border-top: 10px solid var(--primary-purple);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            color: var(--primary-purple);
+        }
+
+        .doc-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 0.9rem;
+            color: #666;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .code-section {
+            position: relative;
+            margin-top: 20px;
+        }
+
+        pre[class*="language-"] {
+            border-radius: 10px;
+            margin: 0;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            max-height: none !important;
+        }
+
+        .badge {
+            background: var(--gold);
+            color: var(--primary-purple);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--gold);
+            color: var(--primary-purple);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: 0.3s;
+            z-index: 1000;
+        }
+
+        .btn-print:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        @media print {
+            .btn-print { display: none; }
+            .container { box-shadow: none; width: 100%; max-width: none; margin: 0; border: none; }
+            body { background: white; }
+            pre[class*="language-"] { white-space: pre-wrap; word-break: break-all; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>تقرير الكود المصدري (SQL Schema)</h1>
+            <p>منصة جامعة الابتكار الأكاديمية - IU Academic Platform</p>
+        </header>
+
+        <div class="doc-info">
+            <span><strong>اسم الملف:</strong> supabase_schema.sql</span>
+            <span><strong>التاريخ:</strong> 10 مايو 2026</span>
+            <span><strong>النوع:</strong> PostgreSQL / Supabase</span>
+        </div>
+
+        <div class="code-section">
+            <div class="badge">SQL Source Code</div>
+            <pre class="language-sql"><code>-- ==========================================
+-- IU ACADEMIC PLATFORM - SUPABASE SCHEMA
+-- ==========================================
+
+-- 1. EXTENSIONS
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+-- 2. PROGRAMS TABLE
+CREATE TABLE IF NOT EXISTS public.programs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name TEXT NOT NULL,
+    degree_type TEXT CHECK (degree_type IN ('BSc', 'MSc', 'PhD')),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 3. PROFILES TABLE (Linked to Auth.Users)
+CREATE TABLE IF NOT EXISTS public.profiles (
+    id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+    full_name TEXT NOT NULL,
+    role TEXT DEFAULT 'student' CHECK (role IN ('student', 'admin')),
+    level TEXT,
+    department_id TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 4. COURSES TABLE
+CREATE TABLE IF NOT EXISTS public.courses (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    name TEXT NOT NULL,
+    credits INT DEFAULT 3,
+    program_id UUID REFERENCES public.programs(id) ON DELETE SET NULL,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 5. ENROLLMENTS TABLE
+CREATE TABLE IF NOT EXISTS public.enrollments (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    student_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    course_id UUID REFERENCES public.courses(id) ON DELETE CASCADE,
+    status TEXT DEFAULT 'active' CHECK (status IN ('active', 'completed', 'dropped')),
+    progress INT DEFAULT 0 CHECK (progress >= 0 AND progress <= 100),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 6. ATTENDANCE TABLE
+CREATE TABLE IF NOT EXISTS public.attendance (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    student_id UUID REFERENCES public.profiles(id) ON DELETE CASCADE,
+    course_id UUID REFERENCES public.courses(id) ON DELETE SET NULL,
+    date DATE NOT NULL DEFAULT CURRENT_DATE,
+    category TEXT NOT NULL,
+    status TEXT NOT NULL CHECK (status IN ('present', 'absent', 'late')),
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- 7. AUDIT LOGS TABLE
+CREATE TABLE IF NOT EXISTS public.audit_logs (
+    id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+    user_id UUID REFERENCES public.profiles(id) ON DELETE SET NULL,
+    action TEXT NOT NULL,
+    ip_address TEXT,
+    created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- SECURITY: ROW LEVEL SECURITY (RLS)
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.enrollments ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.attendance ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.programs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.courses ENABLE ROW LEVEL SECURITY;
+
+-- ADMIN POLICY
+CREATE POLICY "Admins have full access to everything" 
+ON public.profiles FOR ALL 
+USING (
+  EXISTS (
+    SELECT 1 FROM public.profiles
+    WHERE profiles.id = auth.uid() AND profiles.role = 'admin'
+  )
+);
+            </code></pre>
+        </div>
+
+        <div style="margin-top: 30px; border-top: 1px solid #eee; padding-top: 20px; font-size: 0.8rem; text-align: center; color: #999;">
+            هذا المستند تم توليده آلياً بواسطة نظام الذكاء الاصطناعي لجامعة الابتكار.
+        </div>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">🖨️ تصدير كـ PDF</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+</body>
+</html>

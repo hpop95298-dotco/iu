@@ -1,9 +1,15 @@
-<!DOCTYPE html>
+const fs = require('fs');
+const path = require('path');
+
+const videosDir = 'Home1/Pages/level2-term1/subjects/Videos2';
+const files = fs.readdirSync(videosDir).filter(f => f.endsWith('.html'));
+
+const templateHeader = (title, subject) => `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Theater | Project Management</title>
+    <title>Video Theater | ${subject}</title>
     <!-- Design System Core -->
     <link rel="stylesheet" href="../../../../css/core/tokens.css">
     <link rel="stylesheet" href="../../../../css/core/base.css">
@@ -59,7 +65,7 @@
     <main class="main-content">
         <div class="container">
             <div class="animate-up" style="margin-bottom: 30px;">
-                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">Project Management | Streams</h1>
+                <h1 style="color: var(--iu-accent); margin-bottom: 5px;">${subject} | Streams</h1>
                 <p style="color: var(--iu-text-muted);">Academic Hub | Visual Learning Hub</p>
             </div>
 
@@ -78,17 +84,9 @@
             </div>
         </div>
     </main>
+`;
 
-<script>
-const lectures = [
-{title:"Lecture 1 – Introduction to PM", video:"https://www.youtube.com/embed/video1", desc:"Basics of project management."},
-{title:"Lecture 2 – Planning", video:"https://www.youtube.com/embed/video2", desc:"Project planning techniques."},
-{title:"Lecture 3 – Execution", video:"https://www.youtube.com/embed/video3", desc:"Executing project plans."},
-{title:"Lecture 4 – Monitoring & Control", video:"https://www.youtube.com/embed/video4", desc:"Tracking project progress."},
-{title:"Lecture 5 – Closing Projects", video:"https://www.youtube.com/embed/video5", desc:"Properly finishing projects."}
-];
-</script>
-
+const templateFooter = `
     <script>
         function initSidebar() {
             const list = document.getElementById('videoList');
@@ -96,7 +94,7 @@ const lectures = [
                 const btn = document.createElement('button');
                 btn.className = 'video-btn';
                 btn.onclick = () => loadVideo(index);
-                btn.innerHTML = `<i class="fas fa-play"></i> ${lec.title}`;
+                btn.innerHTML = \`<i class="fas fa-play"></i> \${lec.title}\`;
                 list.appendChild(btn);
             });
         }
@@ -107,15 +105,15 @@ const lectures = [
             const lec = lectures[index];
             btns.forEach(b => b.classList.remove('active'));
             btns[index].classList.add('active');
-            area.innerHTML = `
+            area.innerHTML = \`
                 <div class="video-container">
-                    <iframe src="${lec.video}" allowfullscreen></iframe>
+                    <iframe src="\${lec.video}" allowfullscreen></iframe>
                 </div>
                 <div class="video-info animate-up">
-                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">${lec.title}</h2>
-                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">${lec.desc}</p>
+                    <h2 style="color: var(--iu-accent); margin-bottom: 15px;">\${lec.title}</h2>
+                    <p style="color: rgba(255,255,255,0.8); line-height: 1.6;">\${lec.desc}</p>
                 </div>
-            `;
+            \`;
         }
 
         const menuToggle = document.getElementById('menuToggle');
@@ -149,3 +147,23 @@ const lectures = [
     </footer>
 </body>
 </html>
+`;
+
+files.forEach(file => {
+    const filePath = path.join(videosDir, file);
+    const content = fs.readFileSync(filePath, 'utf8');
+    
+    // Extract subject name from <title> or h5
+    let subject = file.replace('-ved.html', '').split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
+    if (subject === 'Prob Stat') subject = 'Probability & Statistics';
+    if (subject === 'Computer Arch') subject = 'Computer Architecture';
+
+    // Extract lectures array
+    const lecturesMatch = content.match(/const lectures\s*=\s*(\[[\s\S]*?\]);/);
+    if (lecturesMatch) {
+        const lecturesArray = lecturesMatch[1];
+        const newContent = `${templateHeader(subject, subject)}\n<script>\nconst lectures = ${lecturesArray};\n</script>\n${templateFooter}`;
+        fs.writeFileSync(filePath, newContent, 'utf8');
+        console.log(`Upgraded: ${file}`);
+    }
+});

@@ -1,0 +1,13 @@
+{
+  "name": "iu-repo",
+  "version": "1.0.0",
+  "description": "Innovation University Platform",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx serve Home1",
+    "start": "npx serve Home1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

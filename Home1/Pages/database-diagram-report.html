@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مخطط قاعدة بيانات جامعة الابتكار - IU Database ERD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --primary-purple: #2d1b4e;
+            --secondary-purple: #1a1a2e;
+            --gold: #fdb913;
+            --white: #ffffff;
+            --light-gray: #f4f4f9;
+        }
+
+        body {
+            font-family: 'Cairo', 'Outfit', sans-serif;
+            background-color: var(--light-gray);
+            margin: 0;
+            padding: 0;
+            color: var(--primary-purple);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            border-top: 8px solid var(--gold);
+            position: relative;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--light-gray);
+            padding-bottom: 30px;
+        }
+
+        header h1 {
+            color: var(--primary-purple);
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            border: 3px solid var(--gold);
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .diagram-container {
+            background: #fafafa;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #eee;
+            margin: 30px 0;
+            overflow-x: auto;
+        }
+
+        .details {
+            margin-top: 40px;
+        }
+
+        .details h2 {
+            color: var(--primary-purple);
+            border-right: 5px solid var(--gold);
+            padding-right: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: #888;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+
+        .btn-print {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary-purple);
+            color: var(--gold);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-print:hover {
+            transform: translateY(-3px);
+            background: var(--gold);
+            color: var(--primary-purple);
+        }
+
+        @media print {
+            .btn-print { display: none; }
+            body { background: white; }
+            .container { box-shadow: none; border: none; margin: 0; padding: 20px; width: 100%; }
+        }
+
+        /* Mermaid Styling */
+        .mermaid {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'base',
+            themeVariables: {
+                primaryColor: '#2d1b4e',
+                primaryTextColor: '#fff',
+                primaryBorderColor: '#fdb913',
+                lineColor: '#fdb913',
+                secondaryColor: '#fdb913',
+                tertiaryColor: '#fff',
+                mainBkg: '#2d1b4e',
+                nodeBorder: '#fdb913',
+                clusterBkg: '#f4f4f9',
+                titleColor: '#2d1b4e'
+            }
+        });
+    </script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo-placeholder">IU</div>
+            <h1>مخطط قاعدة البيانات (ERD)</h1>
+            <p>منصة جامعة الابتكار الأكاديمية - Innovation University Platform</p>
+        </header>
+
+        <div class="diagram-container">
+            <div class="mermaid">
+erDiagram
+    PROFILES ||--o{ ENROLLMENTS : "registers"
+    COURSES ||--o{ ENROLLMENTS : "includes"
+    PROGRAMS ||--o{ COURSES : "offers"
+    PROFILES ||--o{ ATTENDANCE : "has"
+    COURSES ||--o{ ATTENDANCE : "recorded_for"
+    PROFILES ||--o{ AUDIT_LOGS : "triggers"
+    PROFILES ||--o{ SYSTEM_LOGS : "generates"
+
+    PROFILES {
+        uuid id PK "المعرف"
+        string full_name "الاسم الكامل"
+        string role "الصلاحية"
+        string level "المستوى"
+    }
+
+    COURSES {
+        uuid id PK "المعرف"
+        string name "اسم المادة"
+        int credits "الساعات"
+        uuid program_id FK "البرنامج"
+    }
+
+    PROGRAMS {
+        uuid id PK "المعرف"
+        string name "القسم"
+        string degree_type "الدرجة"
+    }
+
+    ENROLLMENTS {
+        uuid id PK "المعرف"
+        uuid student_id FK "الطالب"
+        uuid course_id FK "المادة"
+        int progress "التقدم %"
+    }
+
+    ATTENDANCE {
+        uuid id PK "المعرف"
+        uuid student_id FK "الطالب"
+        date date "التاريخ"
+        string status "الحالة"
+    }
+
+    AUDIT_LOGS {
+        uuid id PK
+        string action
+        timestamptz created_at
+    }
+
+    SYSTEM_LOGS {
+        uuid id PK
+        string event_type
+        jsonb details
+    }
+            </div>
+        </div>
+
+        <div class="details">
+            <h2>ملاحظات تقنية:</h2>
+            <ul>
+                <li><strong>الألوان:</strong> تم استخدام اللون الأرجواني (Deep Purple) والذهبي (Golden Yellow) ليتناسب مع هوية الجامعة.</li>
+                <li><strong>التقنية:</strong> المخطط مبني على معمارية PostgreSQL/Supabase.</li>
+                <li><strong>الأمان:</strong> جميع الجداول محمية بسياسات RLS (Row Level Security).</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            &copy; 2026 جامعة الابتكار - قسم تكنولوجيا المعلومات
+        </div>
+    </div>
+
+    <button class="btn-print" onclick="window.print()">
+        <span>🖨️ حفظ كـ PDF</span>
+    </button>
+
+</body>
+</html>
